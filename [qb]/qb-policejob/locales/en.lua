@@ -26,7 +26,8 @@ local Translations = {
         no_driver_license = 'No drivers license',
         not_cuffed_dead = 'Civilian isn\'t cuffed or dead',
         fine_yourself = 'You Cannot Fine Yourself',
-        not_online = 'This person is not online'
+        not_online = "This person is not online",
+        has_heli = 'You already own a helicopter!',
     },
     success = {
         uncuffed = 'You have been uncuffed',
@@ -43,7 +44,7 @@ local Translations = {
         vehicle_flagged = 'Vehicle %{plate} has been flagged for %{reason}',
         impound_vehicle_removed = 'Vehicle taken out of impound!',
         impounded = 'Vehicle impounded',
-    },
+ },
     info = {
         mr = 'Mr.',
         mrs = 'Mrs.',
@@ -84,7 +85,6 @@ local Translations = {
         amount = 'Amount',
         police_plate = 'LSPD', --Should only be 4 characters long
         vehicle_info = 'Engine: %{value} % | Fuel: %{value2} %',
-        evidence_stash_prompt = 'Evidence Stash',
         evidence_stash = 'Evidence Stash | %{value}',
         slot = 'Slot no. (1,2,3)',
         current_evidence = '%{value} | Drawer %{value2}',
@@ -116,9 +116,7 @@ local Translations = {
         new_call = 'New Call',
         officer_down = 'Officer %{lastname} | %{callsign} Down',
         fine_issued = 'Fine has been issued to offender succesfully',
-        received_fine = 'State Debt Recovery has automatically recovered the fines owed...',
-        camera_speed= 'Speed camera #%{radarid} - Marked vehicle'
-
+        received_fine = 'State Debt Recovery has automatically recovered the fines owed...'
     },
     evidence = {
         red_hands = 'Red hands',
@@ -190,14 +188,6 @@ local Translations = {
         remove_object = 'Removing object..',
         impound = 'Impounding Vehicle..',
     },
-    target = {
-        sign_in = 'Sign In/Out service',
-        open_personal_stash = 'Open Personal Stash',
-        open_trash = 'Open Trash',
-        open_fingerprint = 'Open Fingerprint',
-        open_armory = 'Open Armory',
-        open_evidence_stash = 'Open Evidence Stash',
-    }
 }
 
 Lang = Lang or Locale:new({
