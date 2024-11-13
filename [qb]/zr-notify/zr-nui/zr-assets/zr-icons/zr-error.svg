@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_97" data-name="Rectangle 97" width="24" height="24" transform="translate(-1 -1)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="error" transform="translate(1 1)" clip-path="url(#clip-path)">
+    <g id="error-warning-danger-problem-attention-svgrepo-com" transform="translate(-2 -2)">
+      <path id="Path_14" data-name="Path 14" d="M7.952,17.4l9.479-9.479" transform="translate(0.324 0.322)" fill="none" stroke="#ff5d5d" stroke-width="3"/>
+      <path id="Path_15" data-name="Path 15" d="M17.455,17.4,7.909,7.851" transform="translate(0.318 0.314)" fill="none" stroke="#ff5d5d" stroke-width="3"/>
+      <path id="Path_16" data-name="Path 16" d="M13,23A10,10,0,1,0,3,13,10,10,0,0,0,13,23Z" fill="none" stroke="#ff5d5d" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

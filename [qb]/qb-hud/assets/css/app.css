@@ -1,0 +1,194 @@
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("/assets/font/Proxima_Nova_Light.otf") format("opentype");
+}
+@font-face {
+  font-family: "Proxima Nova Menu";
+  src: url("/assets/font/ProximaNova-ExtrabldIt.otf") format("opentype");
+}
+.font-proxima-nova {
+  font-family: "Proxima Nova", sans-serif;
+}
+
+.number {
+  transition: fill-opacity 0.5s ease;
+  white-space: pre;
+  font-family: "Proxima Nova";
+  font-size: 12px;
+  letter-spacing: 0px;
+}
+
+body {
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+}
+
+:root {
+  --scrolbar: #EAC43D;
+}
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #1F232B;
+  border-radius: 3px;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-slide-left {
+  animation: slideInFromLeft 1.5s ease-in-out;
+}
+
+.animate-slide-bottom {
+  animation: slideInFromBottom 1.5s ease-in-out;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeSlideUp {
+  animation: fadeSlideUp 1s ease-out forwards;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrolbar);
+  border-radius: 1px;
+  box-shadow: 0px 0px 4px #1900ff;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media screen and (width: 4096px) and (height: 2160px) {
+  html {
+    font-size: 31px;
+  }
+}
+@media screen and (width: 2560px) and (height: 1440px) {
+  html {
+    font-size: 21.3px;
+  }
+}
+@media screen and (width: 3440px) and (height: 1440px) {
+  html {
+    font-size: 21.5px;
+  }
+}
+@media screen and (width: 1920px) and (height: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media screen and (width: 1920px) and (height: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media screen and (width: 1920px) and (height: 1440px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media screen and (width: 1600px) and (height: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media screen and (width: 1440px) and (height: 900px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media screen and (width: 1680px) and (height: 1050px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media screen and (width: 1600px) and (height: 900px) {
+  html {
+    font-size: 13.3px;
+  }
+}
+@media screen and (width: 1600px) and (height: 1024px) {
+  html {
+    font-size: 13.3px;
+  }
+}
+@media screen and (width: 1768px) and (height: 992px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media screen and (width: 1366px) and (height: 768px) {
+  html {
+    font-size: 11.3px;
+  }
+}
+@media screen and (width: 1400px) and (height: 1050px) {
+  html {
+    font-size: 11.7px;
+  }
+}
+@media screen and (width: 1440px) and (height: 900px) {
+  html {
+    font-size: 13.35px;
+  }
+}
+@media screen and (width: 1280px) and (height: 1024px) {
+  html {
+    font-size: 11.7px;
+  }
+}
+@media screen and (width: 1280px) and (height: 720px) {
+  html {
+    font-size: 11px;
+  }
+}
+@media screen and (width: 1024px) and (height: 768px) {
+  html {
+    font-size: 10.05px;
+  }
+}
+@media screen and (width: 832px) and (height: 624px) {
+  html {
+    font-size: 8.05px;
+  }
+}
+@media screen and (width: 800px) and (height: 600px) {
+  html {
+    font-size: 8px;
+  }
+}/*# sourceMappingURL=app.css.map */
