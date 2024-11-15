@@ -50,7 +50,7 @@ Config.DoorList['configname-identifier'] = {
 
 Config.DoorStates = {}
 Config.DoorList = {
-	{
+	--[[ {
 		objName = 'hei_v_ilev_bk_gate2_pris',
 		objCoords  = vec3(261.83, 221.39, 106.41),
 		textCoords = vec3(261.83, 221.39, 106.41),
@@ -1187,5 +1187,5 @@ Config.DoorList = {
 		locked = true,
 		pickable = false,
 		distance = 2.0
-	},
+	}, ]]
 }
