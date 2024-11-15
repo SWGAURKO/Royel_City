@@ -14,7 +14,7 @@ Config.MaxVoiceRanges = 3
 Config.SQL = "oxmysql" -- oxmysql, ghmattimysql, mysql-async
 Config.SpotifyclientId = "" -- https://developer.spotify.com/
 Config.SpotifyclientSecret = "" -- https://developer.spotify.com/
-Config.ShowMapWhileWalking = false -- true : display the map when walking || false : display the map only in vehicle
+Config.ShowMapWhileWalking = true -- true : display the map when walking || false : display the map only in vehicle
 Config.HudSettingsCommand = "hudsettings" 
 Config.HudSettingsEvent = "mHud:OpenHudSettings"
 Config.DefaultSpeedType = "kmh" -- kmh or mph NOTE : Players can change speed type from hud settings this option only effect new players
@@ -110,7 +110,7 @@ Config.hazardlights = "DOWN"
 Config.VehicleEngineToggleKey = "G"
 Config.NitroKey = 36 -- Whatever you set Config.EnableRegisterKeyMapping if you want to change key for nitro only reference here https://docs.fivem.net/docs/game-references/controls/
 Config.MouseCursorKey = 137 -- Whatever you set Config.EnableRegisterKeyMapping if you want to change key for cursor only reference here https://docs.fivem.net/docs/game-references/controls/
-Config.MouseCursorKeyLabel = "\"
+Config.MouseCursorKeyLabel = "CAPS"
 
 --[[
     ░██╗░░░░░░░██╗░█████╗░████████╗███████╗██████╗░███╗░░░███╗░█████╗░██████╗░██╗░░██╗
