@@ -2,7 +2,7 @@ Config = {}
 Config.Debug = false -- Set to true to enable debug mode
 
 Config.DatabaseChecker = {}
-Config.DatabaseChecker.Enabled = true -- if true, the phone will check the database for any issues and fix them if possible
+Config.DatabaseChecker.Enabled = false -- if true, the phone will check the database for any issues and fix them if possible
 Config.DatabaseChecker.AutoFix = true
 
 --[[ FRAMEWORK OPTIONS ]] --
