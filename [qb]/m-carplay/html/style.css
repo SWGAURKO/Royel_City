@@ -1,0 +1,717 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+* {
+  overflow: hidden;
+}
+html {
+
+    user-select: none;
+
+  }
+
+  body {
+    overflow: hidden;
+  }
+  ::-webkit-scrollbar {
+    margin-right: 1vw;
+    width: .3208vw;
+    height: .3208vw;
+  }
+  
+
+  #svglong{
+    fill: linear-gradient(180deg, rgba(217, 217, 217, 0.25) 0%, rgba(217, 217, 217, 0.25) 100%);
+    fill: linear-gradient(180deg, color(display-p3 0.851 0.851 0.851 / 0.00) 0%, color(display-p3 0.851 0.851 0.851 / 0.25) 100%);
+  }
+  /* Track */
+  
+  #gearid{
+    color: rgba(255, 255, 255, 0.19);
+    color: color(display-p3 1 1 1 / 0.19);
+    font-family: 'SF Pro Display', sans-serif;  
+    font-size: .5208vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #d9d9d900; 
+    border-radius: 0vw;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d9d9d900; 
+  }
+.tablet-cover {
+  background-image: url(img/wallpaper/tabletbg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+#svgspeed{
+  stroke-dasharray: 50 0;
+}
+
+
+
+#speedometre {
+  color: #FFF;
+  color: color(display-p3 1 1 1);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;  
+  font-size: 2vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  overflow: hidden; 
+  white-space: nowrap;
+
+}
+
+#spedoname {
+  color: rgba(255, 255, 255, 0.66);
+  color: color(display-p3 1 1 1 / 0.66);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;  
+  font-size: .7813vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#deneme{
+  color: #000;
+  font-family: 'SF Pro Display', sans-serif;  
+  font-size: .7813vw;
+  font-style: normal;
+  font-weight: 500;
+}
+
+#PlayerName{
+  color: rgba(255, 255, 255, 0.35);
+  color: color(display-p3 1 1 1 / 0.35);
+  font-family: 'SF Pro Display', sans-serif;    
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  text-decoration: dashed;
+  color: rgba(255, 255, 255, 0.35);
+  color: color(display-p3 1 1 1 / 0.35);
+}
+
+#name{
+  color: rgba(255, 255, 255, 0.35);
+  color: color(display-p3 1 1 1 / 0.35);
+  font-family: 'SF Pro Display', sans-serif;    
+  font-size: .4688vw;
+  font-style: normal;
+  font-weight: 500;
+  text-decoration: dashed;
+  color: rgba(255, 255, 255, 0.35);
+  color: color(display-p3 1 1 1 / 0.35);
+}
+
+#name2 {
+  color: color(display-p3 1 1 1 / 0.25);
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .3646vw;
+  font-style: normal;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.35);
+  color: color(display-p3 1 1 1 / 0.35);
+}
+
+.special-color-fields {
+  display: flex;
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  color: transparent;
+}
+
+.special-color-fields::-webkit-input-placeholder {
+  color: transparent !important;
+}
+#autopilotactivedeactive {
+  color: #154B61;
+  color: color(display-p3 0.1468 0.2901 0.3708);
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .6771vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+#autopilotlinetwo {
+  color: rgba(0, 0, 0, 0.31);
+  color: color(display-p3 0 0 0 / 0.31);
+  text-align: center;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .5208vw;
+  font-size: .6771vw;
+
+
+}
+#textid {
+  font-family: 'SF Pro Display', sans-serif;                                             
+  font-size: .5208vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#textidmusic {
+  color: rgba(255, 255, 255, 0.35);
+  color: color(display-p3 1 1 1 / 0.35);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Rounded', sans-serif;
+  font-size: .4167vw;
+  font-style: normal;
+  font-weight: 500;
+}
+
+
+#textidd {
+  font-family: 'SF Pro Display', sans-serif;     
+  font-size: .7292vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 143.836%; 
+}
+
+/* Kaydırma çubuğunun yuvarlağına stil uygulama */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+
+}
+
+input[type="range"]:focus {
+  outline: none;
+  
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: .5208vw; 
+  height: .5208vw; 
+  background-color: #D9D9D9;
+  border-radius: 7.8125vw;
+  cursor: pointer;
+}
+
+
+#restore {
+  color: rgba(0, 0, 0, 0.53);
+  color: color(display-p3 0 0 0 / 0.53);
+
+  font-family: 'SF Pro Display', sans-serif; 
+  font-size: .5208vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.moveable-element {
+  width: 200px;
+  height: 100px;
+  background-color: rgb(218, 41, 14);
+  border: 1px solid blue;
+  text-align: center;
+  line-height: 100px;
+  position: absolute;
+  transition: 0.5s; /* İsteğe bağlı animasyon ekleyebilirsiniz */
+}
+
+
+#textidplay {
+  color: #FFF;
+  color: color(display-p3 1 1 1);
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Rounded', sans-serif;
+  font-size: .5208vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+#neondisabletext{
+  color: #FFF;
+  font-family: 'SF Pro Rounded', sans-serif;
+  font-size: .4688vw;
+
+}
+
+
+.musiclevelbg{
+  border-radius: .5208vw;
+  background: rgba(217, 217, 217, 0.26);
+}
+
+
+.musicname {
+  font-size: .5208vw !important;
+  font-family: 'SF Pro Rounded', sans-serif;  
+}
+
+.musicartist {
+  font-size: .4167vw !important;
+  /* color: rgba(255, 255, 255, 0.35) !important; 
+  color: color(display-p3 1 1 1 / 0.35) !important; */
+}
+
+#musicartist {
+  font-size: .4167vw !important;
+  /* color: rgba(255, 255, 255, 0.35) !important; 
+  color: color(display-p3 1 1 1 / 0.35) !important; */
+}
+
+#autopilotapp {
+  background-image: url("./img/apps/autopilotapps.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: contain;
+}
+
+.AutoPilotAppBottom {
+  border-radius: .2604vw;
+  background: #25C3FD;
+  background: color(display-p3 0.3686 0.7529 0.9686);
+  box-shadow: 0vw 0vw .4167vw 0vw #25C3FD;
+  box-shadow: 0vw 0vw .4167vw 0vw color(display-p3 0.3686 0.7529 0.9686);
+}
+
+#doorapp {
+  background-image: url("./img/apps/doorapps.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.DoorAppBottom{
+  border-radius: .2604vw;
+  background: #00F9BD;
+  background: color(display-p3 0.3686 0.9608 0.7569);
+  box-shadow: 0vw 0vw .4167vw 0vw #00F9BD;
+  box-shadow: 0vw 0vw .4167vw 0vw color(display-p3 0.3686 0.9608 0.7569);
+}
+
+.NeonAppBottom{
+  border-radius: .2604vw;
+  background: #AF5CFF;
+  background: color(display-p3 0.6431 0.3765 0.9804);
+  box-shadow: 0vw 0vw .4167vw 0vw #AF5CFF;
+  box-shadow: 0vw 0vw .4167vw 0vw color(display-p3 0.6431 0.3765 0.9804);
+}
+
+.MusicAppBottom{
+  border-radius: .2604vw;
+  background: #CF3764;
+  background: color(display-p3 0.749 0.2667 0.3961);
+  box-shadow: 0vw 0vw .4167vw 0vw #CF3764;
+  box-shadow: 0vw 0vw .4167vw 0vw color(display-p3 0.749 0.2667 0.3961);
+}
+
+.KonumAppBottom{
+  border-radius: .2604vw;
+  background: #FF5357;
+  background: color(display-p3 0.9647 0.3804 0.3686);
+  box-shadow: 0vw 0vw .4167vw 0vw #FF5357;
+  box-shadow: 0vw 0vw .4167vw 0vw color(display-p3 0.9647 0.3804 0.3686);
+}
+
+.SettingsAppBottom {
+  border-radius: .2604vw;
+  background: #FFF;
+  background: color(display-p3 1 1 1);
+  box-shadow: 0vw 0vw .4167vw 0vw #FFF;
+  box-shadow: 0vw 0vw .4167vw 0vw color(display-p3 1 1 1);
+}
+
+
+#lightsapp {
+  background-image: url("./img/apps/neonapps.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#musicapp {
+  background-image: url("./img/apps/musicapps.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#locationapp {
+  background-image: url("./img/apps/konumapps.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#settingsapp {
+  background-image: url("./img/apps/settingapps.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+} 
+
+#doortextenable{
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;  
+  font-size: .5208vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.notify{
+  color: rgba(255, 255, 255, 0.91);
+  color: color(display-p3 1 1 1 / 0.91);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;  
+  font-size: .5208vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 143.836%; /* 14.384px */
+}
+
+#streetID {
+  color: rgba(255, 255, 255, 0.13);
+  color: color(display-p3 1 1 1 / 0.13);
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;  
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-size: .5vw;
+}
+
+
+
+
+#ZoneID {
+  color: rgba(255, 255, 255, 0.13);
+  color: color(display-p3 1 1 1 / 0.13);
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;  
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-size: .6vw;
+}
+
+#testt{
+  color: rgba(255, 255, 255, 0.35);
+  color: color(display-p3 1 1 1 / 0.35);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .4167vw;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 143.836%; /* 11.507px */
+}
+
+#inputbg {
+  border-radius: .2604vw;
+  background: rgba(217, 217, 217, 0.10);
+  background: color(display-p3 0.851 0.851 0.851 / 0.10);
+  stroke: none;
+  outline: none;
+
+  color: rgba(255, 255, 255, 0.13);
+  color: color(display-p3 1 1 1 / 0.13);
+  leading-trim: both;
+  text-edge: cap;
+  text-align: center;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .4167vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 143.836%; /* 11.507px */
+}
+
+#skyid {
+  color: #005276;
+  color: color(display-p3 0.0131 0.3156 0.45);
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .5208vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+
+#sound-bg-css {
+  border-radius: .2604vw;
+  background: linear-gradient(90deg, #BA2E67 0%, #000 100%);
+  background: linear-gradient(90deg, color(display-p3 0.6706 0.2275 0.4) 0%, color(display-p3 0 0 0 / 0.00) 100%);
+}
+
+#musicnameid {
+  color: rgba(255, 255, 255, 0.91);
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .4688vw;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  line-height: normal;
+  text-justify: inter-word;
+}
+
+#sarkisinameid {
+  color: rgba(255, 255, 255, 0.35);
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .3646vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 143.836%; /* 11.507px */
+}
+
+#sarkisaniyeid {
+  color: rgba(255, 255, 255, 0.91);
+
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .2865vw;
+  font-style: normal;
+  font-weight: 500;
+  leading-trim: both;
+  text-edge: cap;
+  line-height: .2083vw; 
+}
+
+#konumbaslik {
+  color: #FFF;
+  color: color(display-p3 1 1 1);
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .6771vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+#navigationid {
+  color: #FFF;
+  color: color(display-p3 1 1 1);
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .5208vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#inputbglight{
+  border-radius: .2604vw;
+  background: rgba(0, 0, 0, 0.10);
+  background: color(display-p3 0 0 0 / 0.10);
+  box-shadow: 0vh 0.0926vh 0.1852vh 0vh rgba(0, 0, 0, 0.25) inset;
+  box-shadow: 0vh 0.0926vh 0.1852vh 0vh color(display-p3 0 0 0 / 0.25) inset;
+  stroke: none;
+  outline: none;
+
+  color: rgba(255, 255, 255, 0.13);
+  color: color(display-p3 1 1 1 / 0.13);
+  leading-trim: both;
+  text-edge: cap;
+  text-align: center;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .4167vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 143.836%; /* 11.507px */
+}
+
+.settings-text {
+  color: rgba(255, 255, 255, 0.35);
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .5208vw;
+  font-style: normal;
+  font-weight: 500;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+
+.inputrange {
+  -webkit-appearance: none;
+  background: rgba(217, 217, 217, 0.12);
+  overflow: hidden;
+}
+
+
+::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width:.9208vw;
+  height: 2vh;
+  border-radius: .1042vw;
+  background: #D9D9D9;
+  box-shadow: -104.1667vw 0 0 104.1667vw #29C9FF;
+    border-radius: 50%;
+
+}
+
+.infitine-road {
+  animation: scroll 2s linear infinite;
+  background: rgba(0, 0, 0, 0.02);
+  background: color(display-p3 0 0 0 / 0.02);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.clr-field {
+  width: 0;
+  height: 0;
+  border: 0;
+  background: transparent;
+}
+
+#enginef{
+  color: rgba(255, 255, 255, 0.91);
+  color: color(display-p3 1 1 1 / 0.91);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .5208vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 143.836%; /* 14.384px */
+}
+
+
+#minicarplayone {
+  color: #FFF;
+  color: color(display-p3 1 1 1);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .7813vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 99.5%; /* 14.925px */
+}
+
+#minicarplaytwo{
+  color: rgba(255, 255, 255, 0.42);
+  color: color(display-p3 1 1 1 / 0.42);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .7813vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 99.5%; /* 14.925px */
+}
+
+
+#soundtext{
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .5729vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 143.836%; /* 15.822px */
+
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.91) 0%, rgba(255, 255, 255, 0.91) 104.13%);
+  background: linear-gradient(90deg, color(display-p3 1 1 1 / 0.91) 0%, color(display-p3 1 1 1 / 0.00) 104.13%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  white-space: nowrap;        
+  overflow: hidden;           
+  text-overflow: ellipsis;    
+  
+}
+
+#soundnumbertext{
+  color: rgba(255, 255, 255, 0.15);
+  color: color(display-p3 1 1 1 / 0.15);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'SF Pro Display', sans-serif;   
+  font-size: .4167vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 143.836%; /* 11.507px */
+}
+
+/* Giriş animasyonu */
+.slide-fade-enter-active {
+  transition: all 0.5s ease; /* Animasyon süresi ve geçiş türü */
+}
+.slide-fade-enter-from {
+  transform: translateY(-100%); /* Yukarıdan aşağıya giriş için */
+  opacity: 0; /* Görünürlük başlangıcı */
+}
+.slide-fade-enter-to {
+  transform: translateY(0); /* Bitiş konumu (görünür hale gelir) */
+  opacity: 1; /* Görünürlük sonu */
+}
+
+/* Çıkış animasyonu */
+.slide-fade-leave-active {
+  transition: all 0.5s ease; /* Animasyon süresi ve geçiş türü */
+}
+.slide-fade-leave-from {
+  transform: translateY(0); /* Mevcut konum */
+  opacity: 1; /* Görünürlük başlangıcı */
+}
+.slide-fade-leave-to {
+  transform: translateY(-100%); /* Yukarıya doğru kaybolur */
+  opacity: 0; /* Görünürlük sonu */
+}
+
+
+
+
+
+.fade-in-enter-active, .fade-in-leave-active {
+  transition: opacity 0.5s;
+  opacity: 0; /* Görünürlük sonu */
+}
+.fade-in-enter, .fade-in-leave-to /* .fade-in-leave-active in <2.1.8 */ {
+  transition: opacity 0.5s;
+  opacity: 1; /* Görünürlük sonu */
+}
