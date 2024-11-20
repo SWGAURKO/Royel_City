@@ -7,6 +7,8 @@ Config.Debug = false -- set to true if you want to see debug messages in console
 -- chezza is for chezza inventory
 Config.Inventory = "ox" -- qb or qs or ox or qsv2
 
+Config.NewQBInventory = true -- set to true if you use the new qb inventory system (have inventories table in database)
+
 -- use qb-clothing if you use qb-clothing
 -- use fivem-appearance if you use fivem-appearance
 -- use esx_skin if you use esx_skin
@@ -26,7 +28,7 @@ Config.Ambulance = "wasabi" -- "wasabi", "none"
 -- use none if you dont use any of the mentioned options
 -- okok is for okokChat
 -- codem is for codem-chat
-Config.Chat = "okok" -- "none", "okok", "codem"
+Config.Chat = "codem" -- "none", "okok", "codem"
 
 -- use none if you dont use any of the mentioned options
 -- cd_easytime for cd_easytime (if you use esx, it will be cd_easytime  by default)

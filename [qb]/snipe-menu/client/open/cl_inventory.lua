@@ -1,10 +1,15 @@
 function OpenStash(stashName, owner)
     if Config.Core == "QBCore" and Config.Inventory ~= "ox" then
-        TriggerServerEvent("inventory:server:OpenInventory", "stash", stashName, {
-            maxweight = 1000000,
-            slots = 100,
-        })
-        TriggerEvent("inventory:client:SetCurrentStash", stashName)
+        if not Config.NewQBInventory then
+            local other = {
+                maxweight = 1000000,
+                slots = 100,
+            }
+            TriggerServerEvent("inventory:server:OpenInventory", "stash", stashName, other)
+            TriggerEvent("inventory:client:SetCurrentStash", stashName)
+        else
+            TriggerServerEvent("snipe-menu:server:OpenInventoryQBCompatibility", "stash", stashName)
+        end
     elseif Config.Core == "ESX" and Config.Inventory == "qs" then
         TriggerServerEvent("inventory:server:OpenInventory", "stash", stashName, {
             maxweight = 1000000,
@@ -46,13 +51,17 @@ end
 
 function OpenTrunk(vehicle, plate)
     if Config.Core == "QBCore" and Config.Inventory ~= "ox" then
-            local vehicleClass = GetVehicleClassFromName(GetHashKey(vehicle) --[[ Hash ]])
+
+        if not Config.NewQBInventory then
             local other = {
                 maxweight = 120000,
                 slots = 50,
             }
             TriggerServerEvent("inventory:server:OpenInventory", "trunk", plate, other)
             TriggerEvent("inventory:client:SetCurrentTrunk", plate)
+        else
+            TriggerServerEvent("snipe-menu:server:OpenInventoryQBCompatibility", "stash", "trunk-"..plate)
+        end
         
     elseif Config.Core == "ESX" and Config.Inventory == "qs" then
         local other = {
@@ -63,7 +72,8 @@ function OpenTrunk(vehicle, plate)
         TriggerEvent("inventory:client:SetCurrentTrunk", plate)
     elseif Config.Inventory == "ox" then
         -- doesnt work. need to fix (panel has been manually disabled for ox users)
-        exports.ox_inventory:openInventory('trunk', {id='trunk'..plate})
+        -- exports.ox_inventory:openInventory('trunk', {id='trunk'..plate})
+        TriggerServerEvent("snipe-menu:server:forceOpenOxInventory", "trunk", {type = "trunk", id='trunk'..plate})
     elseif Config.Inventory == "qsv2" then
         local other = {
             maxweight = 120000,
@@ -82,14 +92,24 @@ end
 function OpenGlovebox(plate)
     if hasAdminPerms then
         if Config.Core == "QBCore" and Config.Inventory ~= "ox" then
-            TriggerServerEvent("inventory:server:OpenInventory", "glovebox", plate, other)
-            TriggerEvent("inventory:client:SetCurrentGlovebox", plate)
+            
+            if not Config.NewQBInventory then
+                local other = {
+                    maxweight = 120000,
+                    slots = 50,
+                }
+                TriggerServerEvent("inventory:server:OpenInventory", "glovebox", plate, other)
+                TriggerEvent("inventory:client:SetCurrentGlovebox", plate)
+            else
+                TriggerServerEvent("snipe-menu:server:OpenInventoryQBCompatibility", "stash", "glovebox-"..plate)
+            end
         elseif Config.Core == "ESX" and Config.Inventory == "qs" then
                 TriggerServerEvent("inventory:server:OpenInventory", "glovebox", plate, other)
                 TriggerEvent("inventory:client:SetCurrentGlovebox", plate)
         elseif Config.Inventory == "ox" then
                 -- doesnt work. need to fix (panel has been manually disabled for ox users)
-            exports.ox_inventory:openInventory('glovebox', {id='glove'..plate})
+            -- exports.ox_inventory:openInventory('glovebox', {id='glove'..plate})
+            TriggerServerEvent("snipe-menu:server:forceOpenOxInventory", "glovebox", {type = "glovebox", id='glove'..plate})
         elseif Config.Inventory == "qsv2" then
             TriggerServerEvent("inventory:server:OpenInventory", "glovebox", plate, other)
             TriggerEvent("inventory:client:SetCurrentGlovebox", plate)
@@ -103,11 +123,16 @@ end
 
 function openJobStash(data)
     if Config.Core == "QBCore" and Config.Inventory ~= "ox" then
-        TriggerServerEvent("inventory:server:OpenInventory", "stash", data.jobStashName, {
-            maxweight = data.size,
-            slots = data.slots,
-        })
-        TriggerEvent("inventory:client:SetCurrentStash", data.jobStashName)
+        if not Config.NewQBInventory then
+            local other = {
+                maxweight = data.size,
+                slots = data.slots,
+            }
+            TriggerServerEvent("inventory:server:OpenInventory", "stash", data.jobStashName, other)
+            TriggerEvent("inventory:client:SetCurrentStash", data.jobStashName)
+        else
+            TriggerServerEvent("snipe-menu:server:OpenInventoryQBCompatibility", "stash", data.jobStashName, {maxweight = data.size, slots = data.slots})
+        end
     elseif Config.Core == "ESX" and Config.Inventory == "qs" then
         TriggerServerEvent("inventory:server:OpenInventory", "stash", data.jobStashName, {
             maxweight = data.size,
@@ -140,7 +165,16 @@ end
 RegisterNetEvent("snipe-menu:client:openinventory", function(otherPlayer)
     if hasAdminPerms then
         if Config.Core == "QBCore" and Config.Inventory ~= "ox" then
-            TriggerServerEvent("inventory:server:OpenInventory", "otherplayer", otherPlayer)
+            if not Config.NewQBInventory then
+                local other = {
+                    maxweight = 1000000,
+                    slots = 100,
+                }
+                TriggerServerEvent("inventory:server:OpenInventory", "otherplayer", otherPlayer)
+            else
+                TriggerServerEvent("snipe-menu:server:OpenInventoryQBCompatibility", "player", otherPlayer)
+            end
+            
         elseif Config.Core == "ESX" and Config.Inventory == "qs" then
             TriggerServerEvent("inventory:server:OpenInventory", "otherplayer", otherPlayer)
         elseif Config.Inventory == "ox" then

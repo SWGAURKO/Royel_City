@@ -138,7 +138,7 @@ RegisterServerEvent("snipe-menu:server:giveItem", function(playerId, giveItem, g
 end)
 
 CreateCallback("snipe-menu:server:getAllStashes", function(source, cb)
-    if Config.Inventory == "qb" then
+    if Config.Inventory == "qb" and not Config.NewQBInventory then
         local result = MySQL.query.await('SELECT id, stash FROM stashitems')
         local returnData = {}
         if result ~= nil then
@@ -146,6 +146,20 @@ CreateCallback("snipe-menu:server:getAllStashes", function(source, cb)
                 returnData[#returnData + 1] = {
                     id = v.id,
                     name = v.stash,
+                }
+            end
+            cb(returnData)
+        else
+            cb(nil)
+        end
+    elseif Config.Inventory == "qb" and Config.NewQBInventory then
+        local result = MySQL.query.await('SELECT id, identifier FROM inventories WHERE identifier NOT LIKE "%glovebox%" AND identifier NOT LIKE "%trunk%"')
+        local returnData = {}
+        if result ~= nil then
+            for k, v in pairs(result) do
+                returnData[#returnData + 1] = {
+                    id = v.id,
+                    name = v.identifier,
                 }
             end
             cb(returnData)
@@ -214,3 +228,27 @@ CreateCallback("snipe-menu:server:getAllStashes", function(source, cb)
     end
 end)
 
+if Config.NewQBInventory then
+    RegisterServerEvent("snipe-menu:server:OpenInventoryQBCompatibility", function(_type, inventoryName, data)
+
+        local source = source
+        if not onlineAdmins[source] then return end
+        if _type == "stash" then
+            exports['qb-inventory']:OpenInventory(source, inventoryName, data or nil)
+        end
+
+        if _type == "player" then
+            exports['qb-inventory']:OpenInventoryById(source, inventoryName)
+        end
+        
+    end)
+end
+
+if Config.Inventory == "ox" then
+    RegisterNetEvent("snipe-menu:server:forceOpenOxInventory", function(type, plate)
+        
+        local src = source
+        if not onlineAdmins[src] then return end
+        exports.ox_inventory:forceOpenInventory(src, type, plate)
+    end)
+end

@@ -1,1 +1,1 @@
-https://snipe-1.gitbook.io/product-docs/
+https://snipe-1.gitbook.io/product-docs/adminmenu
