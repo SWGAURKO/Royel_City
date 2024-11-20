@@ -31,7 +31,7 @@ local function purchaseVehicle(dealershipId, vehicleModel, vehicleColor, purchas
   local vehicle = spawnVehicle(hash, plate, coords, warp, {
     plate = plate,
     colour = vehicleColor
-  })
+  }, "purchase")
   if not vehicle or vehicle == 0 then return false end
   
   local netId = VehToNet(vehicle)

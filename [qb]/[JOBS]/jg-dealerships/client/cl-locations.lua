@@ -129,6 +129,7 @@ local function createDealershipZonesAndBlips()
 end
 
 RegisterNetEvent("jg-dealerships:client:update-blips-text-uis", function()
+  Wait(1000)
   createDealershipZonesAndBlips()
   spawnAllDealershipDisplayVehicles()
 end)

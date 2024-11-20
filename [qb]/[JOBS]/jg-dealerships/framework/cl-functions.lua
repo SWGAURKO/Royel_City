@@ -44,12 +44,12 @@ function Framework.Client.Notify(msg, type, time)
   time = time or 5000
 
   if (Config.Notifications == "auto" and GetResourceState("okokNotify") == "started") or Config.Notifications == "okokNotify" then
-    exports["okokNotify"]:Alert("Garages", msg, time, type)
+    exports["okokNotify"]:Alert("Dealerships", msg, time, type)
   elseif (Config.Notifications == "auto" and GetResourceState("ps-ui") == "started") or Config.Notifications == "ps-ui" then
     exports["ps-ui"]:Notify(msg, type, time)
   elseif (Config.Notifications == "auto" and GetResourceState("ox_lib") == "started") or Config.Notifications == "ox_lib" then
     exports["ox_lib"]:notify({
-      title = "Garages",
+      title = "Dealerships",
       description = msg,
       type = type
     })
@@ -148,7 +148,8 @@ end
 
 ---@param plate string
 ---@param vehicleEntity integer
-function Framework.Client.VehicleGiveKeys(plate, vehicleEntity)
+---@param origin "testDrive"|"purchase"
+function Framework.Client.VehicleGiveKeys(plate, vehicleEntity, origin)
   if not DoesEntityExist(vehicleEntity) then return false end
 
   if Config.VehicleKeys == "qb-vehiclekeys" then
@@ -172,6 +173,12 @@ function Framework.Client.VehicleGiveKeys(plate, vehicleEntity)
     exports.MrNewbVehicleKeys:GiveKeys(vehicleEntity)
   elseif Config.VehicleKeys == "Renewed" then
     exports["Renewed-Vehiclekeys"]:addKey(plate)
+  elseif Config.VehicleKeys == "mx_carkeys" then
+    if origin == "testDrive" then
+      exports["mx_carkeys"]:createTempKey(vehicleEntity, plate, 2)
+    else
+      exports["mx_carkeys"]:buyVehicle(vehicleEntity, plate, 2)
+    end
   else
     -- Setup custom key system here...
   end
@@ -179,7 +186,8 @@ end
 
 ---@param plate string
 ---@param vehicleEntity integer
-function Framework.Client.VehicleRemoveKeys(plate, vehicleEntity)
+---@param origin "vehicleSale"|"testDrive"
+function Framework.Client.VehicleRemoveKeys(plate, vehicleEntity, origin)
   if not DoesEntityExist(vehicleEntity) then return false end
 
   if Config.VehicleKeys == "qs-vehiclekeys" then
@@ -193,16 +201,23 @@ function Framework.Client.VehicleRemoveKeys(plate, vehicleEntity)
     exports.MrNewbVehicleKeys:RemoveKeys(vehicleEntity)
   elseif Config.VehicleKeys == "Renewed" then
     exports["Renewed-Vehiclekeys"]:removeKey(plate)
+  elseif Config.VehicleKeys == "mx_carkeys" then
+    exports["mx_carkeys"]:removeVehicleKey(vehicleEntity)
   else
     -- Setup custom key system here...
   end
 end
 
 ---@param vehicle integer
----@return string | false plate 
+---@return string|false plate
 function Framework.Client.GetPlate(vehicle)
   local plate = GetVehicleNumberPlateText(vehicle)
   if not plate or plate == nil or plate == "" then return false end
+
+  if GetResourceState("brazzers-fakeplates") == "started" then
+    local originalPlate = lib.callback.await("brazzers-fakeplates:getPlateFromFakePlate", false, plate)
+    if originalPlate then plate = originalPlate end
+  end
 
   local trPlate = string.gsub(plate, "^%s*(.-)%s*$", "%1")
   return trPlate
@@ -262,6 +277,46 @@ function Framework.Client.GetVehicleLabel(model)
   end
 
   return label
+end
+
+---Returns vehicle stats in a table format
+---@param model string model (archetype) name
+function Framework.Client.GetVehicleStats(model)
+  local vehicle = joaat(model) -- convert to hash
+  local class = GetVehicleClassFromName(vehicle)
+
+  local mult, pmult, tmult = 1, 1000, 800
+  if class == 14 or class == 15 or class == 16 then
+    mult, pmult, tmult = 0.1, 10, 8
+  end
+
+  local brake = GetVehicleModelMaxBraking(vehicle) * mult
+  local handling = ((GetVehicleModelMaxBraking(vehicle) + GetVehicleModelMaxBrakingMaxMods(vehicle)) * GetVehicleModelMaxTraction(vehicle)) * mult
+  local topSpeed = math.ceil(GetVehicleModelEstimatedMaxSpeed(vehicle) * 2.2369)
+  if Config.SpeedUnit == "kph" then topSpeed = math.ceil(GetVehicleModelEstimatedMaxSpeed(vehicle) * 3.6) end
+  local power = math.ceil(GetVehicleModelAcceleration(vehicle) * pmult)
+  local torque = math.ceil(GetVehicleModelAcceleration(vehicle) * tmult)
+
+  -- If you are really unhappy with the values being returned from the game, you could write something
+  -- like the following to overwrite the values to custom ones, by writing something like:
+  -- 
+  -- if model == "adder" then
+  --   return {
+  --     brake = 1.0,
+  --     handling = 7.0,
+  --     topSpeed = 150,
+  --     power = 900,
+  --     torque = 800
+  --   }
+  -- end
+
+  return {
+    brake = brake,
+    handling = handling,
+    topSpeed = topSpeed,
+    power = power,
+    torque = torque
+  }
 end
 
 --

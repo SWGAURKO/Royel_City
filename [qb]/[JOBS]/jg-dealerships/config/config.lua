@@ -8,13 +8,13 @@ Config = {}
 Config.Locale = "en"
 Config.NumberAndDateFormat = "en-US"
 Config.Currency = "USD"
-Config.SpeedUnit = "mph"
+Config.SpeedUnit = "kph" -- or "kph"
 
 -- Framework & Integrations
 Config.Framework = "auto" -- or "QBCore", "Qbox", "ESX"
 Config.FuelSystem = "LegacyFuel" -- or "LegacyFuel", "ps-fuel", "lj-fuel", "ox_fuel", "cdn-fuel", "hyon_gas_station", "okokGasStation", "nd_fuel", "myFuel", "ti_fuel", "none"
 Config.VehicleKeys = "mk_vehiclekeys" -- or "qb-vehiclekeys", "MrNewbVehicleKeys", "jaksam-vehicles-keys", "qs-vehiclekeys", "mk_vehiclekeys", "wasabi_carlock", "cd_garage", "okokGarage", "t1ger_keys", "Renewed", "none"
-Config.Notifications = "auto" -- or "default", "okokNotify", "ox_lib", "ps-ui"
+Config.Notifications = "default" -- or "default", "okokNotify", "ox_lib", "ps-ui"
 Config.DrawText = "ox_lib" -- or "jg-textui", "qb-DrawText", "okokTextUI", "ox_lib", "ps-ui"
 
 -- Text UI prompts
@@ -42,10 +42,11 @@ Config.FinancePaymentFailedHoursUntilRepo = 1 -- in hours
 Config.MaxFinancedVehiclesPerPlayer = 5
 
 -- Little vehicle preview images in the garage UI - learn more/add custom images: https://docs.jgscripts.com/advanced-garages/vehicle-images
-Config.ShowVehicleImages = false
+Config.ShowVehicleImages = true
 
 -- Vehicle purchases
 Config.PlateFormat = "1AA111AA" -- https://docs.jgscripts.com/dealerships/plate-format
+Config.HideVehicleStats = false
 
 -- Test drives
 Config.TestDrivePlate = "TEST1111" -- This is a plate seed so it'll be random every time (read: https://docs.jgscripts.com/dealerships/plate-format)
@@ -297,6 +298,8 @@ Config.DirectSaleCommand = "directsale"
 Config.DealerAdminCommand = "dealeradmin"
 
 -- Nerd options
+Config.RemoveGeneratorsAroundDealership = 60.0
+Config.AutoRunSQL = true
 Config.ReturnToPreviousRoutingBucket = false
 Config.HideWatermark = false
-Config.Logging = false
+Config.Debug = false

@@ -129,11 +129,35 @@ function Framework.Server.SaveVehicleToGarage(src, purchaseType, society, societ
   return vehicleId
 end
 
+---@param vehicle boolean|QueryResult|unknown|{ [number]: { [string]: unknown  }|{ [string]: unknown }}
+---@return string | number | false model
+function Framework.Server.GetModelColumn(vehicle)
+  if Config.Framework == "QBCore" or Config.Framework == "Qbox" then
+    return vehicle.vehicle or tonumber(vehicle.hash) or false
+  elseif Config.Framework == "ESX" then
+    if not vehicle or not vehicle.vehicle then return false end
+
+    if type(vehicle.vehicle) == "string" then
+      if not json.decode(vehicle.vehicle) then return false end
+      return json.decode(vehicle.vehicle).model
+    else
+      return vehicle.vehicle.model
+    end
+  end
+
+  return false
+end
+
 ---@param vehicle integer
 ---@return string | false plate 
 function Framework.Server.GetPlate(vehicle)
   local plate = GetVehicleNumberPlateText(vehicle)
   if not plate or plate == nil or plate == "" then return false end
+
+  if GetResourceState("brazzers-fakeplates") == "started" then
+    local originalPlate = MySQL.scalar.await("SELECT plate FROM player_vehicles WHERE fakeplate = ?", {plate})
+    if originalPlate then plate = originalPlate end
+  end
 
   local trPlate = string.gsub(plate, "^%s*(.-)%s*$", "%1")
   return trPlate
@@ -440,4 +464,20 @@ end)
 lib.callback.register("jg-dealerships:server:get-ti-fuel-type", function(src, plate)
   MySQL.query.await("ALTER TABLE " .. Framework.VehiclesTable .. " ADD COLUMN IF NOT EXISTS `ti_fuel_type` VARCHAR(100) DEFAULT '';")
   return MySQL.scalar.await("SELECT ti_fuel_type FROM  " .. Framework.VehiclesTable .. " WHERE plate = ?", {plate}) or false
+end)
+
+--
+-- Brazzers-FakePlates
+--
+
+lib.callback.register("brazzers-fakeplates:getPlateFromFakePlate", function(_, fakeplate)
+  local result = MySQL.scalar.await("SELECT plate FROM player_vehicles WHERE fakeplate = ?", {fakeplate})
+  if result then return result end
+  return false
+end)
+
+lib.callback.register("brazzers-fakeplates:getFakePlateFromPlate", function(_, plate)
+  local result = MySQL.scalar.await("SELECT fakeplate FROM player_vehicles WHERE plate = ?", {plate})
+  if result then return result end
+  return false
 end)

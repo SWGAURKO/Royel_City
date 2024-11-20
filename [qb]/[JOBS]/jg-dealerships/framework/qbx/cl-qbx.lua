@@ -5,6 +5,7 @@ if (Config.Framework == "auto" and GetResourceState("qbx_core") == "started") or
   RegisterNetEvent("QBCore:Client:OnPlayerLoaded")
   AddEventHandler("QBCore:Client:OnPlayerLoaded", function()
     Globals.PlayerData = exports.qbx_core:GetPlayerData()
+    TriggerEvent("jg-dealerships:client:update-blips-text-uis")
     
     CreateThread(function()
       Wait(1000)

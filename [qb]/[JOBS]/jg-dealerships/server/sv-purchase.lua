@@ -105,7 +105,7 @@ lib.callback.register("jg-dealerships:server:purchase-vehicle", function(src, pu
   sendWebhook(src, Webhooks.Purchase, "New Vehicle Purchase", "success", {
     { key = "Vehicle", value = model },
     { key = "Plate", value = plate },
-    { key = "Financed", value = (financed == 1 and "Yes" or "No") },
+    { key = "Financed", value = financed and "Yes" or "No" },
     { key = "Amount Paid", value = amountToPay },
     { key = "Payment method", value = paymentMethod },
     { key = "Dealership", value = dealershipId },

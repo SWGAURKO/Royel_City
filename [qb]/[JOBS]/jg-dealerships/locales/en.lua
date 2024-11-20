@@ -173,6 +173,7 @@ Locales['en'] = {
   dealershipOrderCancelled = "Order successfully cancelled",
   errorVehicleWithSpawnCodeExists = "A vehicle with this spawn code already exists",
   errorExitVehicle = "You need to exit your vehicle first",
+  errorPlacementCollision = "You can't place the vehicle here",
 
   -- NEW v1.1
   purchaseRequest = "Purchase Request",

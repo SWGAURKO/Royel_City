@@ -2,9 +2,10 @@ if (Config.Framework == "auto" and GetResourceState("es_extended") == "started")
   -- Player data
   Globals.PlayerData = ESX.GetPlayerData()
 
-  RegisterNetEvent('esx:playerLoaded')
-  AddEventHandler('esx:playerLoaded', function(xPlayer)
+  RegisterNetEvent("esx:playerLoaded")
+  AddEventHandler("esx:playerLoaded", function(xPlayer)
     Globals.PlayerData = xPlayer
+    TriggerEvent("jg-dealerships:client:update-blips-text-uis")
     
     CreateThread(function()
       Wait(1000)
@@ -12,8 +13,8 @@ if (Config.Framework == "auto" and GetResourceState("es_extended") == "started")
     end)
   end)
 
-  RegisterNetEvent('esx:setJob')
-  AddEventHandler('esx:setJob', function(job)
+  RegisterNetEvent("esx:setJob")
+  AddEventHandler("esx:setJob", function(job)
     Globals.PlayerData.job = job
     TriggerEvent("jg-dealerships:client:update-blips-text-uis")
   end)

@@ -62,7 +62,7 @@ function round(num, dp)
 end
 
 ---@param list table
----@param item string
+---@param item string|number
 ---@return boolean
 function isItemInList(list, item)
   if #list == 0 then
@@ -76,4 +76,10 @@ function isItemInList(list, item)
   end
 
   return false
+end
+
+---@param s string
+---@return string
+function trim(s)
+  return (s:gsub("^%s*(.-)%s*$", "%1"))
 end
