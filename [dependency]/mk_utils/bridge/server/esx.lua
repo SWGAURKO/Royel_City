@@ -627,7 +627,9 @@ end
 society.getBalance = function(self, playerSource, societyType, societyName)
     local query, params
 
-    if GetResourceState('okokBanking') == 'started' then
+    if GetResourceState('Renewed-Banking') == 'started' then
+        return exports['Renewed-Banking']:getAccountMoney(societyName)
+    elseif GetResourceState('okokBanking') == 'started' then
         query = 'SELECT value FROM okokbanking_societies WHERE society = ?'
         params = {
             societyName
@@ -678,7 +680,21 @@ society.updateBalance = function(self, playerSource, deposit, societyType, socie
 
     local query, params
 
-    if GetResourceState('okokBanking') == 'started' then
+    if GetResourceState('Renewed-Banking') == 'started' then
+        if deposit then
+            if exports['Renewed-Banking']:addAccountMoney(societyName, amount) then
+                return newBalance
+            else
+                return false
+            end
+        else
+            if exports['Renewed-Banking']:removeAccountMoney(societyName, amount) then
+                return newBalance
+            else
+                return false
+            end
+        end
+    elseif GetResourceState('okokBanking') == 'started' then
         query = 'UPDATE okokbanking_societies SET value = ? WHERE society = ?'
         params = {
             newBalance,
@@ -705,33 +721,81 @@ end
 
 --Used by [mk_vehicleshop]
 ---@param shopName string Vehicle shop name from [mk_vehicleshop] locations.lua
-framework.getShopVehicles = function(self, shopName)
+---@return table|false shopVehicles Table containing shop vehicles and shop categories
+--[[ example return
+    shopVehicles = {
+        categories = {
+            {
+                name = 'compacts',
+                label = 'Compacts'
+            },
+            {
+                name = 'sports',
+                label = 'Sports'
+            }
+        },
+        compacts = {
+            {
+                name = 'Club',
+                model = 'club',
+                price = 8000
+            },
+            {
+                name = 'Issi Classic',
+                model = 'issi3',
+                price = 5000
+            }
+        },
+        sports = {
+            {
+                name = 'Comet Retro Custom',
+                model = 'comet3',
+                price = 175000
+            }
+        } 
+    }
+]]
+framework.getShopVehicles = function(self, shopName, shopCategories)
     local vehicleReturn = promise.new()
     local next = next
     local shopVehicles = {}
     local vehicles = MySQL.query.await('SELECT * FROM vehicles')
 
+    if shopCategories and next(shopCategories) then
+        for key, value in pairs(shopCategories) do
+            shopCategories[key] = value:lower()
+        end
+    end
+
+    local blacklistedVehicles = {}
+
     if vehicles and next(vehicles) then
         for key, value in pairs(vehicles) do
-            if value.category then
-                if not shopVehicles[value.category] then
-                    shopVehicles[value.category] = {}
+            if (not blacklistedVehicles or not next(blacklistedVehicles)) or (blacklistedVehicles and next(blacklistedVehicles) and not lib.table.contains(blacklistedVehicles, joaat(value.model))) then
+                if (value.shop and value.shop:lower() == shopName) or (not value.shop and (value.category and shopCategories and next(shopCategories) and lib.table.contains(shopCategories, value.category:lower()))) then
+                    if value.category then
+                        if not shopVehicles[value.category] then
+                            shopVehicles[value.category] = {}
 
-                    if not shopVehicles.categories then shopVehicles.categories = {} end
-                    if not shopVehicles.categories[value.category] then table.insert(shopVehicles.categories, {name = value.category, label = value.category}) end
-                end
+                            if not shopVehicles.categories then shopVehicles.categories = {} end
+                            table.insert(shopVehicles.categories, {name = value.category, label = value.categoryLabel and value.categoryLabel or value.category})
+                        end
 
-                if value.name and value.model and tonumber(value.price) then
-                    table.insert(shopVehicles[value.category], {
-                        name = value.name,
-                        model = value.model,
-                        price = tonumber(value.price)
-                    })
-                else
-                    --missing data
+                        if value.name and value.model and tonumber(value.price) then
+                            table.insert(shopVehicles[value.category], {
+                                name = value.name,
+                                model = value.model,
+                                price = tonumber(value.price)
+                            })
+                        else
+                            --missing data
+                        end
+                    else
+                        utils.logger:info(GetInvokingResource(), 'Vehicle model ['..value.model..'] name ['..value.name..'] has no defined category.', {console = true})
+                    end
                 end
             else
-                utils.logger:info(GetInvokingResource(), 'Vehicle model ['..value.model..'] name ['..value.name..'] has no defined category.', {console = true})
+                --this model is blacklisted by the server
             end
         end
 

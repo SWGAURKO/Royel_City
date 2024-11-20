@@ -1,14 +1,18 @@
 ---@diagnostic disable: duplicate-set-field
-if GetResourceState('qb-core') == 'missing' then return end
-if GetResourceState('qbx_core') ~= 'missing' then return end
+if GetResourceState('qbx_core') == 'missing' then return end
 
-QBCore = exports['qb-core']:GetCoreObject()
+if not lib.checkDependency('qbx_core', '1.18.0') then return print('[^6MANKIND^7] [^1ERROR^7] [^5Utils^7] ^1qbx_core version 1.18.0 or higher is required.^7') end
+if GetResourceState('ox_inventory') == 'started' then
+    if not lib.checkDependency('ox_inventory', '2.42.0') then return print('[^6MANKIND^7] [^1ERROR^7] [^5Utils^7] ^1ox_inventory version 2.42.0 or higher is required.^7') end
+end
+
+QBX = exports['qb-core']:GetCoreObject()
 
 -- Framework label used by all scripts
-framework.name = 'QBCORE'
+framework.name = 'QBOX'
 
 -- Framework core that can be accessed by all scripts if needed
-framework.core = QBCore
+framework.core = QBX
 
 --Show client console prints from mk scripts. Disable will only show nothing
 framework.consoleLogging = true
@@ -17,9 +21,11 @@ framework.consoleLogging = true
 framework.defaultGarage = GetResourceState('mk_garage') ~= 'missing' and 'legion' or 'pillboxgarage'
 
 -- Used by all scripts
----@param data { message: string, type: 'primary'|'success'|'error', duration: number } Notify data
+---@param data { message: string, type: string|'primary'|'success'|'error', duration: number } Notify data
 function notify(data)
-    TriggerEvent('QBCore:Notify', data.message, data.type, data.duration)
+    if data.type == 'primary' then data.type = 'inform' end
+
+    exports.qbx_core:Notify(data.message, data.type, data.duration)
 end
 
 -- Used by [mk_vehiclekeys]
@@ -33,7 +39,7 @@ end
 framework.isRestricted = function(self)
     --utils.logger:debug(GetInvokingResource(), 'in last stand: '..tostring(playerState.mk_playerData?.metadata?.inlaststand)..' | is dead: '..tostring(playerState.mk_playerData?.metadata?.isdead)..' | is handcuffed: '..tostring(playerState.mk_playerData?.metadata?.ishandcuffed), {console = true})
 
-    if playerState.mk_playerData?.metadata?.inlaststand or playerState.mk_playerData?.metadata?.isdead or playerState.mk_playerData?.metadata?.ishandcuffed then 
+    if playerState.mk_playerData?.metadata?.inlaststand or playerState.mk_playerData?.metadata?.isdead or playerState.mk_playerData?.metadata?.ishandcuffed then
         return true
     else
         return false
@@ -53,8 +59,8 @@ end
 ---@param modelString string Vehicle model name
 ---@return number Vehicle sell price
 framework.getVehiclePrice = function(self, modelNumber, modelString)
-    if QBCore.Shared.Vehicles[modelString]?.price then
-        return tonumber(QBCore.Shared.Vehicles[modelString]?.price)
+    if QBX.Shared.Vehicles[modelString]?.price then
+        return tonumber(QBX.Shared.Vehicles[modelString]?.price)
     else
         return 0
     end
@@ -62,7 +68,7 @@ end
 
 -- Player Loaded event - Sets client side player data and logged in state. Sets player identifier to the client and server.
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    QBCore.Functions.GetPlayerData(function(pData)
+    QBX.Functions.GetPlayerData(function(pData)
         playerState.mk_playerData = pData
         playerState:set('mk_identifier', pData.citizenid, true)
         Wait(100)
@@ -71,7 +77,7 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 end)
 
 -- Player Unloaded event - Clears client / server player data, logged in state and identifier
-RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
+RegisterNetEvent('qbx_core:client:playerLoggedOut', function()
     playerState.mk_isLoggedIn = false
     Wait(100)
     playerState.mk_playerData = nil
@@ -116,21 +122,13 @@ end
 -- Used by [mk_garage]
 ---@return table|boolean List of player jobs and grades or false
 framework.getJobs = function(self)
-    if QBCore.Shared.Jobs and next(QBCore.Shared.Jobs) ~= nil then
-        return QBCore.Shared.Jobs
-    else
-        return false
-    end
+    return exports.qbx_core:GetJobs()
 end
 
 -- Used by [mk_garage]
 ---@return table|boolean #List of player gangs and grades or false
 framework.getGangs = function(self)
-    if QBCore.Shared.Gangs and next(QBCore.Shared.Gangs) ~= nil then
-        return QBCore.Shared.Gangs
-    else
-        return false
-    end
+    return exports.qbx_core:GetGangs()
 end
 
 -- Used by [mk_vehiclekeys] [mk_mining]
@@ -140,7 +138,7 @@ end
 inventory.hasItem = function(self, itemName, metadata, checkContainers)
     local hasItem = false
 
-    if GetResourceState('ox_inventory') == 'started' then 
+    if GetResourceState('ox_inventory') == 'started' then
         local inv = exports['ox_inventory']:Search('count', itemName, metadata)
         if inv > 0 then
             hasItem = true
@@ -191,27 +189,8 @@ inventory.hasItem = function(self, itemName, metadata, checkContainers)
             end
         end
     else
-        local items = playerState.mk_playerData?.items
-        local next = next
-
-        if items and next(items) ~= nil then
-            for key, value in pairs(items) do
-                if value?.name == itemName then
-                    if metadata and next(metadata) ~= nil then
-                        for index, val in pairs(metadata) do
-                            if value.info?[index] then
-                                if value.info?[index] == val then
-                                    hasItem = true
-                                    break
-                                end
-                            end
-                        end
-                    else
-                        hasItem = true
-                    end
-                end
-            end
-        end
+        utils.logger:error(GetInvokingResource(), '^1Inventory resource not configured. Setup custom inventory in ^7[^5mk_utils^7]', {console = true})
+        return false
     end
 
     return hasItem
@@ -231,24 +210,8 @@ inventory.getItemAmount = function(self, itemName)
             return 0
         end
     else
-        local items = playerState.mk_playerData?.items
-        local next = next
-
-        if items and next(items) ~= nil then
-            for key, value in pairs(items) do
-                if value?.name == itemName then
-                    if not QBCore.Shared.Items[itemName].unique then
-                        return value.amount
-                    else
-                        itemAmount = itemAmount + value.amount
-                    end
-                end
-            end
-
-            return itemAmount
-        else
-            return 0
-        end
+        utils.logger:error(GetInvokingResource(), '^1Inventory resource not configured. Setup custom inventory in ^7[^5mk_utils^7]', {console = true})
+        return 0
     end
 
     return itemAmount

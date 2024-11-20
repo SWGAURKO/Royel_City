@@ -1,14 +1,19 @@
 ---@diagnostic disable: duplicate-set-field
-if GetResourceState('qb-core') == 'missing' then return end
-if GetResourceState('qbx_core') ~= 'missing' then return end
+if GetResourceState('qbx_core') == 'missing' then return end
 
-QBCore = exports['qb-core']:GetCoreObject()
+if not lib.checkDependency('qbx_core', '1.18.0') then return print('[^6MANKIND^7] [^1ERROR^7] [^5Utils^7] ^1qbx_core version 1.18.0 or higher is required.^7]') end
+if not lib.checkDependency('qbx_vehicles', '1.2.0') then return print('[^6MANKIND^7] [^1ERROR^7] [^5Utils^7] ^1qbx_vehicles version 1.2.0 or higher is required.^7]') end
+if GetResourceState('ox_inventory') == 'started' then
+    if not lib.checkDependency('ox_inventory', '2.42.0') then return print('[^6MANKIND^7] [^1ERROR^7] [^5Utils^7] ^1ox_inventory version 2.42.0 or higher is required.^7]') end
+end
+
+QBX = exports['qb-core']:GetCoreObject()
 
 -- Framework label used by all scripts
-framework.name = 'QBCORE'
+framework.name = 'QBOX'
 
 -- Framework core that can be accessed by all scripts if needed
-framework.core = QBCore
+framework.core = QBX
 
 --Show server console prints from mk scripts. Disable will only show version update available print
 framework.consoleLogging = true
@@ -33,14 +38,8 @@ database = {
         tableName = 'players',
         identifierColumn = 'citizenid'
     },
-    glovebox = {
-        tableName = 'gloveboxitems',
-        plateColumn = 'plate'
-    },
-    trunk = {
-        tableName = 'trunkitems',
-        plateColumn = 'plate'
-    }
+    glovebox = false,
+    trunk = false
 }
 
 -- Used by [mk_plates] [mk_vehiclekeys] [mk_usedvehicles]
@@ -48,11 +47,11 @@ database = {
 ---@param triggerEvent string Event name to trigger when item is used
 ---@param args table|nil Event args to pass to the triggered event when item is used
 inventory.createUseableItem = function(self, itemName, triggerEvent, args)
-    QBCore.Functions.CreateUseableItem(itemName, function(source, item)
+    exports.qbx_core:CreateUseableItem(itemName, function(source, item)
         local src = source
-        local player = QBCore.Functions.GetPlayer(src)
-        if player.Functions.GetItemBySlot(item.slot) then 
-            if player.Functions.GetItemBySlot(item.slot).name == itemName then 
+        local player = exports.qbx_core:GetPlayer(src)
+        if player.Functions.GetItemBySlot(item.slot) then
+            if player.Functions.GetItemBySlot(item.slot).name == itemName then
                 TriggerClientEvent(triggerEvent, src, item, args)
             end
         end
@@ -68,11 +67,11 @@ end
 ---@param cb function Callback true if item was removed. false if not
 inventory.removeItem = function(self, playerSource, itemName, amount, metadata, slot, cb)
     local src = playerSource
-    
-    if GetResourceState('ox_inventory') == 'started' then 
-        if slot then 
+
+    if GetResourceState('ox_inventory') == 'started' then
+        if slot then
             local item = exports['ox_inventory']:GetSlot(src, slot)
-            if item then 
+            if item then
                 if item.name == itemName then
                     local success, response = exports['ox_inventory']:RemoveItem(src, itemName, amount, false, slot)
                     if success then
@@ -88,9 +87,9 @@ inventory.removeItem = function(self, playerSource, itemName, amount, metadata, 
             end
         else
             local itemAmount = exports['ox_inventory']:Search(src, 'count', itemName, metadata)
-            if itemAmount >= amount then 
+            if itemAmount >= amount then
                 local success, response = exports['ox_inventory']:RemoveItem(src, itemName, amount, metadata, false)
-                if success then 
+                if success then
                     cb(true)
                 else
                     --debug response
@@ -101,60 +100,8 @@ inventory.removeItem = function(self, playerSource, itemName, amount, metadata, 
             end
         end
     else
-        local player = QBCore.Functions.GetPlayer(src)
-
-        if player then 
-            if slot then 
-                local next = next
-                local items = player?.PlayerData?.items
-        
-                if items and next(items) ~= nil then 
-                    if items[slot] then
-                        if items[slot].name == itemName then
-                            if player.Functions.RemoveItem(itemName, amount, slot) then 
-                                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], "remove")
-                                cb(true)
-                            else
-                                cb(false)
-                            end
-                        else
-                            cb(false)
-                        end
-                    else
-                        cb(false)
-                    end
-                else
-                    cb(false)
-                end
-            else
-                if not QBCore.Shared.Items[itemName].unique or amount == 1 then 
-                    if player.Functions.RemoveItem(itemName, amount) then 
-                        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], "remove")
-                        cb(true)
-                    else
-                        cb(false)
-                    end
-                else
-                    local success = true
-                    for i = 1, amount, 1 do
-                        if not player.Functions.RemoveItem(itemName, 1, false) then 
-                            success = false
-                            break
-                        else
-                            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], "remove")
-                        end
-                    end
-
-                    if success then 
-                        cb(true)
-                    else
-                        cb(false)
-                    end
-                end
-            end
-        else
-            cb(false)
-        end
+        utils.logger:error(GetInvokingResource(), '^1Inventory resource not configured. Setup custom inventory in ^7[^5mk_utils^7]', {console = true})
+        cb(false)
     end
 end
 
@@ -167,12 +114,12 @@ end
 inventory.addItem = function(self, playerSource, itemName, amount, metadata, cb)
     local src = playerSource
 
-    if GetResourceState('ox_inventory') == 'started' then 
+    if GetResourceState('ox_inventory') == 'started' then
         local carryAmount = exports['ox_inventory']:CanCarryAmount(src, itemName)
-        if carryAmount then 
+        if carryAmount then
             if carryAmount >= amount then 
                 local success, response = exports['ox_inventory']:AddItem(src, itemName, amount, metadata, false)
-                if success then 
+                if success then
                     cb(true)
                 else
                     --debug response
@@ -186,19 +133,8 @@ inventory.addItem = function(self, playerSource, itemName, amount, metadata, cb)
             cb(false)
         end
     else
-        local player = QBCore.Functions.GetPlayer(src)
-        if player then 
-            local meta = metadata and metadata or {}
-            if player.Functions.AddItem(itemName, amount, false, meta) then
-                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], "add")
-                cb(true)
-            else
-                utils:notify(src, locale('cant_carry'), 'error', 5000)
-                cb(false)
-            end
-        else
-            cb(false)
-        end
+        utils.logger:error(GetInvokingResource(), '^1Inventory resource not configured. Setup custom inventory in ^7[^5mk_utils^7]', {console = true})
+        cb(false)
     end
 end
 
@@ -209,9 +145,9 @@ end
 ---@return boolean true if player has item. false if not
 inventory.hasItem = function(self, playerSource, itemName, metadata, checkContainers)
     local src = playerSource
-    local hasItem = false 
+    local hasItem = false
 
-    if GetResourceState('ox_inventory') == 'started' then 
+    if GetResourceState('ox_inventory') == 'started' then
         local item = exports['ox_inventory']:Search(src, 'count', itemName, metadata)
         if item > 0 then
             hasItem = true
@@ -269,32 +205,8 @@ inventory.hasItem = function(self, playerSource, itemName, metadata, checkContai
             end
         end
     else
-        local player = QBCore.Functions.GetPlayer(src)
-        if player then 
-            if player.PlayerData?.items then 
-                local items = player.PlayerData.items
-                local next = next 
-
-                if items and next(items) ~= nil then 
-                    for key, value in pairs(items) do 
-                        if value.name == itemName then 
-                            if metadata and next(metadata) ~= nil then 
-                                for index, val in pairs(metadata) do 
-                                    if value.info?[index] then 
-                                        if value.info?[index] == val then 
-                                            hasItem = true 
-                                            break
-                                        end
-                                    end
-                                end
-                            else
-                                hasItem = true 
-                            end
-                        end
-                    end
-                end
-            end
-        end
+        utils.logger:error(GetInvokingResource(), '^1Inventory resource not configured. Setup custom inventory in ^7[^5mk_utils^7]', {console = true})
+        return false
     end
 
     return hasItem
@@ -308,23 +220,13 @@ inventory.getItemSlots = function(self, playerSource, itemName)
     local src = playerSource
     local slots = {}
 
-    if GetResourceState('ox_inventory') == 'started' then 
+    if GetResourceState('ox_inventory') == 'started' then
         local inv = exports['ox_inventory']:Search(src, 'slots', itemName)
-        if inv then 
+        if inv then
             slots = inv
         end
     else
-        local player = QBCore.Functions.GetPlayer(src)
-        local items = player?.PlayerData?.items 
-        local next = next 
-
-        if items and next(items) ~= nil then 
-            for key, value in pairs(items) do 
-                if value?.name == itemName then 
-                    table.insert(slots, value)
-                end
-            end
-        end
+        utils.logger:error(GetInvokingResource(), '^1Inventory resource not configured. Setup custom inventory in ^7[^5mk_utils^7]', {console = true})
     end
 
     return slots
@@ -335,23 +237,18 @@ end
 ---@param slot number Inventory slot to get item data
 ---@return table|boolean Item data if exists or false
 inventory.getItemBySlot = function(self, playerSource, slot)
-    local src = playerSource 
+    local src = playerSource
 
-    if GetResourceState('ox_inventory') == 'started' then 
+    if GetResourceState('ox_inventory') == 'started' then
         local item = exports['ox_inventory']:GetSlot(src, slot)
         if item then
-            return item 
+            return item
         else
             return false
         end
     else
-        local player = QBCore.Functions.GetPlayer(src)
-        local item = player?.PlayerData?.items?[slot]
-        if item then 
-            return item 
-        else
-            return false 
-        end
+        utils.logger:error(GetInvokingResource(), '^1Inventory resource not configured. Setup custom inventory in ^7[^5mk_utils^7]', {console = true})
+        return false
     end
 end
 
@@ -359,14 +256,15 @@ end
 ---@param item table Item to locate metadata from
 ---@return table|boolean Item metadata or false
 inventory.getMetadata = function(self, item)
-    if item then 
-        if GetResourceState('ox_inventory') == 'started' then 
-            return item.metadata 
+    if item then
+        if GetResourceState('ox_inventory') == 'started' then
+            return item.metadata
         else
-            return item.info 
+            utils.logger:error(GetInvokingResource(), '^1Inventory resource not configured. Setup custom inventory in ^7[^5mk_utils^7]', {console = true})
+            return false
         end
     else
-        return false 
+        return false
     end
 end
 
@@ -376,18 +274,15 @@ end
 ---@param metadataValue string Table value of item metadata to check
 ---@return boolean true if metadata value exists. false if not
 inventory.compareMetadata = function(self, item, metadataKey, metadataValue)
-    if GetResourceState('ox_inventory') == 'started' then 
-        if item.metadata?[metadataKey] == metadataValue then 
-            return true 
+    if GetResourceState('ox_inventory') == 'started' then
+        if item.metadata?[metadataKey] == metadataValue then
+            return true
         else
-            return false 
+            return false
         end
     else
-        if item.info?[metadataKey] == metadataValue then 
-            return true 
-        else
-            return false 
-        end
+        utils.logger:error(GetInvokingResource(), '^1Inventory resource not configured. Setup custom inventory in ^7[^5mk_utils^7]', {console = true})
+        return false
     end
 end
 
@@ -404,11 +299,7 @@ inventory.setNewMetadata = function(self, playerSource, item, slot, metadataKey,
         item.metadata[metadataKey] = metadataValue
         exports['ox_inventory']:SetMetadata(src, slot, item.metadata)
     else
-        player = QBCore.Functions.GetPlayer(src)
-        if player then 
-            player.PlayerData.items[slot]?.info[metadataKey] = metadataValue
-            player.Functions.SetInventory(player.PlayerData.items)
-        end
+        utils.logger:error(GetInvokingResource(), '^1Inventory resource not configured. Setup custom inventory in ^7[^5mk_utils^7]', {console = true})
     end
 end
 
@@ -419,10 +310,10 @@ end
 ---@param data      vehicleData: table|nil (data set by mk_garage) } 
 ---@param cb function Callsback upson SQL query finish
 database.addPlayerVehicle = function(self, data, cb)
-    local insertQuery, insertData 
+    local insertQuery, insertData
 
-    if database.ownedVehicles.vinColumn and data.vin then 
-        if data.vehicleData then 
+    if database.ownedVehicles.vinColumn and data.vin then
+        if data.vehicleData then
             insertQuery = 'INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, '..database.ownedVehicles.vinColumn..', garage, state, fuel, engine, body, vehicleData) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
             insertData = {
                 data.shared and nil or data.userData?.license,
@@ -457,7 +348,7 @@ database.addPlayerVehicle = function(self, data, cb)
             }
         end
     else
-        if data.vehicleData then 
+        if data.vehicleData then
             insertQuery = 'INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, garage, state, fuel, engine, body, vehicleData) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
             insertData = {
                 data.shared and nil or data.userData?.license,
@@ -546,15 +437,15 @@ end
 framework.getPlayerName = function(self, playerSource, playerIdentifier)
     if playerIdentifier then --get name of another player
         local result = MySQL.query.await('SELECT charinfo FROM players WHERE citizenid = ?', { playerIdentifier })
-        if result and result[1] then 
+        if result and result[1] then
             local charInfo = json.decode(result[1].charinfo)
-            return charInfo.firstname, charInfo.lastname 
+            return charInfo.firstname, charInfo.lastname
         else
             return false, false
         end
     else --get own name
         local src = playerSource 
-        local player = QBCore.Functions.GetPlayer(src)
+        local player = exports.qbx_core:GetPlayer(src)
 
         return player?.PlayerData?.charinfo?.firstname, player?.PlayerData?.charinfo?.lastname
     end
@@ -565,7 +456,7 @@ end
 ---@return string|boolean player job name, player job grade or false, false
 framework.getJob = function(self, playerSource)
     local src = playerSource
-    local player = QBCore.Functions.GetPlayer(src)
+    local player = exports.qbx_core:GetPlayer(src)
     return player?.PlayerData?.job?.name, player?.PlayerData?.job?.grade?.level
 end
 
@@ -573,7 +464,7 @@ end
 ---@param playerIdentifier string Player identifier
 ---@return number Player server id
 framework.getPlayerSourceByIdentifier = function(self, playerIdentifier)
-    local player = QBCore.Functions.GetPlayerByCitizenId(playerIdentifier)
+    local player = exports.qbx_core:GetPlayerByCitizenId(playerIdentifier)
 
     return tonumber(player?.PlayerData?.source) or false
 end
@@ -584,9 +475,9 @@ end
 ---@return number Account balance or 0
 framework.checkMoney = function(self, playerSource, moneyType)
     local src = playerSource
-    local player = QBCore.Functions.GetPlayer(src)
+    local player = exports.qbx_core:GetPlayer(src)
 
-    if player?.PlayerData?.money?[moneyType] then 
+    if player?.PlayerData?.money?[moneyType] then
         return tonumber(player.PlayerData.money[moneyType])
     else
         return 0
@@ -600,9 +491,9 @@ end
 ---@return boolean true if money was removed. false if not
 framework.removeMoney = function(self, playerSource, moneyType, amount)
     local src = playerSource 
-    local player = QBCore.Functions.GetPlayer(src)
+    local player = exports.qbx_core:GetPlayer(src)
 
-    if player then 
+    if player then
         if player.Functions.RemoveMoney(moneyType, tonumber(amount)) then
             return true
         else
@@ -620,14 +511,14 @@ end
 ---@return boolean true if money was added. false if not
 framework.addMoney = function(self, playerSource, moneyType, amount)
     local src = playerSource
-    local player = QBCore.Functions.GetPlayer(src)
+    local player = exports.qbx_core:GetPlayer(src)
 
     if player then
         if player.Functions.AddMoney(moneyType, amount) then
             return true
         else
             return false
-        end 
+        end
     else
         return false
     end
@@ -640,58 +531,19 @@ end
 ---@return boolean true if money was added. false if not
 framework.addMoneyToOfflinePlayer = function(self, identifier, moneyType, amount)
     local result = MySQL.query.await("SELECT * FROM players WHERE citizenid = ?", {identifier})
-    if result and result[1] then 
+    if result and result[1] then
         local money = json.decode(result[1].money)
-        if money[moneyType] then 
+        if money[moneyType] then
             money[moneyType] = math.ceil(money[moneyType] + amount)
             local updateResult = MySQL.update.await("UPDATE players SET money = ? WHERE citizenid = ?", {json.encode(money), result[1].citizenid})
             if updateResult then return true else return false end
         else
-            return false 
+            return false
         end
     else
         return false
     end
 end
-
-CreateThread(function()
-    useQbManagement = false
-    local dbTables = MySQL.query.await('SHOW TABLES')
-    if DoesTableExist(dbTables, 'bank_accounts') then
-        local result = MySQL.query.await('SHOW COLUMNS FROM bank_accounts')
-        if result then
-            local name, bal, ty = false, false, false
-            for i = 1, #result do
-                local column = result[i]
-                if column.Field == 'account_name' then
-                    name = true
-                elseif column.Field == 'account_balance' then
-                    bal = true
-                elseif column.Field == 'account_type' then
-                    ty = true
-                end
-            end
-
-            if not name or not bal or not ty then
-                if DoesTableExist(dbTables, 'management_funds') then
-                    local res = MySQL.query.await('SHOW COLUMNS FROM management_funds')
-                    if res then useQbManagement = true end
-                end
-            end
-        else
-            if DoesTableExist(dbTables, 'management_funds') then
-                local res = MySQL.query.await('SHOW COLUMNS FROM management_funds')
-                if res then useQbManagement = true end
-            end
-        end
-    else
-        if DoesTableExist(dbTables, 'management_funds') then
-            local res = MySQL.query.await('SHOW COLUMNS FROM management_funds')
-            if res then useQbManagement = true end
-        end
-    end
-end)
-
 
 -- Used by [mk_garage] [mk_vehicleshop]
 ---@param playerSource number Player server id requesting balance
@@ -708,18 +560,15 @@ society.getBalance = function(self, playerSource, societyType, societyName)
         params = {
             societyName
         }
-    elseif useQbManagement then
+    elseif GetResourceState('qbx_management') == 'started' then
         query = 'SELECT amount FROM management_funds WHERE job_name = ? AND `type` = ?'
         params = {
             societyName,
             societyType == 'job' and 'boss' or 'gang'
         }
     else
-        query = 'SELECT account_balance FROM bank_accounts WHERE account_name = ? and account_type = ?'
-        params = {
-            societyName,
-            societyType
-        }
+        utils.logger:error(GetInvokingResource(), '^1Society resource not configured. Setup custom society in ^7[^5mk_utils^7]', {console = true})
+        return false
     end
 
     local result = MySQL.query.await(query, params)
@@ -783,7 +632,7 @@ society.updateBalance = function(self, playerSource, deposit, societyType, socie
             newBalance,
             societyName
         }
-    elseif useQbManagement then
+    elseif GetResourceState('qbx_management') == 'started' then
         query = 'UPDATE management_funds SET amount = ? WHERE job_name = ? AND `type` = ?'
         params = {
             newBalance,
@@ -791,12 +640,8 @@ society.updateBalance = function(self, playerSource, deposit, societyType, socie
             societyType == 'job' and 'boss' or 'gang'
         }
     else
-        query = 'UPDATE bank_accounts SET account_balance = ? WHERE account_name = ? and account_type = ?'
-        params = {
-            newBalance,
-            societyName,
-            societyType
-        }
+        utils.logger:error(GetInvokingResource(), '^1Society resource not configured. Setup custom society in ^7[^5mk_utils^7]', {console = true})
+        return false
     end
 
     local result = MySQL.query.await(query, params)
@@ -804,7 +649,7 @@ society.updateBalance = function(self, playerSource, deposit, societyType, socie
     if result then
         return newBalance
     else
-        return false 
+        return false
     end
 end
 
@@ -848,6 +693,7 @@ framework.getShopVehicles = function(self, shopName, shopCategories)
     local vehicleReturn = promise.new()
     local next = next
     local shopVehicles = {}
+    local vehicles = exports.qbx_core:GetVehiclesByName()
 
     if shopCategories and next(shopCategories) then
         for key, value in pairs(shopCategories) do
@@ -856,17 +702,17 @@ framework.getShopVehicles = function(self, shopName, shopCategories)
     end
 
     local blacklistedVehicles = {}
-    local config = exports['qb-smallresources']:GetBlacklistedVehicles()
-    if config and next(config) then
-        for key, value in pairs(config) do
+    local config = lib.load('@qbx_smallresources.qbx_entitiesblacklist.config')
+    if config?.blacklisted and next(config?.blacklisted) then
+       for key, value in pairs(config.blacklisted) do
             if value then
                 if not lib.table.contains(blacklistedVehicles, key) then table.insert(blacklistedVehicles, key) end
             end
        end
     end
 
-    if QBCore.Shared.Vehicles and next(QBCore.Shared.Vehicles) ~= nil then
-        for _, value in pairs(QBCore.Shared.Vehicles) do
+    if vehicles and next(vehicles) then
+        for _, value in pairs(vehicles) do
             if (not blacklistedVehicles or not next(blacklistedVehicles)) or (blacklistedVehicles and next(blacklistedVehicles) and not lib.table.contains(blacklistedVehicles, joaat(value.model))) then
                 if (value.shop and value.shop:lower() == shopName) or (not value.shop and (value.category and shopCategories and next(shopCategories) and lib.table.contains(shopCategories, value.category:lower()))) then
                     if value.category then
@@ -918,6 +764,6 @@ end
 ---@param playerSource number Player server id
 ---@param bool boolean On Duty boolean
 framework.setjobDuty = function(self, playerSource, bool)
-    local player = QBCore.Functions.GetPlayer(playerSource)
+    local player = exports.qbx_core:GetPlayer(playerSource)
     if player then player.Functions.SetJobDuty(bool) end
 end

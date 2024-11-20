@@ -3,7 +3,7 @@ games {'gta5'}
 
 author 'ManKind - [https://discord.gg/39fNFepADG]'
 description 'Utils for ManKind Scripts'
-version '1.1.0'
+version '1.1.4'
 
 lua54 'yes'
 
