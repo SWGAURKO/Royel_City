@@ -65,9 +65,9 @@ Config.StarterItems = {
         amount = 1,
         item = 'id_card',
     },
-    --[[ ['advancedlockpick'] = {
+    --[[ ['driver_license'] = {
         amount = 1,
-        item = 'advancedlockpick',
+        item = 'driver_license',
     }, ]]
 }
 
@@ -149,7 +149,7 @@ Config.Pages = {
 
 Config.Coords = {
     Single = Coords.List[5], -- If random false [list/coordslist.lua]
-    Random = true
+    Random = false
 }
 
 Config.Effects = {
@@ -191,7 +191,6 @@ Config.Speech = {
     -- exp: 오늘 기분이 너무 안 좋아, [name] 넌 어때?
     Texts = {
         "Hello [name], how are you today?",
-        "I love you [name], maybe you've never heard that before",
-        "Welcome to CRP Roleplay"
+        "I love you [name], maybe you've never heard that before"
     }
 }
