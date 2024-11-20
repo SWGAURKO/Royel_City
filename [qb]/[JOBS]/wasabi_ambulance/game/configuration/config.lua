@@ -41,7 +41,7 @@ Config.DeathScreenType = 1
 Config.ShowEMSCountOnDeath = true -- Show active ambulance count in death UI? (Gives count in death screen of all jobs active from Config.ambulanceJobs)
 -- Note that Config.DeathScreenType 5 will show this information regardless of the setting above
 
-Config.OldQBManagement = true -- If you are using QBCore and want to use the old QB Management system
+Config.OldQBManagement = false -- If you are using QBCore and want to use the old QB Management system
 
 Config.ambulanceJobs = {       -- Jobs that are considered ambulance jobs (If unsure, likely leave the way it is)
     'ambulance',               -- You must have a job with this name registered
@@ -141,7 +141,7 @@ Config.AmbulanceOffsets = {
 }
 
 Config.GPSBlips = {
-    enabled = true,     -- Enabled?
+    enabled = true,      -- Enabled?
     item = false,        -- Item required? Note: You have to use it then
     sprites = {
         none = 1,        -- Blip for when not in a vehicle
@@ -264,10 +264,18 @@ Config.EnviPrescriptions = {
 
 Config.EnviMedic = {
     ---------------------------------------------------
-    --       If you use Envi Medic:          --
+    --            If you use Envi Medic:             --
     -- https://envi-scripts.tebex.io/package/5969648 --
     ---------------------------------------------------
     enabled = false -- Enable to make Envi-Medic to work with wasabi_ambulance
+}
+
+Config.NassPaintball = {
+    ------------------------------------
+    --   If you use Nass Paintball:   --
+    --    https://store.nass.dev/     --
+    ------------------------------------
+    autoDetect = true -- Auto detect if player is in paintball area and disable injury/death system
 }
 
 Config.mInsurance = {
@@ -289,11 +297,11 @@ Config.jobMenu = 'F6'               -- Default job menu key
 Config.billingSystem = false        -- Current options: 'esx' (For esx_billing) / 'qb' (For qbcore users) 'okok' (For okokBilling) / 'pefcl' (For NPWD billing system) (Easy to add more in editable client - SET TO false IF UNDESIRED) or of course false to disable
 Config.targetSystem = true          -- Target system for targetting players, medbags, and stretcher(If disabled with replace with menus/3D text) (Compatible out of the box with qTarget, qb-target, and ox_target)
 
-Config.RespawnTimer = 15 * minutes   -- Time before optional respawn
-Config.BleedoutTimer = 45 * minutes -- Time before it forces respawn
+Config.RespawnTimer = 5 * minutes   -- Time before optional respawn
+Config.BleedoutTimer = 20 * minutes -- Time before it forces respawn
 Config.ChargeForRevive = {
     enabled = true,                -- Charge players to revive after the timer expires when they hold E to revive?
-    cost = 200,                     -- Cost to revive if enabled
+    cost = 100,                     -- Cost to revive if enabled
     payAccount = 'bank',            -- Account to pay from
     allowNegativeBalance = false    -- QB ONLY: Allow negative balance if player does not have enough money?
 }
@@ -380,7 +388,7 @@ Config.TreatmentItems = {
 }
 
 Config.lowHealthAlert = {
-    enabled = true,
+    enabled = false,
     health = 140, -- Notify when at HP (200 full health / 100 is death)
     notification = {
         title = 'ATTENTION',
@@ -740,5 +748,5 @@ Config.DisableDeathAnimation = false -- Really, really, REALLY do not recommend 
 
 -- Don't touch the options between these comments unless there is reason --
 Config.DisableSpawnManagerExecute = false -- If you experience issues with multicharacters or spawning, you can try setting this to true.
-Config.CombatLogCheckWait = 3 * seconds -- If you experience anti combat-log without death NUI, try increasing by a second or two.
+Config.CombatLogCheckWait = 3 * seconds                               -- If you experience anti combat-log without death NUI, try increasing by a second or two.
 -- Don't touch the options between these comments unless there is reason --
