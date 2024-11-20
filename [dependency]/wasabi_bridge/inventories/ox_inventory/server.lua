@@ -16,6 +16,11 @@ function WSB.inventory.getItemSlot(source, item)
     return exports.ox_inventory:GetSlotIdWithItem(source, item) or false
 end
 
+function WSB.inventory.getItemSlots(source, item)
+    local src = source
+    return exports.ox_inventory:GetSlotIdsWithItem(src, item)
+end
+
 function WSB.inventory.getItemMetadata(source, slot)
     local item = exports.ox_inventory:GetSlot(source, slot)
     return item.metadata

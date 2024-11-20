@@ -30,3 +30,5 @@ function WSB.skillCheck(data)
 
     return exports.ox_lib:skillCheck(data)
 end
+
+exports('skillCheck', WSB.skillCheck) -- Export for use in other scripts

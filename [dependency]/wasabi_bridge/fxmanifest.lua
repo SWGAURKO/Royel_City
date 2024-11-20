@@ -7,7 +7,7 @@ lua54 'yes'
 
 description 'A library of functions used to ease the bridge between Wasabi Scripts'
 author 'wasabirobby'
-version '1.3.6'
+version '1.4.1'
 
 ui_page 'ui/index.html'
 files { 'ui/*', 'ui/**/*' }

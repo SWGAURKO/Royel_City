@@ -11,7 +11,8 @@ function WSB.showContextMenu(data)
     -- data = {
     --     id = menu identifier
     --     title = menu title
-    --     options = menu options
+    --     options = menu options,
+    --     color = color of the menu (hex, RGB, etc)
     -- }
     --
     -- example options:
@@ -24,8 +25,9 @@ function WSB.showContextMenu(data)
     -- (Basically follow the same as ox_lib menu system and transfer the options to your own menu system)]
 
     -- Remove below this if you are using your own menu system / want to use ox_lib
+    if not data.color then data.color = Config.DefaultColor end
 
-    ShowContextMenu(data)
+    return ShowContextMenu(data)
 
     -- Remove above this if you are using your own menu system / want to use ox_lib
 
@@ -46,7 +48,9 @@ function WSB.showMenu(data)
     -- data: the same as data is for wsb.showContextMenu
 
     -- Remove below this if you are using your own menu system / want to use ox_lib
-    ShowMenu(data)
+    if not data.color then data.color = Config.DefaultColor end
+
+    return ShowMenu(data)
     -- Remove above this if you are using your own menu system / want to use ox_lib
 
     --[[
@@ -71,3 +75,6 @@ function WSB.showMenu(data)
 
     exports.ox_lib:showMenu(data.id) ]]
 end
+
+exports('showContextMenu', WSB.showContextMenu) -- Export for use in other scripts
+exports('showMenu', WSB.showMenu)               -- Export for use in other scripts

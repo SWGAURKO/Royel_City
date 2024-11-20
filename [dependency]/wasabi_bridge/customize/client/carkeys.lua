@@ -6,13 +6,21 @@
 
 -- Add car keys
 function WSB.giveCarKeys(plate, _model, _vehicle)
-    if WSB.framework == 'qb' then
-        TriggerEvent('vehiclekeys:client:SetOwner', plate)
-    else
-        exports.wasabi_carlock:GiveKey(plate) -- Leave like this if using wasabi_carlock
+    print(GetResourceState('wasabi_carlock'))
+    if GetResourceState('wasabi_carlock') == 'started' then
+        return exports.wasabi_carlock:GiveKey(plate) -- Leave like this if using wasabi_carlock
+    end
+
+    if GetResourceState('qb-vehiclekeys') == 'started' then
+        return TriggerServerEvent('qb-vehiclekeys:server:AcquireVehicleKeys', plate)
     end
 end
 
 function WSB.removeCarKeys(plate, _model, _vehicle)
-    -- Put remove key logic here
+    if GetResourceState('wasabi_carlock') == 'started' then
+        return exports.wasabi_carlock:RemoveKey(plate)
+    end
 end
+
+exports('giveCarKeys', WSB.giveCarKeys)     -- Export for use in other scripts
+exports('removeCarKeys', WSB.removeCarKeys) -- Export for use in other scripts

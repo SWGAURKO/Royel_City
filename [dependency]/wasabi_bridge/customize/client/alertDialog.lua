@@ -26,8 +26,9 @@ function WSB.alertDialog(data)
     -- (Basically follow the same as ox_lib menu system and transfer the options to your alert system)]
 
     -- Remove below this if you are using your own menu system / want to use ox_lib
+    if not data.color then data.color = Config.DefaultColor end
 
-    AlertDialog(data)
+    return AlertDialog(data)
 
     -- Remove above this to use your own alert dialog or ox_lib
 
@@ -40,3 +41,5 @@ function WSB.alertDialog(data)
     end
     return exports.ox_lib:alertDialog(data)]]
 end
+
+exports('alertDialog', WSB.alertDialog) -- Export for use in other scripts

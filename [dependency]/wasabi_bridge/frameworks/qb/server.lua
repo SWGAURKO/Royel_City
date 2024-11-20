@@ -1,6 +1,8 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+local qboxFound = GetResourceState('qbx_core')
+if qboxFound == 'started' or qboxFound == 'starting' then return end
 
 local found = GetResourceState('qb-core')
 if found ~= 'started' and found ~= 'starting' then return end
@@ -33,9 +35,9 @@ function WSB.getAllJobs()
     local jobs = QBCore and QBCore.Shared and QBCore.Shared.Jobs or nil
     local returnTb = {}
     if not jobs or #jobs < 1 then return end
-    for k,v in pairs(jobs) do
+    for k, v in pairs(jobs) do
         returnTb[k] = { label = v.label }
-        for a,b in pairs(v.grades) do
+        for a, b in pairs(v.grades) do
             if not returnTb[k].grades then returnTb[k].grades = {} end
             local payment = 0
             if b then
@@ -155,7 +157,7 @@ end
 function WSB.getName(source)
     local player = WSB.getPlayer(source)
     if not player then return end
-    return player.PlayerData.charinfo.firstname..' '..player.PlayerData.charinfo.lastname
+    return player.PlayerData.charinfo.firstname .. ' ' .. player.PlayerData.charinfo.lastname
 end
 
 function WSB.registerUsableItem(item, cb)
@@ -175,7 +177,7 @@ function WSB.addItem(source, item, count, slot, metadata)
     local giveItem = player.Functions.AddItem(item, count, slot, metadata)
     item = player.Functions.GetItemByName(item)
     if item?.count then item.count = count elseif item?.amount then item.amount = count end
-    TriggerClientEvent('inventory:client:ItemBox', source,  item, 'add')
+    TriggerClientEvent('inventory:client:ItemBox', source, item, 'add')
     return giveItem
 end
 
@@ -230,7 +232,7 @@ function WSB.revokeLicense(source, license)
     local Oldlicenses = targetPlayer.PlayerData.metadata['licences']
     if not Oldlicenses[license] then return end
     local licenses = {}
-    for k,v in pairs(Oldlicenses) do
+    for k, v in pairs(Oldlicenses) do
         if k ~= license then
             licenses[k] = v
         end
@@ -249,7 +251,7 @@ WSB.getPlayerIdentity = function(source)
     local player = WSB.getPlayer(source)
     if not player then return end
     local data = {
-        name = player.PlayerData.charinfo.firstname..' '..player.PlayerData.charinfo.lastname,
+        name = player.PlayerData.charinfo.firstname .. ' ' .. player.PlayerData.charinfo.lastname,
         job = player.PlayerData.job.label,
         position = player.PlayerData.job.grade.name,
         dob = player.PlayerData.charinfo.birthdate,
@@ -261,7 +263,7 @@ WSB.getPlayerIdentity = function(source)
         data.sex = 'male'
     end
     if player.PlayerData.metadata['licences'] then
-        for k,v in pairs(player.PlayerData.metadata['licences']) do
+        for k, v in pairs(player.PlayerData.metadata['licences']) do
             if v then
                 data.licenses[#data.licenses + 1] = {
                     type = k
@@ -284,7 +286,7 @@ function WSB.getVehicleOwner(plate)
             }, function(result2)
                 if result2[1] then
                     local charData = json.decode(result2[1].charinfo)
-                    owner = charData.firstname..' '..charData.lastname
+                    owner = charData.firstname .. ' ' .. charData.lastname
                 else
                     owner = false
                 end

@@ -58,6 +58,7 @@ function WSB.inputDialog(heading, rows, color)
     -- (Basically follow the same as ox_lib menu system and transfer the options to your own input system)]
 
     -- Remove under this to use your own input dialog OR the ox_lib input dialog --
+    if not color then color = Config.DefaultColor end
     return InputDialog(heading, rows, color)
 
     -- Remove above this to use your own input dialog or ox_lib
@@ -70,3 +71,5 @@ function WSB.inputDialog(heading, rows, color)
     end
     return exports.ox_lib:inputDialog(heading, rows)--]]
 end
+
+exports('inputDialog', WSB.inputDialog) -- Export for use in other scripts

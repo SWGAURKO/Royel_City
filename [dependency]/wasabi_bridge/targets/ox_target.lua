@@ -124,6 +124,14 @@ function WSB.target.removeTarget(id)
     RemoveActiveTarget(targetType, GetInvokingResource(), id)
 end
 
+function WSB.target.disable(bool)
+    return exports.ox_target:disableTargeting(bool)
+end
+
+function WSB.disableTarget(bool)
+    return exports.ox_target:disableTargeting(bool)
+end
+
 local function resourceStopped(resource)
     for targetType, targets in pairs(ActiveTargets) do
         for resourceName, targetData in pairs(targets) do
