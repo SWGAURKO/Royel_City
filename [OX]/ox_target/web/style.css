@@ -1,17 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
 
 :root {
   --color-default: #ffffff;
-  --color-hover: #ffffff;
+  --color-hover: #38a2e5;
 }
 
 body {
   visibility: hidden;
+  visibility: 0;
   user-select: none;
   white-space: nowrap;
   margin: 0;
   user-select: none;
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
 p {
@@ -24,81 +26,78 @@ p {
 
 #eye {
   position: absolute;
-  font-size: 5;
-  top: 50.5%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  fill: #5bb894;
+  font-size: 22pt;
+  fill: black;
+  color: white;
+  font-weight: normal;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
 
+.interaction {
+  /* font-size: 30px !important; */
+  scale: 1.5 !important;
+  color: #38a2e5 !important;
 }
 
 .eye-hover {
-  fill: #5bb894;
-}
-
-#hex::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  content: "\2B22";
-  color: rgba(0, 73, 45, 0.548);
-  font-size: 5.07vh;
-  text-shadow: #ffffff00 1px 0 10px;
-  -webkit-text-stroke: 1px #84ffd0
+  fill: var(--color-default);
 }
 
 #options-wrapper {
   position: absolute;
-  top: calc(48.4%);
-  left: calc(50% + 20pt);
+  top: 52%;
+  left: 48.5%;
 }
 
 .option-container {
   color: var(--color-default);
   display: flex;
   flex-direction: row;
-  justify-content: Flex start;
+  justify-content: flex-start;
   align-items: center;
-  background: linear-gradient(
-    to bottom,
-    rgba(1, 48, 30, 0.479) 0%,
-    rgba(0, 73, 45, 0.384) 66%,
-    rgba(0, 61, 38, 0.438) 100%
-  );
-  border-radius: 5px;
+  font-family: "Roboto Condensed", sans-serif;
+  background: transparent;
   font-size: 15pt;
-  line-height: 50pt;
-  font-family: 'Nunito';
+  line-height: 22pt;
   vertical-align: middle;
+  margin-left: 5pt;
   transition: 300ms;
   transform-origin: left top;
   scale: 1;
-  height: 25pt;
-  width: 200pt;
-  margin: 5pt;
-  margin-top: 6;
+  height: 22pt;
+  width: 150pt;
+  top: 0;
 }
 
 .option-container:hover {
-  background: #3a9471b7;
-  border-radius: 5px;
+  background: transparent;
   transform-origin: left top;
-  box-shadow: 0px 0px 15px 3px #84ffd0b4;
-  color: var(--color-default);
-  margin-left: 4pt;
+  color: var(--color-hover);
+  margin-left: 7pt;
+}
+
+.option-container:hover .option-icon {
+  color: var(--color-hover) !important;
 }
 
 .option-icon {
-  font-size: 15pt;
+  font-size: 12pt;
   line-height: 22pt;
   width: 14pt;
-  margin: 7pt;
-  padding-left: 3px;
-  padding-right: 3.5px;
-  color:  #84ffd0;
+  margin: 5pt;
+  color: var(--color-default);
+  transition: all 0.3s ease;
 }
 
 .option-label {
   font-weight: 500;
+}
+
+#eye-image {
+  width: 60px;
+  height: 44px;
 }

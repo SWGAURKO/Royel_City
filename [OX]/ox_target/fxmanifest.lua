@@ -46,3 +46,20 @@ provide 'qtarget'
 provide 'qb-target'
 
 dependency 'ox_lib'
+
+escrow_ignore {
+	'locales/*.json',
+	'web/**',
+	'client/main.lua',
+	'client/api.lua',
+	'client/utils.lua',
+	'client/state.lua',
+	'client/debug.lua',
+	'client/defaults.lua',
+	'client/framework/ox.lua',
+	'client/framework/esx.lua',
+	'client/framework/qb.lua',
+	'client/compat/qtarget.lua',
+	'client/compat/qb-target.lua',
+	'server/main.lua'
+}
