@@ -45,7 +45,7 @@ if Config.AdminDuty then
         end
         hasAdminPerms = result[1]
         userAccesses = result[2]
-        userRole = result[3] or "God"
+        userRole = result[3] or "admin"
         isGod = result[4]
         TriggerEvent("snipe-menu:client:addkeymapping", hasAdminPerms)
         ShowNotification("[Admin Menu] You are now on duty", "success")

@@ -1,6 +1,4 @@
-# ox_inventory - Bulgar Edition
-
-### This is not the original version of ox_inventory. It is redesigned and new features are added by Bulgar Development.
+# ox_inventory
 
 A complete inventory system for FiveM, implementing items, weapons, shops, and more without any strict framework dependency.
 
@@ -66,7 +64,3 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-## Screenshot
-
-![inventory image](https://r2.fivemanage.com/pub/xt0pc6v2pb39.png)

@@ -128,9 +128,6 @@ if Config.JobVehicles.ENABLE then
                                     TriggerEvent('cd_garage:StoreVehicle_Main', false, false, false)
                                 elseif self.method == 'regular' then
                                     local vehicle = GetClosestVehicle(5)
-                                    if self.garage_type == 'boat' then
-                                        Teleport(ped, self.coords.x, self.coords.y, self.coords.z, 90, false)
-                                    end
                                     if vehicle then
                                         if IsPedInVehicle(ped, vehicle, true) then
                                             TaskLeaveVehicle(ped, vehicle, 0)

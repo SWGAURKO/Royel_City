@@ -1,6 +1,6 @@
-if not um.property.apartments then return end
+if not um.property.apartments.status then return end
 
-if GetResourceState('qbx_properties') ~= 'started' then return end
+if um.property.apartments.script ~= 'qbx_properties' then return end
 
 Debug('qbx_properties for apartments', 'debug')
 

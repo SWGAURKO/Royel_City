@@ -48,7 +48,7 @@ Config.FrameworkTriggers = {
 
 Config.PlateFormats = 'mixed' --[ 'trimmed' /  'with_spaces' / 'mixed' ] CHOOSE CAREFULLY! Read our documentation website for more info on this if you are unsure! [https://docs.codesign.pro/paid-scripts/garage#step-6-vehicle-plate-format].
 Config.UsingOnesync = true --Do you use OneSync legacy/infinity?
-Config.IdentifierType = 'license' --[ 'steamid' / 'license' ] Choose the identifier type that your server uses.
+Config.IdentifierType = 'steamid' --[ 'steamid' / 'license' ] Choose the identifier type that your server uses.
 Config.UseFrameworkDutySystem = false --Do you want to use your frameworks (esx/qbcore) built-in duty system?
 Config.Debug = false --To enable debug prints.
 
@@ -124,6 +124,7 @@ Config.Impound = {
     Authorized_Jobs = { --Only jobs inside this table can impound vehicles or unimpound vehicles.
         ['police'] = true,
         ['mechanic'] = true,
+        ['ambulance'] = true,
         --['add_more_here'] = true,
     },
 
@@ -263,7 +264,7 @@ Config.VehicleKeys = {
         ENABLE = true, --Do you want to use the vehicle locking system?
         lock_from_inside = true, --Do you want to also lock the vehicle from the inside when the vehicle is locked? (meaning when the vehicle is locked players can not exit).
         command = 'vehlock', --Customise the chat command.
-        key = 'm' --Customise the key.
+        key = 'l' --Customise the key.
     },
 
     Lockpick = {
@@ -403,7 +404,7 @@ Config.StaffPerms = {
 
 
 Config.InsideGarage = {
-    ENABLE = true, --Do you want to allow players to use the inside garage?
+    ENABLE = false, --Do you want to allow players to use the inside garage?
     only_showcars_inthisgarage = false, --Do you want the inside garage to only show the vehicles which are currently stored at that garage (eg., garage A).  (this works for inside garage only, even with this enabled all the cars will show in the outside UI).
     shell_z_axis = 30, --This is how low under the ground the garage shell will spawn, you could use math.random(10,50) to make it random each time so players dont see each other in their garage.
     shell_time_script = 'easytime', --Choose which time script you are using so we can set the time when you enter the shell. [ 'easytime' / 'vsync' / 'qbcore' / 'other' ].
@@ -418,63 +419,63 @@ Config.InsideGarage = {
 
     Car_Offsets = { --This is the offsets of the vehicles inside the garage.
         ['10cargarage_shell'] = {
-            [1] = {x = -4, y = 6.5, z = 0.0, h = 135.0},--1
-            [2] = {x = -4, y = 10.8, z = 0.0, h = 135.0},--2
-            [3] = {x = -4, y = 15.1, z = 0.0, h = 135.0},--3
-            [4] = {x = -4, y = 19.4, z = 0.0, h = 135.0},--4
-            [5] = {x = -4, y = 23.7, z = 0.0, h = 135.0},--5
+            [1] = {x = -4, y = 6.5, z = -99.43, h = 135.00},--1
+            [2] = {x = -4, y = 10.8, z = -99.43, h = 135.00},--2
+            [3] = {x = -4, y = 15.1, z = -99.43, h = 135.00},--3
+            [4] = {x = -4, y = 19.4, z = -99.43, h = 135.00},--4
+            [5] = {x = -4, y = 23.7, z = -99.42, h = 135.00},--5
 
-            [6] = {x = -12, y = 23.7, z = 0.0, h = 225.0},--6
-            [7] = {x = -12, y = 19.4, z = 0.0, h = 225.0},--7
-            [8] = {x = -12, y = 15.1, z = 0.0, h = 225.0},--8
-            [9] = {x = -12, y = 10.8, z = 0.0, h = 225.0},--9
-            [10] = {x = -12, y = 6.5, z = 0.0, h = 225.0}--10
+            [6] = {x = -12, y = 23.7, z = -99.43, h = 225.00},--6
+            [7] = {x = -12, y = 19.4, z = -99.42, h = 225.00},--7
+            [8] = {x = -12, y = 15.1, z = -99.42, h = 225.00},--8
+            [9] = {x = -12, y = 10.8, z = -99.43, h = 225.00},--9
+            [10] = {x = -12, y = 6.5, z = -99.42, h = 225.00}--10
         },
 
         ['40cargarage_shell'] = {
-            [1] = {x = 7.0, y = -7.0, z = 0.0, h = 352.0},--1
-            [2] = {x = 11.0, y = -8.0, z = 0.0, h = 352.0},--2
-            [3] = {x = 15.0, y = -9.0, z = 0.0, h = 352.0},--3
-            [4] = {x = 19.0, y = -10.0, z = 0.0, h = 352.0},--4
-            [5] = {x = 23.0, y = -11.0, z = 0.0, h = 352.0},--5
-            [6] = {x = 27.0, y = -12.0, z = 0.0, h = 352.0},--6
-            [7] = {x = 31.0, y = -13.0, z = 0.0, h = 352.0},--7
-            [8] = {x = 35.0, y = -14.0, z = 0.0, h = 352.0},--8
-            [9] = {x = 39.0, y = -15.0, z = 0.0, h = 352.0},--9
-            [10] = {x = 43.0, y = -16.0, z = 0.0, h = 352.0},--10
+            [1] = {x = 7.0, y = -7.0, z = 0, h = 352.0},--1
+            [2] = {x = 11.0, y = -8.0, z = 0, h = 352.0},--2
+            [3] = {x = 15.0, y = -9.0, z = 0, h = 352.0},--3
+            [4] = {x = 19.0, y = -10.0, z = 0, h = 352.0},--4
+            [5] = {x = 23.0, y = -11.0, z = 0, h = 352.0},--5
+            [6] = {x = 27.0, y = -12.0, z = 0, h = 352.0},--6
+            [7] = {x = 31.0, y = -13.0, z = 0, h = 352.0},--7
+            [8] = {x = 35.0, y = -14.0, z = 0, h = 352.0},--8
+            [9] = {x = 39.0, y = -15.0, z = 0, h = 352.0},--9
+            [10] = {x = 43.0, y = -16.0, z = 0, h = 352.0},--10
 
-            [11] = {x = 7.0, y = 5.0, z = 0.0, h = 162.0},--11
-            [12] = {x = 11.0, y = 4.0, z = 0.0, h = 162.0},--12
-            [13] = {x = 15.0, y = 3.0, z = 0.0, h = 162.0},--13
-            [14] = {x = 19.0, y = 2.0, z = 0.0, h = 162.0},--14
-            [15] = {x = 23.0, y = 1.0, z = 0.0, h = 162.0},--15
-            [16] = {x = 27.0, y = 0.0, z = 0.0, h = 162.0},--16
-            [17] = {x = 31.0, y = -1.0, z = 0.0, h = 162.0},--17
-            [18] = {x = 35.0, y = -2.0, z = 0.0, h = 162.0},--18
-            [19] = {x = 39.0, y = -3.0, z = 0.0, h = 162.0},--19
-            [20] = {x = 43.0, y = -4.0, z = 0.0, h = 162.0},--20
+            [11] = {x = 7.0, y = 5.0, z = 0, h = 162.0},--11
+            [12] = {x = 11.0, y = 4.0, z = 0, h = 162.0},--12
+            [13] = {x = 15.0, y = 3.0, z = 0, h = 162.0},--13
+            [14] = {x = 19.0, y = 2.0, z = 0, h = 162.0},--14
+            [15] = {x = 23.0, y = 1.0, z = 0, h = 162.0},--15
+            [16] = {x = 27.0, y = 0.0, z = 0, h = 162.0},--16
+            [17] = {x = 31.0, y = -1.0, z = 0, h = 162.0},--17
+            [18] = {x = 35.0, y = -2.0, z = 0, h = 162.0},--18
+            [19] = {x = 39.0, y = -3.0, z = 0, h = 162.0},--19
+            [20] = {x = 43.0, y = -4.0, z = 0, h = 162.0},--20
 
-            [21] = {x = -7.0, y = 5.0, z = 0.0, h = 192.0},--21
-            [22] = {x = -11.0, y = 4.0, z = 0.0, h = 192.0},--22
-            [23] = {x = -15.0, y = 3.0, z = 0.0, h = 192.0},--23
-            [24] = {x = -19.0, y = 2.0, z = 0.0, h = 192.0},--24
-            [25] = {x = -23.0, y = 1.0, z = 0.0, h = 192.0},--25
-            [26] = {x = -27.0, y = 0.0, z = 0.0, h = 192.0},--26
-            [27] = {x = -31.0, y = -1.0, z = 0.0, h = 192.0},--27
-            [28] = {x = -35.0, y = -2.0, z = 0.0, h = 192.0},--28
-            [29] = {x = -39.0, y = -3.0, z = 0.0, h = 192.0},--29
-            [30] = {x = -43.0, y = -4.0, z = 0.0, h = 192.0},--30
+            [21] = {x = -7.0, y = 5.0, z = 0, h = 192.0},--21
+            [22] = {x = -11.0, y = 4.0, z = 0, h = 192.0},--22
+            [23] = {x = -15.0, y = 3.0, z = 0, h = 192.0},--23
+            [24] = {x = -19.0, y = 2.0, z = 0, h = 192.0},--24
+            [25] = {x = -23.0, y = 1.0, z = 0, h = 192.0},--25
+            [26] = {x = -27.0, y = 0.0, z = 0, h = 192.0},--26
+            [27] = {x = -31.0, y = -1.0, z = 0, h = 192.0},--27
+            [28] = {x = -35.0, y = -2.0, z = 0, h = 192.0},--28
+            [29] = {x = -39.0, y = -3.0, z = 0, h = 192.0},--29
+            [30] = {x = -43.0, y = -4.0, z = 0, h = 192.0},--30
 
-            [31] = {x = -7.0, y = -7.0, z = 0.0, h = 13.0},--31
-            [32] = {x = -11.0, y = -8.0, z = 0.0, h = 13.0},--32
-            [33] = {x = -15.0, y = -9.0, z = 0.0, h = 13.0},--33
-            [34] = {x = -19.0, y = -10.0, z = 0.0, h = 13.0},--34
-            [35] = {x = -23.0, y = -11.0, z = 0.0, h = 13.0},--35
-            [36] = {x = -27.0, y = -12.0, z = 0.0, h = 13.0},--36
-            [37] = {x = -31.0, y = -13.0, z = 0.0, h = 13.0},--37
-            [38] = {x = -35.0, y = -14.0, z = 0.0, h = 13.0},--38
-            [39] = {x = -39.0, y = -15.0, z = 0.0, h = 13.0},--39
-            [40] = {x = -43.0, y = -16.0, z = 0.0, h = 13.0},--40
+            [31] = {x = -7.0, y = -7.0, z = 0, h = 13.0},--31
+            [32] = {x = -11.0, y = -8.0, z = 0, h = 13.0},--32
+            [33] = {x = -15.0, y = -9.0, z = 0, h = 13.0},--33
+            [34] = {x = -19.0, y = -10.0, z = 0, h = 13.0},--34
+            [35] = {x = -23.0, y = -11.0, z = 0, h = 13.0},--35
+            [36] = {x = -27.0, y = -12.0, z = 0, h = 13.0},--36
+            [37] = {x = -31.0, y = -13.0, z = 0, h = 13.0},--37
+            [38] = {x = -35.0, y = -14.0, z = 0, h = 13.0},--38
+            [39] = {x = -39.0, y = -15.0, z = 0, h = 13.0},--39
+            [40] = {x = -43.0, y = -16.0, z = 0, h = 13.0},--40
         }
     }
 }
@@ -489,7 +490,7 @@ Config.InsideGarage = {
 
 
 Config.JobVehicles = {
-    ENABLE = true, --Do you want players with defined jobs (below) to be able to use the garage ui to spawn job vehicles? (if disabled none of the options below will be used).
+    ENABLE = false, --Do you want players with defined jobs (below) to be able to use the garage ui to spawn job vehicles? (if disabled none of the options below will be used).
     choose_liverys = false, --Do you want players to be able to change liverys when they spawn a vehicle at a job garage?
     share_job_keys = false, --Do you want job vehicle keys to be automatically shared with other players with the same job? (requires you to be using the built in cd_garage keys feature).
 
@@ -598,7 +599,7 @@ Config.Unique_Blips = true --Do you want each garage to be named by its unique i
 Config.Blip = { --You can find more info on blips here - https://docs.fivem.net/docs/game-references/blips.
     ['car'] = {
         sprite = 357, --Icon of the blip.
-        scale = 0.6, --Size of the blip.
+        scale = 0.9, --Size of the blip.
         colour = 9, --Colour of the blip.
         name = L('garage')..' ' --You dont need to change this.
     },
@@ -637,8 +638,8 @@ Config.Locations = {
     {
         Garage_ID = 'A', --The very first car garage's `garage_id` must be the same as the default value of the `garage_id` in the database as when a vehicle is purchased it gets sent to this garage. You can change the garage id's to what ever you like but make sure to also change the default garage_id in the database.
         Type = 'car', --The type of vehicles which use this garage. ('car'/'boat'/'air').
-        Dist = 10, --The distance that you can use this garage.
-        x_1 = 215.09, y_1 = -805.17, z_1 = 30.81, --This is the location of the garage, where you press e to open for example.
+        Dist = 20, --The distance that you can use this garage.
+        x_1 = 222.606, y_1 = -793.274, z_1 = 30.714, --This is the location of the garage, where you press e to open for example.vector3(222.606, -793.274, 30.714)
         EventName1 = 'cd_garage:QuickChoose', --DONT CHANGE THIS.
         EventName2 = 'cd_garage:EnterGarage', --DONT CHANGE THIS.
         Name = UIText, --You dont need to change this.
@@ -849,7 +850,7 @@ Config.ImpoundLocations = { --DO NOT CHANGE THE TABLE IDENTIFIERSs, for example 
         spawnpoint = {x = 1887.123, y = 3710.348, z = 31.92, h = 212.0},
         blip = {
             sprite = 357,
-            scale = 0.5,
+            scale = 0.1,
             colour = 3,
             name = L('car_sandy_impound'),
         }

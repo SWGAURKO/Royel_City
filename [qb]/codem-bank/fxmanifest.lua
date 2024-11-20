@@ -1,13 +1,10 @@
 fx_version 'cerulean'
 game 'gta5'
-version '1.9'
+version '1.8'
 author 'aiakoscodem'
-
 shared_scripts {
 	'config/*.lua',
-
 }
-
 client_scripts {
 	'client/*.lua',
 	'editable/client_editable.lua',
@@ -24,9 +21,7 @@ server_scripts {
 	'server/saving.lua',
 	'server/dashboard.lua',
 	'server/societydashboard.lua',
-
 }
-
 ui_page "html/index.html"
 files {
 	'html/index.html',
@@ -42,15 +37,11 @@ files {
 	'html/pages/**/*.js',
 	'html/pages/**/*.html',
 }
-
 escrow_ignore {
 	'editable/*.lua',
 	'config/*.lua',
 	'server/utility.lua',
 	'client/utility.lua',
-
 }
-
 lua54 'yes'
-
 dependency '/assetpacks'

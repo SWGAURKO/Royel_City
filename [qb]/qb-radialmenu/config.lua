@@ -11,14 +11,15 @@ Config.MenuItems = {
         title = 'Citizen',
         icon = 'user',
         items = {
-            {
+            --[[ {
                 id = 'givenum',
                 title = 'Give Contact Details',
                 icon = 'address-book',
                 type = 'client',
-                event = 'qb-phone:client:GiveContactDetails',
+                event = 'lb-phone:client:GiveContactDetails',
                 shouldClose = true
-            }, {
+            }, ]] 
+            {
             id = 'getintrunk',
             title = 'Get In Trunk',
             icon = 'car',
@@ -39,7 +40,15 @@ Config.MenuItems = {
             type = 'client',
             event = 'qb-hotdogjob:client:ToggleSell',
             shouldClose = true
-        }, {
+        }, 
+        {
+            id = 'skills',
+        title = 'Check Skills',
+        icon = 'triangle-exclamation',
+        type = 'client',
+        event = 'mz-skills:client:CheckSkills',
+        shouldClose = true,
+        },{
             id = 'interactions',
             title = 'Interaction',
             icon = 'triangle-exclamation',

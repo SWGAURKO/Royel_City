@@ -696,38 +696,6 @@ input[type="number"] {
   --vertical-menu-icon-bg-hover: #4b5563;
   --admin-player-resource-bg: rgba(0, 255, 0, 0.2);
 }
-[data-theme="SINISTER RP - BY JDrazo"] {
-  --menu-base-border: #111827;
-  --light-text: #ffffff;
-  --menu-base-bg: #2c0707b4;
-  --inner-menu-bg: rgba(15, 15, 15, 0.5);
-  --horizontal-nav-bar-active-bg: rgba(15, 15, 15, 0.4);
-  --clicked-pane-non-panel: #f8f2f2a1;
-  --even-pane-panel: rgba(124, 11, 11, 0.384);
-  --odd-pane-panel: rgba(160, 105, 105, 0.507);
-  --panel-title-color: #000000;
-  --input-txt-color: #e0e7ff;
-  --panel-input-bg-color: rgba(100, 12, 27, 0.527);
-  --panel-btns-bg: rgb(254, 254, 255);
-  --panel-btns-hover: #c71c1c79;
-  --panel-btns-disabled: #6b7280;
-  --spinner-outer-ring-bg: #6b7280;
-  --spinner-small-ring-color: rgba(15, 15, 15, 0.6);
-  --input-error-color: #dc2626;
-  --dropdown-menu-bg: rgb(77, 10, 10);
-  --dropdown-menu-text: #e0e7ff;
-  --dropdown-menu-hover: #1f2937;
-  --dropdown-chevron: #e0e7ff;
-  --admin-settings-border-bottom: #4b5563;
-  --admin-settings-drop-down-bg: rgba(75, 85, 99, 0.3);
-  --admin-settings-drop-down-text: #e0e7ff;
-  --admin-settings-drop-down-hover: #1f2937;
-  --admin-settings-save-btn-hover-bg: #1f2937;
-  --admin-settings-save-btn-hover-bg-text: #ffffff;
-  --vertical-menu-icon-bg: #ffffff;
-  --vertical-menu-icon-bg-hover: #4b5563;
-  --admin-player-resource-bg: rgb(255, 255, 255);
-}
 .admin-settings-search-bar {
   height: 3vw;
   border-bottom: 0.01vw solid var(--admin-settings-border-bottom);

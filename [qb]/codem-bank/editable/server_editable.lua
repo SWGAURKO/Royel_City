@@ -1,19 +1,19 @@
-bot_Token = ""
+bot_Token = "MTI1NTc3NTM2ODM4MDU1MTIxOA.GxSISP.PaH6p50KiINnYdTE921AlBIeHTNBDtJcYvNG6o"
 bot_logo = "https://cdn.discordapp.com/attachments/1025789416456867961/1106324039808594011/512x512_Logo.png"
 bot_name = "Codem Store"
 
 discord_webhook = {
-    ['bitcoin']         = "",
-    ['withdraw']        = "",
-    ['deposit']         = "",
-    ['transfer']        = "",
-    ['transferiban']    = "",
-    ['loan']            = "",
-    ['paybill']         = "",
-    ['saving']          = "",
-    ['changeiban']      = "",
-    ['societydeposit']  = "",
-    ['societywithdraw'] = "",
+    ['bitcoin']         = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
+    ['withdraw']        = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
+    ['deposit']         = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
+    ['transfer']        = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
+    ['transferiban']    = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
+    ['loan']            = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
+    ['paybill']         = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
+    ['saving']          = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
+    ['changeiban']      = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
+    ['societydeposit']  = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
+    ['societywithdraw'] = "https://discord.com/api/webhooks/1269292743524352091/KRbwCnJ5-_eeqIIWTak0DBfw5IM5TDbOShNbDIHb7yg5x7XbC4Fzji3A0MClCledbrnb",
 
 }
 

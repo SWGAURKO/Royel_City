@@ -1,6 +1,5 @@
 RegisterNUICallback("Wallet", function(data, cb)
     local action = data.action
-    debugprint("Wallet:" .. (action or ""))
 
     if action == "getBalance" then
         lib.TriggerCallback("phone:wallet:getBalance", cb)

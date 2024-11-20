@@ -609,13 +609,17 @@ function GetSocietyMoney(job)
             local accountName = job
             local societyAccountMoney
             if Config.newManagementSystem then
-                local account_money = exports["qb-banking"]:GetAccount(accountName)
-                if account_money and account_money.account_balance then
-                    return account_money.account_balance
+                societyAccountMoney = ExecuteSql("SELECT * FROM `bank_accounts` WHERE `account_name` = '" ..
+                    accountName .. "'")
+                if next(societyAccountMoney) then
+                    return societyAccountMoney[1].account_balance
                 else
                     if Config.CreateJobAccount then
                         exports["qb-banking"]:CreateJobAccount(accountName, 0)
+                        Wait(350)
                         return 0
+                    else
+                        return false
                     end
                 end
             else
@@ -656,18 +660,24 @@ function RemoveSocietyMoney(job, givenAmount)
     elseif Config.Framework == 'qb' or Config.Framework == 'oldqb' then
         if job then
             local accountName = job
+            local societyAccountMoney
             if Config.newManagementSystem then
-                local societyAccountMoney = exports["qb-banking"]:GetAccount(accountName)
-                if societyAccountMoney.account_balance >= givenAmount then
-                    if givenAmount < 0 then
+                societyAccountMoney = ExecuteSql("SELECT * FROM `bank_accounts` WHERE `account_name` = '" ..
+                    accountName .. "'")
+
+                if societyAccountMoney and societyAccountMoney[1] then
+                    local currentAmount = societyAccountMoney[1].account_balance
+                    local newAmount = currentAmount - givenAmount
+                    if newAmount < 0 then
                         print('ERROR SOCIETY MONEY IS NOT ENOUGH')
                         return false
                     else
-                        exports["qb-banking"]:RemoveMoney(accountName, givenAmount)
-                        Wait(150)
-                        local newAccountMoney = exports["qb-banking"]:GetAccount(accountName)
-                        return newAccountMoney
+                        ExecuteSql("UPDATE `bank_accounts` SET `account_balance` = ? WHERE `account_name` = ?",
+                            { newAmount, accountName })
+                        return newAmount
                     end
+                else
+                    return false
                 end
             else
                 local societyAccountMoney = ExecuteSql("SELECT * FROM `management_funds` WHERE `job_name` = '" ..
@@ -707,16 +717,18 @@ function AddSocietyMoney(job, givenAmount)
             local accountName = job
             local societyAccountMoney
             if Config.newManagementSystem then
-                local societyAccountMoney = exports["qb-banking"]:GetAccount(accountName)
-                if societyAccountMoney and societyAccountMoney.account_balance then
-                    if givenAmount < 0 then
+                societyAccountMoney = ExecuteSql("SELECT * FROM `bank_accounts` WHERE `account_name` = '" ..
+                    accountName .. "'")
+                if societyAccountMoney and societyAccountMoney[1] then
+                    local currentAmount = societyAccountMoney[1].account_balance
+                    local newAmount = currentAmount + givenAmount
+                    if newAmount < 0 then
                         print('ERROR SOCIETY MONEY IS NOT ENOUGH')
                         return false
                     else
-                        exports["qb-banking"]:AddMoney(accountName, givenAmount)
-                        Wait(150)
-                        local newAccountMoney = exports["qb-banking"]:GetAccount(accountName)
-                        return newAccountMoney
+                        ExecuteSql("UPDATE `bank_accounts` SET `account_balance` = ? WHERE `account_name` = ?",
+                            { newAmount, accountName })
+                        return newAmount
                     end
                 else
                     print('ERROR SOCIETY NOT FOUND')

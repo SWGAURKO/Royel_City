@@ -29,7 +29,7 @@ local function setupShopItems(id, shopType, shopName, groups)
 				slot = i,
 				weight = Item.weight,
 				count = slot.count,
-				price = (server.randomprices and not slot.currency or slot.currency == 'money') and (math.ceil(slot.price * (math.random(80, 120)/100))) or slot.price or 0,
+				price = (server.randomprices and (not slot.currency or slot.currency == 'money')) and (math.ceil(slot.price * (math.random(80, 120)/100))) or slot.price or 0,
 				metadata = slot.metadata,
 				license = slot.license,
 				currency = slot.currency,
@@ -108,7 +108,7 @@ local function createShop(shopType, id)
 	return shop[id]
 end
 
-for shopType, shopDetails in pairs(data('shops')) do
+for shopType, shopDetails in pairs(lib.load('data.shops')) do
 	registerShopType(shopType, shopDetails)
 end
 
@@ -154,7 +154,7 @@ lib.callback.register('ox_inventory:openShop', function(source, data)
 end)
 
 local function canAffordItem(inv, currency, price)
-	local canAfford = price >= 0 and Inventory.GetItem(inv, currency, false, true) >= price
+	local canAfford = price >= 0 and Inventory.GetItemCount(inv, currency) >= price
 
 	return canAfford or {
 		type = 'error',
@@ -195,8 +195,6 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 
 		if shopId then shopId = tonumber(shopId) end
 
-		print(shopId)
-
 		local shop = shopId and Shops[shopType][shopId] or Shops[shopType]
 		local fromData = shop.items[data.fromSlot]
 		local toData = playerInv.items[data.toSlot]
@@ -204,38 +202,20 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 		if fromData then
 			if fromData.count then
 				if fromData.count == 0 then
-					return false, false, { type = 'error', description = locale('shop_nostock'),position = "top-right", style = {
-						backgroundColor = '#17181F',
-						color = '#38a2e5',
-						['.description'] = {
-						  color = '#38a2e5'
-						}
-					}, }
+					return false, false, { type = 'error', description = locale('shop_nostock') }
 				elseif data.count > fromData.count then
 					data.count = fromData.count
 				end
 			end
 
 			if fromData.license and server.hasLicense and not server.hasLicense(playerInv, fromData.license) then
-				return false, false, { type = 'error', description = locale('item_unlicensed'),position = "top-right", style = {
-					backgroundColor = '#17181F',
-					color = '#38a2e5',
-					['.description'] = {
-					  color = '#38a2e5'
-					}
-				}, }
+				return false, false, { type = 'error', description = locale('item_unlicensed') }
 			end
 
 			if fromData.grade then
 				local _, rank = server.hasGroup(playerInv, shop.groups)
 				if not isRequiredGrade(fromData.grade, rank) then
-					return false, false, { type = 'error', description = locale('stash_lowgrade'),position = "top-right", style = {
-						backgroundColor = '#17181F',
-						color = '#38a2e5',
-						['.description'] = {
-						  color = '#38a2e5'
-						}
-					}, }
+					return false, false, { type = 'error', description = locale('stash_lowgrade') }
 				end
 			end
 
@@ -254,13 +234,7 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 				local newWeight = playerInv.weight + (fromItem.weight + (metadata?.weight or 0)) * count
 
 				if newWeight > playerInv.maxWeight then
-					return false, false, { type = 'error', description = locale('cannot_carry'), position = "top-right", style = {
-						backgroundColor = '#17181F',
-						color = '#38a2e5',
-						['.description'] = {
-						  color = '#38a2e5'
-						}
-					}, }
+					return false, false, { type = 'error', description = locale('cannot_carry') }
 				end
 
 				local canAfford = canAffordItem(playerInv, currency, price)
@@ -275,6 +249,7 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 					shopId = shopId,
 					toInventory = playerInv.id,
 					toSlot = data.toSlot,
+					fromSlot = fromData,
 					itemName = fromData.name,
 					metadata = metadata,
 					count = count,
@@ -293,93 +268,20 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 
 				if server.syncInventory then server.syncInventory(playerInv) end
 
-				local message = locale('purchased_for', count, fromItem.label, (currency == 'money' and locale('$') or math.groupdigits(price)), (currency == 'money' and math.groupdigits(price) or ' '..Items(currency).label))
-
-				if string.find(fromData.name, "WEAPON_") then
-					local serial = metadata.serial
-					local imageurl = ("https://cfx-nui-ox_inventory/web/images/%s.png"):format(fromData.name)
-					local notes = "Purchased from shop"
-					local owner = playerInv.owner
-					local weapClass = "Class"
-					local weapModel = fromData.name
-					
-					AddWeaponToMDT(serial, imageurl, notes, owner, weapClass, weapModel)
-				end
+				local message = locale('purchased_for', count, metadata?.label or fromItem.label, (currency == 'money' and locale('$') or math.groupdigits(price)), (currency == 'money' and math.groupdigits(price) or ' '..Items(currency).label))
 
 				if server.loglevel > 0 then
-                    if server.loglevel > 1 or fromData.price >= 500 then
-                        TriggerEvent('qb-log:server:CreateLog', 'buyItem', 'Buy Item', 'lightblue', '🔸 **Player:** ' .. playerInv.owner .. '\n🔸 **Item:** ' .. fromItem.label .. '\n🔸 **Count:** ' .. count .. '\n🔸 **Price:** ' .. price)
-                    end
-                end
+					if server.loglevel > 1 or fromData.price >= 500 then
+						lib.logger(playerInv.owner, 'buyItem', ('"%s" %s'):format(playerInv.label, message:lower()), ('shop:%s'):format(shop.label))
+					end
+				end
 
-				return true, {data.toSlot, playerInv.items[data.toSlot], shop.items[data.fromSlot].count and shop.items[data.fromSlot], playerInv.weight}, { type = 'success', description = message, position = "top-right", style = {
-					backgroundColor = '#17181F',
-					color = '#38a2e5',
-					['.description'] = {
-					  color = '#38a2e5'
-					}
-				}, }
+				return true, {data.toSlot, playerInv.items[data.toSlot], shop.items[data.fromSlot].count and shop.items[data.fromSlot], playerInv.weight}, { type = 'success', description = message }
 			end
 
-			return false, false, { type = 'error', description = locale('unable_stack_items'), position = "top-right", style = {
-				backgroundColor = '#17181F',
-				color = '#38a2e5',
-				['.description'] = {
-				  color = '#38a2e5'
-				}
-			}, }
+			return false, false, { type = 'error', description = locale('unable_stack_items') }
 		end
 	end
 end)
 
 server.shops = Shops
-
-function AddWeaponToMDT(serial, imageurl, notes, owner, weapClass, weapModel)
-    Citizen.CreateThread(function()
-        Wait(500)
-
-        local success, result = pcall(function()
-            return exports['ps-mdt']:CreateWeaponInfo(serial, imageurl, notes, owner, weapClass, weapModel)
-        end)
-
-        if not success then
-            print("Unable to add weapon to MDT")
-        end
-    end)
-end
-
-function dump(o)
-	if type(o) == 'table' then
-	   local s = '{ '
-	   for k,v in pairs(o) do
-		  if type(k) ~= 'number' then k = '"'..k..'"' end
-		  s = s .. '['..k..'] = ' .. dump(v) .. ','
-	   end
-	   return s .. '} '
-	else
-	   return tostring(o)
-	end
- end
-
-RegisterNetEvent("sp-deliveries:server:LoadShop", function(shopId, amountToLoad)
-	local src = source
-	local shop = shopId and Shops["General"][shopId]
-
-	print(dump(Shops["General"]))
-	print(shopId, shop)
-
-	for itemSlot, itemData in pairs(shop.items) do
-		itemData.count = itemData.count + amountToLoad
-	end
-end)
-
-local Shops = {
-    Wine = {
-        [1] = {
-            items = {
-                [1] = {name = "wine", count = 0, price = 20},
-              
-            },
-        },
-    },
-}

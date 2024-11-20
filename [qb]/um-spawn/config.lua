@@ -4,15 +4,23 @@ um.debug = false
 
 um.lang = 'en' -- tr,en,es,zh,fr,hi [or add locales > .lua]
 
-um.propertyDefaultImage = 'https://files.fivemerr.com/images/534eff8f-e6cb-473f-b441-bf0ac114e256.png'
+--  If you want the apartment start for new player, set it to true.
+-- ?If you make it true, new user does not have an apartment, you force them to choose an apartment
+um.forceApartmentStart = false
 
 um.property = {
-    apartments = false,
-    houses = true
+    apartments = {
+        status = false, -- If you want to show the apartment system, set it to true.
+        script = 'qb', -- qb, qbx (for old qbx_apartments), ps, qbx_properties, bcs
+    },
+    houses = {
+        status = true, -- If you want to show the house system, set it to true.
+        script = 'ps', -- qb, qbx , ps , qs , nolag, bcs
+    }
 }
 
--- If you want to show the logo, set it to true or hidden false
-um.logo = {
+-- If you want to show the xmas icon, set it to true or hidden false
+um.xmas = {
     status = false,
     url = 'imageurl',
 }
@@ -28,14 +36,14 @@ um.main = {
         skyspawnPos = -20,           -- -100 vertical, -20 horizontal
     },
     spawn = {
-        type = 'playerFromSky', -- playerFromSky (um), gtaVNative
-        cutScene = false,       -- If you want to show the cutscene, set it to true.
+        type = 'gtaVNative', -- playerFromSky (um), gtaVNative
+        cutScene = true,     -- If you want to show the cutscene, set it to true.
     },
     ped = {
-        status = false, -- Make it true if you want your character to see and walk the path
+        status = true, -- Make it true if you want your character to see and walk the path
     },
     bookmark = {
-        status = false,   -- If you want to show the bookmark system, set it to true.
+        status = true,    -- If you want to show the bookmark system, set it to true.
         money = {
             free = false, -- If you want to bookmark the free money, set it to true.
             amount = math.random(1000, 10000) or 500
@@ -59,7 +67,7 @@ um.hud = function(bool)
 end
 
 um.weather = {
-    sync = true,  -- If you want to sync the weather, set it to true.
+    sync = false,  -- If you want to sync the weather, set it to true.
     sc = 'qb',     -- cd , qb
     type = 'XMAS', -- https://docs.fivem.net/docs/game-references/weather-types/
     time = 23,     -- 0 - 23
@@ -77,7 +85,7 @@ um.coords = {
         text = 'Hospital Ave'
     },
     ['police'] = {
-        coords = vector4(400.46, -979.54, 29.39, 270.35),
+        coords = vector4(411.44, -965.05, 29.47, 60.03),
         street = 'Sinner St Atlee St',
         text = 'Police Station'
     },

@@ -16,7 +16,6 @@ local function toggleDoor(vehicle, door)
 end
 
 api.addGlobalVehicle({
-    { targetIcon = "fa-solid fa-car" },
     {
         name = 'ox_target:driverF',
         icon = 'fa-solid fa-car-side',

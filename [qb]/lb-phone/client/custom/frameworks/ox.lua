@@ -2,140 +2,74 @@ if Config.Framework ~= "ox" then
     return
 end
 
--- We have to use our own wrapper for ox_core as it uses ox_lib, breaking the phone.
-
-OxPlayer = setmetatable({}, {
-    __index = function(self, index)
-        if index == "data" then
-            return
-        end
-
-        return function(...)
-            return exports.ox_core:CallPlayer(index, ...)
-        end
+local playerLoaded
+AddEventHandler("onResourceStart", function(resourceName)
+    if resourceName == GetCurrentResourceName() then
+        playerLoaded = true
     end
-})
-
-OxPlayer.data = exports.ox_core.GetPlayer() or {}
-
-AddEventHandler("ox:playerLoaded", function(data)
-    if OxPlayer.data.charId then return end
-
-    for k, v in pairs(data) do
-        OxPlayer.data[k] = v
-    end
-
-    FetchPhone()
 end)
 
-AddEventHandler("ox:playerLogout", function()
-    table.wipe(OxPlayer.data)
+CreateThread(function()
+    RegisterNetEvent("ox:playerLoaded", function()
+        playerLoaded = true
+    end)
 
-    LogOut()
-end)
+    debugprint("Loading OX")
+    while GetResourceState("ox_core") ~= "started" do
+        debugprint("Waiting for ox_core to start")
+        Wait(500)
+    end
 
-while not OxPlayer.data.charId do
-    Wait(500)
-end
+    local file = "imports/client.lua"
+    local import = LoadResourceFile("ox_core", file)
+    local func, err = load(import, ("@@ox_core/%s"):format(file))
+    if not func then
+        return Citizen.Trace(("^1Error loading %s: %s^7"):format(file, err))
+    end
+    func()
+    debugprint("OX loaded")
 
-loaded = true
+    while not playerLoaded do
+        Wait(500)
+    end
+    loaded = true
 
----@param number? string
----@return boolean
-function HasPhoneItem(number)
-    if not Config.Item.Require then
+    ---Check if the player has a phone
+    ---@param number string | nil phone number
+    ---@return boolean
+    function HasPhoneItem(number)
+        if not Config.Item.Require then
+            return true
+        end
+
+        if Config.Item.Unique then
+            return HasPhoneNumber(number)
+        end
+
+        if GetResourceState("ox_inventory") == "started" then
+            return (exports.ox_inventory:Search("count", Config.Item.Name) or 0) > 0
+        end
+
         return true
     end
 
-    if Config.Item.Unique then
-        return HasPhoneNumber(number)
+    function HasJob(jobs)
+        return false
     end
 
-    return (exports.ox_inventory:Search("count", Config.Item.Name) or 0) > 0
-end
+    -- Garage
 
-AddEventHandler("ox_inventory:updateInventory", function(changes)
-    if Config.Item.Unique or not phoneOpen or not Config.Item.Require then
+    ---Apply vehicle mods
+    ---@param vehicle number
+    ---@param vehicleData table
+    function ApplyVehicleMods(vehicle, vehicleData)
+    end
+
+    ---Create a vehicle and apply vehicle mods
+    ---@param vehicleData table
+    ---@param coords vector3
+    ---@return number? vehicle
+    function CreateFrameworkVehicle(vehicleData, coords)
         return
     end
-
-    if not HasPhoneItem() then
-        OnDeath()
-    end
 end)
-
----@param jobs string[]
----@return boolean
-function HasJob(jobs)
-    local groups = OxPlayer.getGroups()
-
-    for i = 1, #jobs do
-        if groups[jobs[i]] and groups[jobs[i]] ~= 0 then
-            return true
-        end
-    end
-
-    return false
-end
-
-function GetCompanyData()
-    local activeJob = OxPlayer.getGroupByType("job")
-
-    if not activeJob then
-        return { job = "unemployed", label = "Unemployed", isBoss = false }
-    end
-
-    local job, grade = table.unpack(activeJob)
-    local jobData = GlobalState["group." .. job]
-    local amountGrades = #jobData.grades
-    local isBoss = grade == amountGrades and amountGrades > 1
-
-    local companyData = {
-        job = job,
-        jobLabel = jobData.label,
-        isBoss = isBoss
-    }
-
-    if not isBoss then
-        return companyData
-    end
-
-    companyData.balance = lib.TriggerCallbackSync("phone:services:getBalance")
-    companyData.employees = lib.TriggerCallbackSync("phone:services:getManagementEmployees")
-    companyData.grades = {}
-
-    for i = 1, amountGrades do
-        companyData.grades[i] = {
-            label = jobData.grades[i],
-            grade = i
-        }
-    end
-
-    for i = 1, #companyData.employees do
-        local employee = companyData.employees[i]
-
-        employee.canInteract = employee.grade ~= amountGrades
-    end
-
-    return companyData
-end
-
-function DepositMoney(amount)
-    return lib.TriggerCallbackSync("phone:services:depositMoney", amount)
-end
-
-function WithdrawMoney(amount)
-    return lib.TriggerCallbackSync("phone:services:withdrawMoney", amount)
-end
-
-function HireEmployee(source)
-    return lib.TriggerCallbackSync("phone:services:hireEmployee", source)
-end
-
-function FireEmployee(id)
-    return lib.TriggerCallbackSync("phone:services:fireEmployee", id)
-end
-
-function SetGrade(id, grade)
-    return lib.TriggerCallbackSync("phone:services:setGrade", id, grade)
-end

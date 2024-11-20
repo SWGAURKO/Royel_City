@@ -91,16 +91,16 @@ TriggerEvent("chat:removeSuggestion", "/togglenameskeybind")
 
 RegisterNetEvent("snipe-menu:client:addkeymapping", function()
     if hasAdminPerms then
-        RegisterKeyMapping("noclip", "No Clip", "keyboard", "n")
-        RegisterKeyMapping("+deletelaser", "Delete Laser", "keyboard", "l")
-        RegisterKeyMapping(Config.CommandName, "Open Admin Menu", "keyboard", "u")
-        RegisterKeyMapping("teleporttomarker", "Teleport to Marker", "keyboard", "m")
-        RegisterKeyMapping("fixvehiclekeybind", "Fix Vehicle", "keyboard", "i")
-        RegisterKeyMapping("admincarkeybind", "Admin Car", "keyboard", "NUMPAD0")
-        RegisterKeyMapping("godmodekeybind", "God Mode", "keyboard", "NUMPAD1")
-        RegisterKeyMapping("invisiblekeybind", "Invisible", "keyboard", "NUMPAD2")
-        RegisterKeyMapping("toggleblipskeybind", "Toggle Blips", "keyboard", "NUMPAD3")
-        RegisterKeyMapping("togglenameskeybind", "Toggle Names", "keyboard", "NUMPAD4")
+        RegisterKeyMapping("noclip", "No Clip", "keyboard", "PAGEUP")
+        RegisterKeyMapping("+deletelaser", "Delete Laser", "keyboard", "")
+        RegisterKeyMapping(Config.CommandName, "Open Admin Menu", "keyboard", "PAGEDOWN")
+        RegisterKeyMapping("teleporttomarker", "Teleport to Marker", "keyboard", "")
+        RegisterKeyMapping("fixvehiclekeybind", "Fix Vehicle", "keyboard", "")
+        RegisterKeyMapping("admincarkeybind", "Admin Car", "keyboard", "")
+        RegisterKeyMapping("godmodekeybind", "God Mode", "keyboard", "")
+        RegisterKeyMapping("invisiblekeybind", "Invisible", "keyboard", "")
+        RegisterKeyMapping("toggleblipskeybind", "Toggle Blips", "keyboard", "")
+        RegisterKeyMapping("togglenameskeybind", "Toggle Names", "keyboard", "")
     else
         devMode = false
     end

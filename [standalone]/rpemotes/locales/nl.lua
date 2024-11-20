@@ -52,7 +52,6 @@ Locales['nl'] = {
     ['stun'] = "Druk op ~y~G~w~ om de taser te gebruiken",
     ['smoke'] = "Druk op ~y~G~w~ om te roken",
     ['vape'] = "Druk op ~y~G~w~ om te vapen",
-    ['candle'] = "press ~y~G~w~ to light candle.",
     ['boundto'] = "(~y~%s~w~) gebonden aan ~g~%s~w~",
     ['handsup'] = "Handen omhoog",
     ['currentlyboundemotes'] = "Gebonden animaties:",

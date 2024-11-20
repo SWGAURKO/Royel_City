@@ -164,11 +164,3 @@ end)
 AddEventHandler("lb-phone:marketplace:newPost", function(post)
     print("New MarketPlace post:", json.encode(post))
 end)
-
-RegisterCommand("airshare", function(source)
-   exports["lb-phone"]:AirShare(source, source, "image", {
-        isVideo = false,
-        src = "https://image.api.playstation.com/vulcan/ap/rnd/202311/2801/803e41fee0edf8f8ed1de518e6eac60ddf30ac485b9a16a2.png",
-        timestamp = os.time() * 1000
-   })
-end, false)

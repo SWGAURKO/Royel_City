@@ -12,10 +12,7 @@ RegisterCommand('setvoiceintent', function(source, args)
 	end
 end)
 TriggerEvent('chat:addSuggestion', '/setvoiceintent', 'Sets the players voice intent', {
-	{
-		name = "intent",
-		help = "speech is default and enables noise suppression & high pass filter, music disables both of these."
-	},
+    { name = "intent", help = "speech is default and enables noise suppression & high pass filter, music disables both of these." },
 })
 
 -- TODO: Better implementation of this?
@@ -24,11 +21,11 @@ RegisterCommand('vol', function(_, args)
 	setVolume(tonumber(args[1]))
 end)
 TriggerEvent('chat:addSuggestion', '/vol', 'Sets the radio/phone volume', {
-	{ name = "volume", help = "A range between 1-100 on how loud you want them to be" },
+    { name = "volume", help = "A range between 1-100 on how loud you want them to be" },
 })
 
 exports('setAllowProximityCycleState', function(state)
-	type_check({ state, "boolean" })
+	type_check({state, "boolean"})
 	disableProximityCycle = state
 end)
 
@@ -47,7 +44,7 @@ function setProximityState(proximityRange, isCustom)
 end
 
 exports("overrideProximityRange", function(range, disableCycle)
-	type_check({ range, "number" })
+	type_check({range, "number"})
 	setProximityState(range, true)
 	if disableCycle then
 		disableProximityCycle = true

@@ -1,6 +1,6 @@
 local Translations = {
     error = {
-        not_authorized = "Yetkili değil",
+        not_authorized = "Yetkili değil"
         lockpick_fail = "Başarısız",
         screwdriverset_not_found = "Tornavida setiniz yok",
         door_not_locked = "Kapı kilitli değil",
@@ -19,10 +19,7 @@ local Translations = {
     }
 }
 
-if GetConvar('qb_locale', 'en') == 'tr' then
-    Lang = Locale:new({
-        phrases = Translations,
-        warnOnMissing = true,
-        fallbackLang = Lang,
-    })
-end
+Lang = Locale:new({
+    phrases = Translations,
+    warnOnMissing = true
+})

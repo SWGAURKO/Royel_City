@@ -1,1 +1,0 @@
-https://docs.codesign.pro/paid-scripts/dispatch

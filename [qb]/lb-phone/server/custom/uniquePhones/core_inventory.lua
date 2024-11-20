@@ -3,7 +3,7 @@ if Config.Item.Inventory ~= "core_inventory" or not Config.Item.Unique or not Co
 end
 
 if Config.Framework == 'qb' then
-    QB.Functions.CreateUseableItem(Config.Item.Name, function(source, item, data)
+    QB.Functions.CreateUseableItem(Config.Item.Name, function(source, item)
         if item then
             TriggerClientEvent("lb-phone:usePhoneItem", source, item)
         end
@@ -35,9 +35,11 @@ local function GetItemsByName(source, name)
             items[#items + 1] = item
         end
     end
-    -- debugprint('before for getitemsbyname')
-    -- debugprint(json.encode(items, { indent = true }) )
-    -- debugprint('return getitemsbyname' )
+    debugprint('before for getitemsbyname' )
+    for index, value in ipairs(items) do
+        debugprint(index, value)
+    end
+    debugprint('return getitemsbyname' )
     return items
 end
 
@@ -46,16 +48,16 @@ end
 ---@param phoneNumber string
 ---@return boolean
 function HasPhoneNumber(source, phoneNumber)
-    debugprint("checking if " .. source .. " has a phone item with number", phoneNumber)
+    debugprint("checking if " .. source .. " has a phone item with number", phoneNumber)        
     local phones = GetItemsByName(source, Config.Item.Name)
     debugprint('as item', #phones)
     for i = 1, #phones do
         local phone = phones[i]
-        if phoneNumber == nil and phone and phone.metadata and phone.metadata.lbPhoneNumber == nil then
+        if phoneNumber == nil and phone.metadata.lbPhoneNumber == nil then
             debugprint("they do have empty phone")
             return true
         end
-        if phone and phone.metadata and phone.metadata.lbPhoneNumber == phoneNumber then
+        if phone.metadata.lbPhoneNumber == phoneNumber then
             debugprint("they do")
             return true
         end
@@ -83,7 +85,7 @@ function SetPhoneNumber(source, phoneNumber)
 
     for i = 1, #inventory do
         local item = inventory[i]
-        if item and item.name == Config.Item.Name and item.info.lbPhoneNumber == nil then
+        if item and item.name == Config.Item.Name then
             item.metadata.lbPhoneNumber = phoneNumber
             item.metadata.lbFormattedNumber = FormatNumber(phoneNumber)
             exports['core_inventory']:updateMetadata(inventoryName, item.id, item.metadata)

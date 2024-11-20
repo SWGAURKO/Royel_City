@@ -6,8 +6,6 @@ Rpemotes-reborn is free, **and will always be free**: accept no substitutes or r
 
 Want to help support them? Check out our credits section at the bottom of the Readme and support those creators!
 
-Interested in joining our community? You can find our Discord [here](https://discord.gg/UJ72w8rgar).
-
 # Features 🛠️
 
 - Emote Preview - View emotes before you use them
@@ -87,27 +85,24 @@ Example Banner:
 
 # Exports and Documentation
 
-Find our documentation [here](https://rpemotes-reborn.gitbook.io/guide)
+A partial archive of the original RP Emotes docs can be found [here](https://web.archive.org/web/20231218223552/https://docs.rpemotes.com/)
 
 When using our emote menu with other scripts, using the `TriggerEvent('animations:client:EmoteCommandStart` won't do anything because the events do not exist. These have simply been replaced with the following exports:
 
-**Note for legacy use of rpemotes:** if you have resources dependent on or currently using exports from rpemotes, rename rpemotes-reborn's folder to rpemotes to maintain functionality. Or, rename all exports from exports["rpemotes"] to exports["rpemotes-reborn"]
-
 ```lua
-exports["rpemotes-reborn"]:EmoteCommandStart(emoteName, textureVariation)
-exports["rpemotes-reborn"]:EmoteCancel(forceCancel) – forceCancel is optional
-exports["rpemotes-reborn"]:CanCancelEmote(state)
-exports["rpemotes-reborn"]:IsPlayerCrouched()
-exports["rpemotes-reborn"]:IsPlayerProne()
-exports["rpemotes-reborn"]:IsPlayerCrawling()
-exports["rpemotes-reborn"]:IsPlayerPointing()
-exports["rpemotes-reborn"]:IsPlayerInAnim() -- returns current animation name or nil
-exports["rpemotes-reborn"]:IsPlayerInHandsUp()
-exports["rpemotes-reborn"]:toggleWalkstyle(bool, message) -- bool to allow the user to change their walkstyle in the menu or not / message to show the user (optional, default is :"You are unable to change your walking style right now.")"
-exports["rpemotes-reborn"]:toggleBinoculars()
-exports["rpemotes-reborn"]:toggleNewscam()
-exports["rpemotes-reborn"]:getWalkstyle() -- Gets walk style of player, used to detect certain walk. useful for applying effects while doing certain walks like tripping or other "funny" effects.
-exports["rpemotes-reborn"]:setWalkstyle(name, force) -- name = "move_m@alien" or any other, force = optional bool. Lets you set or force a walk style, useful for scripts like retrieving a style before drinking and restoring it after sobering up.
+exports["rpemotes"]:EmoteCommandStart(emoteName, textureVariation)
+exports["rpemotes"]:EmoteCancel(forceCancel) – forceCancel is optional
+exports["rpemotes"]:CanCancelEmote(state)
+exports["rpemotes"]:IsPlayerCrouched()
+exports["rpemotes"]:IsPlayerProne()
+exports["rpemotes"]:IsPlayerCrawling()
+exports["rpemotes"]:IsPlayerPointing()
+exports["rpemotes"]:IsPlayerInAnim() -- returns current animation name or nil
+exports["rpemotes"]:IsPlayerInHandsUp()
+exports["rpemotes"]:toggleWalkstyle(bool, message) -- bool to allow the user to change their walkstyle in the menu or not / message to show the user (optional, default is :"You are unable to change your walking style right now.")"
+exports["rpemotes"]:toggleBinoculars()
+exports["rpemotes"]:toggleNewscam()
+exports["rpemotes"]:getWalkstyle() -- Gets walk style of player, used to detect certain walk. useful for applying effects while doing certain walks like tripping or other "funny" effects.
 ```
 
 Having issues with players using emotes when/where they're not supposed to? Use the following where you need. This would be somewhere like if you want to disable emotes in jail or when someone is handcuffed/escorted:
@@ -224,7 +219,7 @@ Moods and walk styles can be set from the menu. These will save to your characte
 | /reset mood | Remove preferred mood and set default |
 | /reset walk | Remove last walkstyle and set default |
 
-Having problems with users "abusing" certain walk styles? rpemotes-reborn checks if a user has an "abusable" walk style saved and clears it when a player joins. Alternatively, you can use a resource like [rpemotes-punishment](https://github.com/alberttheprince/rpemotes-punishment/) to trip players abusing these emotes.
+Having problems with users "abusing" certain walk styles? rpemotes-reborn checks if a user has an "abusable" walk style saved and clears it when a player joins. Alternatively, you can use a resource like [rpemotes-punishment](https://github.com/alberttheprince/rpemotes-punishment/) to trip players abusing these emotes. 
 
 Just want to remove them? Delete the following walk styles from Animationlist.lua:
 
@@ -350,11 +345,11 @@ Available output formats:
 1 - 'prop_name',
 2 - "prop_name",
 3 - prop_name
-4 - calculate total emotes
 
 Command usage example: emoteextract 1
 ```
-![image](https://github.com/user-attachments/assets/6ec6e042-00b7-4be2-8086-1805eb87196c)
+
+<img src="screenshots/extractor.png" width="700">
 
 # Installation Instructions ⚙️:
 
@@ -439,15 +434,11 @@ Alternatively, you can use the `PtfxBone =` AnimationOption to attach the PTFX t
 
 Using Menyoo, spawn down a tennis ball and attach it to a human, by default menyoo will attach it to the SKEL_ROOT bone (stomach), so from that, what we can do is either offset the coordinates, say, up to the human ped's mouth, or change the bone altogether. Once we've got it correct, we can transfer those coordinates over to RPEmotes, and tah dah, we have our Ptfx Placement.
 
-Note that `ptfxwait = ` is in ms, so if you'd like a particle to last for 30 seconds, it should be `ptfxwait = 30000`.
-
 # Adding Your Own Animations ⚙️
 
 Because the menu gets updated frequently, the files get overwritten. To avoid this, you can add your own / downloaded animation files `(.ycd)` inside of a newly created folder, give it a name, and place it in the `rpemotes\stream\[Custom Emotes]` folder.
 
 Add your animation code to the `AnimationListCustom.lua` and make a backup of this file and call it `BackUpAnimationListCustom.lua`.
-
-**Note on animal emotes:** For the addition of custom emotes for animal peds, you must add use the `sdog` or `bdog` tags. For example if you want to add an emote of `laydownflat` it must be either `sdoglaydownflat` or `bdoglaydownflat`. You must also add any custom addon peds to the `animals.lua` file in either category for these animations to be played on those models.
 
 Whenever an update is released, rename `BackUpAnimationListCustom.lua` to `AnimationListCustom.lua`, click yes to overwrite, and you're good to go.
 
@@ -466,7 +457,7 @@ All animation creators have **_specifically_** asked that their content remain f
 
 **A huge thank you the following people for their amazing contributions to the menu:**
 
-- the FiveM community for using RP and updating rpemotes-reborn!
+- the FiveM community for using RP Emotes!
 - [enzo2991](https://github.com/enzo2991) for creating the ped preview functionality
 - [The Popcorn RP community](https://discord.gg/popcornroleplay) for putting up with all my emote menu testing and troubleshooting issues with me
 - [DerDevHD](https://forum.cfx.re/t/fixed-remove-prop-after-scenario-animation/5002332/8) for the insight on deleting scenario props.
@@ -475,7 +466,7 @@ All animation creators have **_specifically_** asked that their content remain f
 - [Mads](https://github.com/MadsLeander) for joining the team as Co-Developer
 - [Mathu_lmn](https://github.com/Mathu-lmn) for joining the team as Co-Developer
 - [Tigerle](https://forum.cfx.re/u/tigerle_studios) for providing the additional code required to make Shared Emotes work to its full extent
-- [SMGMissy](https://jenscreations.tebex.io/) for creating the pride flag props
+- [SMGMissy](https://forum.cfx.re/u/smgmissy/) for assisting with custom pride flags and how to stream them
 - [MissSnowie](https://www.gta5-mods.com/users/MissySnowie) for the Explicit Usage Rights Agreement to add free custom animations either publicly available or on their discord and for the motivational and overall moral support
 - [GeekGarage](https://github.com/geekgarage) for their knowledge, time, and dedication, helping to bring new and exciting features to the menu
 - [Smokey](https://www.gta5-mods.com/users/struggleville) for the Explicit Usage Rights Agreement to add free custom animations either publicly available on their discord
@@ -485,7 +476,6 @@ All animation creators have **_specifically_** asked that their content remain f
 - Crusopaul and Eki for discussing KVP and initializing it to the menu for persistent walk styles
 - [Amnilka](https://www.gta5-mods.com/users/frabi) for the Explicit Usage Rights Agreement to add free custom animations either publicly available or on their discord
 - [LittleSpoon](https://discord.gg/safeword) for the Explicit Usage Rights Agreement to add free custom animations either publicly available or on their discord
-- [LadyyShamrockk](https://www.gta5-mods.com/users/LadyyShamrockk) For allowing us to include their emotes in rpemotes-reborn
 - [Pupppy](https://discord.gg/rsN35X4s4N) for the Explicit Usage Rights Agreement to add free custom animations either publicly available or on their discord
 - [SapphireMods](https://discord.gg/Hf8F4nTyzt) for the Explicit Usage Rights Agreement to add free custom animations either publicly available or on their discord
 - [QueenSisters Animations](https://discord.gg/qbPtGwQuep) for the Explicit Usage Rights Agreement to add free custom animations either publicly available or on their discord
@@ -516,10 +506,7 @@ All animation creators have **_specifically_** asked that their content remain f
 - [PNWParksFan](https://www.gta5-mods.com/users/PNWParksFan) for the custom props
 - [LSPDFR member Sam](https://www.lcpdfr.com/downloads/gta5mods/misc/23386-lspd-police-badge/) for their Custom LSPD police badge
 - [GTA5Mods user Sladus_Slawonkus](https://www.gta5-mods.com/misc/lspd-police-badge-replace-sladus_slawonkus) for their reskinned LSPD badge
-- [Scully](https://github.com/Scullyy/) for their past work on rpemotes
+- [Scully](https://github.com/Scullyy/) For their past work on rpemotes
 - [EP](https://github.com/EpKouhia) for their ice fishing props and emotes, originally used in scully_emotemenu
 - [TayMcKenzieNZ](https://github.com/TayMcKenzieNZ) for their past work maintaining RP Emotes
 - [ESX](https://github.com/esx-framework) for the creation of the translation system
-- [41anims](https://www.gta5-mods.com/users/41anims) for allowing us to use their custom emotes in rpemotes-reborn
-- [corbs](https://www.gta5-mods.com/users/corbs) for allowing us to use their custom emotes and poses in rpemotes-reborn
-- [jaysigx](https://www.gta5-mods.com/misc/improved-umbrella) for allowing us to use their improved umbrella prop

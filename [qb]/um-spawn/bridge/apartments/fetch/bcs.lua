@@ -1,17 +1,17 @@
-if not um.property.apartments then return end
+if not um.property.apartments.status then return end
 
-if GetResourceState('bcs_housing') ~= 'started' then return end
+if um.property.apartments.script ~= 'bcs' then return end
 
 Debug('bcs_housing for apartments', 'debug')
 
-lib.callback.register('getApartments', function(source)
-    local citizenid = GetCitizenID(GetPlayer(source))
-    local apartments = MySQL.single.await('SELECT identifier, apartment FROM house_apartment WHERE owner = ?',
-        { citizenid })
+-- Still need to implement this
 
-    local found = apartments?.apartment == 1 and true or false
+-- lib.callback.register('getApartments', function(source)
+--     local citizenid = GetCitizenID(GetPlayer(source))
+--     local apartments = exports.bcs_housing:GetOwnedHomeKeys(citizenid, 'Apartment')
 
-    Debug(found and 'Apartments: Found Apartments' or 'Apartments: Not Found')
+--     local found = apartments[1] ~= nil
+--     Debug(found and 'Apartments: Found Apartments' or 'Apartments: Not Found')
 
-    return found and apartments or false
-end)
+--     return found and apartments or false
+-- end)

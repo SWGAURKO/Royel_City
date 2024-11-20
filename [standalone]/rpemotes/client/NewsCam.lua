@@ -14,9 +14,7 @@ if Config.NewscamEnabled then
     local speed_ud = 8.0   -- speed by which the camera pans up-down
     local fov = (fov_max + fov_min) * 0.5
     local index = 0
-    local scaleform_instructions
-    local scaleform_news
-    local prop_newscam = nil
+    prop_newscam = nil
     local msg = "YOUR TEXT HERE"
     local bottom = "YOUR TEXT HERE"
     local title = "YOUR TEXT HERE"
@@ -118,7 +116,7 @@ if Config.NewscamEnabled then
 
             EndScaleformMovieMethod()
 
-            scaleform_news = breaking_news
+            local scaleform_news = breaking_news
 
             local cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA", true)
 
@@ -127,7 +125,7 @@ if Config.NewscamEnabled then
             SetCamFov(cam, fov)
             RenderScriptCams(true, false, 0, 1, 0)
 
-            scaleform_instructions = SetupButtons({
+            local scaleform_instructions = SetupButtons({
                 { key = 177, text = 'exit_news' },
                 { key = 19,  text = 'toggle_news_vision' },
                 { key = 74,  text = "edit_values_newscam" },
@@ -203,8 +201,7 @@ if Config.NewscamEnabled then
         ClearTimecycleModifier()
         fov = (fov_max + fov_min) * 0.5
         RenderScriptCams(false, false, 0, 1, 0)
-        SetScaleformMovieAsNoLongerNeeded(breaking_news)
-        SetScaleformMovieAsNoLongerNeeded(scaleform_instructions)
+        SetScaleformMovieAsNoLongerNeeded(scaleform)
         DestroyCam(cam, false)
         DeleteEntity(prop_newscam)
         SetNightvision(false)
@@ -333,7 +330,7 @@ if Config.NewscamEnabled then
                 ClearPedTasks(PlayerPedId())
                 ClearTimecycleModifier()
                 RenderScriptCams(false, false, 0, 1, 0)
-                SetScaleformMovieAsNoLongerNeeded(breaking_news)
+                SetScaleformMovieAsNoLongerNeeded(scaleform_news)
                 SetScaleformMovieAsNoLongerNeeded(scaleform_instructions)
                 DestroyCam(cam, false)
                 DeleteEntity(prop_newscam)

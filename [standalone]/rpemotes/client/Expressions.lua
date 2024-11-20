@@ -50,7 +50,8 @@ if Config.ExpressionsEnabled then
             end
         end)
 
-        RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+        RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
+        AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
             Wait(5000)
             local expression = GetResourceKvpString("expression")
             if expression ~= nil then
@@ -59,7 +60,8 @@ if Config.ExpressionsEnabled then
             end
         end)
 
-        RegisterNetEvent('esx:playerLoaded', function()
+        RegisterNetEvent('esx:playerLoaded')
+        AddEventHandler('esx:playerLoaded', function()
             Wait(5000)
             local expression = GetResourceKvpString("expression")
             if expression ~= nil then

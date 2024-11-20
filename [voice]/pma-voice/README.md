@@ -33,10 +33,12 @@ You only need to add the convar **if** you're changing the value.
 
 All of the configs here are set using `setr [voice_configOption] [boolean]`
 
+Native audio will not work on RedM, you will have to use 3d audio.
+
 | ConVar                     | Default | Description                                                   | Parameter(s) |
 |----------------------------|---------|---------------------------------------------------------------|--------------|
 | voice_useNativeAudio       |  false  | Uses the games native audio, will add 3d sound, echo, reverb, and more. **Required for submixs**   | boolean      |
-| voice_use2dAudio           |  false  | Uses 2d audio, will result in same volume sound no matter where they're at until they leave proximity. | boolean
+| voice_use2dAudio           |  false  | Uses 2d audio, will result in same volume sound no matter where they're at until they leave proximity. | boolean      
 | voice_use3dAudio           |  false  | Uses 3d audio | boolean |
 | voice_useSendingRangeOnly  |  false  | Only allows you to hear people within your hear/send range, prevents people from connecting to your mumble server and trolling. | boolean      |
 
@@ -70,7 +72,7 @@ All of the configs here are set using `setr [voice_configOption] [int]` OR `setr
 | voice_enableRadios           |    1    | Enables the radio sub-modules                                 | int          |
 | voice_enableCalls           |    1    | Enables the call sub-modules                                 | int          |
 | voice_enableSubmix      |    1    | Enables the submix which adds a radio/call style submix to their voice **NOTE: Submixs require native audio** | int          |
-| voice_enableRadioAnim        |   1     | Enables (grab shoulder mic) animation while talking on the radio.          | int          |
+| voice_enableRadioAnim        |   0     | Enables (grab shoulder mic) animation while talking on the radio.          | int          |
 | voice_defaultRadio           |   LMENU  | The default key to use the radio. You can find a list of valid keys [in the FiveM docs](https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/)                             | string       |
 
 ### Sync
@@ -105,7 +107,7 @@ This would only allow the superadmin group to mute players.
 #### Client
 
 ##### Setters
-
+ 
 | Export              | Description                 | Parameter(s) |
 |---------------------|-----------------------------|--------------|
 | [setVoiceProperty](docs/client-setters/setVoiceProperty.md)    | Set config options          | string, any  |
@@ -135,7 +137,7 @@ Supported from mumble-voip / toko-voip
 
 #### Getters
 
-The majority of setters are done through player states.
+The majority of setters are done through player states, while a small 
 
 
 | State Bag     | Description                                                  | Return Type  |
@@ -143,7 +145,6 @@ The majority of setters are done through player states.
 | [proximity](docs/state-getters/stateBagGetters.md)     | Returns a table with the mode index, distance, and mode name | table        |
 | [radioChannel](docs/state-getters/stateBagGetters.md)  | Returns the players current radio channel, or 0 for none     | int          |
 | [callChannel](docs/state-getters/stateBagGetters.md)   | Returns the players current call channel, or 0 for none      | int          |
-| [disableRadio](docs/state-getters/stateBagGetters.md)   | Returns if the players radio is currently disabled, or 0 if its not. This is expected to be use as a bitwise, do *not* use a bool | int          |
 
 #### Events
 
@@ -178,19 +179,6 @@ You can access the state with `Player(source).state['state bag here']`
 | [radioChannel](docs/state-getters/stateBagGetters.md)  | Returns the players current radio channel, or 0 for none     | int          |
 | [callChannel](docs/state-getters/stateBagGetters.md)   | Returns the players current call channel, or 0 for none      | int          |
 | [voiceIntent](docs/state-getters/stateBagGetters.md) | Returns the players current voice intent, either 'speech' or 'music' | string |
-| [disableRadio](docs/state-getters/stateBagGetters.md)   | Returns if the players radio is currently disabled, or 0 if its not. This is expected to be use as a bitwise, do *not* use a bool | int          |
-
-```ts
-enum DisabledRadioStates {
-	Enabled = 0,
-	IsDead = 1,
-	IsCuffed = 2,
-	IsPdCuffed = 4,
-	IsUnderWater = 8,
-	DoesntHaveItem = 16,
-	PlayerDisabledRadio = 32,
-}
-```
 
 ###### Exports
 

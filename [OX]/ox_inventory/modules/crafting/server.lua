@@ -43,7 +43,7 @@ local function createCraftingBench(id, data)
 	end
 end
 
-for id, data in pairs(data('crafting')) do createCraftingBench(id, data) end
+for id, data in pairs(lib.load('data.crafting')) do createCraftingBench(id, data) end
 
 ---falls back to player coords if zones and points are both nil
 ---@param source number
@@ -180,7 +180,7 @@ lib.callback.register('ox_inventory:craftItem', function(source, id, index, reci
 
 			if success then
 				for name, needs in pairs(recipe.ingredients) do
-					if Inventory.GetItem(left, name, nil, true) < needs then return end
+					if Inventory.GetItemCount(left, name) < needs then return end
 				end
 
 				for slot, count in pairs(tbl) do

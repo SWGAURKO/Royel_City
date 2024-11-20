@@ -152,6 +152,33 @@ end
 
 -- NUI Calls
 
+function QBCore.Functions.Notify(text, texttype, length)
+
+
+    local convert = {
+        ["primary"] = 'info',
+        ["police"] = 'lspd',
+        ["ambulance"] = 'ems',
+    }
+    if not texttype then
+        texttype = 'info'
+    end
+
+    if convert[texttype] then
+        texttype = convert[texttype]
+    end
+
+    if type(text) == "table" then
+        local ttext = text.text or 'Placeholder'
+        local caption = text.caption or 'Placeholder'
+        length = length or 5000
+        TriggerEvent('codem-notification:Create', ttext, texttype, caption, length)
+    else
+        length = length or 5000
+         TriggerEvent('codem-notification:Create', text, texttype, nil, length)
+    end
+end
+
 --[[ function QBCore.Functions.Notify(text, texttype, length, icon)
     local message = {
         action = 'notify',
@@ -171,11 +198,7 @@ end
     end
 
     SendNUIMessage(message)
-end
- ]]
-function QBCore.Functions.Notify(text, length, type)
-    exports['qb-notify']:Notify(text, length, type) 
-end
+end ]]
 
 function QBCore.Functions.Progressbar(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo, onFinish, onCancel)
     if GetResourceState('progressbar') ~= 'started' then error('progressbar needs to be started in order for QBCore.Functions.Progressbar to work') end
@@ -527,6 +550,7 @@ function QBCore.Functions.GetVehicleProperties(vehicle)
         return
     end
 end
+
 
 function QBCore.Functions.SetVehicleProperties(vehicle, props)
     local gameBuild = GetGameBuildNumber()

@@ -1,3 +1,4 @@
+
 AddEventHandler('onClientResourceStart', function(resource)
 	if resource ~= GetCurrentResourceName() then
 		return
@@ -19,8 +20,7 @@ AddEventHandler('onClientResourceStart', function(resource)
 	end)
 
 	if not success then
-		logger.warn(
-			'Failed to load resource Kvp, likely was inappropriately modified by another server, resetting the Kvp.')
+		logger.warn('Failed to load resource Kvp, likely was inappropriately modified by another server, resetting the Kvp.')
 		SetResourceKvp('pma-voice_enableMicClicks', "true")
 		micClicks = 'true'
 	end
@@ -40,9 +40,6 @@ AddEventHandler('onClientResourceStart', function(resource)
 
 	if callChannel ~= 0 then
 		setCallChannel(callChannel)
-	end
-	if not LocalPlayer.state.disableRadio then
-		LocalPlayer.state:set("disableRadio", 0, true)
 	end
 
 	print('Script initialization finished.')

@@ -50,7 +50,7 @@ Config.Locales = {
 
     ['WELCOMEATM'] = 'Welcome to Flecca Bank ATM',
     ['LOGIN'] = 'Login',
-    ['FACEDETECTIONCOMPLETED'] = 'Face detection completed. You can login as ',
+    ['FACEDETECTIONCOMPLETED'] = 'Face detection completed. You can login as Leia Palmer.',
     ['LOGINTOANOTHERBANKACCOUNT'] = 'Login To Another Bank Account',
 
     -- BILL -
@@ -128,8 +128,7 @@ Config.Locales = {
 
     -- SOCIETYDASHBOARD --
     ['SOCIETYACCOUNTAPPLICATION'] = 'Society Account Application',
-    ['ACCORDINGTOYOURCITIZENID'] =
-    'According to your Citizen ID we have discovered that you are associated with the society of',
+    ['ACCORDINGTOYOURCITIZENID'] = 'According to your Citizen ID we have discovered that you are associated with the society of',
     ['TOJOINTHESOCIETYACCOUNT'] = 'To join the society account of this society send a request to the society creator.',
     ['SENDREQUEST'] = 'Send Request',
     ['AWAITINGAPPLICATION'] = 'Awaiting Application',

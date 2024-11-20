@@ -1,7 +1,7 @@
 Config = {}
 
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
-Config.PauseMapText = ''                                     -- Text shown above the map when ESC is pressed. If left empty 'FiveM' will appear
+Config.PauseMapText = 'COASTAL ROLEPLAY BANGLADESH'                                     -- Text shown above the map when ESC is pressed. If left empty 'FiveM' will appear
 Config.HarnessUses = 20
 Config.DamageNeeded = 100.0                                  -- amount of damage till you can push your vehicle. 0-1000
 Config.Logging = 'discord'                                   -- fivemanage
@@ -49,7 +49,7 @@ Config.AIResponse = {
 }
 
 -- To Set This Up visit https://forum.cfx.re/t/how-to-updated-discord-rich-presence-custom-image/157686
-Config.Discord = {
+--[[ Config.Discord = {
     isEnabled = false,                                     -- If set to true, then discord rich presence will be enabled
     applicationId = '00000000000000000',                   -- The discord application id
     iconLarge = 'logo_name',                               -- The name of the large icon
@@ -70,13 +70,13 @@ Config.Discord = {
         }
     }
 }
-
+ ]]
 Config.Density = {
-    parked = 0.8,
-    vehicle = 0.8,
-    multiplier = 0.8,
-    peds = 0.8,
-    scenario = 0.8
+    parked = 0.1,
+    vehicle = 0.1,
+    multiplier = 0.1,
+    peds = 0.1,
+    scenario = 0.1
 }
 
 Config.Disable = {

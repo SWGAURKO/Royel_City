@@ -28,7 +28,7 @@ Config.HideRadar = false --  true (optional)
 --[[
     If you are using qb-logs, set this to true
 ]]
-Config.QBLogs = false --  true (optional)
+Config.QBLogs = true --  true (optional)
 
 -----------------------------------------------------------------------------------------------------------------
  -- UM - Multi Character | Main Settings
@@ -57,7 +57,7 @@ Config.ClothingExports = function(cacheped,skinData) -- If you don't have a cust
 end
 
 Config.StarterItems = {
-    --[[ ['phone'] = {
+   --[[  ['phone'] = {
         amount = 1,
         item = 'phone'
     }, ]]
@@ -65,10 +65,10 @@ Config.StarterItems = {
         amount = 1,
         item = 'id_card',
     },
-    ['driver_license'] = {
+    --[[ ['advancedlockpick'] = {
         amount = 1,
-        item = 'driver_license',
-    },
+        item = 'advancedlockpick',
+    }, ]]
 }
 
 --[[
@@ -88,7 +88,7 @@ Config.QBEvents = {
       --------------------------------------------------------------
       for ps-housing: 'ps-housing:client:setupSpawnUI'
 
-]]    spawnEventUI = 'apartments:client:setupSpawnUI',
+]]    spawnEventUI = 'um-spawn:client:startSpawnUI',
 
 --[[
      if you are not using a custom event don't change it illenium-appearance
@@ -120,7 +120,7 @@ Config.UMSpawnLastLocation = false
 
 Config.DeleteButton = true -- true or false everyone the ability to delete their own characters
 
-Config.DefaultSlots = 5 -- How many total character slots everyone will have by default
+Config.DefaultSlots = 3 -- How many total character slots everyone will have by default
 
 Config.PrivSlots = Slots.List -- Set a custom total slots for the user whose license you are adding [list/slotslist.lua]
 
@@ -128,10 +128,10 @@ Config.PrivSlots = Slots.List -- Set a custom total slots for the user whose lic
  -- UM - Multi Character | Customize Settings
 -----------------------------------------------------------------------------------------------------------------
 
-Config.CinematicMode = false -- If you want to use cinematic mode, you can make it true (um special?)
+Config.CinematicMode = true -- If you want to use cinematic mode, you can make it true (um special?)
 
 Config.BackgroundMusic = {
-    Status = false, -- If you want to use background music, you can make it true.
+    Status = true, -- If you want to use background music, you can make it true.
     Name = 'bgmusic.mp3', -- [web/build/audio/]
     Volume = 0.2
 }
@@ -149,7 +149,7 @@ Config.Pages = {
 
 Config.Coords = {
     Single = Coords.List[5], -- If random false [list/coordslist.lua]
-    Random = false
+    Random = true
 }
 
 Config.Effects = {
@@ -162,16 +162,16 @@ Config.Animation = {
     -- If you have a custom animation menu, customize the export in animationlist.lua or use scenario
     Status = true, -- If you want to use animations, you can make it true.
     Single = Animation.List[1], -- If random false [list/animationlist.lua]
-    Random = false,
+    Random = true,
     Scenario = {
-        Status = false, -- If you want to use scenario, you can make it true.
+        Status = true, -- If you want to use scenario, you can make it true.
         Single = Animation.ScenarioList[1], -- If random false [list/animationlist.lua]
-        Random = false
+        Random = true
     }
 }
 
 Config.TimeSettings = {
-    SyncStatus = false, -- Synchronize with the weather on the server if you don't want to set custom weather and time in multicharacter
+    SyncStatus = true, -- Synchronize with the weather on the server if you don't want to set custom weather and time in multicharacter
     Time = 23, -- recommended 10-23 | not 00 or 00:00
     Weather = 'XMAS' -- CLEAR, EXTRASUNNY, CLOUDS, OVERCAST, RAIN, CLEARING , THUNDER, SMOG, FOGGY, XMAS , SNOWLIGHT, BLIZZARD
 }
@@ -191,6 +191,7 @@ Config.Speech = {
     -- exp: 오늘 기분이 너무 안 좋아, [name] 넌 어때?
     Texts = {
         "Hello [name], how are you today?",
-        "I love you [name], maybe you've never heard that before"
+        "I love you [name], maybe you've never heard that before",
+        "Welcome to CRP Roleplay"
     }
 }

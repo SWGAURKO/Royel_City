@@ -2,81 +2,103 @@ if Config.Item.Inventory ~= "qs-inventory" or not Config.Item.Unique or not Conf
     return
 end
 
----@param source number
----@param phoneNumber? string
----@return number | false index
----@return table? items
-local function FindPhoneItemWithNumber(source, phoneNumber)
-    local items = {}
-
+local function GetItemsByName(source, name)
     if Config.Framework == "esx" then
-        items = ESX.GetPlayerFromId(source).getInventory()
-    elseif Config.Framework == "qb" then
-        items = QB.Functions.GetPlayer(source).PlayerData.items
-    end
-
-    for k, item in pairs(items) do
-        if item?.name == Config.Item.Name and item.info.lbPhoneNumber == phoneNumber then
-            return k, items
+        local xPlayer = ESX.GetPlayerFromId(source)
+        local inventory = xPlayer.getInventory()
+        local items = {}
+        for _, item in pairs(inventory) do
+            if item?.name == name then
+                items[#items+1] = item
+            end
         end
+        return items
+    elseif Config.Framework == "qb" then
+        local inventory = QB.Functions.GetPlayer(source).PlayerData.items
+        local items = {}
+        for _, item in pairs(inventory) do
+            if item?.name == name then
+                items[#items+1] = item
+            end
+        end
+        return items
     end
-
-    return false
 end
 
 function HasPhoneNumber(source, phoneNumber)
-    local hasItem = FindPhoneItemWithNumber(source, phoneNumber) ~= false
-
-    debugprint(("does %i have item with number %s?: %s"):format(source, phoneNumber, hasItem))
-
-    return hasItem
+    debugprint("checking if " .. source .. " has a phone item with number", phoneNumber)
+    local phones = GetItemsByName(source, Config.Item.Name)
+    for i = 1, #phones do
+        local phone = phones[i]
+        if phone?.info?.lbPhoneNumber == phoneNumber then
+            debugprint("they do")
+            return true
+        end
+    end
+    debugprint("they do not")
+    return false
 end
 
 function SetPhoneNumber(source, phoneNumber)
-    local index, items = FindPhoneItemWithNumber(source, nil)
-
-    if not index or not items then
-        return false
-    end
-
-    local item = items[index]
-
-    item.info.lbPhoneNumber = phoneNumber
-    item.info.lbFormattedNumber = FormatNumber(phoneNumber)
-
     if Config.Framework == "esx" then
-        exports["qs-inventory"]:SetInventory(source, items)
+        local xPlayer = ESX.GetPlayerFromId(source)
+        local items = xPlayer.getInventory()
+        for i = 1, #items do
+            local item = items[i]
+            if item and item.name == Config.Item.Name and item.info.lbPhoneNumber == nil then
+                item.info.lbPhoneNumber = phoneNumber
+                item.info.lbFormattedNumber = FormatNumber(phoneNumber)
+                exports['qs-inventory']:SetInventory(source, items)
+                return true
+            end
+        end
+        return false
     elseif Config.Framework == "qb" then
         local qPlayer = QB.Functions.GetPlayer(source)
-        qPlayer.Functions.SetInventory(items, true)
+        local items = qPlayer.PlayerData.items
+        for i = 1, #items do
+            local item = items[i]
+            if item and item.name == Config.Item.Name and item.info.lbPhoneNumber == nil then
+                item.info.lbPhoneNumber = phoneNumber
+                item.info.lbFormattedNumber = FormatNumber(phoneNumber)
+                qPlayer.Functions.SetInventory(items, true)
+                return true
+            end
+        end
+        return false
     end
-
-    return true
 end
 
 function SetItemName(source, phoneNumber, name)
-    local index, items = FindPhoneItemWithNumber(source, phoneNumber)
-
-    if not index or not items then
-        return false
-    end
-
-    local item = items[index]
-
-    item.info.lbPhoneName = name
-    item.info.lbFormattedNumber = FormatNumber(phoneNumber)
-    item.info.label = name
-
     if Config.Framework == "esx" then
-        exports["qs-inventory"]:SetInventory(source, items)
+        local xPlayer = ESX.GetPlayerFromId(source)
+        local items = xPlayer.getInventory()
+        for i = 1, #items do
+            local item = items[i]
+            if item and item.name == Config.Item.Name and item.info.lbPhoneNumber == phoneNumber then
+                item.info.lbPhoneName = name
+                item.info.lbFormattedNumber = FormatNumber(phoneNumber)
+                exports['qs-inventory']:SetInventory(source, items)
+                return true
+            end
+        end
     elseif Config.Framework == "qb" then
         local qPlayer = QB.Functions.GetPlayer(source)
-        qPlayer.Functions.SetInventory(items, true)
+        local items = qPlayer.PlayerData.items
+        for i = 1, #items do
+            local item = items[i]
+            if item and item.name == Config.Item.Name and item.info.lbPhoneNumber == phoneNumber then
+                item.info.lbPhoneName = name
+                item.info.lbFormattedNumber = FormatNumber(phoneNumber)
+                qPlayer.Functions.SetInventory(items, true)
+                return true
+            end
+        end
     end
 end
 
 if Config.Framework == "esx" then
-    exports["qs-inventory"]:CreateUsableItem(Config.Item.Name, function(source, item)
+    exports['qs-inventory']:CreateUsableItem(Config.Item.Name, function(source, item)
         if item then
             TriggerClientEvent("lb-phone:usePhoneItem", source, item)
         end

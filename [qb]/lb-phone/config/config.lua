@@ -2,7 +2,7 @@ Config = {}
 Config.Debug = false -- Set to true to enable debug mode
 
 Config.DatabaseChecker = {}
-Config.DatabaseChecker.Enabled = false -- if true, the phone will check the database for any issues and fix them if possible
+Config.DatabaseChecker.Enabled = true -- if true, the phone will check the database for any issues and fix them if possible
 Config.DatabaseChecker.AutoFix = true
 
 --[[ FRAMEWORK OPTIONS ]] --
@@ -47,7 +47,7 @@ Config.PhoneOffset = vector3(0.0, -0.005, 0.0) -- the offset of the phone when a
 Config.DynamicIsland = true -- if enabled, the phone will have a Iphone 14 Pro inspired Dynamic Island.
 Config.SetupScreen = true -- if enabled, the phone will have a setup screen when the player first uses the phone.
 
-Config.AutoDeleteNotifications = true -- notifications that are more than X hours old, will be deleted. set to false to disable. if set to true, it will delete 1 week old notifications.
+Config.AutoDeleteNotifications = false -- notifications that are more than X hours old, will be deleted. set to false to disable. if set to true, it will delete 1 week old notifications.
 Config.MaxNotifications = 100 -- the maximum amount of notifications a player can have. if they have more than this, the oldest notifications will be deleted. set to false to disable
 Config.DisabledNotifications = { -- an array of apps that should not send notifications, note that you should use the app identifier, found in config.json
     -- "DarkChat",
@@ -204,7 +204,7 @@ Config.Voice.System = "auto"
 Config.Voice.HearNearby = true --[[
     Only works with pma-voice
 
-    If true, players will be heard on instapic live if they are nearby
+    If true, players will be heard on instagram live if they are nearby
     If false, only the person who is live will be heard
 
     If true, allow nearby players to listen to phone calls if speaker is enabled
@@ -305,10 +305,6 @@ Config.Locales = { -- languages that the player can choose from when setting up 
     {
         locale = "it",
         name = "Italiano"
-    },
-    {
-        locale = "ua",
-        name = "Українська"
     }
 }
 
@@ -350,7 +346,7 @@ Config.CityName = "Los Santos" -- The name that's being used in the weather app 
 Config.RealTime = true -- if true, the time will use real life time depending on where the user lives, if false, the time will be the ingame time.
 Config.CustomTime = false -- NOTE: disable Config.RealTime if using this. you can set this to a function that returns custom time, as a table: { hour = 0-24, minute = 0-60 }
 
-Config.EmailDomain = "lbphone.com"
+Config.EmailDomain = "crps.com"
 Config.AutoCreateEmail = false -- should the phone automatically create an email for the player when they set up the phone?
 Config.DeleteMail = true -- allow players to delete mails in the mail app?
 
@@ -361,11 +357,11 @@ Config.EndLiveClose = false -- should InstaPic live end when you close the phone
 
 Config.AllowExternal = { -- allow people to upload external images? (note: this means they can upload nsfw / gore etc)
     Gallery = false, -- allow importing external links to the gallery?
-    Birdy = false, -- set to true to enable external images on that specific app, set to false to disable it.
-    InstaPic = false,
-    Spark = false,
-    Trendy = false,
-    Pages = false,
+    Twitter = false, -- set to true to enable external images on that specific app, set to false to disable it.
+    Instagram = false,
+    Tinder = false,
+    TikTok = false,
+    YellowPages = false,
     MarketPlace = false,
     Mail = false,
     Messages = false,
@@ -419,9 +415,9 @@ Config.AutoFollow.InstaPic = {}
 Config.AutoFollow.InstaPic.Enabled = true
 Config.AutoFollow.InstaPic.Accounts = {} -- array of usernames to automatically follow when creating an account. e.g. "username", "anotherusername"
 
-Config.AutoFollow.Trendy = {}
-Config.AutoFollow.Trendy.Enabled = true
-Config.AutoFollow.Trendy.Accounts = {} -- array of usernames to automatically follow when creating an account. e.g. "username", "anotherusername"
+Config.AutoFollow.TikTok = {}
+Config.AutoFollow.TikTok.Enabled = true
+Config.AutoFollow.TikTok.Accounts = {} -- array of usernames to automatically follow when creating an account. e.g. "username", "anotherusername"
 
 Config.AutoBackup = true -- should the phone automatically create a backup when you get a new phone?
 
@@ -450,7 +446,8 @@ Config.PromoteBirdy.Enabled = true -- should you be able to promote post?
 Config.PromoteBirdy.Cost = 2500 -- how much does it cost to promote a post?
 Config.PromoteBirdy.Views = 100 -- how many views does a promoted post get?
 
-Config.TrendyTTS = {
+Config.TikTok = {}
+Config.TikTok.TTS = {
     {"English (US) - Female", "en_us_001"},
     {"English (US) - Male 1", "en_us_006"},
     {"English (US) - Male 2", "en_us_007"},
@@ -514,7 +511,7 @@ Config.TrendyTTS = {
 -- }
 
 Config.Crypto = {}
-Config.Crypto.Enabled = true
+Config.Crypto.Enabled = false
 Config.Crypto.Coins = {"bitcoin","ethereum","tether","binancecoin","usd-coin","ripple","binance-usd","cardano","dogecoin","solana","shiba-inu","polkadot","litecoin","bitcoin-cash"}
 Config.Crypto.Currency = "usd" -- currency to use for crypto prices. https://api.coingecko.com/api/v3/simple/supported_vs_currencies
 Config.Crypto.Refresh = 5 * 60 * 1000 -- how often should the crypto prices be refreshed (client cache)? (Default 5 minutes)
@@ -563,21 +560,6 @@ Config.KeyBinds = {
         Bind = "RIGHT",
         Description = "Change mode"
     },
-    RollLeft = {
-        Command = "cameraRollLeft",
-        Bind = "Z",
-        Description = "Roll camera to the left"
-    },
-    RollRight = {
-        Command = "cameraRollRight",
-        Bind = "C",
-        Description = "Roll camera to the right"
-    },
-    FreezeCamera = {
-        Command = "cameraFreeze",
-        Bind = "X",
-        Description = "Freeze camera"
-    },
 
     AnswerCall = {
         Command = "answerCall",
@@ -598,35 +580,6 @@ Config.KeyBinds = {
 Config.KeepInput = true -- keep input when nui is focused (meaning you can walk around etc)
 
 --[[ PHOTO / VIDEO OPTIONS ]] --
-Config.Camera = {}
-Config.Camera.Enabled = true -- use a custom camera that allows you to walk around while taking photos?
-Config.Camera.Roll = true -- allow rolling the camera to the left & right?
-Config.Camera.AllowRunning = true
-Config.Camera.MaxFOV = 60.0 -- higher = zoomed out
-Config.Camera.MinFOV = 10.0 -- lower = zoomed in
-Config.Camera.MaxLookUp = 80.0
-Config.Camera.MaxLookDown = -80.0
-
-Config.Camera.Vehicle = {}
-Config.Camera.Vehicle.Zoom = true -- allow zooming in vehicles?
-Config.Camera.Vehicle.MaxFOV = 80.0
-Config.Camera.Vehicle.MinFOV = 10.0
-Config.Camera.Vehicle.MaxLookUp = 50.0
-Config.Camera.Vehicle.MaxLookDown = -30.0
-Config.Camera.Vehicle.MaxLeftRight = 120.0
-Config.Camera.Vehicle.MinLeftRight = -120.0
-
-Config.Camera.Selfie = {}
-Config.Camera.Selfie.Offset = vector3(0.05, 0.55, 0.6)
-Config.Camera.Selfie.Rotation = vector3(10.0, 0.0, -180.0)
-Config.Camera.Selfie.MaxFov = 90.0
-Config.Camera.Selfie.MinFov = 50.0
-
-Config.Camera.Freeze = {}
-Config.Camera.Freeze.Enabled = false -- allow players to freeze the camera when taking photos? (this will make it so they can take photos in 3rd person)
-Config.Camera.Freeze.MaxDistance = 10.0 -- max distance the camera can be from the player when frozen
-Config.Camera.Freeze.MaxTime = 60 -- max time the camera can be frozen for (in seconds)
-
 -- Set your api keys in lb-phone/server/apiKeys.lua
 Config.UploadMethod = {}
 -- You can edit the upload methods in lb-phone/shared/upload.lua

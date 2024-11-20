@@ -29,7 +29,7 @@ return {
 		[`vacca`] = 3,
 		[`vagner`] = 1,
 		[`visione`] = 1,
-		[`prototipo`] = 3,
+		[`prototipo`] = 1,
 		[`zentorno`] = 1,
 		[`trophytruck`] = 0,
 		[`trophytruck2`] = 0,
@@ -75,7 +75,7 @@ return {
 		[9] = {51, 408000},		-- Offroad
 		[10] = {51, 408000},	-- Industrial
 		[11] = {41, 328000},	-- Utility
-		[12] = {500, 500000},	-- Van
+		[12] = {61, 488000},	-- Van
 		-- [14] -- Boat
 		-- [15] -- Helicopter
 		-- [16] -- Plane

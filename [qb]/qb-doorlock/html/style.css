@@ -12,7 +12,7 @@ body {
 #doorlock-container {
     position: absolute;
     flex-wrap: wrap;
-    top: 45vh;
+    top: 50%;
     padding: 0.6em;
     width: fit-content;
     color: white;

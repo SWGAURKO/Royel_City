@@ -1,8 +1,8 @@
 local canChange = true
 local unable_message = "You are unable to change your walking style right now."
 
-function WalkMenuStart(name, force)
-    if not canChange and not force then
+function WalkMenuStart(name)
+    if not canChange then
         EmoteChatMessage(unable_message)
         return
     end
@@ -52,7 +52,8 @@ function WalkCommandStart(name)
     end
 end
 
--- Persistent Walkstyles are stored to KVP. Once the player has spawned, the walkstyle is applied.
+--- Persistent Walkstyles are stored to KVP. Once the player has spawned, the walkstyle is applied. ---
+--- I've added QBCore and ESX support so hopefully people quit crying about it. derchico  ---
 
 if Config.WalkingStylesEnabled and Config.PersistentWalk then
     -- Function to check if walkstyle is available to prevent exploiting
@@ -83,7 +84,8 @@ if Config.WalkingStylesEnabled and Config.PersistentWalk then
     -- Event for QB-Core Users.
     RegisterNetEvent('QBCore:Client:OnPlayerLoaded', handleWalkstyle)
     -- Event for ESX Users.
-    RegisterNetEvent('esx:playerLoaded', handleWalkstyle)
+    RegisterNetEvent('esx:playerLoaded')
+    AddEventHandler('esx:playerLoaded', handleWalkstyle)
 end
 
 if Config.WalkingStylesEnabled then
@@ -105,5 +107,3 @@ exports('toggleWalkstyle', toggleWalkstyle)
 exports('getWalkstyle', function()
     return GetResourceKvpString("walkstyle")
 end)
-
-exports('setWalkstyle', WalkMenuStart)

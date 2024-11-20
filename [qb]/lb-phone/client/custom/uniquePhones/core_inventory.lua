@@ -8,6 +8,7 @@ local function GetItemsByName(name)
 
     local cbPromise = promise.new()
 
+    debugprint("get item by name", name)
     if Config.Framework == "qb" then
         QB.Functions.TriggerCallback("core_inventory:server:getInventory", function(inv)
             inventory = inv
@@ -33,6 +34,7 @@ local function GetItemsByName(name)
     end
 
     Citizen.Await(cbPromise)
+
     return items
 end
 
@@ -40,7 +42,7 @@ function GetFirstNumber()
     local phones = GetItemsByName(Config.Item.Name)
     for i = 1, #phones do
         local phone = phones[i]
-        if phone and phone.metadata and phone.metadata.lbPhoneNumber then
+        if phone.metadata.lbPhoneNumber then
             return phone.metadata.lbPhoneNumber
         end
     end
@@ -50,7 +52,7 @@ function HasPhoneNumber(number)
     local phones = GetItemsByName(Config.Item.Name)
     for i = 1, #phones do
         local phone = phones[i]
-        if phone and phone.metadata and phone.metadata.lbPhoneNumber == number then
+        if phone.metadata.lbPhoneNumber == number then
             return true
         end
     end
@@ -58,13 +60,14 @@ function HasPhoneNumber(number)
 end
 
 RegisterNetEvent("lb-phone:usePhoneItem", function(data)
-    local number = data.metadata and data.metadata.lbPhoneNumber or nil
     debugprint("use item", data)
-    debugprint('number value found', number)
+    local number = data.metadata.lbPhoneNumber
+    if number == nil then debugprint("trigger generate") TriggerEvent("lb-phone:generatePhoneNumber") end
     if number ~= currentPhone or number == nil then
-        debugprint("Set phone client", 'new', number, 'old', currentPhone)
+        debugprint("Set phone client", number, currentPhone)
         SetPhone(number, true)
     end
+
     ToggleOpen(not phoneOpen)
 end)
 

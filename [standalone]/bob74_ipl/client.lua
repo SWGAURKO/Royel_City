@@ -25,7 +25,7 @@ Citizen.CreateThread(function()
     BahamaMamas.Enable(true)
 
     -- Pillbox hospital: 307.1680, -590.807, 43.280
-    PillboxHospital.Enable(false)
+    PillboxHospital.Enable(true)
 
     -- Zancudo Gates (GTAO like): -1600.30100000, 2806.73100000, 18.79683000
     ZancudoGates.LoadDefault()
@@ -139,10 +139,10 @@ Citizen.CreateThread(function()
     -- ====================================================================
     -- =------------------- [DLC: Diamond Casino Resort] -----------------=
     -- ====================================================================
-    if GetGameBuildNumber() >= 2060 then
+    --[[ if GetGameBuildNumber() >= 2060 then
         DiamondCasino.LoadDefault() -- 1100.000, 220.000, -50.000
         DiamondPenthouse.LoadDefault() -- 976.636, 70.295, 115.164
-    end
+    end ]]
 
     -- ====================================================================
     -- =------------------- [DLC: Los Santos Tuners] ---------------------=

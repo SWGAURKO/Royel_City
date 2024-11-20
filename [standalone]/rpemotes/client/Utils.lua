@@ -1,5 +1,3 @@
-LocalPlayer.state:set('canEmote', true, true) -- Allow emotes to be played by default
-
 -- You can edit this function to add support for your favorite notification system
 function SimpleNotify(message)
     if Config.NotificationsAsChatMessage then
@@ -147,7 +145,7 @@ end
 function GetClosestPlayer()
     local players = GetPlayers()
     local closestDistance = -1
-    local closestPlayer
+    local closestPlayer = -1
     local ply = PlayerPedId()
     local plyCoords = GetEntityCoords(ply, 0)
 
@@ -178,9 +176,8 @@ function GetPlayers()
     return players
 end
 
--- Function that'll check if player is already proning, using news cam or else
-
----@param ignores? table | nil key string is the ignored value
+---Function that'll check if player is already proning, using news cam or else
+---@param ignores? array|nil key string is the ignored value
 function isInActionWithErrorMessage(ignores)
     DebugPrint(ignores)
     DebugPrint('IsProne', IsProne)
@@ -206,8 +203,9 @@ function isInActionWithErrorMessage(ignores)
     return false
 end
 
-----------------------------------------------------------------------
 
+
+----------------------------------------------------------------------
 ShowPed = false
 
 function ShowPedMenu(zoom)

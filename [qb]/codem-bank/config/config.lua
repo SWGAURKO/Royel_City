@@ -6,7 +6,7 @@ Config.SQL = "oxmysql"  -- oxmysql, ghmattimysql, mysql-async
 Config.ExampleProfilePicture =
 "https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png"
 
-Config.InteractionHandler = 'ox-target' -- bt-target, qb-target, drawtext, qtarget , ox-target
+Config.InteractionHandler = 'drawtext' -- bt-target, qb-target, drawtext, qtarget , ox-target
 Config.CodemTextUi = {                 -- used when drawtext is selected
     banktextui = false,                -- true or false
     atmtextui = false,                 -- true or false
@@ -17,7 +17,7 @@ Config.CodemTextUi = {                 -- used when drawtext is selected
     bankThema = "thema-6",             -- bank theme
     atmThema = "thema-6",              -- atm theme
 }
-Config.newManagementSystem = true      -- true is qb-banking false qb-managment
+Config.newManagementSystem = false     -- true is qb-banking false qb-managment
 Config.CreateJobAccount = true         -- is only for qb-banking, if there is no data for profession in sql, it creates automatically
 Config.CleanSql = true                 --automatically deletes transaction data and unnecessary data in sql every week
 Config.CurrencyUnit = '$'              -- '€' -- '₺'  '$'
@@ -99,7 +99,7 @@ Config.ATMModels = {
 -- ██████╦╝██║███████╗███████╗██║██║░╚███║╚██████╔╝  ██████╔╝░░░██║░░░██████╔╝░░░██║░░░███████╗██║░╚═╝░██║
 -- ╚═════╝░╚═╝╚══════╝╚══════╝╚═╝╚═╝░░╚══╝░╚═════╝░  ╚═════╝░░░░╚═╝░░░╚═════╝░░░░╚═╝░░░╚══════╝╚═╝░░░░░╚═╝
 Config.BillingSystem = true            -- true or false | Do true if you want to use the billing system. or false if you don't want to use the billing system.
-Config.BillingScript = 'codem-billing' -- qbdefault - codem-billing - okok - esxdefault
+Config.BillingScript = 'okok' -- qbdefault - codem-billing - okok - esxdefault
 Config.BillingJob = {
     ['mechanic'] = 'Mechanic',
     ['police'] = 'LSPD',
@@ -118,7 +118,7 @@ end)
 -- ██║░░░░░██║░░██║██╔══██║██║╚████║░╚═══██╗██╔══╝░░░░░██║░░░░░░██║░░░██║██║╚████║██║░░╚██╗░╚═══██╗
 -- ███████╗╚█████╔╝██║░░██║██║░╚███║██████╔╝███████╗░░░██║░░░░░░██║░░░██║██║░╚███║╚██████╔╝██████╔╝
 -- ╚══════╝░╚════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░╚══════╝░░░╚═╝░░░░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═════╝░
-Config.LoanUtilization = false   -- true or false |Do true if your players will use the credit system. or false if you want to use the loan system.
+Config.LoanUtilization = false -- true or false |Do true if your players will use the credit system. or false if you want to use the loan system.
 Config.LoadDataWaitTime = 86400 -- 1 day
 Config.LoanData = {
     {
@@ -311,7 +311,7 @@ Config.SavingData = {
 -- ██╔══██╗██║░░░██║░░░██║░░██╗██║░░██║██║██║╚████║  ░╚═══██╗░░╚██╔╝░░░╚═══██╗░░░██║░░░██╔══╝░░██║╚██╔╝██║
 -- ██████╦╝██║░░░██║░░░╚█████╔╝╚█████╔╝██║██║░╚███║  ██████╔╝░░░██║░░░██████╔╝░░░██║░░░███████╗██║░╚═╝░██║
 -- ╚═════╝░╚═╝░░░╚═╝░░░░╚════╝░░╚════╝░╚═╝╚═╝░░╚══╝  ╚═════╝░░░░╚═╝░░░╚═════╝░░░░╚═╝░░░╚══════╝╚═╝░░░░░╚═╝
-Config.BitcoinSystem = true
+Config.BitcoinSystem = false
 Config.BitcoinData = {
     {
         label = "Bitcoin",

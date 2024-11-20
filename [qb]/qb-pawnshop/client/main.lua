@@ -53,7 +53,7 @@ CreateThread(function()
         local pawnShopCombo = ComboZone:Create( zone, { name = 'NewPawnShopCombo', debugPoly = false })
         pawnShopCombo:onPlayerInOut(function(isPointInside)
             if isPointInside then
-                exports['qb-menu']:showHeader({
+                exports['l2s-interface']:showHeader({
                     {
                         header = Lang:t('info.title'),
                         txt = Lang:t('info.open_pawn'),
@@ -241,7 +241,7 @@ RegisterNetEvent('qb-pawnshop:client:openMelt', function(data)
 end)
 
 RegisterNetEvent('qb-pawnshop:client:pawnitems', function(item)
-    local sellingItem = exports['qb-input']:ShowInput({
+    local sellingItem = exports['l2s-interface']:ShowInput({
         header = Lang:t('info.title'),
         submitText = Lang:t('info.sell'),
         inputs = {
@@ -259,11 +259,11 @@ RegisterNetEvent('qb-pawnshop:client:pawnitems', function(item)
         end
 
         if tonumber(sellingItem.amount) > 0 then
-            if tonumber(sellingItem.amount) <= item.amount then
+            --[[ if tonumber(sellingItem.amount) <= item.amount then ]]
                 TriggerServerEvent('qb-pawnshop:server:sellPawnItems', item.name, sellingItem.amount, item.price)
-            else
+           --[[  else
                 QBCore.Functions.Notify(Lang:t('error.no_items'), 'error')
-            end
+            end ]]
         else
             QBCore.Functions.Notify(Lang:t('error.negative'), 'error')
         end
@@ -272,7 +272,7 @@ end)
 
 
 RegisterNetEvent('qb-pawnshop:client:meltItems', function(item)
-    local meltingItem = exports['qb-input']:ShowInput({
+    local meltingItem = exports['l2s-interface']:ShowInput({
         header = Lang:t('info.melt'),
         submitText = Lang:t('info.submit'),
         inputs = {
@@ -315,7 +315,7 @@ RegisterNetEvent('qb-pawnshop:client:startMelting', function(item, meltingAmount
                         isMelting = false
                         meltedItem[#meltedItem+1] = { item = item, amount = meltingAmount }
                         if Config.SendMeltingEmail then
-                            TriggerServerEvent('qb-phone:server:sendNewMail', {
+                            TriggerServerEvent('qs-smartphone:server:sendNewMail', {
                                 sender = Lang:t('info.title'),
                                 subject = Lang:t('info.subject'),
                                 message = Lang:t('info.message'),

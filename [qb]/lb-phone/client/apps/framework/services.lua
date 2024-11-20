@@ -52,7 +52,6 @@ RegisterNUICallback("Services", function(data, cb)
     end
 
     local action = data.action
-    debugprint("Services:" .. (action or ""))
 
     if contains(antiSpamActions, action) then
         if not CanInteract() then
@@ -63,45 +62,20 @@ RegisterNUICallback("Services", function(data, cb)
     if action == "getCompanies" then
         lib.TriggerCallback("phone:services:getOnline", cb)
     elseif action == "getCompany" then
-        local companyData = GetCompanyData(function(data)
+        GetCompanyData(function(data)
             data.receiveCalls = not callsDisabled
             cb(data)
         end)
-
-        if companyData ~= nil then
-            companyData.receiveCalls = not callsDisabled
-            cb(companyData)
-        end
     elseif action == "depositMoney" and Config.Companies.Management.Deposit then
-        local newBalance = DepositMoney(data.amount, cb)
-
-        if newBalance ~= nil then
-            cb(newBalance)
-        end
+        DepositMoney(data.amount, cb)
     elseif action == "withdrawMoney" and Config.Companies.Management.Withdraw then
-        local newBalance = WithdrawMoney(data.amount, cb)
-
-        if newBalance ~= nil then
-            cb(newBalance)
-        end
+        WithdrawMoney(data.amount, cb)
     elseif action == "hireEmployee" and Config.Companies.Management.Hire then
-        local employeeData = HireEmployee(data.source, cb)
-
-        if employeeData ~= nil then
-            cb(employeeData)
-        end
+        HireEmployee(data.source, cb)
     elseif action == "fireEmployee" and Config.Companies.Management.Fire then
-        local success = FireEmployee(data.employee, cb)
-
-        if success ~= nil then
-            cb(success)
-        end
+        FireEmployee(data.employee, cb)
     elseif action == "setGrade" and Config.Companies.Management.Promote then
-        local success = SetGrade(data.employee, data.grade, cb)
-
-        if success ~= nil then
-            cb(success)
-        end
+        SetGrade(data.employee, data.grade, cb)
     elseif action == "toggleDuty" and ToggleDuty and Config.Companies.Management.Duty then
         ToggleDuty()
         cb(true)

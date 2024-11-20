@@ -1,6 +1,6 @@
 local isRequestAnim = false
 local requestedemote = ''
-local targetPlayerId
+local targetPlayerId = ''
 
 -- Some of the work here was done by Super.Cool.Ninja / rubbertoe98
 -- https://forum.fivem.net/t/release-nanimstarget/876709
@@ -10,7 +10,6 @@ local targetPlayerId
 -----------------------------------------------------------------------------------------------------
 if Config.SharedEmotesEnabled then
     RegisterCommand('nearby', function(source, args, raw)
-        if not LocalPlayer.state.canEmote then return end
         if IsPedInAnyVehicle(PlayerPedId(), true) then
             return EmoteChatMessage(Translate('not_in_a_vehicle'))
         end
@@ -40,7 +39,6 @@ RegisterNetEvent("SyncPlayEmote", function(emote, player)
     EmoteCancel()
     Wait(300)
     targetPlayerId = player
-    local plyServerId = GetPlayerFromServerId(player)
 
     if IsPedInAnyVehicle(GetPlayerPed(plyServerId ~= 0 and plyServerId or GetClosestPlayer()), true) then
         return EmoteChatMessage(Translate('not_in_a_vehicle'))
@@ -54,6 +52,7 @@ RegisterNetEvent("SyncPlayEmote", function(emote, player)
             local targetEmote = RP.Shared[emote][4]
             if not targetEmote or not RP.Shared[targetEmote] or not RP.Shared[targetEmote].AnimationOptions or
                 not RP.Shared[targetEmote].AnimationOptions.Attachto then
+                local plyServerId = GetPlayerFromServerId(player)
                 local ply = PlayerPedId()
                 local pedInFront = GetPlayerPed(plyServerId ~= 0 and plyServerId or GetClosestPlayer())
                 local bone = RP.Shared[emote].AnimationOptions.bone or -1 -- No bone

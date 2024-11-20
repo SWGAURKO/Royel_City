@@ -1,5 +1,37 @@
 QBShared = QBShared or {}
 QBShared.Weapons = {
+
+	--Kyros Weapon Pack V4
+	[`weapon_ddm4v5`]                = { name = 'weapon_ddm4v5',      label = 'DDM4V5',            weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
+	[`weapon_mpx`]                   = { name = 'weapon_mpx',         label = 'MPX',               weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
+	[`weapon_lok`]                   = { name = 'weapon_lok',         label = 'PD M-LOK AR 15',       weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
+	[`weapon_plr`]                   = { name = 'weapon_plr',         label = 'PLR-16',            weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
+	[`weapon_sp`]                    = { name = 'weapon_sp',          label = 'FN-15 PISTOL',      weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
+	[`weapon_microdraco`]            = { name = 'weapon_microdraco',  label = 'MICRO DRACO',       weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
+	[`weapon_mk18`]                  = { name = 'weapon_mk18',        label = 'MK18 MOD 1',        weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
+	[`weapon_ziptie`]                = { name = 'weapon_ziptie',      label = 'ZIP TIE M4A1',      weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
+	[`weapon_glock19x`]              = { name = 'weapon_glock19x',    label = 'PD G19X XL',           weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_glock19`]               = { name = 'weapon_glock19',     label = 'GLOCK 19',          weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_glock40`]               = { name = 'weapon_glock40',     label = 'GLOCK 40',          weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_glock40s`]              = { name = 'weapon_glock40s',    label = 'PD GLOCK 40 SWITCH',   weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_pd509`]                 = { name = 'weapon_pd509',       label = 'PD 509',            weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_aps`]                   = { name = 'weapon_aps',         label = 'STECHKIN APS',      weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_ppk`]                   = { name = 'weapon_ppk',         label = 'WALTHER PPK',       weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_pitviper`]              = { name = 'weapon_pitviper',    label = 'PD JW4 PIT VIPER',     weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_barp`]                  = { name = 'weapon_barp',        label = 'BANSHEE ARP-9',     weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_rdp`]                   = { name = 'weapon_rdp',         label = 'HELLCAT RDP',       weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_xds9`]                  = { name = 'weapon_xds9',        label = 'XDS9',              weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_pps`]                   = { name = 'weapon_pps',         label = 'WALTHER PPS',       weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_xdme`]                  = { name = 'weapon_xdme',        label = 'XDM ELITE',         weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_glock17s`]              = { name = 'weapon_glock17s',    label = 'GLOCK 17 SWITCH',   weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_glock18c`]              = { name = 'weapon_glock18c',    label = 'PD GLOCK 18C',         weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_glock19s`]              = { name = 'weapon_glock19s',    label = 'GLOCK 19 SWITCH',   weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_arpistol`]              = { name = 'weapon_arpistol',    label = 'TATIC ARP 9MM',     weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_glock26s`]              = { name = 'weapon_glock26s',    label = 'GLOCK 26 SWITCH',   weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_ruger57`]               = { name = 'weapon_ruger57',     label = 'RUGER 57',          weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_grenades`]              = { name = 'weapon_grenades',    label = 'GRENADE SNIPER',    weapontype = 'Heavy Weapons', ammotype = 'AMMO_GRENADELAUNCHER', damagereason = 'BOOM / BLAST / Blinded / FUCKED UP' },
+	[`weapon_m32s`]                  = { name = 'weapon_m32s',        label = 'PD M32 SMOKE GL',      weapontype = 'Heavy Weapons', ammotype = 'AMMO_GRENADELAUNCHER', damagereason = 'Smoked / Pulverized / Blinded' },
+	[`weapon_680`]                   = { name = 'weapon_680',         label = 'MODEL 680',         weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
 	-- // WEAPONS
 	-- Melee
 	[`weapon_unarmed`]               = { name = 'weapon_unarmed', label = 'Fists', weapontype = 'Melee', ammotype = nil, damagereason = 'Melee killed / Whacked / Executed / Beat down / Murdered / Battered' },
@@ -40,7 +72,7 @@ QBShared.Weapons = {
 	[`weapon_vintagepistol`]         = { name = 'weapon_vintagepistol', label = 'Vintage Pistol', weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
 	[`weapon_flaregun`]              = { name = 'weapon_flaregun', label = 'Flare Gun', weapontype = 'Pistol', ammotype = 'AMMO_FLARE', damagereason = 'Died' },
 	[`weapon_marksmanpistol`]        = { name = 'weapon_marksmanpistol', label = 'Marksman Pistol', weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
-	[`weapon_revolver`]              = { name = 'weapon_revolver', label = 'Revolver', weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
+	[`weapon_revolver`]              = { name = 'weapon_revolver', label = 'CRP Pistol', weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
 	[`weapon_revolver_mk2`]          = { name = 'weapon_revolver_mk2', label = 'Revolver MK2', weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
 	[`weapon_doubleaction`]          = { name = 'weapon_doubleaction', label = 'Double Action Revolver', weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
 	[`weapon_raypistol`]             = { name = 'weapon_raypistol', label = 'Ray Pistol', weapontype = 'Pistol', ammotype = 'AMMO_PISTOL', damagereason = 'Pistoled / Blasted / Plugged / Bust a cap in' },
@@ -52,7 +84,7 @@ QBShared.Weapons = {
 
 	-- Submachine Guns
 	[`weapon_microsmg`]              = { name = 'weapon_microsmg', label = 'Micro SMG', weapontype = 'Submachine Gun', ammotype = 'AMMO_SMG', damagereason = 'Riddled / Drilled / Finished / Submachine Gunned' },
-	[`weapon_smg`]                   = { name = 'weapon_smg', label = 'SMG', weapontype = 'Submachine Gun', ammotype = 'AMMO_SMG', damagereason = 'Riddled / Drilled / Finished / Submachine Gunned' },
+	[`weapon_smg`]                   = { name = 'weapon_smg', label = 'PD SMG', weapontype = 'Submachine Gun', ammotype = 'AMMO_SMG', damagereason = 'Riddled / Drilled / Finished / Submachine Gunned' },
 	[`weapon_smg_mk2`]               = { name = 'weapon_smg_mk2', label = 'SMG MK2', weapontype = 'Submachine Gun', ammotype = 'AMMO_SMG', damagereason = 'Riddled / Drilled / Finished / Submachine Gunned' },
 	[`weapon_assaultsmg`]            = { name = 'weapon_assaultsmg', label = 'Assault SMG', weapontype = 'Submachine Gun', ammotype = 'AMMO_SMG', damagereason = 'Riddled / Drilled / Finished / Submachine Gunned' },
 	[`weapon_combatpdw`]             = { name = 'weapon_combatpdw', label = 'Combat PDW', weapontype = 'Submachine Gun', ammotype = 'AMMO_SMG', damagereason = 'Riddled / Drilled / Finished / Submachine Gunned' },
@@ -62,7 +94,7 @@ QBShared.Weapons = {
 
 	-- Shotguns
 	[`weapon_pumpshotgun`]           = { name = 'weapon_pumpshotgun', label = 'Pump Shotgun', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
-	[`weapon_pumpshotgun_mk2`]       = { name = 'weapon_pumpshotgun_mk2', label = 'Pump Shotgun MK2', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
+	[`weapon_pumpshotgun_mk2`]       = { name = 'weapon_pumpshotgun_mk2', label = 'PD Pump Shotgun MK2', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
 	[`weapon_sawnoffshotgun`]        = { name = 'weapon_sawnoffshotgun', label = 'Sawn-off Shotgun', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
 	[`weapon_assaultshotgun`]        = { name = 'weapon_assaultshotgun', label = 'Assault Shotgun', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
 	[`weapon_bullpupshotgun`]        = { name = 'weapon_bullpupshotgun', label = 'Bullpup Shotgun', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
@@ -70,13 +102,13 @@ QBShared.Weapons = {
 	[`weapon_heavyshotgun`]          = { name = 'weapon_heavyshotgun', label = 'Heavy Shotgun', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
 	[`weapon_dbshotgun`]             = { name = 'weapon_dbshotgun', label = 'Double-barrel Shotgun', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
 	[`weapon_autoshotgun`]           = { name = 'weapon_autoshotgun', label = 'Auto Shotgun', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
-	[`weapon_combatshotgun`]         = { name = 'weapon_combatshotgun', label = 'Combat Shotgun', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
+	[`weapon_combatshotgun`]         = { name = 'weapon_combatshotgun', label = 'PD Combat Shotgun', weapontype = 'Shotgun', ammotype = 'AMMO_SHOTGUN', damagereason = 'Devastated / Pulverized / Shotgunned' },
 
 	-- Assault Rifles
 	[`weapon_assaultrifle`]          = { name = 'weapon_assaultrifle', label = 'Assault Rifle', weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
 	[`weapon_assaultrifle_mk2`]      = { name = 'weapon_assaultrifle_mk2', label = 'Assault Rifle MK2', weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
 	[`weapon_carbinerifle`]          = { name = 'weapon_carbinerifle', label = 'Carbine Rifle', weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
-	[`weapon_carbinerifle_mk2`]      = { name = 'weapon_carbinerifle_mk2', label = 'Carbine Rifle MK2', weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
+	[`weapon_carbinerifle_mk2`]      = { name = 'weapon_carbinerifle_mk2', label = 'PD Carbine Rifle MK2', weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
 	[`weapon_advancedrifle`]         = { name = 'weapon_advancedrifle', label = 'Advanced Rifle', weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
 	[`weapon_specialcarbine`]        = { name = 'weapon_specialcarbine', label = 'Special Carbine', weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },
 	[`weapon_specialcarbine_mk2`]    = { name = 'weapon_specialcarbine_mk2', label = 'Specialcarbine MK2', weapontype = 'Assault Rifle', ammotype = 'AMMO_RIFLE', damagereason = 'Ended / Rifled / Shot down / Floored' },

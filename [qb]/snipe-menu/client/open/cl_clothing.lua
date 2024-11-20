@@ -37,9 +37,9 @@ function SetPlayerAdminClothes()
     if not Config.AdminClothes then return end
     -- male clothing
     if GetEntityModel(PlayerPedId()) == `mp_m_freemode_01` then
-        SetPedComponentVariation(PlayerPedId(), 11, 55, 0, 2) -- top
-        SetPedComponentVariation(PlayerPedId(), 8, 58, 0, 2) -- under top
-        SetPedComponentVariation(PlayerPedId(), 4, 35, 0, 2) -- pants
+        SetPedComponentVariation(PlayerPedId(), 11, 102, 0, 2) -- top
+        SetPedComponentVariation(PlayerPedId(), 8, 15, 0, 2) -- under top
+        SetPedComponentVariation(PlayerPedId(), 4, 48, 0, 2) -- pants
         SetPedComponentVariation(PlayerPedId(), 6, 25, 0, 2) -- shoes
     end
 

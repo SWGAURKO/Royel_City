@@ -1,14 +1,14 @@
 return {
 	{
-		coords = vec3(474.3, -1005.16, 26.27),
+		coords = vec3(486.497, -995.664, 26.386),
 		target = { -- qtarget support
 			name = 'mrpd_evidence', -- name of zone must be uniuqe
-			loc = vec3(474.3, -1005.16, 26.27),
-			length = 2.0,
-			width = 4.0,
-			heading = 31.6,
-			minZ = 26.02,
-			maxZ = 27.27
+			loc = vec3(459.07, -984.07, 30.69),
+			length = 1.4,
+			width = 3.2,
+			heading = 0,
+			minZ = 29.09,
+			maxZ = 31.89
 		}
 	}
 }

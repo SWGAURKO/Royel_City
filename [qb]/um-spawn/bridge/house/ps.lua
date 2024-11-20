@@ -1,6 +1,6 @@
-if not um.property.houses then return end
+if not um.property.houses.status then return end
 
-if GetResourceState('ps-housing') ~= 'started' then return end
+if um.property.houses.script ~= 'ps' then return end
 
 Debug('ps-housing for house', 'debug')
 

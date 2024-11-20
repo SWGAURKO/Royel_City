@@ -72,10 +72,6 @@ local function BringCar(data, cb)
         return cb(false)
     end
 
-    if GetResourceState("jg-advancedgarages") == "started" then
-        TriggerServerEvent("jg-advancedgarages:server:register-vehicle-outside", plate, VehToNet(vehicle))
-    end
-
     SetEntityHeading(vehicle, heading)
 
     SetVehicleNeedsToBeHotwired(vehicle, false)
@@ -154,7 +150,6 @@ end
 
 RegisterNUICallback("Garage", function(data, cb)
     local action = data.action
-    debugprint("Garage:" .. (action or ""))
 
     if action == "getVehicles" then
         lib.TriggerCallback("phone:garage:getVehicles", function(cars)

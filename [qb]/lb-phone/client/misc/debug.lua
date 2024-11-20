@@ -1,15 +1,15 @@
 RegisterCommand("phonedebug", function()
     Config.Debug = not Config.Debug
-    SendReactMessage("toggleDebug", Config.Debug)
+    SendReactMessage("phone:toggleDebug", Config.Debug)
     print("DEBUG:", Config.Debug)
 end, false)
 
 local function registerDebugCommand(command, fn)
-    if not Config.Debug then
-        return
-    end
-
-    RegisterCommand(command, fn, false)
+    RegisterCommand(command, function(src, args)
+        if Config.Debug then
+            fn(src, args)
+        end
+    end, false)
 end
 
 registerDebugCommand("center", function()
@@ -17,11 +17,11 @@ registerDebugCommand("center", function()
 end)
 
 registerDebugCommand("getcache", function()
-    SendReactMessage("printCache")
+    SendReactMessage("phone:printCache")
 end)
 
 registerDebugCommand("getstacks", function()
-    SendReactMessage("printStacks")
+    SendReactMessage("phone:printStacks")
 end)
 
 registerDebugCommand("testnotification", function(src, args)

@@ -1,12 +1,13 @@
 return {
---[[ 	General = {
+	--[[ General = {
 		name = 'Shop',
 		blip = {
 			id = 59, colour = 69, scale = 0.8
-		}, inventory = {
-			{ name = 'burger', price = 10 },
-			{ name = 'water', price = 10 },
-			{ name = 'cola', price = 10 },
+		},
+		inventory = {
+			{ name = 'sandwich', price = 10, count = 100 },
+			{ name = 'water', price = 5, count = 100 },
+			{ name = 'cola', price = 7, count = 100 },
 		}, locations = {
 			vec3(25.7, -1347.3, 29.49),
 			vec3(-3038.71, 585.9, 7.9),
@@ -36,10 +37,11 @@ return {
 		name = 'Liquor Store',
 		blip = {
 			id = 93, colour = 69, scale = 0.8
-		}, inventory = {
-			{ name = 'water', price = 10 },
-			{ name = 'cola', price = 10 },
-			{ name = 'burger', price = 15 },
+		},
+		inventory = {
+			{ name = 'sandwich', price = 10, count = 100 },
+			{ name = 'water', price = 5, count = 100 },
+			{ name = 'cola', price = 7, count = 100 },
 		}, locations = {
 			vec3(1135.808, -982.281, 46.415),
 			vec3(-1222.915, -906.983, 12.326),
@@ -59,7 +61,7 @@ return {
 	},
 
 	YouTool = {
-		name = 'YouTool',
+		name = 'YouTool',https://game.vibegames.com/server/89c5c829
 		blip = {
 			id = 402, colour = 69, scale = 0.8
 		}, inventory = {
@@ -76,7 +78,8 @@ return {
 		name = 'Ammunation',
 		blip = {
 			id = 110, colour = 69, scale = 0.8
-		}, inventory = {
+		},
+		inventory = {
 			{ name = 'ammo-9', price = 5, },
 			{ name = 'WEAPON_KNIFE', price = 200 },
 			{ name = 'WEAPON_BAT', price = 100 },
@@ -103,184 +106,93 @@ return {
 			{ loc = vec3(841.05, -1034.76, 28.31), length = 0.6, width = 0.5, heading = 360.0, minZ = 28.2, maxZ = 28.6, distance = 2.0 }
 		}
 	}, ]]
-
-	PopsDinerIngredients = {
-		name = 'Pops Diner Ingredients',
-		groups = {
-			['diner'] = 0
-		},
-		inventory = {
-			{ name = 'butter', price = 0 },
-			{ name = 'crushedice', price = 0 },
-			{ name = 'balsamicglaze', price = 0 },
-			{ name = 'cranberrysauce', price = 0 },
-			{ name = 'mozzarellacheese', price = 0 },
-			{ name = 'cheeseslice', price = 0 },
-			{ name = 'bread', price = 0 },
-			{ name = 'eggs', price = 0 },
-			{ name = 'chickenbreast', price = 0 },
-			{ name = 'turkey', price = 0 },
-			{ name = 'bacon', price = 0 },
-			{ name = 'tuna', price = 0 },
-			{ name = 'avocado', price = 0 },
-			{ name = 'sweetcorn', price = 0 },
-			{ name = 'blueraspberrysyrup', price = 0 },
-			{ name = 'tropicalsyrup', price = 0 },
-			{ name = 'strawberrysyrup', price = 0 },
-			{ name = 'lemonlimesyrup', price = 0 },
-			{ name = 'orangesyrup', price = 0 },
-			{ name = 'grapesyrup', price = 0 },
-			{ name = 'cherrysyrup', price = 0 },
-		},
-		locations = {
-			vec3(1594.76, 6455.54, 25.0)
-		}, 
-		targets = {
-			{ loc = vec3(1594.76, 6455.54, 25.0), length = 1.8, width = 0.8, heading = 335, minZ = 24.0, maxZ = 26.0, distance = 2 }
-		}
-	},
-
-	PopsDinerSnacks = {
-		name = 'Pops Diner Snack Shelf',
-		inventory = {
-			{ name = 'vanillacupcake', price = 10 },
-			{ name = 'chocolatecupcake', price = 10 },
-			{ name = 'chocolatebar', price = 10 },
-			{ name = 'jamdoughnut', price = 10 },
-			{ name = 'sugardoughnut', price = 10 },
-			{ name = 'custarddoughnut', price = 10 },
-			{ name = 'chocolatedoughnut', price = 10 },
-		},
-		locations = {
-			vec3(1588.83, 6456.13, 25.7)
-		}, 
-		targets = {
-			{ loc = vec3(1588.83, 6456.13, 25.7), length = 1.5, width = 0.8, heading = 335, minZ = 25.0, maxZ = 26.00, distance = 2 }
-		}
-	},
-
-	
+--[[ 
 	PoliceArmoury = {
 		name = 'Police Armoury',
 		groups = shared.police,
-		--[[ blip = {
+		blip = {
 			id = 110, colour = 84, scale = 0.8
-		}, ]] 
+		},
 		inventory = {
-		--	{ name = 'weapon_stungun', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
-		--	{ name = 'weapon_glock17', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 1 },
-		--	{ name = 'weapon_ar15', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade =  2 },
-		--	{ name = 'WEAPON_PQ15', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },
-		--	{ name = 'weapon_scarh', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 4 },
-		--	{ name = 'WEAPON_HK416', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 6 },
-		--	{ name = 'WEAPON_GRAU', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 8 },
-		--	{ name = 'WEAPON_PDMK18', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 10},
-		--	{ name = 'weapon_colbaton', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
-			
+			{ name = 'ammo-9', price = 5, },
+			{ name = 'ammo-rifle', price = 5, },
+			{ name = 'WEAPON_FLASHLIGHT', price = 200 },
+			{ name = 'WEAPON_NIGHTSTICK', price = 100 },
 
-			---- hero
-			{ name = 'WEAPON_HK417', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 2 },
-			{ name = 'WEAPON_PD870', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 2 },
-			{ name = 'WEAPON_PDCM607', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 2 },
-			{ name = 'WEAPON_SMG', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 2 },
-			
-			--- base
-			{ name = 'WEAPON_PDBATON', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 1 },
-			{ name = 'WEAPON_YTASER', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 1 },
-			{ name = 'WEAPON_PDG22', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 1 },
-			{ name = 'WEAPON_PDHK33', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 1 },
-			{ name = 'WEAPON_PDHK45', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 1 },
-			{ name = 'WEAPON_PDHKUSP', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 1 },
-			
+			{ name = 'heavyarmor', price = 25, },
+			{ name = 'handcuffs', price = 80, },
+			{ name = 'radio', price = 100, },
 
-			
-			
-			{ name = 'harness', price = 20, grade = 1 },
-			{ name = 'parachute', price = 20, grade = 0 },
-			{ name = 'diving_gear', price = 20, grade = 0 },
-			{ name = 'diving_fill', price = 20, grade = 0 },
-			{ name = 'WEAPON_FIREEXTINGUISHER', price = 50, metadata = { registered = true, serial = 'POL' }, grade = 0 },
+			{ name = 'ifaks', price = 5, },
+			{ name = 'advancedrepairkit', price = 25, },
+			{ name = 'empty_evidence_bag', price = 5, },
+			{ name = 'police_stormram', price = 15, },
+			{ name = 'weapon_flashlight', price = 50, },
+			{ name = 'weapon_nightstick', price = 50, },
+			{ name = 'weapon_stungun', price = 50, },
 
+			{ name = 'WEAPON_PISTOL', price = 500, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+			{ name = 'WEAPON_CARBINERIFLE', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },
+			{ name = 'WEAPON_STUNGUN', price = 500, metadata = { registered = true, serial = 'POL'} }
 
-			{ name = 'pistol_ammo', price = 20, grade = 1 },
-			{ name = 'smg_ammo', price = 20, grade = 1 },
-			{ name = 'shotgun_ammo', price = 20, grade = 2 },
-			{ name = 'rifle_ammo', price = 20, grade = 2 },
-			{ name = 'handcuffs', price = 100, metadata = { registered = true, serial = 'POL' }, grade = 1 },
-			{ name = 'weapon_flashlight', price = 50, metadata = { registered = true, serial = 'POL' }, grade = 0 },
-			{ name = 'police_stormram', price = 50, metadata = { registered = true, serial = 'POL' }, grade = 0 },
-			{ name = 'armor', price = 50,  grade = 0 },
-			{ name = 'armorplate', price = 5,  grade = 0 },
-			{ name = 'advancedrepairkit', price = 50, grade = 0 },
-			{ name = 'radio', price = 500, grade = 0 },
-			{ name = 'bandage', price = 30, grade = 0 },
-			{ name = 'ifaks', price = 40, grade = 0 },
-			{ name = 'megaphone', price = 100, grade = 0 },
-			{ name = 'spikestrip', price = 10, metadata = { registered = true, serial = 'POL' }, grade = 0 },
-			{ name = 'policegunrack', price = 100, metadata = { registered = true, serial = 'POL' }, grade = 0 },
-			{ name = 'uvlight', price = 100, grade = 0 },
-			{ name = 'keepcompanionpdk9', price = 2000, grade = 1 },
-			{ name = "firstaidforpet", price = 100, grade = 4 },
-			{ name = "petfood", price = 100, grade = 4 },
-			{ name = "petwaterbottleportable", price = 100, grade = 4 },
-			{ name = "water_bottle", price = 50, grade = 0 },
-			{ name = "sandwich", price = 100, grade = 0 },
-			{ name = "policecard", price = 1000, grade = 0 },
-			{ name = "weapon_nightstick", price = 1000, grade = 0 },
-
-
-			{ name = 'empty_evidence_bag', price = 2, grade = 0 },
-			{ name = 'nikon', price = 1000, grade = 0 },
-			{ name = 'gsrtestkit', price = 200, grade = 0 },
-			{ name = 'dnatestkit', price = 200, grade = 0 },
-			{ name = 'drugtestkit', price = 200, grade = 0 },
-			{ name = 'breathalyzer', price = 200, grade = 0 },
-			{ name = 'accesstool', price = 500, grade = 0 },
-			{ name = 'fingerprintreader', price = 200, grade = 0 },
-			{ name = 'sdcard', price = 100, grade = 0 },
-			{ name = 'microfibercloth', price = 100, grade = 0 },
-			{ name = 'blox', price = 100, grade = 0 },
-			{ name = 'fingerprintkit', price = 1000, grade = 0 },
-			{ name = 'mikrosil', price = 1000, grade = 0 },
-			{ name = 'fingerprinttape', price = 1000, grade = 0 },
-			{ name = 'jerrycan', price = 1000, grade = 0 },
-			
-
-		}, locations = {
-			vector3(482.564, -995.179, 30.69)
-		}, targets = {
-			{ loc = vector3(482.564, -995.179, 30.69), length = 1, width = .5, heading = 2.69, minZ= 8.03, maxZ= 12.03, distance = 5 }
-		}
-	},
-
-	--[[ EMSArmory = {
-		name = 'EMS Armory',
-		groups = {
-			['ambulance'] = 0
-		}, ]]
-		--[[ blip = {
-			id = 110, colour = 84, scale = 0.8
-		}, ]] 
-		--[[ inventory = {
-			{ name = 'radio', price = 0, grade = 0  },
-			{ name = 'bandage', price = 0, grade = 0  },
-			{ name = 'painkillers', price = 0, grade = 0  },
-			{ name = 'firstaid', price = 0, grade = 0  },
-			{ name = 'weapon_flashlight', price = 0, grade = 0  },
-			{ name = 'weapon_fireextinguisher', price = 0, grade = 0  },
-			{ name = 'handcuffs', price = 0, grade = 0  },
-			{ name = 'heavyarmor', price = 0, grade = 0  },
-			{ name = 'ems_idcard', price = 0, grade = 0  },
-
-		}, locations = {
-			vector3(-454.16, -307.77, 34.91),
-			vector3(-245.13, 6315.71, 32.82)
-		}, targets = {
-			{ loc = vector3(-454.16, -307.77, 34.91), length = 2.8, width = 1, heading = 20.0, minZ = 33.91, maxZ = 37.91, distance = 3 },
-			{ loc = vector3(-245.13, 6315.71, 32.82), length = 2.8, width = 1, heading = 230.0, minZ = 29.82, maxZ = 33.82, distance = 3 }
+		}, 
+        locations = {
+			vec3(482.363, -995.165, 30.69)
+			--vec3(836.04, -1287.22, 29.26 - 1),
+			--vec3(1842.4128, 3698.2122, 34.4735 - 1),
+		}, 
+        targets = {
+			{ 
+                loc = vec3(482.363, -995.165, 30.69 - 1), 
+                length = 0.5, 
+                width = 3.0, 
+                heading = 177.56, 
+                minZ = 30.45, 
+                maxZ = 32.50, 
+                distance = 6 
+                },
+                {
+                ped = `mp_m_shopkeep_01`,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                loc = vec3(482.363, -995.165, 30.69),
+                heading = 177.56,
+            }
+			--{ loc = vec3(1842.4128, 3698.2122, 34.4735 - 1), length = 0.5, width = 3.0, heading = 270.0, minZ = 30.5, maxZ = 32.0, distance = 6 },
+			--{ loc = vec3(836.04, -1287.22, 29.26 - 1), length = 0.5, width = 3.0, heading = 92.26, minZ = 30.5, maxZ = 32.0, distance = 6 }
 		}
 	}, ]]
-
+--[[ 
+	PoliceHrana = {
+		name = 'Данчо Хранителов',
+		inventory = {
+			{ name = 'sandwich', price = 5 },
+			{ name = 'water', price = 3 },
+			{ name = 'cola', price = 5 },
+		}, locations = {
+			vec3(446.12, -995.70, 30.69 - 1),
+			vec3(835.05, -1304.21, 28.24 - 1),
+			vec3(1865.1058, 3700.3225, 33.2441),
+		}, targets = {
+			{
+                ped = `mp_m_shopkeep_01`,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                loc = vec3(446.12, -995.70, 30.69 - 1),
+                heading = 87.61,
+            },
+			{
+                ped = `mp_m_shopkeep_01`,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                loc = vec3(835.05, -1304.21, 28.24 - 1),
+                heading = 181.00,
+            },
+			{
+                ped = `mp_m_shopkeep_01`,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                loc = vec3(1865.1058, 3700.3225, 33.2441 - 1),
+                heading = 1865.48,
+            },
+		}
+	}, ]]
 	--[[ Medicine = {
 		name = 'Medicine Cabinet',
 		groups = {
@@ -312,15 +224,163 @@ return {
 
 		}
 	},
-
+ ]]
 	VendingMachineDrinks = {
 		name = 'Vending Machine',
 		inventory = {
-			{ name = 'water', price = 10 },
+			{ name = 'water_bottle', price = 10 },
 			{ name = 'cola', price = 10 },
 		},
 		model = {
 			`prop_vend_soda_02`, `prop_vend_fridge01`, `prop_vend_water_01`, `prop_vend_soda_01`
 		}
-	} ]]
+	},
+--[[ 
+	DigitalDen = {
+		name = 'Digital Den',
+		blip = {
+			id = 59, colour = 69, scale = 0.8
+		},
+		inventory = {
+			{ name = 'phone', price = 500 },
+			{ name = 'yphone', price = 500 },
+			{ name = 'yflipphone', price = 500 },
+			{ name = 'yphone_natural', price = 500 },
+			{ name = 'yphone_black', price = 500 },
+			{ name = 'yphone_white', price = 500 },
+			{ name = 'yphone_blue', price = 500 },
+			{ name = 'yflip_mint', price = 500 },
+			{ name = 'yflip_gold', price = 500 },
+			{ name = 'yflip_graphite', price = 500 },
+			{ name = 'yflip_lavender', price = 500 },
+			{ name = 'radio', price = 100 },
+			{ name = 'screwdriver', price = 30 },
+			{ name = 'lockpick', price = 200 },
+			{ name = 'notebook', price = 50 },
+		}, locations = {
+			vec3(212.37, -1507.68, 29.29 - 1)
+		}, targets = {
+			-- { loc = vec3(392.74, -831.77, 29.29 - 1), length = 0.5, width = 3.0, heading = 228.04, minZ = 29.29 - 2, maxZ = 29.29 + 1, distance = 2 },
+			{
+                ped = `mp_m_shopkeep_01`,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                loc = vec3(212.37, -1507.68, 29.29 - 1),
+                heading = 222.51,
+            },
+		}
+	},
+
+	Upnatom = {
+		name = 'Snr. Buns Магазин',
+		inventory = {
+			{ name = 'upnatom-lettuce-uncut', price = 1 },
+			{ name = 'upnatom-tomato-uncut', price = 1 },
+			{ name = 'upnatom-onion-uncut', price = 1 },
+			{ name = 'upnatom-bacon-uncut', price = 1 },
+			{ name = 'upnatom-pickles-uncut', price = 1 },
+			{ name = 'upnatom-ketchup', price = 1 },
+			{ name = 'upnatom-mayonaise', price = 1 },
+			{ name = 'upnatom-mustard', price = 1 },
+			{ name = 'upnatom-ice', price = 1 },
+			{ name = 'upnatom-cup', price = 1 },
+			{ name = 'upnatom-meat-unfried', price = 1 },
+			{ name = 'upnatom-potato-uncut', price = 1 },
+			{ name = 'sodium_bicarbonate', price = 100 },
+		}, locations = {
+			vec3(29.35, -1770.43, 29.61 - 1)
+		}, targets = {
+			-- { loc = vec3(392.74, -831.77, 29.29 - 1), length = 0.5, width = 3.0, heading = 228.04, minZ = 29.29 - 2, maxZ = 29.29 + 1, distance = 2 },
+			{
+                ped = `mp_m_shopkeep_01`,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                loc = vec3(29.35, -1770.43, 29.61 - 1),
+                heading = 46.41,
+            },
+		}
+	},
+
+	Ambulance = {
+		name = 'Ambulance Shop',
+		groups = "ambulance",
+		inventory = {
+			{ name = 'bandageg', price = 10 },
+			{ name = 'painkillers', price = 10 },
+			{ name = 'gauze', price = 10 },
+			{ name = 'tape', price = 10 },
+			{ name = 'surgical_tray', price = 10 },
+			{ name = 'iodine', price = 10 },
+			{ name = 'syringe', price = 10 },
+			{ name = 'forceps', price = 10 },
+			{ name = 'pill', price = 10 },
+			{ name = 'surgical_gloves', price = 10 },
+			{ name = 'surgical_staple', price = 10 },
+		}, locations = {
+			vec3(354.35, -1386.69, 32.94 - 1)
+		}, targets = {
+			-- { loc = vec3(392.74, -831.77, 29.29 - 1), length = 0.5, width = 3.0, heading = 228.04, minZ = 29.29 - 2, maxZ = 29.29 + 1, distance = 2 },
+			{
+                ped = `mp_m_shopkeep_01`,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                loc = vec3(354.35, -1386.69, 32.94 - 1),
+                heading = 317.39,
+            },
+		}
+	},
+
+	Lawyer = {
+		name = 'Lawyer',
+		inventory = {
+			{ name = 'contract', price = 1000 },
+		}, locations = {
+			vec3(-552.49, -202.86, 38.24 - 1)
+		}, targets = {
+			-- { loc = vec3(392.74, -831.77, 29.29 - 1), length = 0.5, width = 3.0, heading = 228.04, minZ = 29.29 - 2, maxZ = 29.29 + 1, distance = 2 },
+			{
+                ped = `mp_m_shopkeep_01`,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                loc = vec3(-552.49, -202.86, 38.24 - 1),
+                heading = 341.74,
+            },
+		}
+	},
+
+	Goldpanning = {
+		name = 'Златотърсчов',
+		inventory = {
+			{ name = 'sifter', price = 200 },
+			{ name = 'bucket', price = 200 },
+			{ name = 'mold', price = 20 },
+		}, locations = {
+			vec3(-163.83, 3030.14, 20.89 - 1)
+		}, targets = {
+			-- { loc = vec3(392.74, -831.77, 29.29 - 1), length = 0.5, width = 3.0, heading = 228.04, minZ = 29.29 - 2, maxZ = 29.29 + 1, distance = 2 },
+			{
+                ped = `mp_m_shopkeep_01`,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                loc = vec3(-163.83, 3030.14, 20.89 - 1),
+                heading = 96.42,
+            },
+		}
+	},
+
+	Camping = {
+		name = 'Къмпинг магазин',
+		inventory = {
+				{ name = 'cchair', price = 200 },
+				{ name = 'cbarbeque', price = 250 },
+				{ name = 'cfire', price = 250 },
+				{ name = 'ctable', price = 400 },
+				{ name = 'ctent1', price = 1000 },
+		}, locations = {
+			vec3(46.23, -1749.59, 29.64 -1 )
+		}, targets = {
+			-- { loc = vec3(392.74, -831.77, 29.29 - 1), length = 0.5, width = 3.0, heading = 228.04, minZ = 29.29 - 2, maxZ = 29.29 + 1, distance = 2 },
+			{
+                ped = `mp_m_shopkeep_01`,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                loc = vec3(46.23, -1749.59, 29.64 -1),
+                heading = 48.36,
+            },
+		}
+	}, ]]
 }

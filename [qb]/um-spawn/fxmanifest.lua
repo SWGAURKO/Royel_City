@@ -3,7 +3,7 @@ game 'gta5'
 
 name "um-spawn"
 author "uyuyorum {um}"
-version "1.5.6"
+version "1.3.5-next"
 description 'A spawn menu beyond dreams'
 
 shared_scripts {

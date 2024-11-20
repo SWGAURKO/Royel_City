@@ -23,7 +23,6 @@ local CanCancel = true
 local InExitEmote = false
 local ExitAndPlay = false
 local EmoteCancelPlaying = false
-local currentEmote = {}
 IsInAnimation = false
 CurrentAnimationName = nil
 CurrentTextureVariation = nil
@@ -261,21 +260,13 @@ local function HandsUpLoop()
 end
 
 if Config.HandsupEnabled then
-    local function ToggleHandsUp(commandType)
-        RegisterCommand(commandType, function()
-            if IsPedInAnyVehicle(PlayerPedId(), false) and not Config.HandsupKeybindInCarEnabled and not InHandsup then
-                return
-            end
-            Handsup()
-        end, false)
-    end
+    RegisterCommand('handsup', function()
+        if IsPedInAnyVehicle(PlayerPedId(), false) and not Config.HandsupKeybindInCarEnabled and not InHandsup then
+            return
+        end
 
-    if Config.HoldToHandsUp then
-        ToggleHandsUp('+handsup')
-        ToggleHandsUp('-handsup')
-    else
-        ToggleHandsUp('handsup')
-    end
+        Handsup()
+    end, false)
 
     function Handsup()
         local playerPed = PlayerPedId()
@@ -789,9 +780,6 @@ end
 -----------------------------------------------------------------------------------------------------
 
 function OnEmotePlay(EmoteName, name, textureVariation)
-
-if not LocalPlayer.state.canEmote then return end
-
     local playerPed = PlayerPedId()
     local playerCoords = GetEntityCoords(playerPed)
 
@@ -806,7 +794,7 @@ if not LocalPlayer.state.canEmote then return end
     InVehicle = IsPedInAnyVehicle(PlayerPedId(), true)
 	Pointing = false
 
-    if not Config.AllowedInCars and InVehicle then
+    if not Config.AllowedInCars and InVehicle == 1 then
         return
     end
 
@@ -914,7 +902,7 @@ if not LocalPlayer.state.canEmote then return end
 
     MovementType = 0 -- Default movement type
 
-    if InVehicle then
+    if InVehicle == 1 then
         MovementType = 51
     elseif animOption then
         if animOption.EmoteMoving then
@@ -974,17 +962,6 @@ if not LocalPlayer.state.canEmote then return end
     end
     MostRecentDict = ChosenDict
     MostRecentAnimation = ChosenAnimation
-
-    local currentEmoteTable = EmoteName
-    for _, tabledata in pairs(RP) do
-        for command, emotedata in pairs(tabledata) do
-            if emotedata == EmoteName then
-                table.insert(currentEmoteTable, command)
-                break
-            end
-        end
-    end
-    currentEmote = currentEmoteTable
 
     if animOption and animOption.Prop then
         PropName = animOption.Prop
@@ -1215,7 +1192,7 @@ end
 
 function PlayExitAndEnterEmote(emoteName, name, textureVariation)
     local ply = PlayerPedId()
-    if not CanCancel then return end
+    if not CanCancel and force ~= true then return end
     if ChosenDict == "MaleScenario" and IsInAnimation then
         ClearPedTasksImmediately(ply)
         IsInAnimation = false
@@ -1279,17 +1256,14 @@ end
 -----------------------------------------------------------------------------------------------------
 
 exports("EmoteCommandStart", function(emoteName, textureVariation)
-    EmoteCommandStart(nil, {emoteName, textureVariation}, nil)
+        EmoteCommandStart(nil, {emoteName, textureVariation}, nil)
 end)
 exports("EmoteCancel", EmoteCancel)
 exports("CanCancelEmote", function(State)
-    CanCancel = State == true
+		CanCancel = State == true
 end)
 exports('IsPlayerInAnim', function()
-    return CurrentExportEmote
-end)
-exports('getCurrentEmote', function()
-    return currentEmote
+	return CurrentExportEmote
 end)
 
 -- Door stuff
@@ -1372,7 +1346,6 @@ AddEventHandler("CEventPlayerCollisionWithPed", function()
 
     isBumpingPed = false
     ClearPedTasks(PlayerPedId())
-    Wait(125)
     DestroyAllProps()
     OnEmotePlay(emote, emote.name, CurrentTextureVariation )
 end)

@@ -1,8 +1,7 @@
-local playerDropped = ...
 local Inventory = require 'modules.inventory.server'
 local Items = require 'modules.items.server'
 
-AddEventHandler('esx:playerDropped', playerDropped)
+AddEventHandler('esx:playerDropped', server.playerDropped)
 
 AddEventHandler('esx:setJob', function(source, job, lastJob)
 	local inventory = Inventory(source)
@@ -64,7 +63,7 @@ end
 function server.buyLicense(inv, license)
 	if server.hasLicense(inv, license.name) then
 		return false, 'already_have'
-	elseif Inventory.GetItem(inv, 'money', false, true) < license.price then
+	elseif Inventory.GetItemCount(inv, 'money') < license.price then
 		return false, 'can_not_afford'
 	end
 

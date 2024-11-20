@@ -58,26 +58,19 @@ function OnPlayerLoaded(bool)
 end
 
 function InsideHouseorApartments()
-    if GetResourceState('qbx_properties') == 'started' and GetResourceState('ps-housing') ~= 'started' then
-        local currentProperty = GetPlayerDataQB().metadata?.currentPropertyId
-        if currentProperty ~= nil then
-            TriggerServerEvent('qbx_properties:server:enterProperty', { id = tonumber(currentProperty), isSpawn = true })
-        end
-        return
-    end
-
     local meta = GetInside()
-    if meta?.house ~= nil then
-        local houseId = meta?.house
+    if meta.house ~= nil then
+        local houseId = meta.house
         TriggerEvent('qb-houses:client:LastLocationHouse', houseId)
+        TriggerServerEvent('qbx_properties:server:enterProperty', tonumber(houseId))
         Debug('Player Inside House | ' .. '| ' .. houseId)
-    elseif meta?.apartment?.apartmentType ~= nil or meta?.apartment?.apartmentId ~= nil then
-        local apartmentType = meta?.apartment?.apartmentType
-        local apartmentId = meta?.apartment?.apartmentId
+    elseif meta.apartment.apartmentType ~= nil or meta.apartment.apartmentId ~= nil then
+        local apartmentType = meta.apartment.apartmentType
+        local apartmentId = meta.apartment.apartmentId
         Debug('Player Inside Apartment | ' .. '| ' .. apartmentType .. ' | ' .. apartmentId)
         TriggerEvent('qb-apartments:client:LastLocationHouse', apartmentType, apartmentId)
-    elseif meta?.propertyId ~= nil or meta?.property_id ~= nil then
-        local propertyID = tostring(meta?.propertyId or meta?.property_id)
-        TriggerServerEvent('ps-housing:server:enterProperty', propertyID)
+        TriggerServerEvent('qbx_properties:server:enterProperty', tonumber(apartmentId))
+    elseif meta.property_id ~= nil then
+        TriggerServerEvent('ps-housing:server:resetMetaData')
     end
 end

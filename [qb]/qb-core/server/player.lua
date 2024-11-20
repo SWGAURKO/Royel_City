@@ -100,50 +100,6 @@ function QBCore.Player.CheckPlayerData(source, PlayerData)
         PlayerData.name = GetPlayerName(source)
     end
 
-    local validatedJob = false
-    if PlayerData.job and PlayerData.job.name ~= nil and PlayerData.job.grade and PlayerData.job.grade.level ~= nil then
-        local jobInfo = QBCore.Shared.Jobs[PlayerData.job.name]
-
-        if jobInfo then
-            local jobGradeInfo = jobInfo.grades[tostring(PlayerData.job.grade.level)]
-            if jobGradeInfo then
-                PlayerData.job.label = jobInfo.label
-                PlayerData.job.grade.name = jobGradeInfo.name
-                PlayerData.job.payment = jobGradeInfo.payment
-                PlayerData.job.grade.isboss = jobGradeInfo.isboss or false
-                PlayerData.job.isboss = jobGradeInfo.isboss or false
-                validatedJob = true
-            end
-        end
-    end
-
-    if validatedJob == false then
-        -- set to nil, as the default job (unemployed) will be added by `applyDefaults`
-        PlayerData.job = nil
-    end
-
-    local validatedGang = false
-    if PlayerData.gang and PlayerData.gang.name ~= nil and PlayerData.gang.grade and PlayerData.gang.grade.level ~= nil then
-        local gangInfo = QBCore.Shared.Gangs[PlayerData.gang.name]
-
-        if gangInfo then
-            local gangGradeInfo = gangInfo.grades[tostring(PlayerData.gang.grade.level)]
-            if gangGradeInfo then
-                PlayerData.gang.label = gangInfo.label
-                PlayerData.gang.grade.name = gangGradeInfo.name
-                PlayerData.gang.payment = gangGradeInfo.payment
-                PlayerData.gang.grade.isboss = gangGradeInfo.isboss or false
-                PlayerData.gang.isboss = gangGradeInfo.isboss or false
-                validatedGang = true
-            end
-        end
-    end
-
-    if validatedGang == false then
-        -- set to nil, as the default gang (unemployed) will be added by `applyDefaults`
-        PlayerData.gang = nil
-    end
-
     applyDefaults(PlayerData, QBCore.Config.Player.PlayerDefaults)
 
     if GetResourceState('qb-inventory') ~= 'missing' then
@@ -341,7 +297,6 @@ function QBCore.Player.CreatePlayer(PlayerData, Offline)
                 end
             end
         end
-        if self.PlayerData.money[moneytype] - amount < QBCore.Config.Money.MinusLimit then return false end
         self.PlayerData.money[moneytype] = self.PlayerData.money[moneytype] - amount
 
         if not self.Offline then
@@ -353,7 +308,7 @@ function QBCore.Player.CreatePlayer(PlayerData, Offline)
             end
             TriggerClientEvent('hud:client:OnMoneyChange', self.PlayerData.source, moneytype, amount, true)
             if moneytype == 'bank' then
-                TriggerClientEvent('qb-phone:client:RemoveBankMoney', self.PlayerData.source, amount)
+                TriggerClientEvent('lb-phone:client:RemoveBankMoney', self.PlayerData.source, amount)
             end
             TriggerClientEvent('QBCore:Client:OnMoneyChange', self.PlayerData.source, moneytype, amount, 'remove', reason)
             TriggerEvent('QBCore:Server:OnMoneyChange', self.PlayerData.source, moneytype, amount, 'remove', reason)
@@ -500,6 +455,15 @@ function QBCore.Player.Save(source)
         QBCore.ShowError(resourceName, 'ERROR QBCORE.PLAYER.SAVE - PLAYERDATA IS EMPTY!')
     end
 end
+
+--[[ AddEventHandler('onResourceStop', function(resourceName)
+    if (resourceName == 'qb-inventory') then
+        local players = QBCore.Functions.GetPlayers()
+        for _, player in ipairs(players) do
+            QBCore.Player.Save(player)
+        end
+    end
+end) ]]
 
 function QBCore.Player.SaveOffline(PlayerData)
     if PlayerData then

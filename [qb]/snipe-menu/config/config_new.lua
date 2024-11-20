@@ -17,7 +17,7 @@ Config.Sounds = {
 Config.AllowMovementWhileInMenu = true 
 
 Config.ShowLines = false -- if true, it will show lines between you and the player. if false, it will not show lines between you and the player.
-Config.NewNamesLogic = true -- if true, it will use the new names logic. if false, it will use the old names logic.
+Config.NewNamesLogic = false -- if true, it will use the new names logic. if false, it will use the old names logic.
 Config.LineColor = {["r"] = 255, ["g"] = 0, ["b"] =0} -- color of the line between you and the player. (r, g, b)
 
 Config.ShowInGameNamesForNamesAndBlips = false -- if true, it will show in game names for names and blips. if false, it will show their steam/fivem name

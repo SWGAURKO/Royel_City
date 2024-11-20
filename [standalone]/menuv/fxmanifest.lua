@@ -10,14 +10,12 @@
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
-
 name 'MenuV'
 version '1.4.1'
 description 'FiveM menu library for creating menu\'s'
 author 'ThymonA'
 contact 'contact@arens.io'
 url 'https://github.com/ThymonA/menuv/'
-
 files {
     'menuv.lua',
     'menuv/components/*.lua',
@@ -27,9 +25,7 @@ files {
     'dist/assets/fonts/*.woff',
     'languages/*.json'
 }
-
 ui_page 'dist/menuv.html'
-
 client_scripts {
     'config.lua',
     'menuv/components/utilities.lua',

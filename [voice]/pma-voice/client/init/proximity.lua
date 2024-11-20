@@ -9,9 +9,8 @@ function orig_addProximityCheck(ply)
 	local tgtPed = GetPlayerPed(ply)
 	local voiceRange = GetConvar('voice_useNativeAudio', 'false') == 'true' and proximity * 3 or proximity
 	local distance = #(plyCoords - GetEntityCoords(tgtPed))
-	return distance < voiceRange, distance
+	return distance < voiceRange, distance 
 end
-
 local addProximityCheck = orig_addProximityCheck
 
 exports("overrideProximityCheck", function(fn)
@@ -30,14 +29,14 @@ function addNearbyPlayers()
 	currentTargets = {}
 	MumbleClearVoiceTargetChannels(voiceTarget)
 	if LocalPlayer.state.disableProximity then return end
-	MumbleAddVoiceChannelListen(LocalPlayer.state.assignedChannel)
-	MumbleAddVoiceTargetChannel(voiceTarget, LocalPlayer.state.assignedChannel)
+	MumbleAddVoiceChannelListen(playerServerId)
+	MumbleAddVoiceTargetChannel(voiceTarget, playerServerId)
 
-	for source, _ in pairs(callData) do
-		if source ~= playerServerId then
-			MumbleAddVoiceTargetChannel(voiceTarget, MumbleGetVoiceChannelFromServerId(source))
+    for source, _ in pairs(callData) do
+        if source ~= playerServerId then
+            MumbleAddVoiceTargetChannel(voiceTarget, source)
 		end
-	end
+    end
 
 
 	local players = GetActivePlayers()
@@ -49,11 +48,11 @@ function addNearbyPlayers()
 			-- if distance then
 			-- 	currentTargets[serverId] = distance
 			-- else
-			-- 	-- backwards compat, maybe remove in v7
+			-- 	-- backwards compat, maybe remove in v7 
 			-- 	currentTargets[serverId] = 15.0
 			-- end
 			-- logger.verbose('Added %s as a voice target', serverId)
-			MumbleAddVoiceTargetChannel(voiceTarget, MumbleGetVoiceChannelFromServerId(serverId))
+			MumbleAddVoiceTargetChannel(voiceTarget, serverId)
 		end
 	end
 end
@@ -68,7 +67,7 @@ function setSpectatorMode(enabled)
 			local serverId = GetPlayerServerId(ply)
 			if serverId == playerServerId then goto skip_loop end
 			logger.verbose("Adding %s to listen table", serverId)
-			MumbleAddVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
+			MumbleAddVoiceChannelListen(serverId)
 			::skip_loop::
 		end
 	else
@@ -77,7 +76,7 @@ function setSpectatorMode(enabled)
 			local serverId = GetPlayerServerId(ply)
 			if serverId == playerServerId then goto skip_loop end
 			logger.verbose("Removing %s from listen table", serverId)
-			MumbleRemoveVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
+			MumbleRemoveVoiceChannelListen(serverId)
 			::skip_loop::
 		end
 	end
@@ -85,21 +84,21 @@ end
 
 RegisterNetEvent('onPlayerJoining', function(serverId)
 	if isListenerEnabled then
-		MumbleAddVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
+		MumbleAddVoiceChannelListen(serverId)
 		logger.verbose("Adding %s to listen table", serverId)
 	end
 end)
 
 RegisterNetEvent('onPlayerDropped', function(serverId)
 	if isListenerEnabled then
-		MumbleRemoveVoiceChannelListen(MumbleGetVoiceChannelFromServerId(serverId))
+		MumbleRemoveVoiceChannelListen(serverId)
 		logger.verbose("Removing %s from listen table", serverId)
 	end
 end)
 
 local listenerOverride = false
 exports("setListenerOverride", function(enabled)
-	type_check({ enabled, "boolean" })
+	type_check({enabled, "boolean"})
 	listenerOverride = enabled
 end)
 
@@ -110,14 +109,14 @@ local voiceState = "proximity"
 CreateThread(function()
 	TriggerEvent('chat:addSuggestion', '/muteply', 'Mutes the player with the specified id', {
 		{ name = "player id", help = "the player to toggle mute" },
-		{ name = "duration",  help = "(opt) the duration the mute in seconds (default: 900)" }
+		{ name = "duration", help = "(opt) the duration the mute in seconds (default: 900)" }
 	})
 	while true do
 		-- wait for mumble to reconnect
 		while not MumbleIsConnected() do
 			Wait(100)
 		end
-		-- Leave the check here as we don't want to do any of this logic
+		-- Leave the check here as we don't want to do any of this logic 
 		if GetConvarInt('voice_enableUi', 1) == 1 then
 			local curTalkingStatus = MumbleIsPlayerTalking(PlayerId()) == 1
 			if lastRadioStatus ~= radioPressed or lastTalkingStatus ~= curTalkingStatus then
@@ -152,7 +151,7 @@ exports("setVoiceState", function(_voiceState, channel)
 	end
 	voiceState = _voiceState
 	if voiceState == "channel" then
-		type_check({ channel, "number" })
+		type_check({channel, "number"})
 		-- 65535 is the highest a client id can go, so we add that to the base channel so we don't manage to get onto a players channel
 		channel = channel + 65535
 		MumbleSetVoiceChannel(channel)
@@ -173,9 +172,7 @@ AddEventHandler("onClientResourceStop", function(resource)
 			local isResource = string.match(proximityCheckRef, resource)
 			if isResource then
 				addProximityCheck = orig_addProximityCheck
-				logger.warn(
-					'Reset proximity check to default, the original resource [%s] which provided the function restarted',
-					resource)
+				logger.warn('Reset proximity check to default, the original resource [%s] which provided the function restarted', resource)
 			end
 		end
 	end
@@ -190,7 +187,7 @@ exports("addVoiceMode", function(distance, name)
 			return
 		end
 	end
-	Cfg.voiceModes[#Cfg.voiceModes + 1] = { distance, name }
+	Cfg.voiceModes[#Cfg.voiceModes + 1] = {distance, name}
 end)
 
 exports("removeVoiceMode", function(name)

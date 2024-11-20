@@ -2,8 +2,8 @@ if Config.Framework ~= "standalone" then
     return
 end
 
----@param source number
----@return string | nil
+--- @param source number
+--- @return string | nil
 function GetIdentifier(source)
     for _, v in pairs(GetPlayerIdentifiers(source)) do
         if v:sub(1, #"license:") == "license:" then
