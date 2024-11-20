@@ -15,11 +15,12 @@ RegisterNetEvent('wasabi_police:sendToJail', function()
     if not wsb.hasGroup(Config.policeJobs) then return end
     local target, time
 
-    if Config.Jail.input then
+    if Config.Jail.input or Config.Jail.BuiltInPrison.enabled then
         local coords = GetEntityCoords(wsb.cache.ped)
         local player = wsb.getClosestPlayer(vec3(coords.x, coords.y, coords.z), 2.0, false)
         if not player then
             TriggerEvent('wasabi_bridge:notify', Strings.no_nearby, Strings.no_nearby_desc, 'error')
+            return
         else
             local input = wsb.inputDialog(Strings.minutes_dialog, { Strings.minutes_dialog_field }, Config.UIColor)
             if not input then return end
@@ -28,34 +29,39 @@ RegisterNetEvent('wasabi_police:sendToJail', function()
             local quantity = math.floor(input1)
             if quantity < 1 then
                 TriggerEvent('wasabi_bridge:notify', Strings.invalid_amount, Strings.invalid_amount_desc, 'error')
+                return
             else
                 target, time = GetPlayerServerId(player), quantity
             end
         end
     end
-    if Config.Jail.jail == 'qb' then
-        TriggerServerEvent('wasabi_police:qbPrisonJail', target, time)
-    elseif Config.Jail.jail == 'rcore' then
-        ExecuteCommand('jail ' .. target .. ' jailed ' .. time .. ' Sentenced')
-    elseif Config.Jail.jail == 'tk_jail' then
-        if wsb.framework == 'esx' then
-            exports.esx_tk_jail:jail(target, time)
-        elseif wsb.framework == 'qb' then
-            exports.qb_tk_jail:jail(target, time)
+    if Config.Jail.BuiltInPrison.enabled and target and time then
+        TriggerServerEvent('wasabi_police:server:sendToJail', target, time)
+    else 
+        if Config.Jail.jail == 'qb' then
+            TriggerServerEvent('wasabi_police:qbPrisonJail', target, time)
+        elseif Config.Jail.jail == 'rcore' then
+            exports['rcore_prison']:Jail(target, time)
+        elseif Config.Jail.jail == 'tk_jail' then
+            if wsb.framework == 'esx' then
+                exports.esx_tk_jail:jail(target, time)
+            elseif wsb.framework == 'qb' then
+                exports.qb_tk_jail:jail(target, time)
+            end
+        elseif Config.Jail.jail == 'hd_jail' then
+            TriggerServerEvent('HD_Jail:sendToJail', target, 'Prison', time, 'Sentenced', 'Police')
+        elseif Config.Jail.jail == 'myPrison' then
+            ExecuteCommand('jail')
+        elseif Config.Jail.jail == 'qalle-jail' then
+            TriggerServerEvent('esx-qalle-jail:jailPlayer', target, time, 'Sentenced')
+        elseif Config.Jail.jail == 'plouffe' then
+            exports.plouffe_jail:Set(target, time)
+        elseif Config.Jail.jail == 'mx' then
+            TriggerServerEvent('mx_jail:jailPlayer', target, time, target)
+            TriggerServerEvent('mx_jail:setTime', target, time)
+        elseif Config.Jail.jail == 'custom' then
+            -- Custom logic here?
         end
-    elseif Config.Jail.jail == 'hd_jail' then
-        TriggerServerEvent('HD_Jail:sendToJail', target, 'Prison', time, 'Sentenced', 'Police')
-    elseif Config.Jail.jail == 'myPrison' then
-        ExecuteCommand('jail')
-    elseif Config.Jail.jail == 'qalle-jail' then
-        TriggerServerEvent('esx-qalle-jail:jailPlayer', target, time, 'Sentenced')
-    elseif Config.Jail.jail == 'plouffe' then
-        exports.plouffe_jail:Set(target, time)
-    elseif Config.Jail.jail == 'mx' then
-        TriggerServerEvent('mx_jail:jailPlayer', target, time, target)
-        TriggerServerEvent('mx_jail:setTime', target, time)
-    elseif Config.Jail.jail == 'custom' then
-        -- Custom logic here?
     end
 end)
 
@@ -338,6 +344,15 @@ openJobMenu = function()
             icon = 'gauge-high',
             arrow = true,
             event = 'wasabi_police:radarPosts',
+        }
+    end
+    if Config.CCTVCameras and Config.CCTVCameras.enabled and Config.CCTVCameras.jobs[job] and tonumber(grade or 0) >= Config.CCTVCameras.jobs[job] then
+        Options[#Options + 1] = {
+            title = Strings.menu_cctv_cameras,
+            description = Strings.menu_cctv_cameras_desc,
+            icon = 'video',
+            arrow = true,
+            event = 'wasabi_police:cctvCameras',
         }
     end
     Options[#Options + 1] = {
