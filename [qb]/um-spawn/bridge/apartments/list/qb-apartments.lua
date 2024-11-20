@@ -1,12 +1,12 @@
 if not um.property.apartments then return end
 
-if GetResourceState('bcs_housing') ~= 'started' then return end
+if GetResourceState('qb-apartments') ~= 'started' then return end
 
-Debug('bcs_housing for apartments list ready', 'debug')
+Debug('qb_apartments ready for list', 'debug')
 
 UM_apartments = {
     ['SouthRockfordDrive'] = {
-        type = '19585',
+        type = 'apartment1',
         coords = vector4(-693.8, -1089.88, 13.69, 247.9),
         text = 'South Rockford Drive',
         image = 'https://files.fivemerr.com/images/b4260d0e-2637-48b6-84f3-530be5b0960e.png',
@@ -21,7 +21,7 @@ UM_apartments = {
         tag = "rent"
     },
     ['MorningwoodBlvd'] = {
-        type = '31364',
+        type = 'apartment2',
         coords = vector4(-1254.77, -404.6, 34.57, 124.53),
         text = 'Morningwood Blvd',
         image = 'https://files.fivemerr.com/images/21898068-c4ab-44cc-a6e3-7c1d80b13e08.png',
@@ -36,7 +36,7 @@ UM_apartments = {
         tag = "rent"
     },
     ['IntegrityWay'] = {
-        type = '39729',
+        type = 'apartment3',
         coords = vector4(224.52, -625.15, 40.46, 248.28),
         text = 'Integrity Way',
         image = 'https://files.fivemerr.com/images/e73f75e6-1d5e-4a21-8280-a76ebd32266a.png',
@@ -50,7 +50,7 @@ UM_apartments = {
         tag = "rent"
     },
     ['TinselTowers'] = {
-        type = '50374',
+        type = 'apartment4',
         coords = vector4(-617.55, 5.74, 41.85, 359.29),
         text = 'Tinsel Towers',
         image = 'https://files.fivemerr.com/images/3632fd69-dbda-4114-b587-aa5352e808bf.png',
@@ -65,7 +65,7 @@ UM_apartments = {
         tag = "rent"
     },
     ['FantasticPlaza'] = {
-        type = '82734',
+        type = 'apartment5',
         coords = vector4(311.69, -1080.13, 29.4, 100.58),
         text = 'Fantastic Plaza',
         image = 'https://files.fivemerr.com/images/37cf5188-a90c-4705-b100-f25bba4dadb9.png',

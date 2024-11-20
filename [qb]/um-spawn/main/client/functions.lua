@@ -1,4 +1,4 @@
---[[ um-spawn function ? ]]
+local apartmentStart = GetConvar('um:NewPlayerApartmentInsideStart', 'false') == 'true'
 
 
 -- The function `SetNui` is setting the NUI (Native UI) focus in Lua. It takes a boolean parameter
@@ -63,7 +63,6 @@ function SetTimeCustom(bool)
     end
 end
 
-
 -- The `RequestCollision` function is used to request collision data at a specific set of coordinates.
 -- It takes a parameter `coords` which represents the coordinates (x, y, z) where collision data is requested.
 function RequestCollision(coords)
@@ -94,51 +93,78 @@ function RequestCollision(coords)
     end
 end
 
-
-
 -- The `SelectSound` function is playing a sound effect in the game. It uses the `PlaySound` function
 -- to play the sound with the following parameters:
 function SelectSound()
     PlaySound(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", false, 0, false)
 end
 
--- The `GetProperties` function is a Lua function that retrieves the properties (apartments and houses)
--- owned by the player. It uses the `getPropertyStatusAndData` function to check the status of the
--- properties and retrieve the data associated with them.
+local function normalize(text)
+    if not text or type(text) == 'number' then return 'undefined' end
+    return text:gsub("%s+", ""):gsub("%d", ""):lower()
+end
+
+local function findMatchingApartment(houseLabel)
+    if not UM_apartments or not next(UM_apartments) then return nil end
+    local normalizedHouseLabel = normalize(houseLabel)
+    for apartmentName, apartmentData in pairs(UM_apartments) do
+        if normalize(apartmentName):find(normalizedHouseLabel) then
+            Debug('Found matching apartment for house: ' .. houseLabel .. ' -> ' .. apartmentName)
+            return apartmentData
+        end
+    end
+
+    return nil
+end
+
 function GetProperties()
-    local function getPropertyStatusAndData(status, forceStart, defaultData, callbackName)
+    local function getPropertyStatusAndData(status, defaultData, callbackName)
         if not status then return false, false end
 
         local result = lib.callback.await(callbackName)
-        if result then
+        if result and next(result) then
             if callbackName == 'getHouses' then
                 local processedHouses = {}
-                    for i = 1, (#result), 1 do
-                        local houseData = result[i]
-                        processedHouses[#processedHouses+1] = {
-                            house = houseData.property_id or houseData.house or houseData.id,
-                            label = houseData.street or houseData.house or houseData.label
-                        }
-                    end
+
+                for i = 1, #result do
+                    local houseData = result[i]
+                    local houseLabel = houseData?.street or houseData?.house or houseData?.label or
+                        houseData?.property_name or houseData?.name
+                    local matchingApartment = findMatchingApartment(houseLabel)
+
+                    processedHouses[#processedHouses + 1] = {
+                        house = houseData.property_id or houseData.house or houseData.id or houseData.identifier,
+                        label = houseLabel,
+                        image = matchingApartment and matchingApartment.image or um.propertyDefaultImage
+                    }
+                end
+
                 return processedHouses, false
             elseif callbackName == 'getBookmarks' then
                 local processedBookmarks = {}
-                for i = 1, (#result), 1 do
+                for i = 1, #result do
                     local bookmarksData = result[i]
-                    processedBookmarks[#processedBookmarks+1] = {
+                    processedBookmarks[#processedBookmarks + 1] = {
                         label = bookmarksData.name,
                         image = bookmarksData.image,
                         location = bookmarksData.location
                     }
                 end
                 return processedBookmarks, false
-            else
-                TriggerEvent("apartments:client:SetHomeBlip", result.type)
+            elseif callbackName == 'getApartments' then
+                if GetResourceState('qbx_properties') == 'started' then
+                    return false, false
+                end
+
+                if result?.type then
+                    TriggerEvent("apartments:client:SetHomeBlip", result.type)
+                end
+
                 return result, false
             end
         end
 
-        if forceStart then
+        if apartmentStart then
             return defaultData, true
         end
 
@@ -146,22 +172,19 @@ function GetProperties()
     end
 
     local myApartments, forceApartAndUMApart = getPropertyStatusAndData(
-        um.property.apartments.status,
-        um.forceApartmentStart,
+        apartmentStart,
         UM_apartments,
         'getApartments'
     )
 
     local myHouses = getPropertyStatusAndData(
-        um.property.houses.status,
-        nil,
+        um.property.houses,
         nil,
         'getHouses'
     )
 
     local myBookmarks = getPropertyStatusAndData(
         um.main.bookmark.status,
-        nil,
         nil,
         'getBookmarks'
     )
@@ -172,8 +195,8 @@ end
 function CloseNui(place)
     SelectSound()
     SetNui(false)
-    SendNUIMessage({ui = false})
-    if place == 'rentApartment' then return end
+    SendNUIMessage({ ui = false })
+    if GetResourceState('qbx_properties') ~= 'started' and place == 'rentApartment' then return end
     TriggerServerEvent('um-spawn:server:setBucketDefault')
     local timeout = 0
     local getBuck = lib.callback.await('um-spawn:server:getBucket')

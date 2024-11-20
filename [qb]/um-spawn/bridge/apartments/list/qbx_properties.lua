@@ -1,6 +1,6 @@
-if not um.property.apartments.status then return end
+if not um.property.apartments then return end
 
-if um.property.apartments.script ~= 'qbx_properties' then return end
+if GetResourceState('qbx_properties') ~= 'started' then return end
 
 Debug('qbx_properties for apartments list ready', 'debug')
 
@@ -9,7 +9,7 @@ UM_apartments = {
         type = '1',
         coords = vec4(-1397.8, -561.99, 48.59, 67.55),
         text = 'Del Perro Heights Apt',
-        image = './properties/qbox/selection1.png',
+        image = 'https://files.fivemerr.com/images/2fec38dd-47bc-41d8-b146-2a7e8e726039.png',
         features = {
             beds = '2',
             bath = '2',
@@ -23,7 +23,7 @@ UM_apartments = {
         type = '2',
         coords = vec4(-1397.8, -561.99, 48.59, 67.55),
         text = 'Del Perro Heights Apt 2',
-        image = './properties/qbox/selection2.png',
+        image = 'https://files.fivemerr.com/images/2fec38dd-47bc-41d8-b146-2a7e8e726039.png',
         features = {
             beds = '2',
             bath = '2',
@@ -38,7 +38,7 @@ UM_apartments = {
         type = '3',
         coords = vec4(-84.06, -609.77, 41.74, 247.0),
         text = '4 Integrity Way Apt',
-        image = './properties/qbox/selection3.png',
+        image = 'https://files.fivemerr.com/images/a8646ecc-7025-4f6c-a667-afca3fc73d2e.png',
         features = {
             beds = 'St',
             bath = '1',
@@ -52,7 +52,7 @@ UM_apartments = {
         type = '4',
         coords = vec4(-69.14, -578.47, 44.0, 248.27),
         text = '4 Integrity Way Apt 2',
-        image = './properties/qbox/selection4.png',
+        image = 'https://files.fivemerr.com/images/2fec38dd-47bc-41d8-b146-2a7e8e726039.png',
         features = {
             beds = '1',
             bath = '1',
@@ -67,7 +67,7 @@ UM_apartments = {
         type = '5',
         coords = vec4(-953.85, -386.96, 41.58, 294.02),
         text = 'Richard Majestic Apt',
-        image = './properties/qbox/selection5.png',
+        image = 'https://files.fivemerr.com/images/a8646ecc-7025-4f6c-a667-afca3fc73d2e.png',
         features = {
             beds = 'St',
             bath = '1',
@@ -82,7 +82,7 @@ UM_apartments = {
         type = '6',
         coords = vector4(-617.55, 5.74, 41.85, 359.29),
         text = 'Tinsel Towers Apt',
-        image = './properties/qbox/selection6.png',
+        image = 'https://files.fivemerr.com/images/a8646ecc-7025-4f6c-a667-afca3fc73d2e.png',
         features = {
             beds = 'St',
             bath = '1',

@@ -4,23 +4,15 @@ um.debug = false
 
 um.lang = 'en' -- tr,en,es,zh,fr,hi [or add locales > .lua]
 
---  If you want the apartment start for new player, set it to true.
--- ?If you make it true, new user does not have an apartment, you force them to choose an apartment
-um.forceApartmentStart = false
+um.propertyDefaultImage = 'https://files.fivemerr.com/images/534eff8f-e6cb-473f-b441-bf0ac114e256.png'
 
 um.property = {
-    apartments = {
-        status = false, -- If you want to show the apartment system, set it to true.
-        script = 'qb', -- qb, qbx (for old qbx_apartments), ps, qbx_properties, bcs
-    },
-    houses = {
-        status = true, -- If you want to show the house system, set it to true.
-        script = 'ps', -- qb, qbx , ps , qs , nolag, bcs
-    }
+    apartments = false,
+    houses = true
 }
 
--- If you want to show the xmas icon, set it to true or hidden false
-um.xmas = {
+-- If you want to show the logo, set it to true or hidden false
+um.logo = {
     status = false,
     url = 'imageurl',
 }
@@ -36,14 +28,14 @@ um.main = {
         skyspawnPos = -20,           -- -100 vertical, -20 horizontal
     },
     spawn = {
-        type = 'gtaVNative', -- playerFromSky (um), gtaVNative
-        cutScene = true,     -- If you want to show the cutscene, set it to true.
+        type = 'playerFromSky', -- playerFromSky (um), gtaVNative
+        cutScene = false,       -- If you want to show the cutscene, set it to true.
     },
     ped = {
         status = true, -- Make it true if you want your character to see and walk the path
     },
     bookmark = {
-        status = true,    -- If you want to show the bookmark system, set it to true.
+        status = false,   -- If you want to show the bookmark system, set it to true.
         money = {
             free = false, -- If you want to bookmark the free money, set it to true.
             amount = math.random(1000, 10000) or 500
@@ -67,7 +59,7 @@ um.hud = function(bool)
 end
 
 um.weather = {
-    sync = false,  -- If you want to sync the weather, set it to true.
+    sync = true,  -- If you want to sync the weather, set it to true.
     sc = 'qb',     -- cd , qb
     type = 'XMAS', -- https://docs.fivem.net/docs/game-references/weather-types/
     time = 23,     -- 0 - 23

@@ -1,12 +1,12 @@
 if not um.property.houses then return end
 
-if GetResourceState('ps-housing') ~= 'started' then return end
+if GetResourceState('qbx_properties') ~= 'started' then return end
 
-Debug('ps-housing for house', 'debug')
+Debug('qbx_properties for houses', 'debug')
 
 lib.callback.register('getHouses', function(source)
     local citizenid = GetCitizenID(GetPlayer(source))
-    local houses = MySQL.query.await('SELECT * FROM properties WHERE owner_citizenid = ? AND apartment IS NULL',
+    local houses = MySQL.query.await('SELECT id, property_name, coords FROM properties WHERE owner = ?',
         { citizenid })
 
     local found = houses[1] ~= nil

@@ -24,14 +24,26 @@ local function setPlace(data)
     elseif placeType == 'properties' then
         OnPlayerLoaded()
         if data.id ~= nil then
-            TriggerServerEvent('ps-housing:server:enterProperty', tostring(data.type))
-            TriggerServerEvent('qbx_properties:server:enterProperty', data)
-            TriggerEvent("qb-apartments:client:LastLocationHouse", data.type, data.id)
+            if GetResourceState('ps-housing') == 'started' then
+                TriggerServerEvent('ps-housing:server:enterProperty', tostring(data.type), data.id, 'spawn')
+            elseif GetResourceState('qbx_properties') == 'started' then
+                TriggerServerEvent('qbx_properties:server:enterProperty', { id = data.id, isSpawn = true })
+            elseif GetResourceState('bcs_housing') == 'started' then
+                TriggerEvent('Housing:client:EnterHome', data.id)
+            else
+                TriggerEvent("qb-apartments:client:LastLocationHouse", data.type, data.id)
+            end
             Debug('Apartments: | Properties Name: ' .. data.id .. ' | | ' .. 'Properties Type:' .. data.type)
         else
-            TriggerEvent('Housing:enterHome', data.type)
-            TriggerServerEvent('ps-housing:server:enterProperty', tostring(data.type))
-            TriggerEvent("qb-houses:client:LastLocationHouse", data.type)
+            if GetResourceState('ps-housing') == 'started' then
+                TriggerServerEvent('ps-housing:server:enterProperty', tostring(data.type), 'spawn')
+            elseif GetResourceState('qbx_properties') == 'started' then
+                TriggerServerEvent('qbx_properties:server:enterProperty', { id = data.type, isSpawn = true })
+            elseif GetResourceState('bcs_housing') == 'started' then
+                TriggerEvent('Housing:client:EnterHome', data.type)
+            else
+                TriggerEvent('qb-houses:client:LastLocationHouse', data.type)
+            end
             Debug('Houses: | Properties Name: ' .. data.type)
         end
         Wait(500)
@@ -40,10 +52,15 @@ local function setPlace(data)
         OnPlayerLoaded(true)
     elseif placeType == 'rentApartment' then
         OnPlayerLoaded()
-        TriggerServerEvent("ps-housing:server:createNewApartment", data.label)
-        TriggerServerEvent("apartments:server:CreateApartment", data.type, data.label, true)
-        TriggerServerEvent('qbx_properties:server:apartmentSelect', tonumber(data.type))
-        TriggerServerEvent("Housing:server:CreateApartment", data.type)
+        if GetResourceState('ps-housing') == 'started' then
+            TriggerServerEvent('ps-housing:server:createNewApartment', data.label)
+        elseif GetResourceState('qbx_properties') == 'started' then
+            TriggerServerEvent('qbx_properties:server:apartmentSelect', tonumber(data.type))
+        elseif GetResourceState('bcs_housing') == 'started' then
+            TriggerServerEvent("Housing:server:CreateApartment", data.type)
+        else
+            TriggerServerEvent("apartments:server:CreateApartment", data.type, data.label, true, true)
+        end
         Debug('Rent Apartment: ' .. data.type)
     end
 end
