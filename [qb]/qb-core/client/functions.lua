@@ -551,7 +551,6 @@ function QBCore.Functions.GetVehicleProperties(vehicle)
     end
 end
 
-
 function QBCore.Functions.SetVehicleProperties(vehicle, props)
     local gameBuild = GetGameBuildNumber()
     if DoesEntityExist(vehicle) then

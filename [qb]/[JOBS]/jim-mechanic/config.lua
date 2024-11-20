@@ -5,9 +5,9 @@ Config = {
 
 		Menu = "ox",  				-- "qb", "ox", "gta"
 		Notify = "qb",				-- "qb", "ox", "gta", "esx"
-		ProgressBar = "ox", 		-- "qb", "ox", "gta", "esx"
+		ProgressBar = "qb", 		-- "qb", "ox", "gta", "esx"
 
-		distkph = false, 			-- Set to false to read distance travelled in Miles.
+		distkph = true, 			-- Set to false to read distance travelled in Miles.
 
 		RenewedBanking = false, 	-- This is used for manualrepair benches, enable to use
 	},
