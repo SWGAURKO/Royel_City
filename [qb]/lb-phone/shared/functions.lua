@@ -1,6 +1,8 @@
 lib = exports.loaf_lib:GetLib()
 
-local function isResourceStartedOrStarting(resource)
+local phoneVersion = GetResourceMetadata(GetCurrentResourceName(), "version", 0) or ""
+
+local function IsResourceStartedOrStarting(resource)
     local state = GetResourceState(resource)
     return state == "started" or state == "starting"
 end
@@ -21,7 +23,7 @@ function infoprint(level, text, ...)
 		prefix = "^5[INFO]^7:"
 	end
 
-	print("^6[LB Phone] " .. prefix .. "^7: " .. text, ...)
+	print("^6[LB Phone " .. phoneVersion .. "] " .. prefix .. "^7: " .. text, ...)
 end
 
 function debugprint(...)
@@ -43,7 +45,7 @@ function debugprint(...)
             end
         end
 
-        print("^6[LB Phone] ^3[Debug]^7: " .. str)
+        print("^6[LB Phone " .. phoneVersion .. "] ^3[Debug]^7: " .. str)
     end
 end
 
@@ -59,7 +61,7 @@ if Config.HouseScript == "auto" then
     }
 
     for i = 1, #houseScripts do
-        if isResourceStartedOrStarting(houseScripts[i]) then
+        if IsResourceStartedOrStarting(houseScripts[i]) then
             Config.HouseScript = houseScripts[i]
             debugprint("Detected house script: " .. houseScripts[i])
             break
@@ -85,7 +87,7 @@ if Config.Item.Unique and Config.Item.Inventory == "auto" then
     }
 
     for i = 1, #inventoryScripts do
-        if isResourceStartedOrStarting(inventoryScripts[i]) then
+        if IsResourceStartedOrStarting(inventoryScripts[i]) then
             Config.Item.Inventory = inventoryScripts[i]
             debugprint("Detected inventory script: " .. inventoryScripts[i])
             break
@@ -100,11 +102,11 @@ end
 if Config.Framework == "auto" then
     debugprint("Detecting framework")
 
-    if isResourceStartedOrStarting("es_extended") then
+    if IsResourceStartedOrStarting("es_extended") then
         Config.Framework = "esx"
-    elseif isResourceStartedOrStarting("qb-core") then
+    elseif IsResourceStartedOrStarting("qb-core") then
         Config.Framework = "qb"
-    elseif isResourceStartedOrStarting("ox_core") then
+    elseif IsResourceStartedOrStarting("ox_core") then
         Config.Framework = "ox"
     else
         Config.Framework = "standalone"
@@ -127,7 +129,7 @@ if Config.Voice.System == "auto" then
         local resource = voiceScripts[i][1]
         local system = voiceScripts[i][2]
 
-        if isResourceStartedOrStarting(resource) then
+        if IsResourceStartedOrStarting(resource) then
             Config.Voice.System = system
             debugprint("Detected voice script: " .. resource)
             break
@@ -184,21 +186,21 @@ end
 local function GenerateLocales(localesFile)
     local tempLocals = {}
 
-    local function formatLocales(localeTable, prefix)
+    local function FormatLocales(localeTable, prefix)
         for k, v in pairs(localeTable) do
             if type(v) == "table" then
-                formatLocales(v, prefix .. k .. ".")
+                FormatLocales(v, prefix .. k .. ".")
             else
                 tempLocals[prefix .. k] = v
             end
         end
     end
 
-    formatLocales(localesFile, "")
+    FormatLocales(localesFile, "")
     return tempLocals
 end
 
-local function loadLocales(locale)
+local function LoadLocales(locale)
     if not locale then
         return {}
     end
@@ -218,10 +220,10 @@ local function loadLocales(locale)
     return GenerateLocales(decoded)
 end
 
-local locales = loadLocales(Config.DefaultLocale or "en")
+local locales = LoadLocales(Config.DefaultLocale or "en")
 local defaultLocales
 if Config.DefaultLocale ~= "en" then
-    defaultLocales = loadLocales("en")
+    defaultLocales = LoadLocales("en")
 else
     defaultLocales = {}
 end
@@ -316,6 +318,10 @@ function ConvertJSTimestamp(timestamp)
 
     return os.time(date) * 1000
 end
+
+exports("GetConfig", function()
+    return Config
+end)
 
 if IsDuplicityVersion() then
     ---@param event string

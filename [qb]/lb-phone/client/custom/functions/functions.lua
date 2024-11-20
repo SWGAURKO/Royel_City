@@ -14,9 +14,8 @@ function TakeControlOfEntity(entity)
     local timer = GetGameTimer() + 5000
 
     while not NetworkHasControlOfEntity(entity) and timer > GetGameTimer() do
-        Wait(0)
-
         NetworkRequestControlOfEntity(entity)
+        Wait(0)
     end
 
     return NetworkHasControlOfEntity(entity)
@@ -29,6 +28,7 @@ function LoadModel(model)
     model = type(model) == "number" and model or joaat(model)
 
     RequestModel(model)
+
     while not HasModelLoaded(model) do
         Wait(0)
     end
@@ -41,16 +41,20 @@ end
 ---@return number? entity The entity, or nil if it doesn't exist
 function WaitForNetworkId(netId)
     local timer = GetGameTimer() + 5000
+
     while not NetworkDoesNetworkIdExist(netId) do
         Wait(0)
+
         if GetGameTimer() > timer then
             return
         end
     end
 
     timer = GetGameTimer() + 5000
+
     while not DoesEntityExist(NetworkGetEntityFromNetworkId(netId)) do
         Wait(0)
+
         if GetGameTimer() > timer then
             return
         end

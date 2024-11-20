@@ -66,24 +66,22 @@ function HasPhoneItem(number)
 
     if GetResourceState("ox_inventory") == "started" then
         return (exports.ox_inventory:Search("count", Config.Item.Name) or 0) > 0
-    elseif GetResourceState("qs-inventory") then
-        local exportExists, result = pcall(function()
-            return exports["qs-inventory"]:Search(Config.Item.Name)
-        end)
-
-        if exportExists then
-            return (result or 0) > 0
-        end
+    elseif GetResourceState("qs-inventory") == "started" then
+        return (exports["qs-inventory"]:Search(Config.Item.Name) or 0) > 0
     end
 
     local inventory = ESX.GetPlayerData()?.inventory
+
     if not inventory then
         infoprint("warning", "Unsupported inventory, tell the inventory author to add support for it.")
         return false
     end
 
+    debugprint("inventory", inventory)
+
     for i = 1, #inventory do
         local item = inventory[i]
+
         if item.name == Config.Item.Name and item.count > 0 then
             return true
         end
@@ -152,137 +150,177 @@ function CreateFrameworkVehicle(vehicleData, coords)
     return vehicle
 end
 
--- Company app
-function GetCompanyData(cb)
-    local jobData = {
+--#region Services app
+
+function GetCompanyData()
+    local companyData = {
         job = ESX.PlayerData.job.name,
         jobLabel = ESX.PlayerData.job.label,
         isBoss = ESX.PlayerData.job.grade_name == "boss"
     }
 
-    if not jobData.isBoss then
+    if not companyData.isBoss then
         for cId = 1, #Config.Companies.Services do
             local company = Config.Companies.Services[cId]
-            if company.job == jobData.job then
+
+            if company.job == companyData.job then
                 if not company.bossRanks then
                     break
                 end
 
-                for i = 1, #company.bossRanks do
-                    if company.bossRanks[i] == ESX.PlayerData.job.grade_name then
-                        jobData.isBoss = true
-                        break
-                    end
-                end
+                companyData.isBoss = contains(company.bossRanks, ESX.PlayerData.job.grade_name)
 
                 break
             end
         end
     end
 
-    if jobData.isBoss then
-        local moneyPromise = promise.new()
-
-        ESX.TriggerServerCallback("esx_society:getSocietyMoney", function(money)
-            jobData.balance = money
-            moneyPromise:resolve()
-        end, jobData.job)
-
-        Citizen.Await(moneyPromise)
-
-        local employeesPromise = promise.new()
-
-        ESX.TriggerServerCallback("esx_society:getEmployees", function(employees)
-            jobData.employees = employees
-
-            for i = 1, #employees do
-                local employee = employees[i]
-
-                employees[i] = {
-                    name = employee.name,
-                    id = employee.identifier,
-
-                    gradeLabel = employee.job.grade_label,
-                    grade = employee.job.grade,
-
-                    canInteract = employee.job.grade_name ~= "boss"
-                }
-            end
-            employeesPromise:resolve()
-        end, jobData.job)
-
-        Citizen.Await(employeesPromise)
-
-        local gradesPromise = promise.new()
-
-        ESX.TriggerServerCallback("esx_society:getJob", function(job)
-            local grades = {}
-            for i = 1, #job.grades do
-                local grade = job.grades[i]
-                grades[i] = {
-                    label = grade.label,
-                    grade = grade.grade
-                }
-            end
-            jobData.grades = grades
-            gradesPromise:resolve()
-        end, jobData.job)
-
-        Citizen.Await(gradesPromise)
+    if not companyData.isBoss then
+        return companyData
     end
 
-    cb(jobData)
+    ESX.TriggerServerCallback("esx_society:getSocietyMoney", function(money)
+        companyData.balance = money
+    end, companyData.job)
+
+    ESX.TriggerServerCallback("esx_society:getEmployees", function(employees)
+        for i = 1, #employees do
+            local employee = employees[i]
+
+            employees[i] = {
+                name = employee.name,
+                id = employee.identifier,
+
+                gradeLabel = employee.job.grade_label,
+                grade = employee.job.grade,
+
+                canInteract = employee.job.grade_name ~= "boss"
+            }
+        end
+
+        companyData.employees = employees
+    end, companyData.job)
+
+    ESX.TriggerServerCallback("esx_society:getJob", function(job)
+        local grades = {}
+
+        for i = 1, #job.grades do
+            local grade = job.grades[i]
+
+            grades[i] = {
+                label = grade.label,
+                grade = grade.grade
+            }
+        end
+
+        companyData.grades = grades
+    end, companyData.job)
+
+    local timeout = GetGameTimer() + 2000
+
+    while not companyData.balance or not companyData.employees or not companyData.grades do
+        Wait(0)
+
+        if GetGameTimer() > timeout then
+            infoprint("error", "Failed to get company data (timed out after 2s)")
+            print("balance: " .. tostring(companyData.balance))
+            print("employees: " .. tostring(companyData.employees))
+            print("grades: " .. tostring(companyData.grades))
+
+            companyData.employees = companyData.employees or {}
+            companyData.balance = companyData.balance or 0
+            companyData.grades = companyData.grades or {}
+            break
+        end
+    end
+
+    return companyData
 end
 
 function DepositMoney(amount, cb)
     TriggerServerEvent("esx_society:depositMoney", ESX.PlayerData.job.name, amount)
-    SetTimeout(500, function()
-        ESX.TriggerServerCallback("esx_society:getSocietyMoney", cb, ESX.PlayerData.job.name)
-    end)
+    Wait(500) -- Wait for the server to update the balance
+
+    ESX.TriggerServerCallback("esx_society:getSocietyMoney", cb, ESX.PlayerData.job.name)
 end
 
 function WithdrawMoney(amount, cb)
     TriggerServerEvent("esx_society:withdrawMoney", ESX.PlayerData.job.name, amount)
-    SetTimeout(500, function()
-        ESX.TriggerServerCallback("esx_society:getSocietyMoney", cb, ESX.PlayerData.job.name)
-    end)
+    Wait(500) -- Wait for the server to update the balance
+
+    ESX.TriggerServerCallback("esx_society:getSocietyMoney", cb, ESX.PlayerData.job.name)
 end
 
 function HireEmployee(source, cb)
+    local playersPromise = promise.new()
+
     ESX.TriggerServerCallback("esx_society:getOnlinePlayers", function(players)
-        for i = 1, #players do
-            local player = players[i]
-            if player.source == source then
-                ESX.TriggerServerCallback("esx_society:setJob", function()
-                    cb({
-                        name = player.name,
-                        id = player.identifier
-                    })
-                end, player.identifier, ESX.PlayerData.job.name, 0, "hire")
-                return
-            end
-        end
+        playersPromise:resolve(players)
     end)
+
+    local players = Citizen.Await(playersPromise)
+    local player
+
+    for i = 1, #players do
+        if players[i].source == source then
+            player = players[i]
+            break
+        end
+    end
+
+    if not player then
+        return false
+    end
+
+    local hirePromise = promise.new()
+
+    ESX.TriggerServerCallback("esx_society:setJob", function()
+        hirePromise:resolve(true)
+    end, player.identifier, ESX.PlayerData.job.name, 0, "hire")
+
+    return Citizen.Await(hirePromise)
 end
 
 function FireEmployee(identifier, cb)
+    local firePomise = promise.new()
+
     ESX.TriggerServerCallback("esx_society:setJob", function()
-        cb(true)
+        firePomise:resolve(true)
     end, identifier, "unemployed", 0, "fire")
+
+    return Citizen.Await(firePomise)
 end
 
 function SetGrade(identifier, newGrade, cb)
-    ESX.TriggerServerCallback("esx_society:getJob", function(job)
-        if newGrade > #job.grades - 1 then
+    local promotePromise = promise.new()
+
+    ESX.TriggerServerCallback("esx_society:getJob", function(jobData)
+        if newGrade > #jobData.grades - 1 then
             return cb(false)
         end
 
         ESX.TriggerServerCallback("esx_society:setJob", function()
-            cb(true)
+            promotePromise:resolve(true)
         end, identifier, ESX.PlayerData.job.name, newGrade, "promote")
     end, ESX.PlayerData.job.name)
+
+    return Citizen.Await(promotePromise)
 end
 
 --IMPLEMENT DUTY SYSTEM FOR ESX HERE
 -- function ToggleDuty()
 -- end
+
+--#endregion
+
+RegisterNetEvent("esx:removeInventoryItem", function(item, count)
+    if not Config.Item.Require or Config.Item.Unique or item ~= Config.Item.Name or count > 0 then
+        return
+    end
+
+    Wait(500)
+
+    if not HasPhoneItem() then
+        OnDeath()
+    end
+end)

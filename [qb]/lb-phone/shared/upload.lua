@@ -117,7 +117,7 @@ UploadMethods = {
             },
         },
     },
-    Fivemanage = {
+    OldFivemanage = {
         Video = {
             url = "https://api.fivemanage.com/api/video",
             field = "video",

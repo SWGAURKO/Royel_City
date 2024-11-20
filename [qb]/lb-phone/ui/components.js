@@ -89,7 +89,7 @@ if (!globalThis.componentsLoaded) {
     }
 
     function colorPicker(cb, data) {
-        useComponent(cb, { ...data, component: 'colorpicker' });
+        useComponent(cb, { ...data, customApp: true, component: 'colorpicker' });
     }
 
     function contactSelector(cb, data) {

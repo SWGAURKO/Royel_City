@@ -25,11 +25,7 @@ local function getChannel(company, phoneNumber)
         return channel
     end
 
-    local id = GenerateId("phone_services_channels", "id")
-
-    MySQL.update.await("INSERT INTO phone_services_channels (id, company, phone_number) VALUES (?, ?, ?)", { id, company, phoneNumber })
-
-    return id
+    return MySQL.insert.await("INSERT INTO phone_services_channels (company, phone_number) VALUES (?, ?)", { company, phoneNumber })
 end
 
 ---@param job string
@@ -69,12 +65,10 @@ BaseCallback("services:sendMessage", function(source, phoneNumber, channelId, co
         y = coords.y
     end
 
-    local messageId = GenerateId("phone_services_messages", "id")
-    MySQL.update.await([[
-        INSERT INTO phone_services_messages (id, channel_id, sender, message, x_pos, y_pos)
-        VALUES (@id, @channelId, @sender, @message, @xPos, @yPos)
+    local messageId = MySQL.insert.await([[
+        INSERT INTO phone_services_messages (channel_id, sender, message, x_pos, y_pos)
+        VALUES (@channelId, @sender, @message, @xPos, @yPos)
     ]], {
-        ["@id"] = messageId,
         ["@channelId"] = channelId,
         ["@sender"] = phoneNumber,
         ["@message"] = message,
@@ -134,7 +128,7 @@ end)
 ---@param page? number
 BaseCallback("services:getRecentMessages", function(source, phoneNumber, page)
     return MySQL.query.await([[
-        SELECT id, phone_number, company, company, last_message, `timestamp`
+        SELECT id, phone_number, company, last_message, `timestamp`
         FROM phone_services_channels
         WHERE phone_number = ? OR company = ?
         ORDER BY `timestamp` DESC
@@ -173,13 +167,13 @@ end, false)
 
 ---@param company string
 ---@return { firstname: string, lastname: string, grade: string, number?: string, online: boolean }[] employees
-BaseCallback("services:getEmployees", function(source,eNumber, company)
+BaseCallback("services:getEmployees", function(source, phoneNumber, company)
     if not Config.Companies.SeeEmployees or Config.Companies.SeeEmployees == "none" or not allowedCompanies[company] or not GetAllEmployees then
-        return {}
+        return false
     end
 
     if Config.Companies.SeeEmployees == "employees" and GetJob(source) ~= company then
-        return {}
+        return false
     end
 
     ---@type { firstname: string, lastname: string, grade: string, number?: string, online: boolean }[]

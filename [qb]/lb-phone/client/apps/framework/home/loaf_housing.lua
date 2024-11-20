@@ -4,6 +4,7 @@ end
 
 RegisterNUICallback("Home", function(data, cb)
     local action = data.action
+    debugprint("Home:" .. (action or ""))
 
     if action == "getHomes" then
         local ownedHouses = exports.loaf_housing:GetOwnedHouses()

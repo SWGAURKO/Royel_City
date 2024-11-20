@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `phone_photo_album_photos` (
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `phone_notes` (
-    `id` VARCHAR(10) NOT NULL,
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `phone_number` VARCHAR(15) NOT NULL,
     `title` VARCHAR(50) NOT NULL,
     `content` LONGTEXT, -- limit maybe?
@@ -240,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `phone_phone_contacts` (
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `phone_phone_calls` (
-    `id` VARCHAR(10) NOT NULL,
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 
     `caller` VARCHAR(15) NOT NULL, -- the phone number of the person who called
     `callee` VARCHAR(15) NOT NULL, -- the phone number of the person who was called
@@ -263,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `phone_phone_blocked_numbers` (
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `phone_phone_voicemail` (
-    `id` VARCHAR(10) NOT NULL,
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 
     `caller` VARCHAR(15) NOT NULL,
     `callee` VARCHAR(15) NOT NULL,
@@ -419,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `phone_instagram_follow_requests` (
 
 -- CLOCK
 CREATE TABLE IF NOT EXISTS `phone_clock_alarms` (
-    `id` VARCHAR(10) NOT NULL,
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `phone_number` VARCHAR(15) NOT NULL,
 
     `hours` INT(2) NOT NULL DEFAULT 0,
@@ -581,7 +581,7 @@ CREATE TABLE IF NOT EXISTS `phone_wallet_transactions` (
 
 -- YELLOW PAGES
 CREATE TABLE IF NOT EXISTS `phone_yellow_pages_posts` (
-    `id` VARCHAR(10) NOT NULL,
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `phone_number` VARCHAR(15) NOT NULL,
     `title` VARCHAR(50) NOT NULL,
     `description` VARCHAR(1000) NOT NULL,
@@ -621,7 +621,7 @@ CREATE TABLE IF NOT EXISTS `phone_marketplace_posts` (
 
 -- MUSIC
 CREATE TABLE IF NOT EXISTS `phone_music_playlists` (
-    `id` VARCHAR(10) NOT NULL,
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `phone_number` VARCHAR(15) NOT NULL,
 
     `name` VARCHAR(50) NOT NULL,
@@ -632,7 +632,7 @@ CREATE TABLE IF NOT EXISTS `phone_music_playlists` (
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `phone_music_saved_playlists` (
-    `playlist_id` VARCHAR(50) NOT NULL,
+    `playlist_id` INT UNSIGNED NOT NULL,
     `phone_number` VARCHAR(15) NOT NULL,
 
     PRIMARY KEY (`playlist_id`, `phone_number`),
@@ -642,7 +642,7 @@ CREATE TABLE IF NOT EXISTS `phone_music_saved_playlists` (
 
 CREATE TABLE IF NOT EXISTS `phone_music_songs` (
     `song_id` VARCHAR(100) NOT NULL,
-    `playlist_id` VARCHAR(50) NOT NULL,
+    `playlist_id` INT UNSIGNED NOT NULL,
 
     PRIMARY KEY (`song_id`, `playlist_id`),
     FOREIGN KEY (`playlist_id`) REFERENCES `phone_music_playlists`(`id`) ON DELETE CASCADE
@@ -657,7 +657,7 @@ CREATE TABLE IF NOT EXISTS `phone_mail_accounts` (
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `phone_mail_messages` (
-    `id` VARCHAR(10) NOT NULL,
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 
     `recipient` VARCHAR(100) NOT NULL,
     `sender` VARCHAR(100) NOT NULL,
@@ -675,7 +675,7 @@ CREATE TABLE IF NOT EXISTS `phone_mail_messages` (
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `phone_mail_deleted` (
-    `message_id` VARCHAR(10) NOT NULL,
+    `message_id` INT UNSIGNED NOT NULL,
     `address` VARCHAR(100) NOT NULL,
 
     PRIMARY KEY (`message_id`, `address`),
@@ -685,7 +685,7 @@ CREATE TABLE IF NOT EXISTS `phone_mail_deleted` (
 
 -- COMPANIES APP
 CREATE TABLE IF NOT EXISTS `phone_services_channels` (
-    `id` VARCHAR(10) NOT NULL,
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `phone_number` VARCHAR(15) NOT NULL,
     `company` VARCHAR(50) NOT NULL,
 
@@ -696,8 +696,8 @@ CREATE TABLE IF NOT EXISTS `phone_services_channels` (
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `phone_services_messages` (
-    `id` VARCHAR(10) NOT NULL,
-    `channel_id` VARCHAR(50) NOT NULL,
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `channel_id` INT UNSIGNED NOT NULL,
 
     `sender` VARCHAR(15) NOT NULL,
     `message` VARCHAR(1000) NOT NULL,
@@ -713,7 +713,7 @@ CREATE TABLE IF NOT EXISTS `phone_services_messages` (
 
 -- MAPS
 CREATE TABLE IF NOT EXISTS `phone_maps_locations` (
-    `id` VARCHAR(10) NOT NULL,
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `phone_number` VARCHAR(15) NOT NULL,
 
     `name` VARCHAR(50) NOT NULL,

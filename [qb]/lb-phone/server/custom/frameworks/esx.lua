@@ -16,8 +16,8 @@ else
 end
 debugprint("ESX loaded")
 
---- @param source number
---- @return string | nil
+---@param source number
+---@return string | nil
 function GetIdentifier(source)
     return ESX.GetPlayerFromId(source)?.identifier
 end
@@ -37,14 +37,8 @@ function HasPhoneItem(source, number)
 
     if GetResourceState("ox_inventory") == "started" then
         return (exports.ox_inventory:Search(source, "count", Config.Item.Name) or 0) > 0
-    elseif GetResourceState("qs-inventory") then
-        local exportExists, result = pcall(function()
-            return exports["qs-inventory"]:GetItemTotalAmount(source, Config.Item.Name)
-        end)
-
-        if exportExists then
-            return (result or 0) > 0
-        end
+    elseif GetResourceState("qs-inventory") == "started" then
+        return (exports["qs-inventory"]:GetItemTotalAmount(source, Config.Item.Name) or 0) > 0
     end
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -413,6 +407,26 @@ if ESX.RegisterCommand then
                 name = "password",
                 help = "The new password",
                 type = "any"
+            }
+        }
+    })
+
+    ESX.RegisterCommand("resetphonesecurity", "admin", function(xPlayer, args, showError)
+        local id = args.id
+        local phoneNumber = GetEquippedPhoneNumber(id)
+
+        if not phoneNumber then
+            return showError("No phone number found for player " .. id)
+        end
+
+        ResetSecurity(phoneNumber)
+    end, false, {
+        help = "Reset a user's phone security (pin code, face unlock)",
+        arguments = {
+            {
+                name = "id",
+                help = "The player id (source)",
+                type = "number"
             }
         }
     })

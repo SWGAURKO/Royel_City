@@ -6,6 +6,7 @@ local waitKeysPromise, waitKeysHouse
 
 RegisterNUICallback("Home", function(data, cb)
     local action, houseData = data.action, data.houseData
+    debugprint("Home:" .. (action or ""))
 
     if action == "getHomes" then
         lib.TriggerCallback("phone:home:getOwnedHouses", cb)

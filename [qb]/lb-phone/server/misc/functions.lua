@@ -154,10 +154,7 @@ function Log(app, source, type, title, message, avatar, image)
 end
 
 function GetTimestampISO()
-    ---@diagnostic disable-next-line: param-type-mismatch
-    local currentTime = os.time(os.date("!*t")) -- Get the current time in UTC
-
-    return os.date("%Y-%m-%dT%H:%M:%S.000Z", currentTime)
+    return os.date("!%Y-%m-%dT%H:%M:%S.000Z")
 end
 
 local anyExternalAllowed = false
@@ -171,9 +168,7 @@ end
 function IsMediaLinkAllowed(link)
     if not Config.UploadWhitelistedDomains or #Config.UploadWhitelistedDomains == 0 then
         return true
-    end
-
-    if anyExternalAllowed and #Config.ExternalWhitelistedDomains == 0 and #Config.ExternalBlacklistedDomains == 0 then
+	elseif anyExternalAllowed and #Config.ExternalWhitelistedDomains == 0 and #Config.ExternalBlacklistedDomains == 0 then
         return true
     end
 
@@ -181,9 +176,7 @@ function IsMediaLinkAllowed(link)
 
     if not anyExternalAllowed then
         return contains(Config.UploadWhitelistedDomains, domain)
-    end
-
-    if #Config.ExternalBlacklistedDomains > 0 and contains(Config.ExternalBlacklistedDomains, domain) then
+	elseif #Config.ExternalBlacklistedDomains > 0 and contains(Config.ExternalBlacklistedDomains, domain) then
         return false
     elseif #Config.ExternalWhitelistedDomains > 0 and not contains(Config.ExternalWhitelistedDomains, domain) then
         return false
@@ -194,7 +187,7 @@ end
 
 AddEventHandler("playerDropped", function()
     local src = source
-    local fivemId = GetPlayerIdentifierByType(src, "fivem")
+    local fivemId = GetPlayerIdentifierByType(src --[[@as string]], "fivem")
 
     if not fivemId then
         return
