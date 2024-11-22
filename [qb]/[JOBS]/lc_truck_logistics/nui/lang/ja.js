@@ -83,6 +83,7 @@ Lang["ja"] = {
 	trucks_page_spawn: "トラックをスポーン",
 	trucks_page_remove: "選択解除",
 	trucks_page_select: "トラックを選択",
+	trucks_page_unlock: "このトラックをアンロックするには、<b>レベル {0}</b> に到達してください",
 
 	mydrivers_page_title: "ドライバー",
 	mydrivers_page_desc: "ここで全てのドライバーを閲覧、トラックの設定ができます",

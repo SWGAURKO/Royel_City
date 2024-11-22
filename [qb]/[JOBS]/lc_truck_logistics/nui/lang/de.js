@@ -83,6 +83,7 @@ Lang["de"] = {
 	trucks_page_spawn: "Lastwagen erscheinen lassen",
 	trucks_page_remove: "Abwählen",
 	trucks_page_select: "Lastwagen auswählen",
+	trucks_page_unlock: "Erreiche <b>Stufe {0}</b>, um diesen Lkw freizuschalten",
 
 	mydrivers_page_title: "Fahrer",
 	mydrivers_page_desc: "Hier findest du deine Fahrer. Du kannst für jeden Fahrer einen LKW einrichten",

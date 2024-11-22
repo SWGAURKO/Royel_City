@@ -83,6 +83,7 @@ Lang["fr"] = {
 	trucks_page_spawn: "Camion de ponte",
 	trucks_page_remove: "Désélectionner",
 	trucks_page_select: "Sélectionnez un camion",
+	trucks_page_unlock: "Atteignez le <b>niveau {0}</b> pour débloquer ce camion",
 
 	mydrivers_page_title: "Conducteurs",
 	mydrivers_page_desc: "Voir tous vos pilotes ici. Vous pouvez configurer un camion pour chacun",

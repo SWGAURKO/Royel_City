@@ -1,4 +1,4 @@
-WebhookURL = "https://discord.com/api/webhooks/1269289218488799304/-CokbmQBcgbItcQ03dFT3hF6sqs9NHZS7tcsYu7jaJPXdAzL_rUortV6atnDpxR4mnGd" -- Webhook to send logs to discord
+WebhookURL = "WEBHOOK" -- Webhook to send logs to discord
 
 function beforeBuyLocation(source,user_id)
 	-- Here you can do any verification when a player is opening the trucker UI for the first time, like if player has the permission or money to that or anything else you want to check. return true or false
@@ -37,7 +37,7 @@ function beforeStartContract(source,contract_id)
 	return true
 end
 
-function afterfinishContract(source,received_amount,received_xp,distance)
+function afterfinishContract(source,received_amount,received_xp,distance,contract_data)
 	-- Here you can run any code when player finishes the job. Does not return anything
 end
 

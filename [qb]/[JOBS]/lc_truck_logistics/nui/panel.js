@@ -519,10 +519,17 @@ window.addEventListener("message", async function (event) {
 
 		$("#dealership-page-list").empty();
 		list_item = ``;
-		const sorted_dealership = Utils.sortElement(config.dealership, "price");
+		const sorted_dealership = Utils.sortElement(config.dealership, ["required_level", "price"]);
 		for (const truck of sorted_dealership) {
+			let button_html = `<div class="mx-3 mt-3 mb-2"><button onclick="buyTruck('${truck.id}')" type="button" class="btn btn-primary btn-block"><small>${Utils.translate("dealership_page_buy_button")}</small></button></div> <small class="d-flex justify-content-center text-muted">${Utils.translate("dealership_page_bottom_text")}</small>`;
+			let dealership_locked_background = "";
+			if (config.player_level < truck.required_level) {
+				button_html = `<div class="mx-3 mt-4 mb-2"><div class="d-flex align-items-center" style="min-height: 35px;"><i class="fa-solid fa-lock text-muted"></i><span class=" ml-2 small">${Utils.translate("trucks_page_unlock").format(truck.required_level)}</span></div></div>`;
+				dealership_locked_background = "dealership-locked-background";
+			}
 			list_item += `
-				<div class="card"> <img src="${truck.img}" class="card-img-top" width="100%">
+				<div class="card ${dealership_locked_background}">
+					<img src="${truck.img}" class="card-img-top" width="100%">
 					<div class="card-body pt-0 px-0">
 						<div class="d-flex flex-row justify-content-between mb-0 mt-3 px-3"> <span class="text-muted">${Utils.translate("dealership_page_truck")}</span>
 							<h6>${truck.name}</h6>
@@ -546,7 +553,7 @@ window.addEventListener("message", async function (event) {
 								</div>
 							</div>
 						</div>
-						<div class="mx-3 mt-3 mb-2"><button onclick="buyTruck('${truck.id}')" type="button" class="btn btn-primary btn-block"><small>${Utils.translate("dealership_page_buy_button")}</small></button></div> <small class="d-flex justify-content-center text-muted">${Utils.translate("dealership_page_bottom_text")}</small>
+						${button_html}
 					</div>
 				</div>
 				`;

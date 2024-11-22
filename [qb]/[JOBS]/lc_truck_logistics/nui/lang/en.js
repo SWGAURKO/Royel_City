@@ -83,6 +83,7 @@ Lang["en"] = {
 	trucks_page_spawn: "Spawn Truck",
 	trucks_page_remove: "Deselect",
 	trucks_page_select: "Select Truck",
+	trucks_page_unlock: "Reach <b>level {0}</b> to unlock this truck",
 
 	mydrivers_page_title: "Drivers",
 	mydrivers_page_desc: "Manage your drivers and assign them to trucks. Monitor their skills and fuel levels to keep your delivery operations running",

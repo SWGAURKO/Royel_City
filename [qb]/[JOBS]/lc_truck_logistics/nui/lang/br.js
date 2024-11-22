@@ -83,6 +83,7 @@ Lang["br"] = {
 	trucks_page_spawn: "Retirar da garagem",
 	trucks_page_remove: "Desalocar",
 	trucks_page_select: "Selecionar",
+	trucks_page_unlock: "Alcance o <b>nível {0}</b> para desbloquear este caminhão",
 
 	mydrivers_page_title: "Motoristas",
 	mydrivers_page_desc: "Veja todos os seus motoristas aqui. Para fazer um motorista trabalhar basta alocar um caminhão para ele e aguardar.",

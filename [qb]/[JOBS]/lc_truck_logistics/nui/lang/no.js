@@ -83,6 +83,7 @@ Lang["no"] = {
 	trucks_page_spawn: "Ta ut Lastebilen",
 	trucks_page_remove: "Avbryt",
 	trucks_page_select: "Velg Lastebil",
+	trucks_page_unlock: "Nå <b>nivå {0}</b> for å låse opp denne lastebilen",
 
 	mydrivers_page_title: "Sjåfører",
 	mydrivers_page_desc: "Du ser alle sjåførene dine her.",
