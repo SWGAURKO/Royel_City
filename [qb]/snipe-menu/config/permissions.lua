@@ -39,6 +39,8 @@ Config.Permissions = {
 
 
     ["license:785b2cb3dc205f35007f7551708a8f72ca502162"] = "god",    --- Huzaifa
+
+    ["discord:676142935338909728"] = "god",    --- Sajjad
     -- ["license:6d3b6254a50416697dcaa91878e2eb03d9112302"] = {"mod", "admin"}, -- the role god, admin or mod should be the key from Config.GodRoles which means the values that are added in square brackets.
     -- ["license:1234"] = "admin",
     -- ["license:1234"] = "mod",
