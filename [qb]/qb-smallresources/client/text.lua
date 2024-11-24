@@ -63,7 +63,7 @@ Citizen.CreateThread(
             -- the "Vdist2" native checks how far two vectors are from another.
             -- https://runtime.fivem.net/doc/natives/#_0xB7A628320EFF8E47
             if Vdist2(GetEntityCoords(PlayerPedId(), false), v1) < distance_until_text_disappears then
-                Draw3DText(v1.x, v1.y, v1.z, 1, "'CRPS' - USE TARGET or use command /welcomepack")
+                Draw3DText(v1.x, v1.y, v1.z, 1, "'Royel City' - USE TARGET or use command /welcomepack")
             end
         end
     end
