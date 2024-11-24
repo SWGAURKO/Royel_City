@@ -109,7 +109,8 @@ function Utils.Framework.getPlayerInventory(source)
 	local xPlayer = QBCore.Functions.GetPlayer(source)
 	local player_inventory = {}
 	for k,v in pairs(xPlayer.PlayerData.items) do
-		table.insert(player_inventory,v)
+		v.amount = v.amount or v.count
+		table.insert(player_inventory, { amount = v.amount, name = string.lower(v.name), label = v.label })
 	end
 	return player_inventory
 end
@@ -163,6 +164,23 @@ function Utils.Framework.givePlayerWeapon(source,item,amount,metadata)
 		metadata.serie = serial
 		if Utils.Framework.insertWeaponInInventory(source,item,amount,metadata) then
 			exports['ps-mdt']:CreateWeaponInfo(serial, imageurl, notes, owner, weapClass, weapModel)
+			TriggerClientEvent('QBCore:Notify', source, 'Weapon Registered', 'success')
+			return true
+		end
+		return false
+	elseif Config.custom_scripts_compatibility.mdt == "redutzu-mdt" then
+		local xPlayer = QBCore.Functions.GetPlayer(source)
+		local weapModel = QBCore.Shared.Items[item].label
+		metadata = metadata or {}
+		metadata.serial = exports['redutzu-mdt']:GenerateWeaponSerial()
+		if Utils.Framework.insertWeaponInInventory(source,item,amount,metadata) then
+			exports['redutzu-mdt']:RegisterWeapon({
+				label = weapModel,
+				name = item,
+				serial = metadata.serial,
+				identifier = xPlayer.PlayerData.citizenid,
+				notes = 'attachments, color, etc.'
+			})
 			TriggerClientEvent('QBCore:Notify', source, 'Weapon Registered', 'success')
 			return true
 		end
@@ -236,6 +254,19 @@ function Utils.Framework.hasWeaponLicense(source)
 	else
 		return false
 	end
+end
+
+function Utils.Framework.registerUsableItem(item_id, event_name, is_server_event, ...)
+	local args = {...}
+	QBCore.Functions.CreateUseableItem(item_id, function(source, item)
+		local Player = QBCore.Functions.GetPlayer(source)
+		if not Player.Functions.GetItemByName(item.name) then return end
+		if is_server_event then
+			TriggerEvent(event_name, source, item_id, Player.PlayerData.citizenid, table.unpack(args))
+		else
+			TriggerClientEvent(event_name, source, item_id, Player.PlayerData.citizenid, table.unpack(args))
+		end
+	end)
 end
 
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -423,14 +454,19 @@ function Utils.Framework.generatePlate(plate_format)
 	return generatedPlate
 end
 
+Citizen.CreateThread(function()
+	Wait(2000)
+	Utils.Database.validateOwnedVehicleTableColumns("player_vehicles")
+end)
+
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- Trucker
 -----------------------------------------------------------------------------------------------------------------------------------------
 
 function Utils.Framework.getTopTruckers()
-	local sql = [[SELECT U.name, U.charinfo, T.user_id, T.exp, T.traveled_distance 
+	local sql = [[SELECT U.charinfo, T.user_id, T.exp, T.traveled_distance 
 		FROM trucker_users T 
-		INNER JOIN players U ON (T.user_id = U.citizenid)
+		INNER JOIN players U ON T.user_id = U.citizenid
 		WHERE traveled_distance > 0 ORDER BY traveled_distance DESC LIMIT 10]];
 	local result = Utils.Database.fetchAll(sql,{});
 	for k,v in ipairs(result) do
@@ -440,9 +476,9 @@ function Utils.Framework.getTopTruckers()
 end
 
 function Utils.Framework.getpartyMembers(party_id)
-	local sql = [[SELECT U.name, U.charinfo, P.* 
+	local sql = [[SELECT U.charinfo, P.* 
 		FROM `trucker_party_members` P
-		INNER JOIN players U ON (P.user_id = U.citizenid)
+		INNER JOIN players U ON P.user_id = U.citizenid
 		WHERE party_id = @party_id]];
 	local result = Utils.Database.fetchAll(sql,{['@party_id'] = party_id});
 	for k,v in ipairs(result) do
@@ -451,7 +487,46 @@ function Utils.Framework.getpartyMembers(party_id)
 	return result
 end
 
-Citizen.CreateThread(function()
-	Wait(2000)
-	Utils.Database.validateOwnedVehicleTableColumns("player_vehicles")
-end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- Fisher
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+function Utils.Framework.getTopFishers()
+	local sql = [[SELECT U.charinfo, F.user_id, F.exp, SUM(C.amount) as fishes_caught
+		FROM fishing_simulator_users F
+		INNER JOIN players U ON F.user_id = U.citizenid
+		LEFT JOIN fishing_simulator_fishes_caught C ON F.user_id = C.user_id
+		WHERE F.exp > 0
+		GROUP BY U.charinfo, F.user_id, F.exp
+		ORDER BY F.exp DESC
+		LIMIT 10]];
+	local result = Utils.Database.fetchAll(sql,{});
+	for k,v in ipairs(result) do
+		result[k].name = json.decode(v.charinfo).firstname.." "..json.decode(v.charinfo).lastname
+	end
+	return result
+end
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- Collations
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+function Utils.Framework.validateTableCollations(script_table, script_column, alter_queries)
+	local collation_sql = [[SELECT COLLATION_NAME, CHARACTER_SET_NAME 
+		FROM information_schema.columns
+		WHERE table_schema = (SELECT DATABASE() AS default_schema)
+		AND table_name = 'players'
+		AND column_name = 'citizenid']]
+	local query_collation = Utils.Database.fetchAll(collation_sql,{})[1];
+	local collation_sql_script = [[SELECT COLLATION_NAME, CHARACTER_SET_NAME
+		FROM information_schema.columns
+		WHERE table_schema = (SELECT DATABASE() AS default_schema)
+		AND table_name = ']]..script_table..[['
+		AND column_name = ']]..script_column..[[']]
+	local query_collation_script = Utils.Database.fetchAll(collation_sql_script,{})[1];
+	if query_collation and query_collation['COLLATION_NAME'] and query_collation['CHARACTER_SET_NAME'] and query_collation_script and query_collation_script['COLLATION_NAME'] and query_collation['COLLATION_NAME'] ~= query_collation_script['COLLATION_NAME'] then
+		for _, alter_query in ipairs(alter_queries) do
+			Utils.Database.execute(alter_query:format(query_collation['CHARACTER_SET_NAME'],query_collation['COLLATION_NAME']), {})
+		end
+	end
+end

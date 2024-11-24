@@ -14,7 +14,7 @@ function Utils.Vehicles.spawnVehicle(model,x,y,z,h,blip_data,properties)
 	properties.bodyHealth = properties.bodyHealth or 1000.0
 
 	local model_hash = GetHashKey(model)
-	loadModel(model_hash)
+	Utils.Entity.loadModel(model_hash)
 
 	local vehicle = CreateVehicle(model_hash,x,y,z+0.5,h,true,false)
 	local netid = NetworkGetNetworkIdFromEntity(vehicle)
@@ -58,14 +58,6 @@ function removePlateInGeneratedPlatesFromVehicle(vehicle)
 	end
 end
 
-function loadModel(model)
-	if HasModelLoaded(model) then return end
-	RequestModel(model)
-	while not HasModelLoaded(model) do
-		Wait(0)
-	end
-end
-
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- Functions
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -93,7 +85,7 @@ function Utils.Vehicles.generateTempVehiclePlateWithPrefix(resource)
 end
 
 function Utils.Vehicles.generateTempVehiclePlate(prefix)
-	assert(#prefix <= 8, "Plate prefix is too long: '" .. prefix .. "' (maximum 8 characters allowed)")
+	assert(#prefix <= 7, "Plate prefix is too long: '" .. prefix .. "' (maximum 7 characters allowed)")
 
 	local remainingChars = 8 - #prefix
 	local maxAttempts = 1000
