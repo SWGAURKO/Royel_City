@@ -18,7 +18,7 @@ um.logo = {
 }
 
 um.main = {
-    onlyLastLocation = false,        -- If you want to only last location set true.
+    onlyLastLocation = true,        -- If you want to only last location set true.
     forceDeadPedLastLocation = true, -- If you want force injured ped last location set true.
     camera = {
         radius = 2.0,                -- Camera distance from the character
