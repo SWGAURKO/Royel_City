@@ -133,7 +133,7 @@ function OpenEvidenceLocker(station)
 
     wsb.inventory.openStash({
         name = station,
-        maxWeight = 500000,
+        maxWeight = 1000000,
         slots = 100
     })
 end
