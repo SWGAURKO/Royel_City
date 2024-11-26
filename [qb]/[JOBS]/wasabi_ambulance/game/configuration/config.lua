@@ -667,6 +667,7 @@ Config.Locations = {
                 { item = 'perc5',      label = 'Percocet 5MG',  price = 30 },
                 { item = 'vic10',      label = 'Vicodin 10MG',  price = 30 },
                 { item = 'vic5',       label = 'Vicodin 5MG',   price = 15 },
+                { item = 'defib',       label = 'defib',   price = 15 },
                 { item = 'bandage',      label = 'Bandage',  price = 30 },
                 { item = 'bobby_pin',      label = 'Pin',  price = 30 },
                 { item = 'handcuffs',      label = 'Handcuffs',  price = 30 },
