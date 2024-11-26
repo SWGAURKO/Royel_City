@@ -47,7 +47,7 @@ return {
 	},
 	["car_armor"] = {
 		label = "Vehicle Armor", weight = 0, stack = false, close = true, description = "",
-		client = { image = "armour.png", event = "jim-mechanic:client:applyArmour", remove = false },
+		client = { image = "veh_armor.png", event = "jim-mechanic:client:applyArmour", remove = false },
 	},
 	["nos"] = {
 		label = "NOS Bottle", weight = 0, stack = false, close = true, description = "A full bottle of NOS",
@@ -1608,7 +1608,7 @@ return {
 
 	["armor"] = {
 		label = "Armor",
-		weight = 5000,
+		weight = 3000,
 		stack = true,
 		close = true,
 		description = "Some protection won't hurt... right?",
