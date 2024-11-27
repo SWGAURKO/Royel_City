@@ -230,7 +230,7 @@ Config.SellObjectCommision = 0.3 -- Commission that will be charged when selling
 Config.EnableBoard = false       -- Enable or disable the sales board
 
 Config.OpenHouseMenu = 'F3'      -- Key to open the internal menu of the home
-Config.OpenJobMenu = 'F7'        -- Key to open the house creation menu
+Config.OpenJobMenu = 'F6'        -- Key to open the house creation menu
 
 --[[
 	Illegal system configuration of the asset, make sure you have this controlled so as not to break the economy or the system of each player.
@@ -240,11 +240,11 @@ Config.OpenJobMenu = 'F7'        -- Key to open the house creation menu
 Config.RequiredCop = 5 -- Number of police required (only for lockpicking)
 Config.PoliceJobs = {  -- Jobs that will be considered police
 	'realestate',
-	'police',
+--	'police',
 	'realestatejob'
 }
 
-Config.EnableRobbery = true            -- Enable or disable the usable item to initiate robberies
+Config.EnableRobbery = false            -- Enable or disable the usable item to initiate robberies
 Config.EnableRaid = true               -- Enable or disable the usable item to initiate raids
 Config.RobberyItem = 'lockpick'        -- Item to start the robbery of houses
 Config.StomRamItem = 'police_stormram' -- Item to begin the search of a house
