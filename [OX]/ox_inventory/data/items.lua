@@ -785,7 +785,7 @@ return {
 
 	["heavyarmor"] = {
 		label = "Heavy Armor",
-		weight = 5000,
+		weight = 3000,
 		stack = true,
 		close = true,
 		description = "Some protection won't hurt... right?",
@@ -11095,7 +11095,7 @@ return {
 		close = false,
 		description = "Leaf from amazing plant",
 		client = {
-			image = "coca_leaf.png",
+			image = "ryzenstorecoca_leaf.png",
 		}
 	},
 
