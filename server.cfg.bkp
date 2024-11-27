@@ -70,9 +70,9 @@ setr weather_disablecd true
 set steam_webApiKey 598BC69C0F36C236B7042EB9FC643B79
 set sv_licenseKey cfxk_1c3hds64zRmrXxf0z1yfe_I8zSd
 
-sets sv_hostname "^2X^3ROLEPLAY ^4SERVER | ^5Custom ^2Framework ^0| ^5Serious RP & High Economy ^0| ^1Lawyer & Mechanic ^0| ^5Ganja and illegal Jobs ^0| ^1Custom Cars"
-sets sv_projectName "^2X ^3Roleplay"
-set temp_convar "Welcome to x"
+sets sv_hostname "^2Royel City ^3ROLEPLAY ^4SERVER | ^5Custom ^2Framework ^0| ^5Serious RP & High Economy ^0| ^1Lawyer & Mechanic ^0| ^5Ganja and illegal Jobs ^0| ^1Custom Cars"
+sets sv_projectName "^2Royel City  ^3Roleplay"
+set temp_convar "Welcome to Royel City "
 
 sets sv_projectDesc "AUTHENTIC CUSTOM MAPS, LEGAL AND ILLEGAL JOB"
 sets tags "roleplay, rp, top"
@@ -100,11 +100,11 @@ setr voice_syncData 1
 #-----------------------------#
 
 #sets Framework "Dx-Core"
-sets 👑OWNER👑 "r"
+sets 👑OWNER👑 "Huzaifa Imran"
 sets 🟢DEVELOPER🟢 "Mr_Dx"
 sets 🛡️ "Anticheat"
 sets ✅Whitelist✅ "Discord"
-sets 🔊Discord🔊 "https://discord.gg/63crw5PGMU"
+sets 🔊Discord🔊 "https://discord.gg/sPw9Cvhcfz"
 
 #sets 🔊Voice🔊 "Ingamevoice"
 
@@ -182,6 +182,10 @@ add_principal identifier.license:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5 group.
 add_principal identifier.license:785b2cb3dc205f35007f7551708a8f72ca502162 qbcore.god  # Huzaifa
 add_principal identifier.license:785b2cb3dc205f35007f7551708a8f72ca502162 group.admin # Huzaifa
 
+add_principal identifier.discord:676142935338909728 qbcore.god  # Sajjad
+add_principal identifier.discord:676142935338909728 group.admin # Sajjad
+
+
 #set es_enableCustomData 1
 #setr profile_skfx 1
 #set sv_debugqueue true
@@ -211,7 +215,7 @@ setr inventory:framework "qb"
 setr inventory:slots 50
  
 # Maximum carry capacity for players, in grams (frameworks may override this)
-setr inventory:weight 85000
+setr inventory:weight 150000
  
 # Integrated support for qtarget/ox_target stashes, shops, etc
 # Note: qtarget is deprecated, a future update may drop support (ox_target only, or gated features)
