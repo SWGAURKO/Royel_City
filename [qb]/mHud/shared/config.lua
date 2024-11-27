@@ -123,13 +123,13 @@ Config.MouseCursorKeyLabel = "CAPS"
 
 
 Config.WaterMarkInformations = { -- informations displayed in the upper right watermark
-    logo = "https://i.imgur.com/rgEwnd4.png",
-    servername = "CODEMRP",
-    discordlink = "discord.gg/codem"
+    logo = "https://i.ibb.co.com/hdSBV2X/RC-logo-png.png",
+    servername = "Royel City RP",
+    discordlink = "discord.gg/sPw9Cvhcfz"
 }
 
 
-Config.CountryCode = "en-US" -- this is used to format the date you can check country codes here -- https://www.w3schools.com/jsref/jsref_tolocalestring_number.asp
+Config.CountryCode = "en-BD" -- this is used to format the date you can check country codes here -- https://www.w3schools.com/jsref/jsref_tolocalestring_number.asp
 
 Config.PlayerServerId = function()
     return GetPlayerServerId(PlayerId())
