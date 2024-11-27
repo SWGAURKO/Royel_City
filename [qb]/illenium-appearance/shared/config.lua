@@ -102,8 +102,8 @@ Config.DisableProps = {
 Config.Blips = {
     ["clothing"] = {
         Show = true,
-        Sprite = 366,
-        Color = 47,
+        Sprite = 73,
+        Color = 46,
         Scale = 0.7,
         Name = "Clothing Store",
     },
@@ -122,7 +122,7 @@ Config.Blips = {
         Name = "Tattoo Shop",
     },
     ["surgeon"] = {
-        Show = false,
+        Show = true,
         Sprite = 102,
         Color = 4,
         Scale = 0.7,

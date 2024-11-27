@@ -15,7 +15,7 @@ Config.Theme = {
             sectionFontWeight = "normal",
             smoothBackgroundTransition = false
         },
-        {
+        --[[ {
             id = "qb-core",
             borderRadius = "3vh",
             fontColor = "255, 255, 255",
@@ -28,7 +28,24 @@ Config.Theme = {
             scaleOnHover = true,
             sectionFontWeight = "bold",
             smoothBackgroundTransition = true
+        }, ]]
+        {
+            id = "qb-core",
+            borderRadius = "0.5vh", -- Subtle curve for border radius
+            fontColor = "5, 206, 216", -- Matches text color (#05CED8)
+            fontColorHover = "5, 206, 216", -- Hover text color
+            fontColorSelected = "5, 206, 216",
+            fontFamily = "Poppins",
+            primaryBackground = "0, 172, 191", -- Matches background color (#00ACBF)
+            primaryBackgroundSelected = "0, 172, 191",
+            secondaryBackground = "23, 23, 23", -- Dark background for the panel
+            scaleOnHover = true,
+            sectionFontWeight = "bold",
+            smoothBackgroundTransition = true
         },
+        
+        -- Apply the theme where necessary in your script
+        
         {
             id = "project-sloth",
             borderRadius = "6vh",
