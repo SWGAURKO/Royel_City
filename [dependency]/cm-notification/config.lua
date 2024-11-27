@@ -12,7 +12,7 @@ Config.SettingsPage = {
         keyNum = 20, -- Z By default https://docs.fivem.net/docs/game-references/controls/
     },
 }
-Config.DefaultNotificationPosition = "bottom-center" -- top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
+Config.DefaultNotificationPosition = "top-center" -- top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
 Config.EnableSoundByDefault = true
 
 Config.Translation = {
