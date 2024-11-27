@@ -459,7 +459,7 @@ RegisterNetEvent('consumables:client:UseHeavyArmor', function()
         disableMouse = false,
         disableCombat = true,
     }, {}, {}, {}, function() -- Done
-        if not Config.Disable.vestDrawable then
+        --[[ if not Config.Disable.vestDrawable then
             if PlayerData.charinfo.gender == 0 then
                 currVest = GetPedDrawableVariation(ped, 9)
                 currVestTexture = GetPedTextureVariation(ped, 9)
@@ -473,7 +473,7 @@ RegisterNetEvent('consumables:client:UseHeavyArmor', function()
                 currVestTexture = GetPedTextureVariation(ped, 30)
                 SetPedComponentVariation(ped, 9, 30, 0, 2)
             end
-        end
+        end ]]
         TriggerServerEvent('consumables:server:useHeavyArmor')
     end)
 end)
