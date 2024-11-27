@@ -5,7 +5,7 @@ Config.DefaultTime = 5000 -- Default notification time if not defined in the eve
 Config.SettingsPage = {
     command = {
         enable = true,
-        name = "nsettings"
+        name = "ns"
     },
     key = {
         enable = false,
