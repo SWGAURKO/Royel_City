@@ -560,7 +560,7 @@ Config.Stores = {
 
 
 Config.ClothingRooms = {
-    {
+   --[[  {
         job = "ambulance",
         coords = vector4(-443.32, -311.22, 34.91, 197.64),
         size = vector3(6, 6, 6),
@@ -573,7 +573,7 @@ Config.ClothingRooms = {
             vector3(-443.38, -314.24, 34.91)
             
         }
-    },
+    }, ]]
     {
         job = "police",
         coords = vector4(461.37, -998.06, 31.2, 321.31),
