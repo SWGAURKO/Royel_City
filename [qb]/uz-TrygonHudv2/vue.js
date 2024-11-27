@@ -5,7 +5,7 @@ const app = new Vue({
   el: '#app',
   data: {
     leftData:{
-      server:"UZ ROLEPLAY",
+      server:"Royel City",
       id:1,
       players:"75/120",
       job:"Police",

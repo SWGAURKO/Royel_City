@@ -731,7 +731,7 @@ local function CustomAlert(data)
             recipientList = job, 
             blipSprite = data.sprite or 1, 
             blipColour = data.color or 1, 
-            blipScale = data.scale or 0.5, 
+            blipScale = data.scale or 0.6, 
             blipLength = data.length or 2, 
             sound = data.sound or "Lose_1st", 
             sound2 = data.sound2 or "GTAO_FM_Events_Soundset", 

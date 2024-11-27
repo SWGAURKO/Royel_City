@@ -568,7 +568,7 @@ Config.GangGarages = {
 
     Blip = { --You can find more info on blips here - https://docs.fivem.net/docs/game-references/blips.
         sprite = 84, --Icon of the blip.
-        scale = 0.5, --Size of the blip.
+        scale = 0.6, --Size of the blip.
         colour = 22, --Colour of the blip.
         name = L('gang_garage')..': ' --You dont need to change this.
     },
@@ -599,21 +599,21 @@ Config.Unique_Blips = true --Do you want each garage to be named by its unique i
 Config.Blip = { --You can find more info on blips here - https://docs.fivem.net/docs/game-references/blips.
     ['car'] = {
         sprite = 357, --Icon of the blip.
-        scale = 0.5, --Size of the blip.
+        scale = 0.6, --Size of the blip.
         colour = 9, --Colour of the blip.
         name = L('garage')..' ' --You dont need to change this.
     },
 
     ['boat'] = {
         sprite = 357,
-        scale = 0.5,
+        scale = 0.6,
         colour = 9,
         name = L('harbor')..' '
     },
 
     ['air'] = {
         sprite = 357,
-        scale = 0.5,
+        scale = 0.6,
         colour = 9,
         name = L('hangar')..' '
     }
@@ -658,7 +658,7 @@ Config.Locations = {
         EventName1 = 'cd_garage:QuickChoose',
         EventName2 = 'cd_garage:EnterGarage',
         Name = UIText,
-        x_2 = 270.75, y_2 = -340.51, z_2 = 44.92, h_2 = 342.03,
+        x_2 = 270.75, y_2 = -340.61, z_2 = 44.92, h_2 = 342.03,
         EnableBlip = true,
         JobRestricted = nil,
         ShellType = '10cargarage_shell',
@@ -838,7 +838,7 @@ Config.ImpoundLocations = { --DO NOT CHANGE THE TABLE IDENTIFIERSs, for example 
         spawnpoint = {x = 404.66, y = -1642.03, z = 29.29, h = 225.5}, --This is the location where the vehicle spawns.
         blip = {
             sprite = 357, --Icon of the blip.
-            scale = 0.5, --Size of the blip.
+            scale = 0.6, --Size of the blip.
             colour = 3, --Colour of the blip.
             name = L('car_city_impound'), --This can be changed in the Locales.
         }
@@ -850,7 +850,7 @@ Config.ImpoundLocations = { --DO NOT CHANGE THE TABLE IDENTIFIERSs, for example 
         spawnpoint = {x = 1887.123, y = 3710.348, z = 31.92, h = 212.0},
         blip = {
             sprite = 357,
-            scale = 0.5,
+            scale = 0.6,
             colour = 3,
             name = L('car_sandy_impound'),
         }
@@ -862,7 +862,7 @@ Config.ImpoundLocations = { --DO NOT CHANGE THE TABLE IDENTIFIERSs, for example 
         spawnpoint = {x = -848.4, y = -1362.8, z = -0.47, h = 113.0},
         blip = {
             sprite = 357,
-            scale = 0.5,
+            scale = 0.6,
             colour = 3,
             name = L('boat_impound'),
         }
@@ -874,7 +874,7 @@ Config.ImpoundLocations = { --DO NOT CHANGE THE TABLE IDENTIFIERSs, for example 
         spawnpoint = {x = -960.22, y = -2934.4, z = 13.95, h = 153.0},
         blip = {
             sprite = 357,
-            scale = 0.5,
+            scale = 0.6,
             colour = 3,
             name = L('air_impound'),
         }

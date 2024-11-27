@@ -23,7 +23,7 @@ local function GPSBlipUpdate(Label,  Coord)
 		if not DoesBlipExist(blip) then
 			blip = AddBlipForCoord(Coord.x, Coord.y, Coord.z)
 			SetBlipSprite(blip, 161)
-			SetBlipScale(blip, 0.8)
+			SetBlipScale(blip, 0.6)
 			SetBlipColour(blip, 75)
 			SetBlipAsShortRange(blip, true)
 			BeginTextCommandSetBlipName('STRING')

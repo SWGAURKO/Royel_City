@@ -65,7 +65,7 @@ Config.WaterParkBlip = {
 	blipdisplay = 4, -- icon display
 	blipcolor = 3, -- icon color
 	blipshortrange = true, -- icon range
-	blipscale = 1.0, -- icon scale
+	blipscale = 0.6, -- icon scale
 	bliptext = "Water Park", -- text of blip
 }
 

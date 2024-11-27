@@ -105,10 +105,10 @@ Config.AuthorizedJobs = {
 
 ```lua
     -- All jobs with the LEO type will receive this alert
-    ["shooting"] =  {displayCode = '10-13', description ="Shots Fired", radius = 0, recipientList = {'LEO', 'police'}, blipSprite = 110, blipColour = 1, blipScale = 1.5, blipLength = 2, sound = "Lose_1st", sound2 = "GTAO_FM_Events_Soundset", offset = "false", blipflash = "false"},
+    ["shooting"] =  {displayCode = '10-13', description ="Shots Fired", radius = 0, recipientList = {'LEO', 'police'}, blipSprite = 110, blipColour = 1, blipScale = 0.6, blipLength = 2, sound = "Lose_1st", sound2 = "GTAO_FM_Events_Soundset", offset = "false", blipflash = "false"},
     
     -- Police and FIB will receive this alert, but not other LEO jobs
-    ["shooting"] =  {displayCode = '10-13', description ="Shots Fired", radius = 0, recipientList = {'police', 'fib'}, blipSprite = 110, blipColour = 1, blipScale = 1.5, blipLength = 2, sound = "Lose_1st", sound2 = "GTAO_FM_Events_Soundset", offset = "false", blipflash = "false"},
+    ["shooting"] =  {displayCode = '10-13', description ="Shots Fired", radius = 0, recipientList = {'police', 'fib'}, blipSprite = 110, blipColour = 1, blipScale = 0.6, blipLength = 2, sound = "Lose_1st", sound2 = "GTAO_FM_Events_Soundset", offset = "false", blipflash = "false"},
 ```
 
 - `recipientList` is the list of departments that will receive the alert
@@ -182,7 +182,7 @@ end exports('FleecaBankRobbery', FleecaBankRobbery)
 
 `["storerobbery"] is the dispatchcodename you passed with the TriggerServerEvent in step 1`
 ```lua
-	["bankrobbery"] =  {displayCode = '10-90', description = "Fleeca Bank Robbery In Progress", radius = 0, recipientList = {'police'}, blipSprite = 500, blipColour = 2, blipScale = 1.5, blipLength = 2, sound = "robberysound"},
+	["bankrobbery"] =  {displayCode = '10-90', description = "Fleeca Bank Robbery In Progress", radius = 0, recipientList = {'police'}, blipSprite = 500, blipColour = 2, blipScale = 0.6, blipLength = 2, sound = "robberysound"},
 ```
 Information about each parameter is in the file.
 

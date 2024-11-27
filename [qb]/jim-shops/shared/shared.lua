@@ -68,7 +68,7 @@ function makeBlip(data)
 	SetBlipAsShortRange(blip, true)
 	SetBlipSprite(blip, data.sprite or 106)
 	SetBlipColour(blip, data.col or 5)
-	SetBlipScale(blip, data.scale or 0.7)
+	SetBlipScale(blip, data.scale or 0.6)
 	SetBlipDisplay(blip, (data.disp or 6))
     if data.category then SetBlipCategory(blip, data.category) end
 	BeginTextCommandSetBlipName('STRING')

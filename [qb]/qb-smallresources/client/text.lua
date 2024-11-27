@@ -14,7 +14,7 @@ SetBlipSprite(blip, 364)
 SetBlipDisplay(blip, 5)
 -- how big the blip will be
 -- https://runtime.fivem.net/doc/natives/#_0xD38744167B2FA257
-SetBlipScale(blip, 0.9)
+SetBlipScale(blip, 0.6)
 -- blip entry type
 BeginTextCommandSetBlipName("STRING")
 -- The title of the blip
