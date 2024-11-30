@@ -16,11 +16,11 @@ Config = {
     DisableControls = false, -- Disable specific controls when menu is open, can be configured in NativeUI.lua:2452 (approximately)
 
     -- Menu Customization Options
-    MenuTitle = '', -- You can change the name of the menu here or leave it blank to remove the text in front of the custom banners
+    MenuTitle = 'Royel City', -- You can change the name of the menu here or leave it blank to remove the text in front of the custom banners
     TitleOutline = true,
     TitleColour = {R = 255, G = 0, B = 255, A = 255}, --- The colour of the menu banner text in RGB. This is white by default aka 255, 255, 255. See https://www.rapidtables.com/web/color/RGB_Color.html for colours.
     MenuPosition = 'right', -- You can change the menu position here. Use 'left' or 'right'
-    CustomMenuEnabled = true, -- You can change the header image for the menu here, Note this might cause an issue of the image getting stuck on people's screens
+    CustomMenuEnabled = false, -- You can change the header image for the menu here, Note this might cause an issue of the image getting stuck on people's screens
 
     -- Combat Car, and Player Movement Options
     DisarmPlayer = false, -- Set this to true if you want to disarm the player when they play an emote.
