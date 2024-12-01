@@ -10,7 +10,7 @@ const UM = {
         color: '#bb55da', // Todo: https://www.color-hex.com/
         opacity: 1, // 0 close background opacity, | 0.7 low background opacity,
         logo: "assets/images/logo.png",
-        logowidth: 12,
+        logowidth: 16,
         extra: {
             autoRGB: false,
             autoSnow: false,

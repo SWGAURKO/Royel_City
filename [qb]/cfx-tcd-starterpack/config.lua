@@ -48,7 +48,7 @@ Config.StarterVehicle = {
 
 Config.EnableAlertDialog = true -- if you want to use alert dialog to give a short message to the player
 Config.Dialog = {
-    title = 'Coastal Roleplay Server',
+    title = 'Royel City Roleplay',
     message = 'Welcome to the server, I hope you enjoy your stay. make sure to read the **rules** and have fun! \n\nDo you want to receive the starter pack?',
 }
 

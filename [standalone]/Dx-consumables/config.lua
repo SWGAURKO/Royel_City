@@ -40,7 +40,7 @@ Config = {
 		["casino_luckypotion"] = { 		emote = "ecola", 		canRun = false, disableWalk = false, 	time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "drink", stats = { thirst = math.random(10,20), }},
 		["casino_coffee"] = { 		emote = "coffee", 		canRun = false, disableWalk = false, 	time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "drink", stats = { thirst = math.random(10,20), }},
 
-		["ifaks"] = { 			emote = "smoke3", 		time = math.random(5000, 6000), stress = math.random(8, 10), heal = 0, armor = 0, type = "drug", stats = { effect = "heal", amount = 6, widepupils = false, canOD = false } },
+		["ifaks"] = { 			emote = "fallover3", 		time = math.random(5000, 6000), stress = math.random(8, 10), heal = 0, armor = 0, type = "drug", stats = { effect = "heal", amount = 6, widepupils = false, canOD = false } },
 		["joint"] = { 			emote = "smoke3",	time = math.random(5000, 6000), stress = math.random(8, 10), heal = 0, armor = 0, type = "drug", stats = { screen = "weed",  widepupils = false, canOD = false } },
 		--["joint"] = { 			emote = "smoke3",	time = math.random(5000, 6000), stress = math.random(5, 8), heal = 0, armor = 0, type = "drug", stats = { screen = "weed",  widepupils = false, canOD = false } },
 		--[[ --Testing effects & armor with small functionality to drugs - This may be another one left to default scripts

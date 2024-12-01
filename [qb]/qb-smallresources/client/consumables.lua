@@ -442,6 +442,7 @@ RegisterNetEvent('consumables:client:UseArmor', function()
         disableMouse = false,
         disableCombat = true,
     }, {}, {}, {}, function() -- Done
+        TriggerEvent('animations:client:PlayAnimation', 'mechanic4') -- Play armor emote
         TriggerServerEvent('consumables:server:useArmor')
     end)
 end)
@@ -459,21 +460,7 @@ RegisterNetEvent('consumables:client:UseHeavyArmor', function()
         disableMouse = false,
         disableCombat = true,
     }, {}, {}, {}, function() -- Done
-        --[[ if not Config.Disable.vestDrawable then
-            if PlayerData.charinfo.gender == 0 then
-                currVest = GetPedDrawableVariation(ped, 9)
-                currVestTexture = GetPedTextureVariation(ped, 9)
-                if GetPedDrawableVariation(ped, 9) == 7 then
-                    SetPedComponentVariation(ped, 9, 19, GetPedTextureVariation(ped, 9), 2)
-                else
-                    SetPedComponentVariation(ped, 9, 5, 2, 2)
-                end
-            else
-                currVest = GetPedDrawableVariation(ped, 30)
-                currVestTexture = GetPedTextureVariation(ped, 30)
-                SetPedComponentVariation(ped, 9, 30, 0, 2)
-            end
-        end ]]
+        TriggerEvent('animations:client:PlayAnimation', 'mechanic4') -- Play heavy armor emote
         TriggerServerEvent('consumables:server:useHeavyArmor')
     end)
 end)
