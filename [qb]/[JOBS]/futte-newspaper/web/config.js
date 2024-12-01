@@ -1,5 +1,5 @@
 export const Config = {
-	newspaperTitle: 'Coastal Roleplay Newspaper',
+	newspaperTitle: 'Royel City Newspaper',
 	tabs: {
 		showPrisonSentences: true,
 		showCityNews: false,

@@ -88,5 +88,6 @@ Products = {
     },
     ["blackmarket"] = {
         { name = "radioscanner", price = 850, amount = 5 },
+        { name = "armor", price = 850, amount = 5 },
     },
 }

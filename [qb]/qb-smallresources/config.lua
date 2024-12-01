@@ -1,7 +1,7 @@
 Config = {}
 
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
-Config.PauseMapText = 'COASTAL ROLEPLAY BANGLADESH'                                     -- Text shown above the map when ESC is pressed. If left empty 'FiveM' will appear
+Config.PauseMapText = 'Royel City BANGLADESH'                                     -- Text shown above the map when ESC is pressed. If left empty 'FiveM' will appear
 Config.HarnessUses = 20
 Config.DamageNeeded = 100.0                                  -- amount of damage till you can push your vehicle. 0-1000
 Config.Logging = 'discord'                                   -- fivemanage
