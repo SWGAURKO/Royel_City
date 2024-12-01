@@ -1,10 +1,10 @@
 {
-  "toggle_front_driver_door": "Open/Close Front Left Door",
-  "toggle_front_passenger_door": "Open/Close Front Right Door",
-  "toggle_rear_driver_door": "Open/Close Rear Left Door",
-  "toggle_rear_passenger_door": "Open/Close Rear Right Door",
-  "toggle_hood": "Open/Close Hood",
-  "toggle_trunk": "Open/Close Trunk",
+  "toggle_front_driver_door": "Toggle front driver door",
+  "toggle_front_passenger_door": "Toggle front passenger door",
+  "toggle_rear_driver_door": "Toggle rear driver door",
+  "toggle_rear_passenger_door": "Toggle rear passenger door",
+  "toggle_hood": "Toggle hood",
+  "toggle_trunk": "Toggle trunk",
   "debug_box": "(Debug) Box",
   "debug_sphere": "(Debug) Sphere",
   "debug_police_car": "Police car",
@@ -12,5 +12,5 @@
   "debug_vehicle": "(Debug) Vehicle",
   "debug_object": "(Debug) Object",
   "toggle_targeting": "Toggle targeting",
-  "go_back": "Go back back"
-  }
+  "go_back": "Go back"
+}
