@@ -1,1341 +1,2519 @@
 return {
-	Weapons = {
+    Weapons = {
 
-		-- Custom Weapons
-		
-		['WEAPON_DE'] 					= { label = 'Desert Eagle',	    weight = 1000,	durability = 0.0,	ammoname = 'ammo-45',},     
-		['WEAPON_FNX45'] 			= { label = 'FN FNX-45', 	    weight = 1000,	durability = 0.0,	ammoname = 'ammo-45',},     
-		['WEAPON_GLOCK17'] 		= { label = ' Glock 17',      weight = 1000,	durability = 0.0,	ammoname = 'ammo-45',},     
-		['WEAPON_M4'] 				= { label = ' M4A1', 		    weight = 1000,	durability = 0.0,	ammoname = 'ammo-rifle',},  
-		['WEAPON_M9'] 			= { label = 'Beretta M9A3',     weight = 1000,	durability = 0.0,	ammoname = 'ammo-45',},     
-		['WEAPON_M70'] 				= { label = 'M70', 			    weight = 1000,	durability = 0.0,	ammoname = 'ammo-rifle',},  
-		['WEAPON_M1911'] 			= { label = 'M1911', 		    weight = 1000,	durability = 0.0,	ammoname = 'ammo-45',},     
-		
-		['WEAPON_MAC10'] 				= { label = 'MAC-10', 		    weight = 1000,	durability = 0.0,	ammoname = 'ammo-9',},      
-		['WEAPON_MOSSBERG'] 	= { label = 'Mossberg 500',     weight = 1000,	durability = 0.0,	ammoname = 'ammo-shotgun',},
-		['WEAPON_REMINGTON'] 			= { label = 'Remington 870',    weight = 1000,	durability = 0.0,	ammoname = 'ammo-shotgun',},
-		
-		['WEAPON_SHIV'] 				= { label = 'Shiv', 		    weight = 1000,	durability = 0.0,	},                          
-		
-		['WEAPON_M110'] 		           	 = { label = 'M110', 			weight = 1000,	durability = 0.0,	ammoname = 'ammo-sniper',},
-		
-		['WEAPON_AK74'] 		 	= { label = 'AK-74', 		    weight = 1000,	durability = 0.0,	ammoname = 'ammo-rifle',}, 
-		['WEAPON_AKS74'] 		 	= { label = 'AK-S74', 		    weight = 1000,	durability = 0.0,	ammoname = 'ammo-rifle',}, 
-		
-		['WEAPON_GLOCK22'] 			  = { label = 'Glock 22',         weight = 1000,	durability = 0.0,	ammoname = 'ammo-45',},    
-		
-		['WEAPON_COLBATON'] 			= { label = 'PD Baton',         weight = 1000,	durability = 0.0},
-	
-		--CUSTOM knifes
-		['WEAPON_PERFORATOR']            = {label = 'The Perforator',    weight = 500,   durability = 0.1,},
-		['WEAPON_BAYONETKNIFE']          = {label = 'Bayonet Knife',     weight = 300,durability = 0.1,},
-		['WEAPON_BLUEBFKNIFE']           = {label = 'Blue Steel Butterfly Knife',weight = 300,durability = 0.1,},
-		['WEAPON_BFKNIFE']               = {label = 'Vanilla Butterfly Knife',weight = 300,durability = 0.1,},
-		['WEAPON_CHBFKNIFE']             = {label = 'Case Hardened Butterfly Knife',weight = 300,durability = 0.1,},
-		['WEAPON_CRIMSONBFKNIFE']        = {label = 'Crimson Butterfly Knife',weight = 300,durability = 0.1,},
-		['WEAPON_FADEBFKNIFE']           = {label = 'Fade Butterfly Knife',weight = 300,durability = 0.1,},
-		['WEAPON_FLIPKNIFE']             = {label = 'Flip Knife',        weight = 300,durability = 0.1,},
-		['WEAPON_FORESTBFKNIFE']         = {label = 'Forest Butterfly Knife',weight = 300,durability = 0.1,},
-		['WEAPON_GUTKNIFE']              = {label = 'Gut Knife',         weight = 300,durability = 0.1,},
-		['WEAPON_HUNTSMANKNIFE']         = {label = 'Huntsman Knife',    weight = 300,durability = 0.1,},
-		['WEAPON_KARAMBITKNIFE']         = {label = 'Karamabit Knife',   weight = 300,durability = 0.1,},
-		['WEAPON_SAFARIBFKNIFE']         = {label = 'Safari Mesh Butterfly Knife',weight = 300,durability = 0.1,},
-		['WEAPON_SCORCHEDBFKNIFE']       = {label = 'Scorched Butterfly Knife',weight = 300,durability = 0.1,},
-		['WEAPON_SLAUGHTERBFKNIFE']      = {label = 'Slaughter Butterfly Knife',weight = 300,durability = 0.1,},
-		['WEAPON_STAINEDRBFKNIFE']       = {label = 'Stained Butterfly Knife',weight = 300,durability = 0.1,},
-		['WEAPON_URBANRBFKNIFE']         = {label = 'Urban Masked Butterfly Knife',weight = 300,durability = 0.1,},
+        -- Katanas
+        ['WEAPON_KATANA_R'] = {
+            label = 'Red Katana',
+            weight = 1000,
+            durability = 0.00,
+        },
+        ['WEAPON_KATANA_Y'] = {
+            label = 'Yellow Katana',
+            weight = 1000,
+            durability = 0.00,
+        },
+        ['WEAPON_KATANA_B'] = {
+            label = 'Blue Katana',
+            weight = 1000,
+            durability = 0.00,
+        },
+        ['WEAPON_KATANA_G'] = {
+            label = 'Green Katana',
+            weight = 1000,
+            durability = 0.00,
+        },
+
+        ['WEAPON_DIGISCANNER'] = {
+            label = 'Signal booster',
+            weight = 1200,
+        },
 
 
 
+        -- Custom Weapons
+--[[         ['WEAPON_PL14'] = { ------------- galib pls double check if its automatic or not
+			label = 'PL14',  --- Auto Rifle
+			weight = 1000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+		},
+        ['WEAPON_CZ75'] = { ------------- galib pls double check if its automatic or not
+			label = 'CZ75',  --- Auto Rifle
+			weight = 1000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+		},
+        ['WEAPON_HFAP'] = { ------------- galib pls double check if its automatic or not
+			label = 'HFAP', --- Auto Rifle
+			weight = 1000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+		}, ]]
+
+        --Kyros Weapon Pack Female
+		['WEAPON_FMICRODRACO'] = {
+            label = 'PINK MICRODRACO',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_PSCAR'] = {
+            label = 'PINK SCAR-H',
+            weight = 4500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_SPAS12'] = {
+            label = 'PINK SPAS-12',
+            weight = 5200,
+            durability = 0.3,
+            ammoname = 'shotgun_ammo'
+        },
+
+		['WEAPON_PM4'] = {
+            label = 'PINK M4 SANDSM',
+            weight = 5200,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_PMP9'] = {
+            label = 'PINK B&T MP9',
+            weight = 3400,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_P1911KT'] = {
+            label = 'PINK 1911 KT',
+            weight = 2400,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_PG19'] = {
+            label = 'PINK GLOCK 19',
+            weight = 2500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_PSP320'] = {
+            label = 'PINK P320 RXP',
+            weight = 4500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_PM4A1'] = {
+            label = 'PINK COLT M4A1',
+            weight = 5500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_PMK181'] = {
+            label = 'PINK MK18 M1',
+            weight = 5500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_PXDS9'] = {
+            label = 'PINK XDS9',
+            weight = 1500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_PGLOCK17C'] = {
+            label = 'PINK GLOCK 17C',
+            weight = 2500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_PMK14'] = {
+            label = 'PINK MK14',
+            weight = 7500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_PHK45'] = {
+            label = 'PINK HK45',
+            weight = 2000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 		
-		--Kyros Weapon Pack V4
+		['WEAPON_P941'] = {
+            label = 'PINK 941 PSL',
+            weight = 2000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        --Kyros Weapon Pack Mafia
+		['WEAPON_CRIPSGLOCK'] = {
+            label = 'BLUE GLOCK',
+            weight = 1900,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_BLOODSGLOCK'] = {
+            label = 'RED GLOCK',
+            weight = 1900,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        }, 
+
+		['WEAPON_CARTELGLOCK'] = {
+            label = 'WHITE GLOCK',
+            weight = 1900,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        }, 
+
+		['WEAPON_FAMILIASGLOCK'] = {
+            label = 'GREEN GLOCK',
+            weight = 1900,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        }, 
+
+		['WEAPON_BMGLOCK'] = {
+            label = 'BLACK GLOCK',
+            weight = 1900,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        }, 
+
+		['WEAPON_BMARP'] = {
+            label = 'BLACK ARP',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        }, 
+
+		['WEAPON_FAMILIASARP'] = {
+            label = 'GREEN ARP',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        }, 
+
+		['WEAPON_CARTELARP'] = {
+            label = 'WHITE ARP',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        }, 
+
+		['WEAPON_CRIPSARP'] = {
+            label = 'BLUE ARP',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        }, 
+
+		['WEAPON_BLOODSARP'] = {
+            label = 'RED ARP',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        },
+
+        --Kyros Weapon Pack Mafia [B]
+		['WEAPON_PLAYBOYGLOCK'] = {
+            label = 'PINK GLOCK',
+            weight = 1900,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        }, 
+
+		['WEAPON_HOOVERGLOCK'] = {
+            label = 'ORANGE GLOCK',
+            weight = 1900,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        }, 
+
+		['WEAPON_GRAPEGLOCK'] = {
+            label = 'PURPLE GLOCK',
+            weight = 1900,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        }, 
+
+		['WEAPON_LATINGLOCK'] = {
+            label = 'YELLOW GLOCK',
+            weight = 1900,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        }, 
+
+		['WEAPON_MOBGLOCK'] = {
+            label = 'BROWN GLOCK',
+            weight = 1900,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        }, 
+
+		['WEAPON_PLAYBOYARP'] = {
+            label = 'PINK ARP',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        }, 
+
+		['WEAPON_HOOVERARP'] = {
+            label = 'ORANGE ARP',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        }, 
+
+		['WEAPON_GRAPEARP'] = {
+            label = 'PURPLE ARP',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        }, 
+
+		['WEAPON_LATINARP'] = {
+            label = 'YELLOW ARP',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        }, 
+
+		['WEAPON_MOBARP'] = {
+            label = 'BROWN ARP',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        }, 
+
+        --Kyros Weapon Pack POLICE
+        ['WEAPON_PDBATON'] = {
+            label = 'PD BATON',
+            weight = 1000,
+            durability = 0.15,
+        },
+
+        ['WEAPON_BTASER'] = {
+            label = 'PD Black Taser',
+            weight = 300,
+            durability = 0.15,
+        },
+
+        ['WEAPON_YTASER'] = {
+            label = 'PD Yellow Taser',
+            weight = 300,
+            durability = 0.15,
+        },
+
+        ['WEAPON_PDG19'] = {
+            label = 'PD GLOCK 19G4',
+            weight = 1800,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_PD870'] = {
+            label = 'PD REMINGTON 870',
+            weight = 7800,
+            durability = 0.15,
+            ammoname = 'shotgun_ammo'
+        },
+
+        ['WEAPON_PDM700'] = {
+            label = 'PD REMINGTON M700',
+            weight = 9400,
+            durability = 0.15,
+            ammoname = 'sniper_ammo'
+        },
+
+        ['WEAPON_HK417'] = {
+            label = 'PD HK417',
+            weight = 4400,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        },
+
+        ['WEAPON_PDCM607'] = {
+            label = 'PD COLT M607',
+            weight = 4500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        },
+
+        ['WEAPON_PDC7'] = {
+            label = 'PD COLT C7',
+            weight = 4500,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        },
+
+        ['WEAPON_PDG22'] = {
+            label = 'PD GLOCK 22',
+            weight = 4500,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_PDBM3'] = {
+            label = 'PD BENELLI M3',
+            weight = 3500,
+            durability = 0.15,
+            ammoname = 'shotgun_ammo'
+        },
+
+        ['WEAPON_PDP88'] = {
+            label = 'PD WALTHER P88',
+            weight = 1500,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_PDHK45'] = {
+            label = 'PD HK45',
+            weight = 1600,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_PDHK33'] = {
+            label = 'PD HK433',
+            weight = 3600,
+            durability = 0.15,
+            ammoname = 'rifle_ammo'
+        },
+
+        ['WEAPON_PDHKUSP'] = {
+            label = 'PD HK USP',
+            weight = 1600,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        },
+
+        --Kyros Weapon Pack V1
+        ['WEAPON_GARDONE'] = {
+            label = 'H&L Gardone',
+            weight = 2000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_G30'] = {
+            label = 'Glock 30',
+            weight = 2500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_PAINTBALL'] = {
+            label = 'PaintBall Gun',
+            weight = 250,
+            durability = 0.3,
+            ammoname = 'ammo_paintball'
+        },
+
+        ['WEAPON_DRACO'] = {
+            label = 'Mini Drac',
+            weight = 3500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_MAC'] = {
+            label = 'Mac 10',
+            weight = 3500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_TEC9'] = {
+            label = 'TEC-9',
+            weight = 3500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_P226'] = {
+            label = 'P226R',
+            weight = 2500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_SIG516'] = {
+            label = 'SIG516',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+    
+        ['WEAPON_MP5'] = {
+            label = 'MP5',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_G17'] = {
+            label = 'Glock 17',
+            weight = 3500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_BARRETT'] = {
+            label = 'Barrett 50',
+            weight = 7500,
+            durability = 0.3,
+            ammoname = 'sniper_ammo'
+        },
+
+        ['WEAPON_G18C'] = {
+            label = 'Glock 18C',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_FNX'] = {
+            label = 'FNX .45',
+            weight = 2500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+        ['WEAPON_NSR'] = {
+            label = 'NSR',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+        ['WEAPON_M870'] = {
+            label = 'Remington M870',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'shotgun_ammo'
+        },
+
+        -- Kyro v2
+        ['WEAPON_M32'] = {
+			label = 'M32',
+			weight = 8000,
+			durability = 0.3,
+			ammoname = 'ammo-grenade'
+		},
+
+		['WEAPON_BERETTA'] = {
+			label = 'BERETTA',
+			weight = 3000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_PYTHON'] = {
+			label = 'PYTHON',
+			weight = 2600,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_BRYSON'] = {
+			label = 'BRYSON 890',
+			weight = 6000,
+			durability = 0.3,
+			ammoname = 'shotgun_ammo'
+		},
+
+		['WEAPON_MAGPULPDR'] = {
+			label = 'MAGPUL PDR',
+			weight = 4800,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_HERAARMS'] = {
+			label = 'HERA ARMS',
+			weight = 5000,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_SA80'] = {
+			label = 'SA80',
+			weight = 5000,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_MAXIM9'] = {
+			label = 'MAXIM 9',
+			weight = 2000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_CJ'] = {
+			label = 'COLT JUNIOR',
+			weight = 1000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_SNUB'] = {
+			label = 'SNUB NOSE REVOLVER',
+			weight = 1400,
+			durability = 0.15,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_HONEYBADGER'] = {
+			label = 'HONEY BADGER',
+			weight = 5200,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_M45A1'] = {
+			label = 'COLT M45A1',
+			weight = 5000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_LAUGOARMS'] = {
+			label = 'Laugo Arms',
+			weight = 5000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_MP9'] = {
+			label = 'B&T MP9',
+			weight = 3900,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_ACE'] = {
+			label = 'IWI Galil ACE',
+			weight = 6000,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_AK47'] = {
+			label = 'AK-47',
+			weight = 7500,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_M14'] = {
+			label = 'M14',
+			weight = 3000,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_RPK16'] = {
+			label = 'RPK16',
+			weight = 5000,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_1911'] = {
+			label = '1911',
+			weight = 5000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_659'] = {
+			label = 'S&W M659',
+			weight = 2000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_M249'] = {
+			label = 'FN M249',
+			weight = 12000,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_B93R'] = {
+			label = 'Beretta 93R',
+			weight = 2000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_MAKAROV'] = {
+			label = 'MAKAROV',
+			weight = 2000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_FN502'] = {
+			label = 'FN 502',
+			weight = 2000,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_M1918A2'] = {
+			label = 'M1918A2',
+			weight = 6500,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_LVOCA'] = {
+			label = 'LVOA-C',
+			weight = 5500,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_M906'] = {
+			label = 'ZORAKI M906',
+			weight = 5500,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_G36K'] = {
+			label = 'G36K',
+			weight = 6500,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_AA12'] = {
+			label = 'AA-12',
+			weight = 6500,
+			durability = 0.3,
+			ammoname = 'shotgun_ammo'
+		},
+
+		['WEAPON_XM4'] = {
+			label = 'COLT XM4',
+			weight = 6500,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+        -- Kyro v3
+
+        ['WEAPON_DDM4V7'] = {
+			label = 'DDM4V7 AR15',
+			weight = 6500,
+			durability = 0.3,
+			ammoname = 'rifle_ammo'
+		},
+
+		['WEAPON_G2C'] = {
+			label = 'TAURUS G2C',
+			weight = 6500,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_PMR'] = {
+			label = 'KEL-TEC-PMR',
+			weight = 6500,
+			durability = 0.3,
+			ammoname = 'pistol_ammo'
+		},
+
+		['WEAPON_G19G4'] = {
+            label = 'G19G4',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_GS'] = {
+            label = 'GLOCK STAINLESS',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_SP320'] = {
+            label = 'SP320',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_BP'] = {
+            label = 'Beretta Pico',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_TGLOCK'] = {
+            label = 'TAN GLOCK',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_G19X'] = {
+            label = 'GLOCK 19X',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_AWP'] = {
+            label = 'AWP',
+            weight = 15000,
+            durability = 0.3,
+            ammoname = 'sniper_ammo'
+        },
+
+		['WEAPON_TUZI'] = {
+            label = 'TACTICAL UZI',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_BROOM'] = {
+			label = 'WOOD BROOM',
+			weight = 1000,
+			durability = 0.3,
+		},
+
+		['WEAPON_TOMAHAWK'] = {
+			label = 'TOMAHAWK',
+			weight = 1000,
+			durability = 0.3,
+		},
+
+		['WEAPON_TRIDAGGER'] = {
+			label = 'TRI DAGGER',
+			weight = 1000,
+			durability = 0.3,
+		},
+
+		['WEAPON_SHAMMER'] = {
+			label = 'Sledge Hammer',
+			weight = 3000,
+			durability = 0.3,
+		},
+
+		['WEAPON_DILDO'] = {
+			label = 'Dildo',
+			weight = 1300,
+			durability = 0.3,
+		},
+
+		['WEAPON_UK'] = {
+			label = 'UTILITY KNIFE',
+			weight = 500,
+			durability = 0.3,
+		},
+
+		['WEAPON_SD'] = {
+			label = 'SCREW DRIVER',
+			weight = 650,
+			durability = 0.3,
+		},
+
+		['WEAPON_M200'] = {
+            label = 'CheyTac M200',
+            weight = 10000,
+            durability = 0.3,
+            ammoname = 'sniper_ammo'
+        },
+
+		['WEAPON_SCAR'] = {
+            label = 'SCAR',
+            weight = 6500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_552'] = {
+            label = 'SG-552',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_L1A1'] = {
+            label = 'FN L1A1',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_FAL'] = {
+            label = 'FN FAL',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_MCX'] = {
+            label = 'SIG MCX',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_P2011'] = {
+            label = 'P2011',
+            weight = 3000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_P416'] = {
+            label = 'P416',
+            weight = 7500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_HIPOINT'] = {
+            label = 'HI POINT',
+            weight = 3500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_DE'] = {
+            label = 'DESERT EAGLE',
+            weight = 3500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_AUGA1'] = {
+            label = 'AUG A1',
+            weight = 5500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_P90'] = {
+            label = 'P90',
+            weight = 5500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_VESPER'] = {
+            label = 'VESPER',
+            weight = 5500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_H12'] = {
+            label = 'HAYMAKER 12',
+            weight = 6500,
+            durability = 0.3,
+            ammoname = 'shotgun_ammo'
+        },
+
+		['WEAPON_G26'] = {
+            label = 'GLOCK 26',
+            weight = 3500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_IA2'] = {
+            label = 'IA2',
+            weight = 4500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_AS50'] = {
+            label = 'AS50',
+            weight = 10500,
+            durability = 0.3,
+            ammoname = 'sniper_ammo'
+        },
+
+        -- kyro v4
+        --Kyros Weapon Pack V4
 		['WEAPON_GLOCK19X'] = {
-            label = 'PD G19X XL',
+            label = 'G19X XL',
             weight = 2800,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_GLOCK19'] = {
             label = 'GLOCK 19',
             weight = 2500,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_GLOCK40'] = {
             label = 'GLOCK 40',
             weight = 2500,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_GLOCK40S'] = {
-            label = 'PD GLOCK 40 SWITCH',
+            label = 'GLOCK 40 SWITCH',
             weight = 2500,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_DDM4V5'] = {
             label = 'DDM4V5',
             weight = 6400,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
         },
 
 		['WEAPON_MPX'] = {
             label = 'MPX',
             weight = 6600,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_PD509'] = {
             label = 'PD 509',
             weight = 2500,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_APS'] = {
             label = 'STECHKIN APS',
             weight = 2500,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_PPK'] = {
             label = 'WALTHER PPK',
             weight = 2500,
-            durability = 0.1,
-            ammoname = 'ammo-22'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_PITVIPER'] = {
-            label = 'PD JW4 PIT VIPER',
+            label = 'JW4 PIT VIPER',
             weight = 2500,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_BARP'] = {
             label = 'BANSHEE ARP-9',
             weight = 4500,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_RDP'] = {
             label = 'HELLCAT RDP',
             weight = 2400,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_LOK'] = {
-            label = 'PD M-LOK AR 15',
+            label = 'M-LOK AR 15',
             weight = 6000,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
         },
 
 		['WEAPON_PLR'] = {
             label = 'PLR-16',
             weight = 3400,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
         },
 
 		['WEAPON_XDS9'] = {
             label = 'XDS9',
             weight = 2800,
-            durability = 0.1,
-            ammoname = 'ammo-45'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_PPS'] = {
             label = 'WALTHER PPS',
             weight = 2400,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_XDME'] = {
             label = 'XDM ELITE',
             weight = 1800,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_SP'] = {
             label = 'FN-15 PISTOL',
             weight = 4200,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
         },
 
 		['WEAPON_GLOCK17S'] = {
             label = 'GLOCK 17 SWITCH',
             weight = 2300,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
-		--[[ ['WEAPON_GLOCK18C'] = {
+		['WEAPON_GLOCK18C'] = {
             label = 'GLOCK 18C',
             weight = 2500,
-            durability = 0.1,
-            ammoname = 'ammo-9'
-        }, ]]
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
 		['WEAPON_GLOCK19S'] = {
             label = 'GLOCK 19 SWITCH',
             weight = 2300,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_ARPISTOL'] = {
             label = 'TATIC ARP 9MM',
             weight = 5500,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_GLOCK26S'] = {
             label = 'GLOCK 26 SWITCH',
             weight = 2500,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_GRENADES'] = {
             label = 'GRENADE SNIPER',
             weight = 15000,
-            durability = 0.1,
+            durability = 0.3,
             ammoname = 'ammo-grenade'
         },
 
 		['WEAPON_M32S'] = {
-            label = 'PD M32 SMOKE GL',
+            label = 'M32 SMOKE GL',
             weight = 8000,
-            durability = 0.1,
+            durability = 0.3,
             ammoname = 'ammo-smokegrenade'
         },
 
 		['WEAPON_MICRODRACO'] = {
             label = 'MICRO DRACO',
             weight = 5600,
-            durability = 0.1,
-            ammoname = 'ammo-rifle2'
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
         },
 
 		['WEAPON_RUGER57'] = {
             label = 'RUGER 57',
             weight = 2200,
-            durability = 0.1,
-            ammoname = 'ammo-9'
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
         },
 
 		['WEAPON_MK18'] = {
             label = 'MK18 MOD 1',
             weight = 5200,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
         },
 
 		['WEAPON_680'] = {
             label = 'MODEL 680',
             weight = 6200,
-            durability = 0.1,
-            ammoname = 'ammo-shotgun'
+            durability = 0.3,
+            ammoname = 'shotgun_ammo'
         },
 
 		['WEAPON_ZIPTIE'] = {
             label = 'ZIP TIE M4A1',
             weight = 8500,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
         },
 
+        --Kyros Weapon Pack V5
+		['WEAPON_FN57'] = {
+            label = 'FN Five-seveN',
+            weight = 1500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
+		['WEAPON_T1911'] = {
+            label = 'TAN 1911',
+            weight = 2000,
+            durability = 0.15,
+            ammoname = 'pistol_ammo'
+        },
 
+		['WEAPON_GLOCK21'] = {
+            label = 'GLOCK 21',
+            weight = 2000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
-		['WEAPON_TECPISTOL'] = {
-			label = 'Tactical SMG',
-			weight = 1500,
-			durability = 0.075,
-			ammoname = 'ammo-9',
-		},
-		['WEAPON_ADVANCEDRIFLE'] = {
-			label = 'Advanced Rifle',
-			weight = 3100,
-			durability = 0.03,
-			ammoname = 'ammo-rifle',
-		},
+		['WEAPON_TARP'] = {
+            label = 'TAN ARP',
+            weight = 4600,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
 
-		['WEAPON_APPISTOL'] = {
-			label = 'AP Pistol',
-			weight = 1400,
-			durability = 0.1,
-			ammoname = 'ammo-9',
-		},
+		['WEAPON_LBTARP'] = {
+            label = 'LB TAN ARP',
+            weight = 5500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
 
-		['WEAPON_ASSAULTRIFLE'] = {
-			label = 'Assault Rifle',
-			weight = 4500,
-			durability = 0.03,
-			ammoname = 'ammo-rifle2',
-		},
+		['WEAPON_WOARP'] = {
+            label = 'WHITE-OUT ARP',
+            weight = 4000,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
 
-		['WEAPON_ASSAULTRIFLE_MK2'] = {
-			label = 'Assault Rifle MK2',
-			weight = 2950,
-			durability = 0.03,
-			ammoname = 'ammo-rifle2',
-		},
+		['WEAPON_SR40'] = {
+            label = 'RUGER SR40',
+            weight = 1400,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
-		['WEAPON_ASSAULTSHOTGUN'] = {
-			label = 'Assault Shotgun',
-			weight = 5200,
-			durability = 0.05,
-			ammoname = 'ammo-shotgun'
-		},
+		['WEAPON_ILLGLOCK17'] = {
+            label = 'ILLEGAL GLOCK 17',
+            weight = 2000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
-		['WEAPON_ASSAULTSMG'] = {
-			label = 'Assault SMG',
-			weight = 2900,
-			durability = 0.05,
-			ammoname = 'ammo-rifle'
-		},
+		['WEAPON_DMK18'] = {
+            label = 'DESERET MK18',
+            weight = 6000,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
 
-		['WEAPON_BALL'] = {
-			label = 'Ball',
-			weight = 149,
-			throwable = true,
-		},
+		['WEAPON_REDM4A1'] = {
+            label = 'RED DRAG M4A1',
+            weight = 6200,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
 
-		['WEAPON_BAT'] = {
-			label = 'Bat',
-			weight = 1134,
-			durability = 0.1,
-		},
+		['WEAPON_BLUEGLOCKS'] = {
+            label = 'BLUE GLOCK SWITCH',
+            weight = 2000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
-		['WEAPON_BATTLEAXE'] = {
-			label = 'Battle Axe',
-			weight = 6500,
-			durability = 0.1,
-		},
+		['WEAPON_GLOCKBEAMS'] = {
+            label = 'GLOCK BEAM SWITCH',
+            weight = 2000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
-		['WEAPON_BOTTLE'] = {
-			label = 'Bottle',
-			weight = 350,
-			durability = 0.1,
-		},
+		['WEAPON_MGGLOCK'] = {
+            label = 'MG GLOCK',
+            weight = 2000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
-		['WEAPON_BULLPUPRIFLE'] = {
-			label = 'Bullpup Rifle',
-			weight = 2900,
-			durability = 0.03,
-			ammoname = 'ammo-rifle'
-		},
+		['WEAPON_TGLOCK19'] = {
+            label = 'TAN G19',
+            weight = 2100,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
-		-- ['WEAPON_BULLPUPRIFLE_MK2'] = {
-		-- 	label = 'Bullpup Rifle MK2',
-		-- 	weight = 2900,
-		-- 	durability = 0.03,
-		-- 	ammoname = 'ammo-rifle'
-		-- },
+		['WEAPON_MIDASGLOCK'] = {
+            label = 'MIDAS GLOCK',
+            weight = 5000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
-		['WEAPON_BULLPUPSHOTGUN'] = {
-			label = 'Bullpup Shotgun',
-			weight = 3100,
-			durability = 0.2,
-			ammoname = 'ammo-shotgun'
-		},
+		['WEAPON_TEC9S'] = {
+            label = 'TEC 9 W STRAP',
+            weight = 4500,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
 
-		['WEAPON_BZGAS'] = {
-			label = 'BZ Gas',
-			weight = 600,
-			throwable = true,
-		},
-
-		['WEAPON_CARBINERIFLE'] = {
-			label = 'Carbine Rifle',
-			weight = 3100,
-			durability = 0.03,
-			ammoname = 'ammo-rifle'
-		},
-
-		['WEAPON_CARBINERIFLE_MK2'] = {
-			label = 'PD Carbine Rifle MK2',
+		['WEAPON_CHAIR'] = {
+			label = 'BRAWL CHAIR',
 			weight = 3000,
-			durability = 0.03,
-		 	ammoname = 'ammo-rifle'
-		},
-
-		['WEAPON_CERAMICPISTOL'] = {
-			label = 'Ceramic Pistol',
-			weight = 800,
-			durability = 0.2,
-			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_PISTOLXM3'] = {
-			label = 'WM 29 Pistol',
-			weight = 969,
-			durability = 0.2,
-			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_COMBATMG'] = {
-			label = 'Combat MG',
-			weight = 7500,
-			durability = 0.02,
-			ammoname = 'ammo-rifle'
-		},
-
-		['WEAPON_COMBATMG_MK2'] = {
-			label = 'Combat MG MK2',
-			weight = 8000,
-			durability = 0.02,
-			ammoname = 'ammo-rifle2'
-		},
-
-		['WEAPON_COMBATPDW'] = {
-			label = 'Combat PDW',
-			weight = 2300,
-			durability = 0.1,
-			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_COMBATPISTOL'] = {
-			label = 'Combat Pistol',
-			weight = 785,
-			durability = 0.2,
-			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_COMBATSHOTGUN'] = {
-			label = 'PD Combat Shotgun',
-			weight = 4400,
-			durability = 0.2,
-			ammoname = 'ammo-shotgun'
-		},
-
-		['WEAPON_COMPACTLAUNCHER'] = {
-			label = 'Compact Grenade Launcher',
-			weight = 2500,
-			durability = 0.05,
-			ammoname = 'ammo-grenade'
-		},
-
-		['WEAPON_COMPACTRIFLE'] = {
-			label = 'Compact Rifle',
-			weight = 3600,
-			durability = 0.05,
-			ammoname = 'ammo-rifle2'
-		},
-
-		['WEAPON_CROWBAR'] = {
-			label = 'Crowbar',
-			weight = 2500,
-			durability = 0.1,
-		},
-
-		['WEAPON_DAGGER'] = {
-			label = 'Dagger',
-			weight = 800,
-			durability = 0.1,
-		},
-
-		['WEAPON_DBSHOTGUN'] = {
-			label = 'Double Barrel Shotgun',
-			weight = 3175,
-			durability = 0.4,
-			ammoname = 'ammo-shotgun'
-		},
-
-		['WEAPON_DOUBLEACTION'] = {
-			label = 'Double Action Revolver',
-			weight = 940,
-			durability = 0.2,
-			ammoname = 'ammo-38'
-		},
-
-		['WEAPON_EMPLAUNCHER'] = {
-			label = 'Compact EMP Launcher',
-			weight = 2750,
-			durability = 0.2,
-			ammoname = 'ammo-emp'
-		},
-
-		['WEAPON_FIREEXTINGUISHER'] = {
-			label = 'Fire Extinguisher',
-			weight = 8616,
-		},
-
-		['WEAPON_FIREWORK'] = {
-			label = 'Firework Launcher',
-			weight = 1000,
-			durability = 0.5,
-			ammoname = 'ammo-firework'
-		},
-
-		['WEAPON_FLARE'] = {
-			label = 'Flare',
-			weight = 250,
-			throwable = true,
-		},
-
-		['WEAPON_FLAREGUN'] = {
-			label = 'Flare Gun',
-			weight = 1000,
-			durability = 0.5,
-			ammoname = 'ammo-flare'
-		},
-
-		['WEAPON_FLASHLIGHT'] = {
-			label = 'Flashlight',
-			weight = 125,
-			durability = 0.1,
-		},
-
-		['WEAPON_GOLFCLUB'] = {
-			label = 'Golf Club',
-			weight = 330,
-			durability = 0.1,
-		},
-
-		-- ['WEAPON_GRENADE'] = {
-		-- 	label = 'Grenade',
-		-- 	weight = 400,
-		-- 	throwable = true,
-		-- },
-
-		['WEAPON_GRENADELAUNCHER'] = {
-			label = 'Grenade Launcher',
-			weight = 6500,
-			durability = 0.05,
-			ammoname = 'ammo-grenade'
-		},
-
-		['WEAPON_GUSENBERG'] = {
-			label = 'Gusenberg',
-			weight = 4900,
-			durability = 0.04,
-			ammoname = 'ammo-45'
-		},
-
-		['WEAPON_HAMMER'] = {
-			label = 'Hammer',
-			weight = 1200,
-			durability = 0.1,
-		},
-
-		['WEAPON_HATCHET'] = {
-			label = 'Hatchet',
-			weight = 1000,
-			durability = 0.1,
-		},
-
-		['WEAPON_HEAVYRIFLE'] = {
-			label = 'Heavy Rifle',
-			weight = 3300,
-			durability = 0.2,
-			ammoname = 'ammo-rifle'
-		},
-
-		['WEAPON_HAZARDCAN'] = {
-			label = 'Hazard Can',
-			weight = 12000,
-		},
-
-		['WEAPON_METALDETECTOR'] = {
-			label = 'Metal Detector',
-			weight = 1200,
-		},
-
-		['WEAPON_HOMINGLAUNCHER'] = {
-			label = 'Homing Launcher',
-			weight = 10000,
-			durability = 0.6,
-			ammoname = 'ammo-rocket'
-		},
-
-		['WEAPON_FERTILIZERCAN'] = {
-			label = 'Fertilizer Can',
-			weight = 12000,
-		},
-
-		['WEAPON_HEAVYPISTOL'] = {
-			label = 'Heavy Pistol',
-			weight = 1100,
-			durability = 0.2,
-			ammoname = 'ammo-45'
-		},
-
-		['WEAPON_HEAVYSHOTGUN'] = {
-			label = 'Heavy Shotgun',
-			weight = 3600,
-			durability = 0.1,
-			ammoname = 'ammo-shotgun'
-		},
-
-		['WEAPON_HEAVYSNIPER'] = {
-			label = 'Heavy Sniper',
-			weight = 12700,
-			durability = 0.5,
-			ammoname = 'ammo-heavysniper'
-		},
-
-		['WEAPON_HEAVYSNIPER_MK2'] = {
-			label = 'Heavy Sniper MK2',
-			weight = 14000,
-			durability = 0.5,
-			ammoname = 'ammo-heavysniper'
-		},
-
-		['WEAPON_KNIFE'] = {
-			label = 'Knife',
-			weight = 300,
-			durability = 0.1,
-		},
-
-		-- ['WEAPON_KNUCKLE'] = {
-		-- 	label = 'Knuckle Dusters',
-		-- 	weight = 300,
-		-- 	durability = 0.1,
-		-- },
-
-		['WEAPON_MACHETE'] = {
-			label = 'Machete',
-			weight = 1000,
-			durability = 0.1,
-		},
-
-		['WEAPON_MACHINEPISTOL'] = {
-			label = 'Machine Pistol',
-			weight = 1400,
-			durability = 0.05,
-			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_MARKSMANPISTOL'] = {
-			label = 'Marksman Pistol',
-			weight = 1588,
-			durability = 0.5,
-			ammoname = 'ammo-22'
-		},
-
-		['WEAPON_MARKSMANRIFLE'] = {
-			label = 'Marksman Rifle',
-			weight = 7500,
-			durability = 0.4,
-			ammoname = 'ammo-sniper'
-		},
-
-		['WEAPON_MARKSMANRIFLE_MK2'] = {
-			label = 'Marksman Rifle MK2',
-			weight = 4000,
-			durability = 0.4,
-			ammoname = 'ammo-sniper'
-		},
-
-		['WEAPON_MG'] = {
-			label = 'Machine Gun',
-			weight = 9000,
-			durability = 0.02,
-			ammoname = 'ammo-rifle2'
-		},
-
-		['WEAPON_MINIGUN'] = {
-			label = 'Minigun',
-			weight = 38500,
-			durability = 0.1,
-			ammoname = 'ammo-rifle2'
-		},
-
-		['WEAPON_MICROSMG'] = {
-			label = 'Micro SMG',
-			weight = 3000,
-			durability = 0.1,
-			ammoname = 'ammo-45'
-		},
-
-		['WEAPON_MILITARYRIFLE'] = {
-			label = 'Military Rifle',
-			weight = 3600,
-			durability = 0.03,
-			ammoname = 'ammo-rifle'
-		},
-
-		['WEAPON_MINISMG'] = {
-			label = 'Mini SMG',
-			weight = 1270,
-			durability = 0.05,
-			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_MOLOTOV'] = {
-			label = 'Molotov',
-			weight = 1800,
-			throwable = true,
-		},
-
-		['WEAPON_MUSKET'] = {
-			label = 'Musket',
-			weight = 4500,
-			durability = 0.5,
-			ammoname = 'ammo-musket'
-		},
-
-		['WEAPON_NAVYREVOLVER'] = {
-			label = 'Navy Revolver',
-			weight = 4000,
-			durability = 0.2,
-			ammoname = 'ammo-44'
-		},
-
-		['WEAPON_NIGHTSTICK'] = {
-			label = 'Nightstick',
-			weight = 1000,
-			durability = 0.1,
-		},
-
-		['WEAPON_PETROLCAN'] = {
-			label = 'Gas Can',
-			weight = 12000,
-		},
-
-		['WEAPON_GADGETPISTOL'] = {
-			label = 'Perico Pistol',
-			weight = 1750,
-			durability = 0.1,
-			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_PIPEBOMB'] = {
-			label = 'Pipe Bomb',
-			weight = 1800,
-			throwable = true,
-		},
-
-		['WEAPON_PISTOL'] = {
-			label = 'Pistol',
-			weight = 1130,
-			durability = 0.1,
-			ammoname = 'ammo-9',
-		},
-
-		['WEAPON_PISTOL50'] = {
-			label = 'Pistol .50',
-			weight = 2000,
-			durability = 0.1,
-			ammoname = 'ammo-50'
-		},
-
-		-- ['WEAPON_PISTOL_MK2'] = {
-		-- 	label = 'Pistol MK2',
-		-- 	weight = 1000,
-		-- 	durability = 0.5,
-		-- 	ammoname = 'ammo-9'
-		-- },
-
-		['WEAPON_POOLCUE'] = {
-			label = 'Pool Cue',
-			weight = 146,
-			durability = 0.1,
-		},
-
-		['WEAPON_CANDYCANE'] = {
-			label = 'Candy Cane',
-			weight = 85,
-			durability = 0.1,
-		},
-
-		['WEAPON_PROXMINE'] = {
-			label = 'Proximity Mine',
-			weight = 2500,
-			throwable = true,
-		},
-
-		['WEAPON_PUMPSHOTGUN'] = {
-			label = 'Pump Shotgun',
-			weight = 3400,
-			durability = 0.1,
-			ammoname = 'ammo-shotgun'
-		},
-
-		['WEAPON_PUMPSHOTGUN_MK2'] = {
-			label = 'PDPump Shotgun MK2',
-			weight = 3200,
-			durability = 0.1,
-			ammoname = 'ammo-shotgun'
-		},
-
-		['WEAPON_RAILGUN'] = {
-			label = 'Railgun',
-			weight = 3570,
-			durability = 0.5,
-			ammoname = 'ammo-railgun'
-		},
-
-		['WEAPON_RAILGUNXM3'] = {
-			label = 'Railgun XM3',
-			weight = 3570,
-			durability = 0.5,
-			ammoname = 'ammo-railgun'
-		},
-
-		['WEAPON_RAYCARBINE'] = {
-			label = 'Unholy Hellbringer',
-			weight = 3620,
-			durability = 0.2,
-			ammoname = 'ammo-laser'
-		},
-
-		['WEAPON_RAYPISTOL'] = {
-			label = 'Up-n-Atomizer',
-			weight = 1540,
-			durability = 0.5
-		},
-
-		['WEAPON_REVOLVER'] = {
-			label = 'CRP Pistol',
-			weight = 2260,
-			durability = 0.1,
-			ammoname = 'ammo-44'
-		},
-
-		['WEAPON_REVOLVER_MK2'] = {
-			label = 'Revolver MK2',
-			weight = 2600,
-			durability = 0.1,
-			ammoname = 'ammo-44'
-		},
-
-		['WEAPON_RPG'] = {
-			label = 'RPG',
-			weight = 5000,
 			durability = 0.3,
-			ammoname = 'ammo-rocket'
 		},
 
-		['WEAPON_SAWNOFFSHOTGUN'] = {
-			label = 'Sawn Off Shotgun',
-			weight = 2380,
-			durability = 0.1,
-			ammoname = 'ammo-shotgun'
-		},
-
-		['WEAPON_SMG'] = {
-			label = 'PD SMG',
-			weight = 3084,
-			durability = 0.05,
-			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_SMG_MK2'] = {
-			label = 'SMG Mk2',
-			weight = 2700,
-			durability = 0.05,
-			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_SMOKEGRENADE'] = {
-			label = 'Smoke Grenade',
-			weight = 600,
-			throwable = true,
-		},
-
-		-- ['WEAPON_SNIPERRIFLE'] = {
-		-- 	label = 'Sniper Rifle',
-		-- 	weight = 5000,
-		-- 	durability = 0.5,
-		-- 	ammoname = 'ammo-sniper'
-		-- },
-
-		['WEAPON_SNOWBALL'] = {
-			label = 'Snow Ball',
-			weight = 5,
-			throwable = true,
-		},
-
-		['WEAPON_SNSPISTOL'] = {
-			label = 'SNS Pistol',
-			weight = 465,
-			durability = 0.1,
-			ammoname = 'ammo-45'
-		},
-
-		['WEAPON_SNSPISTOL_MK2'] = {
-			label = 'SNS Pistol MK2',
-			weight = 465,
-			durability = 0.1,
-			ammoname = 'ammo-45'
-		},
-
-		['WEAPON_SPECIALCARBINE'] = {
-			label = 'Special Carbine',
-			weight = 3000,
-			durability = 0.03,
-			ammoname = 'ammo-rifle'
-		},
-
-		['WEAPON_SPECIALCARBINE_MK2'] = {
-			label = 'Special Carbine MK2',
-			weight = 3370,
-			durability = 0.03,
-			ammoname = 'ammo-rifle'
-		},
-
-		['WEAPON_STICKYBOMB'] = {
-			label = 'Sticky Bomb',
-			weight = 1000,
-			throwable = true,
-		},
-
-		['WEAPON_STONE_HATCHET'] = {
-			label = 'Stone Hatchet',
-			weight = 800,
-			durability = 0.1,
-		},
-
-		['WEAPON_STUNGUN'] = {
-			label = 'Tazer',
-			weight = 227,
-			durability = 0.1,
-		},
-
-		['WEAPON_AUTOSHOTGUN'] = {
-			label = 'Sweeper Shotgun',
-			weight = 4400,
-			durability = 0.05,
-			ammoname = 'ammo-shotgun'
-		},
-
-		['WEAPON_SWITCHBLADE'] = {
-			label = 'Switchblade',
-			weight = 300,
-			durability = 0.1,
-			anim = { 'anim@melee@switchblade@holster', 'unholster', 200, 'anim@melee@switchblade@holster', 'holster', 600 },
-		},
-
-		['WEAPON_VINTAGEPISTOL'] = {
-			label = 'Vintage Pistol',
-			weight = 700,
-			durability = 0.1,
-			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_RAYMINIGUN'] = {
-			label = 'Widowmaker',
-			weight = 7000,
-			durability = 0.1,
-			ammoname = 'ammo-laser'
-		},
-
-		['WEAPON_WRENCH'] = {
-			label = 'Wrench',
-			weight = 2500,
-			durability = 0.1,
-		},
-        
-        ['wrench'] = {
-        label = 'Wrench',
-        weight = 100,
-        durability = 0.1,
+		['WEAPON_REDARP'] = {
+            label = 'RED DRAG ARP',
+            weight = 4500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
         },
 
-		['WEAPON_PRECISIONRIFLE'] = {
-			label = 'Precision Rifle',
-			weight = 4800,
-			durability = 0.4,
-			ammoname = 'ammo-sniper'
+		['WEAPON_P30L'] = {
+            label = 'H&K P30L',
+            weight = 1900,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_GLOCK41'] = {
+            label = 'GLOCK 41',
+            weight = 1700,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_THOMPSON'] = {
+            label = 'BLACK THOMPSON',
+            weight = 6000,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_RAM7'] = {
+            label = 'RAM-7',
+            weight = 5200,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_M500'] = {
+            label = 'MOSSBERG 500',
+            weight = 4500,
+            durability = 0.3,
+            ammoname = 'shotgun_ammo'
+        },
+
+		['WEAPON_R590'] = {
+            label = 'REMINGTON 590',
+            weight = 3100,
+            durability = 0.3,
+            ammoname = 'shotgun_ammo'
+        },
+
+		['WEAPON_BAR15'] = {
+            label = 'AR-15',
+            weight = 5500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_BSCAR'] = {
+            label = 'BLACK SCAR',
+            weight = 5500,
+            durability = 0.3,
+            ammoname = 'rifle_ammo'
+        },
+
+		['WEAPON_AXE'] = {
+			label = 'AXE',
+			weight = 2000,
+			durability = 0.3,
 		},
 
-		['WEAPON_TACTICALRIFLE'] = {
-			label = 'Tactical Rifle',
-			weight = 3400,
-			durability = 0.03,
-			ammoname = 'ammo-rifle'
+		['WEAPON_P210'] = {
+            label = 'P210 CARRY',
+            weight = 1800,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+		['WEAPON_KRISSVECTOR'] = {
+            label = 'KRISS VECTOR',
+            weight = 3900,
+            durability = 0.3,
+            ammoname = 'pistol_ammo'
+        },
+
+
+
+
+
+
+        ['WEAPON_ADVANCEDRIFLE'] = {
+            label = 'Advanced Rifle',
+            weight = 3180,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '5.56x45mm NATO',
+        },
+
+        ['WEAPON_APPISTOL'] = {
+            label = 'AP Pistol',
+            weight = 1220,
+            durability = 0.1,
+            ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_ASSAULTRIFLE'] = {
+            label = 'Assault Rifle',
+            weight = 3470,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '5.56x45mm NATO',
+        },
+
+        ['WEAPON_ASSAULTRIFLE_MK2'] = {
+            label = 'Assault Rifle MK2',
+            weight = 3300,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '5.56x45mm NATO',
+        },
+
+        ['WEAPON_ASSAULTSHOTGUN'] = {
+            label = 'Assault Shotgun',
+            weight = 3100,
+            durability = 0.05,
+            ammoname = 'shotgun_ammo',
+            caliber = '12 Gauge',
+        },
+
+        ['WEAPON_ASSAULTSMG'] = {
+            label = 'Assault SMG',
+            weight = 2850,
+            durability = 0.05,
+            ammoname = 'smg_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_BALL'] = {
+            label = 'Ball',
+            weight = 149,
+            throwable = true,
+        },
+
+        ['WEAPON_BAT'] = {
+            label = 'Bat',
+            weight = 1134,
+            durability = 0.1,
+        },
+
+        ['WEAPON_BATTLEAXE'] = {
+            label = 'Battle Axe',
+            weight = 1200,
+            durability = 0.1,
+        },
+
+        ['WEAPON_BOTTLE'] = {
+            label = 'Bottle',
+            weight = 350,
+            durability = 0.1,
+        },
+
+        ['WEAPON_BULLPUPRIFLE'] = {
+            label = 'Bullpup Rifle',
+            weight = 2900,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '5.8x42mm DBP87',
+        },
+
+        ['WEAPON_BULLPUPRIFLE_MK2'] = {
+            label = 'Bullpup Rifle MK2',
+            weight = 2900,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '5.8x42mm DBP87',
+        },
+
+        ['WEAPON_BULLPUPSHOTGUN'] = {
+            label = 'Bullpup Shotgun',
+            weight = 3100,
+            durability = 0.2,
+            ammoname = 'shotgun_ammo',
+            caliber = '12 Gauge'
+        },
+
+        ['WEAPON_BZGAS'] = {
+            label = 'BZ Gas',
+            weight = 600,
+            throwable = true,
+            caliber = 'Grenade Pin'
+        },
+
+        ['WEAPON_CARBINERIFLE'] = {
+            label = 'Carbine Rifle',
+            weight = 3100,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '5.56x45mm NATO'
+        },
+
+        ['WEAPON_CARBINERIFLE_MK2'] = {
+            label = 'Carbine Rifle MK2',
+            weight = 3000,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '5.56x45mm NATO'
+        },
+
+        ['WEAPON_CERAMICPISTOL'] = {
+            label = 'Ceramic Pistol',
+            weight = 700,
+            durability = 0.2,
+            ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_COMBATMG'] = {
+            label = 'Combat MG',
+            weight = 10000,
+            durability = 0.02,
+            ammoname = 'rifle_ammo',
+            caliber = '5.56x45mm NATO'
+        },
+
+        ['WEAPON_COMBATMG_MK2'] = {
+            label = 'Combat MG MK2',
+            weight = 10500,
+            durability = 0.02,
+            ammoname = 'rifle_ammo',
+            caliber = '7.62x51mm NATO',
+        },
+
+        ['WEAPON_COMBATPDW'] = {
+            label = 'Combat PDW',
+            weight = 2700,
+            durability = 0.1,
+            ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_COMBATPISTOL'] = {
+            label = 'Combat Pistol',
+            weight = 970,
+            durability = 0.2,
+            ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_COMBATSHOTGUN'] = {
+            label = 'Combat Shotgun',
+            weight = 4400,
+            durability = 0.2,
+            ammoname = 'shotgun_ammo',
+            caliber = '12 Gauge',
+        },
+
+        ['WEAPON_COMPACTRIFLE'] = {
+            label = 'Compact Rifle',
+            weight = 2700,
+            durability = 0.05,
+            ammoname = 'rifle_ammo',
+            caliber = '7.62x39mm Soviet',
+        },
+
+        ['WEAPON_CROWBAR'] = {
+            label = 'Crowbar',
+            weight = 2500,
+            durability = 0.1,
+        },
+
+        ['WEAPON_DAGGER'] = {
+            label = 'Dagger',
+            weight = 800,
+            durability = 0.1,
+        },
+
+        ['WEAPON_DBSHOTGUN'] = {
+            label = 'Double Barrel Shotgun',
+            weight = 3175,
+            durability = 0.4,
+            ammoname = 'shotgun_ammo',
+            caliber = '12 Gauge',
+        },
+
+        ['WEAPON_DOUBLEACTION'] = {
+            label = 'Double Action Revolver',
+            weight = 940,
+            durability = 0.2,
+            ammoname = 'pistol_ammo',
+            caliber = '.38 Long Colt',
+        },
+
+        ['WEAPON_EMPLAUNCHER'] = {
+            label = 'Compact EMP Launcher',
+            weight = 2750,
+            durability = 0.2,
+            ammoname = 'ammo-emp',
+            caliber = '40mm Grenade',
+        },
+
+        ['WEAPON_FIREEXTINGUISHER'] = {
+            label = 'Fire Extinguisher',
+            weight = 8616,
+        },
+
+        ['WEAPON_FIREWORK'] = {
+            label = 'Firework Launcher',
+            weight = 1000,
+            durability = 0.5,
+            caliber = 'Firework Packaging',
+        },
+
+        ['WEAPON_FLARE'] = {
+            label = 'Flare',
+            weight = 235,
+            throwable = true,
+            caliber = 'Flare Cap',
+        },
+
+        ['WEAPON_FLAREGUN'] = {
+            label = 'Flare Gun',
+            weight = 1000,
+            durability = 0.5,
+            ammoname = 'ammo-flare',
+            caliber = '25mm Flare',
+        },
+
+        ['WEAPON_FLASHLIGHT'] = {
+            label = 'Flashlight',
+            weight = 125,
+            durability = 0.1,
+        },
+
+        ['WEAPON_GOLFCLUB'] = {
+            label = 'Golf Club',
+            weight = 330,
+            durability = 0.1,
+        },
+
+        ['WEAPON_GRENADE'] = {
+            label = 'Grenade',
+            weight = 600,
+            throwable = true,
+            caliber = 'Grenade Pin',
+        },
+
+        ['WEAPON_GUSENBERG'] = {
+            label = 'Gusenberg',
+            weight = 4900,
+            durability = 0.04,
+            ammoname = 'smg_ammo',
+            caliber = '.45 ACP',
+        },
+
+        ['WEAPON_HAMMER'] = {
+            label = 'Hammer',
+            weight = 1200,
+            durability = 0.1,
+        },
+
+        ['WEAPON_HATCHET'] = {
+            label = 'Hatchet',
+            weight = 1000,
+            durability = 0.1,
+        },
+
+        ['WEAPON_HEAVYRIFLE'] = {
+            label = 'Heavy Rifle',
+            weight = 2750,
+            durability = 0.2,
+            ammoname = 'rifle_ammo',
+            caliber = '7.62x51mm NATO',
+        },
+
+        ['WEAPON_HAZARDCAN'] = {
+            label = 'Hazard Can',
+            weight = 12000,
+        },
+
+        ['WEAPON_METALDETECTOR'] = {
+            label = 'Metal Detector',
+            weight = 1200,
+        },
+
+        ['WEAPON_FERTILIZERCAN'] = {
+            label = 'Fertilizer Can',
+            weight = 12000,
+        },
+
+        ['WEAPON_HEAVYPISTOL'] = {
+            label = 'Heavy Pistol',
+            weight = 1100,
+            durability = 0.2,
+            ammoname = 'pistol_ammo',
+            caliber = '.45 ACP',
+        },
+
+        ['WEAPON_HEAVYSHOTGUN'] = {
+            label = 'Heavy Shotgun',
+            weight = 3600,
+            durability = 0.1,
+            ammoname = 'shotgun_ammo',
+            caliber = '12 Gauge',
+        },
+
+        ['WEAPON_HEAVYSNIPER'] = {
+            label = 'Heavy Sniper',
+            weight = 14000,
+            durability = 0.5,
+            ammoname = 'sniper_ammo',
+            caliber = '.50 BMG',
+        },
+
+        ['WEAPON_HEAVYSNIPER_MK2'] = {
+            label = 'Heavy Sniper MK2',
+            weight = 10432,
+            durability = 0.5,
+            ammoname = 'sniper_ammo',
+            caliber = '.50 BMG',
+        },
+
+        ['WEAPON_KNIFE'] = {
+            label = 'Knife',
+            weight = 300,
+            durability = 0.1,
+        },
+
+        ['WEAPON_KNUCKLE'] = {
+            label = 'Knuckle Dusters',
+            weight = 300,
+            durability = 0.1,
+        },
+
+        ['WEAPON_MACHETE'] = {
+            label = 'Machete',
+            weight = 1000,
+            durability = 0.1,
+        },
+
+        ['WEAPON_MACHINEPISTOL'] = {
+            label = 'Machine Pistol',
+            weight = 1400,
+            durability = 0.05,
+            ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_MARKSMANPISTOL'] = {
+            label = 'Marksman Pistol',
+            weight = 1588,
+            durability = 0.5,
+            ammoname = 'ammo-22',
+            caliber = '.45-70 Government',
+        },
+
+        ['WEAPON_MARKSMANRIFLE'] = {
+            label = 'Marksman Rifle',
+            weight = 7500,
+            durability = 0.4,
+            ammoname = 'sniper_ammo',
+            caliber = '7.76x51mm NATO',
+        },
+
+        ['WEAPON_MARKSMANRIFLE_MK2'] = {
+            label = 'Marksman Rifle',
+            weight = 4000,
+            durability = 0.4,
+            ammoname = 'sniper_ammo',
+            caliber = '7.76x51mm NATO',
+        },
+
+        ['WEAPON_MG'] = {
+            label = 'Machine Gun',
+            weight = 9000,
+            durability = 0.02,
+            ammoname = 'rifle_ammo',
+            caliber = '7.76x51mm NATO',
+        },
+
+        ['WEAPON_MICROSMG'] = {
+            label = 'Micro SMG',
+            weight = 4000,
+            durability = 0.1,
+            ammoname = 'smg_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_MILITARYRIFLE'] = {
+            label = 'Military Rifle',
+            weight = 3600,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '5.56x45mm NATO',
+        },
+
+        ['WEAPON_MINISMG'] = {
+            label = 'Mini SMG',
+            weight = 2770,
+            durability = 0.05,
+            ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_MOLOTOV'] = {
+            label = 'Molotov',
+            weight = 1800,
+            throwable = true,
+        },
+
+        ['WEAPON_MUSKET'] = {
+            label = 'Musket',
+            weight = 4500,
+            durability = 0.5,
+            ammoname = 'ammo-musket',
+            caliber = 'A Percussion Cap?',
+        },
+
+        ['WEAPON_NAVYREVOLVER'] = {
+            label = 'Navy Revolver',
+            weight = 2000,
+            durability = 0.2,
+            ammoname = 'pistol_ammo',
+            caliber = '.38 Centerfire',
+        },
+
+        ['WEAPON_NIGHTSTICK'] = {
+            label = 'Nightstick',
+            weight = 1000,
+            durability = 0.1,
+        },
+
+        ['WEAPON_PETROLCAN'] = {
+            label = 'Gas Can',
+            weight = 0,
+        },
+
+        ['WEAPON_GADGETPISTOL'] = {
+            label = 'Perico Pistol',
+            weight = 1750,
+            durability = 0.1,
+            ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_PIPEBOMB'] = {
+            label = 'Pipe Bomb',
+            weight = 1800,
+            throwable = true,
+        },
+
+        ['WEAPON_PISTOL'] = {
+            label = 'Walther P99',
+            weight = 970,
+            durability = 0.1,
+            ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_PISTOL50'] = {
+            label = 'PD Desert Eagle',
+            weight = 2000,
+            durability = 0.1,
+            ammoname = 'pistol_ammo',
+            caliber = '.50 Action Express',
+        },
+
+        ['WEAPON_PISTOL_MK2'] = {
+            label = 'Pistol MK2',
+            weight = 970,
+            durability = 0.5,
+            ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_POOLCUE'] = {
+            label = 'Pool Cue',
+            weight = 146,
+            durability = 0.1,
+        },
+
+        ['WEAPON_PROXMINE'] = {
+            label = 'Proximity Mine',
+            weight = 2500,
+            throwable = true,
+        },
+
+        ['WEAPON_PUMPSHOTGUN'] = {
+            label = 'Pump Shotgun',
+            weight = 3400,
+            durability = 0.1,
+            ammoname = 'shotgun_ammo',
+            caliber = '12 Gauge',
+        },
+
+        ['WEAPON_M4'] = {
+			label = 'PD M4A1',
+			weight = 5000,
+			durability = 0.09,
+			ammoname = 'rifle_ammo',
+            caliber = '7.62x51mm NATO',
 		},
 
-		['WEAPON_TEARGAS'] = {
-			label = 'Tear Gas',
-			weight = 600,
-			throwable = true,
+        ['WEAPON_AR15'] = {
+			label = 'PD AR-15',
+			weight = 5000,
+			durability = 0.09,
+			ammoname = 'rifle_ammo',
+            caliber = '7.62x51mm NATO',
 		},
 
-
-
-		-- EDM
-		
-		['WEAPON_BERSERKER'] = {
-			label = 'Berserker',
+        ['WEAPON_SCARH'] = {
+			label = 'PD SCAR-H',
 			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_BIGAXE'] = {
-			label = 'Bigaxe',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_PICKAXE'] = {
-			label = 'Pickaxe',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_USAMACHETTE'] = {
-			label = 'USA Machete',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_TAC_MACHETTE'] = {
-			label = 'TAC Machete',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_PIPE'] = {
-			label = 'Pipe',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_STEAKKNIFE'] = {
-			label = 'Steak Knife',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_PICKAXE_SMALL'] = {
-			label = 'Pickaxe Small',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_BLUE_KATANA'] = {
-			label = 'Blue Katana',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		['WEAPON_SLEDGEHAMMER'] = {
-			label = 'Sledge Hammer',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
+			durability = 0.09,
+			ammoname = 'rifle_ammo',
+            caliber = '7.62x51mm NATO',
 		},
 
-		['WEAPON_HUNTINGRIFLE'] = {
-			label = 'Hunting Rifle',
-			weight = 700,
-			durability = 0.05,
-			ammoname = 'ammo_hunting'
-		},
-		
-		['WEAPON_CHINESE'] = {
-			label = 'Chinese Sowrd',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_DOUBLE_AXE'] = {
-			label = 'Double Axe',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_HANDSICKLE'] = {
-			label = 'Handsickle',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_KITETSU'] = {
-			label = 'Kitetsu',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_PATREON'] = {
-			label = 'Patreon',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_PRIMAL_MACHETE'] = {
-			label = 'Primal Machete',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_SHEVA'] = {
-			label = 'Sheva',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		['WEAPON_KATANA'] = {
-			label = 'Katana',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_SOWRD'] = {
-			label = 'Assassins Creed Sword',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_TACTICAL_AXE'] = {
-			label = 'Tactical Axe',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_THERMAL_KATANA'] = {
-			label = 'Red katana',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-		
-		['WEAPON_KATANA_R'] = {
-			label = 'Red Blood katana',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-
-		['WEAPON_KATANA_Y'] = {
-			label = 'Yellow Fire Katana',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-
-		['WEAPON_KATANA_B'] = {
-			label = 'Blue Electric Katana',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-
-		['WEAPON_KATANA_G'] = {
-			label = 'Green Butterfly Katana',
-			weight = 5000,
-			durability = 0.001,
-			throwable = false,
-		},
-
-	-- Custom Weapon
-		-- Pistol
-		['WEAPON_G17C'] = {
+        ['WEAPON_GLOCK17'] = {
 			label = 'PD Glock 17',
-			weight = 7000,
-			durability = 0.010,
-			ammoname = 'ammo-45-pd',
-		},
-		['WEAPON_GLOCK18C'] = {
-			label = 'PD GLOCK 18C',
-			weight = 7000,
-			durability = 0.010,
-			ammoname = 'ammo-45-pd',
-		},
-		['WEAPON_G19X'] = {
-			label = 'G19X',
-			weight = 7000,
-			durability = 0.010,
-			ammoname = 'ammo-9',
-		},
-		['WEAPON_ACHILLIS'] = {
-			label = 'Robin Poter',
-			weight = 7000,
-			durability = 0.010,
-			ammoname = 'ammo-45-pd',
-		},
-		['WEAPON_FN502'] = {
-			label = 'FN 502',
-			weight = 7000,
-			durability = 0.010,
-			ammoname = 'ammo-32',
-		},
-		['WEAPON_USP45'] = {
-			label = 'USP 45',
-			weight = 7000,
-			durability = 0.010,
-			ammoname = 'ammo-32',
-		},
-		['WEAPON_BR'] = {
-			label = 'Browning',
-			weight = 7000,
-			durability = 0.010,
-			ammoname = 'ammo-9',
+			weight = 1000,
+			durability = 0.175,
+			ammoname = 'pistol_ammo',
+            caliber = '9x19mm Parabellum',
 		},
 
-		-- SMG
-		['WEAPON_MP5'] = {
+        ['WEAPON_SMG'] = {
 			label = 'PD SMG',
-			weight = 10000,
-			durability = 0.004,
-			ammoname = 'ammo-9-pd',
-		},
-		['WEAPON_MP9'] = {
-			label = 'MP9',
-			weight = 10000,
-			durability = 0.004,
-			ammoname = 'ammo-9',
-		},
-		['WEAPON_UZI'] = {
-			label = 'UZI',
-			weight = 10000,
-			durability = 0.004,
-			ammoname = 'ammo-9',
-		},
-		['WEAPON_UMP45'] = {
-			label = 'UMP 45',
-			weight = 10000,
-			durability = 0.004,
-			ammoname = 'ammo-45',
-		},
-		['WEAPON_VECTOR'] = {
-			label = 'Vector - R',
-			weight = 10000,
-			durability = 0.004,
-			ammoname = 'ammo-45',
+			weight = 2500,
+			durability = 0.175,
+			ammoname = 'smg_ammo',
+            caliber = '9x19mm Parabellum'
 		},
 
-		-- AR
-		['WEAPON_G36C'] = {
-			label = 'Admin G36C',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle2',
-		},
-		['WEAPON_ANIMEM4'] = {
-			label = 'Admin M4',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle2',
-		},
-		['WEAPON_AK47'] = {
-			label = 'AK 47',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle3',
-		},
-		['WEAPON_AR15'] = {
-			label = 'PD AR 15',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle2-pd',
-		},
-		['WEAPON_HK416'] = {
-			label = 'HK 416',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle4',
-		},
-		['WEAPON_SCARH'] = {
-			label = 'PD SCAR - H',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle-pd',
-		},
-		['WEAPON_MK18'] = {
-			label = 'MK 18',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle5',
-		},
-		['WEAPON_M4A1'] = {
-			label = 'M4A1',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle',
-		},
-		['WEAPON_AUGA1V2'] = {
-			label = 'AUG A1',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle',
-		},
-		['WEAPON_ARAXYS'] = {
-			label = 'Admin Araxys',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle2',
-		},
-		['WEAPON_SIGMCX'] = {
-			label = 'SIG SU300',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle2',
-		},
-		['WEAPON_CQR'] = {
-			label = 'CQR 15',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle3',
-		},
-		['WEAPON_M762'] = {
-			label = 'SWAT M762',
-			weight = 13500,
-			durability = 0.004,
-			ammoname = 'ammo-rifle3-pd',
+        ['WEAPON_MK14'] = {
+			label = 'PD MK14',
+			weight = 10000,
+			durability = 0.27,
+			ammoname = 'sniper_ammo',
+            caliber = '7.62x51mm NATO',
 		},
 
-		-- Sniper
-		['WEAPON_KR98K'] = {
-			label = 'Kar 98K',
-			weight = 20000,
-			durability = 0.08,
-			ammoname = 'ammo-sniper',
-		},
-		['WEAPON_MK14'] = {
-			label = 'MK 14',
-			weight = 20000,
-			durability = 0.08,
-			ammoname = 'ammo-sniper-pd',
-		},
-		['WEAPON_PAINTBALL'] = {
-			label = 'Paintball',
-			weight = 5000,
-			durability = 0.08,
-			ammoname = 'ammo-paintball',
-		},
-	},
+        ['WEAPON_PUMPSHOTGUN_MK2'] = {
+            label = 'Pump Shotgun MK2',
+            weight = 3200,
+            durability = 0.1,
+            ammoname = 'shotgun_ammo',
+            caliber = '12 Gauge',
+        },
 
-	Components = {
+        ['WEAPON_REVOLVER'] = {
+            label = 'Revolver',
+            weight = 2260,
+            durability = 0.1,
+            ammoname = 'pistol_ammo',
+            caliber = '.357 Magnum',
+        },
+
+        ['WEAPON_REVOLVER_MK2'] = {
+            label = 'Revolver MK2',
+            weight = 1500,
+            durability = 0.1,
+            ammoname = 'pistol_ammo',
+            caliber = '.44 Magnum',
+        },
+
+        ['WEAPON_SAWNOFFSHOTGUN'] = {
+            label = 'Sawn Off Shotgun',
+            weight = 2380,
+            durability = 0.1,
+            ammoname = 'shotgun_ammo',
+            caliber = '12 Gauge',
+        },
 
 
-		
-		['at_flashlight'] = {
+        ['WEAPON_SMG_MK2'] = {
+            label = 'SMG Mk2',
+            weight = 2700,
+            durability = 0.05,
+            ammoname = 'smg_ammo',
+            caliber = '9x19mm Parabellum',
+        },
+
+        ['WEAPON_SMOKEGRENADE'] = {
+            label = 'Smoke Grenade',
+            weight = 600,
+            throwable = true,
+            caliber = 'Grenade Pin',
+        },
+
+        ['WEAPON_SNIPERRIFLE'] = {
+            label = 'Sniper Rifle',
+            weight = 6500,
+            durability = 0.5,
+            ammoname = 'sniper_ammo',
+            caliber = '.310 Win Mag',
+        },
+
+        ['WEAPON_SNOWBALL'] = {
+            label = 'Snow Ball',
+            weight = 5,
+            throwable = true,
+        },
+
+        ['WEAPON_SNSPISTOL'] = {
+            label = 'SNS Pistol',
+            weight = 465,
+            durability = 0.1,
+            ammoname = 'pistol_ammo',
+            caliber = '.40 S&W',
+        },
+
+        ['WEAPON_SNSPISTOL_MK2'] = {
+            label = 'SNS Pistol MK2',
+            weight = 465,
+            durability = 0.1,
+            ammoname = 'pistol_ammo',
+            caliber = '.40 S&W',
+        },
+
+        ['WEAPON_SPECIALCARBINE'] = {
+            label = 'Special Carbine',
+            weight = 3000,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '.40 S&W',
+        },
+
+        ['WEAPON_SPECIALCARBINE_MK2'] = {
+            label = 'Special Carbine MK2',
+            weight = 3370,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '5.56x45mm NATO',
+        },
+
+        ['WEAPON_STICKYBOMB'] = {
+            label = 'Sticky Bomb',
+            weight = 1000,
+            throwable = true,
+        },
+
+        ['WEAPON_STONE_HATCHET'] = {
+            label = 'Stone Hatchet',
+            weight = 800,
+            durability = 0.1,
+        },
+
+        ['WEAPON_STUNGUN'] = {
+            label = 'Tazer',
+            weight = 227,
+            durability = 0.1,
+            caliber = 'Taser AFID',
+        },
+
+        ['WEAPON_AUTOSHOTGUN'] = {
+            label = 'Sweeper Shotgun',
+            weight = 4400,
+            durability = 0.05,
+            ammoname = 'shotgun_ammo',
+            caliber = '12 Gauge',
+        },
+
+        ['WEAPON_SWITCHBLADE'] = {
+            label = 'Switch Blade',
+            weight = 300,
+            durability = 0.1,
+            anim = { 'anim@melee@switchblade@holster', 'unholster', 200, 'anim@melee@switchblade@holster', 'holster', 600 },
+        },
+
+        ['WEAPON_VINTAGEPISTOL'] = {
+            label = 'Vintage Pistol',
+            weight = 100,
+            durability = 0.1,
+            ammoname = 'pistol_ammo',
+            caliber = '.32 ACP',
+        },
+
+        ['WEAPON_WRENCH'] = {
+            label = 'Wrench',
+            weight = 2500,
+            durability = 0.1,
+        },
+
+        ['WEAPON_PRECISIONRIFLE'] = {
+            label = 'Precision Rifle',
+            weight = 4800,
+            durability = 0.4,
+            ammoname = 'sniper_ammo',
+            caliber = '.223 Remington'
+        },
+
+        ['WEAPON_TACTICALRIFLE'] = {
+            label = 'Tactical Rifle',
+            weight = 3400,
+            durability = 0.03,
+            ammoname = 'rifle_ammo',
+            caliber = '5.56x45mm NATO'
+        },
+    },
+
+    Components = {
+        -- Kyro Pack
+        ['at_clip_extended_pistol'] = {
+			label = 'Extended Pistol Clip',
+			type = 'magazine',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_APPISTOL_CLIP_02`,
+					`COMPONENT_CERAMICPISTOL_CLIP_02`,
+					`COMPONENT_COMBATPISTOL_CLIP_02`,
+					`COMPONENT_HEAVYPISTOL_CLIP_02`,
+					`COMPONENT_PISTOL_CLIP_02`,
+					`COMPONENT_PISTOL_MK2_CLIP_02`,
+					`COMPONENT_PISTOL50_CLIP_02`,
+					`COMPONENT_SNSPISTOL_CLIP_02`,
+					`COMPONENT_SNSPISTOL_MK2_CLIP_02`,
+					`COMPONENT_VINTAGEPISTOL_CLIP_02`,
+                    `COMPONENT_TECPISTOL_CLIP_02`,
+  					`COMPONENT_PINKGLOCK19_CLIP_02`, -- female
+					`COMPONENT_PXDS9_CLIP_02`, -- female
+					`COMPONENT_CJ_CLIP_02`, -- v2
+					`COMPONENT_M45A1V2_CLIP_02`, -- v2
+					`COMPONENT_B93R_CLIP_02`, -- v2
+					`COMPONENT_MAKAROV_CLIP_02`, -- v2
+					`COMPONENT_659_CLIP_02`, -- v2
+                    `COMPONENT_G2C_CLIP_02`, -- v3
+                    `COMPONENT_TGLOCK_CLIP_02`, -- v3
+                    `COMPONENT_G26_CLIP_02`, -- v3
+					`COMPONENT_ARPISTOL_BOXMAG`, -- v4
+					`COMPONENT_GLOCK17_CLIP_02`, -- v4
+					`COMPONENT_GLOCK18C_CLIP_02`, -- v4
+					`COMPONENT_PDG19G4_CLIP_02`, -- pd
+					`COMPONENT_BLUEGLOCKS_CLIP_02`, -- v5
+					`COMPONENT_GLOCK41_CLIP_02`, -- v5
+					`COMPONENT_GLOCKBEAMS_CLIP_02`, -- v5
+					`COMPONENT_ILLGLOCK17_CLIP_02`, -- v5
+					`COMPONENT_MGGLOCK_CLIP_02`, -- v5
+					`COMPONENT_MIDASGLOCK_CLIP_02`, -- v5
+					`COMPONENT_TGLOCK19_CLIP_02`, -- v5
+					`COMPONENT_CARTELGLOCK_CLIP_EXTENDED`, -- mafia [A]
+					`COMPONENT_CRIPSGLOCK_CLIP_EXTENDED`, -- mafia [A]
+					`COMPONENT_BLOODSGLOCK_CLIP_EXTENDED`, -- mafia [A]
+					`COMPONENT_BMGLOCK_CLIP_EXTENDED`, -- mafia [A]
+					`COMPONENT_FAMILIASGLOCK_CLIP_EXTENDED`, -- mafia [A]
+					`COMPONENT_KINGZGLOCK_CLIP_EXTENDED`, -- mafia [B]
+					`COMPONENT_GRAPEGLOCK_CLIP_EXTENDED`, -- mafia [B]
+					`COMPONENT_HOOVERGLOCK_CLIP_EXTENDED`, -- mafia [B]
+					`COMPONENT_MOBGLOCK_CLIP_EXTENDED`, -- mafia [B]
+					`COMPONENT_PLAYBOYGLOCK_CLIP_EXTENDED`, -- mafia [B]
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_clip_clear'] = {
+			label = 'Clear Clip',
+			type = 'magazine',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_TANARP_CLIP_04`, -- rifle
+					`COMPONENT_LBTANARP_CLIP_04`, -- rifle
+					`COMPONENT_WOARP_CLIP_04`, -- rifle
+					`COMPONENT_ILLGLOCK17_CLIP_04`, -- pistol
+					`COMPONENT_BLUEGLOCKS_CLIP_05`, -- pistol
+					`COMPONENT_GLOCKBEAMS_CLIP_05`, -- pistol
+					`COMPONENT_MGGLOCK_CLIP_05`, -- pistol
+					`COMPONENT_TGLOCK19_CLIP_05`, -- pistol
+					`COMPONENT_MIDASGLOCK_CLIP_05`, -- pistol
+					`COMPONENT_REDARP_CLIP_04`, -- rifle
+					`COMPONENT_CARTELGLOCK_CLIP_CLEAR`, -- mafia [A]
+					`COMPONENT_CRIPSGLOCK_CLIP_CLEAR`, -- mafia [A]
+					`COMPONENT_BLOODSGLOCK_CLIP_CLEAR`, -- mafia [A]
+					`COMPONENT_BMGLOCK_CLIP_CLEAR`, -- mafia [A]
+					`COMPONENT_FAMILIASGLOCK_CLIP_CLEAR`, -- mafia [A]
+					`COMPONENT_PLAYBOYGLOCK_CLIP_CLEAR`, -- mafia [B]
+					`COMPONENT_MOBGLOCK_CLIP_CLEAR`, -- mafia [B]
+					`COMPONENT_GRAPEGLOCK_CLIP_CLEAR`, -- mafia [B]
+					`COMPONENT_HOOVERGLOCK_CLIP_CLEAR`, -- mafia [B]
+					`COMPONENT_KINGZGLOCK_CLIP_CLEAR`, -- mafia [B]
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_clip_100_black'] = {
+			label = 'BLK 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_CARTELGLOCK_CLIP_BLACK`, -- mafia 
+					`COMPONENT_CRIPSGLOCK_CLIP_BLACK`, -- mafia 
+					`COMPONENT_BLOODSGLOCK_CLIP_BLACK`, -- mafia 
+					`COMPONENT_BMGLOCK_CLIP_BLACK`, -- mafia 
+					`COMPONENT_FAMILIASGLOCK_CLIP_BLACK`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_100_red'] = {
+			label = 'Red 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_CARTELGLOCK_CLIP_RED`, -- mafia 
+					`COMPONENT_BLOODSGLOCK_CLIP_RED`, -- mafia 
+					`COMPONENT_BMGLOCK_CLIP_RED`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_100_white'] = {
+			label = 'WT 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_CARTELGLOCK_CLIP_WHITE`, -- mafia 
+					`COMPONENT_CRIPSGLOCK_CLIP_WHITE`, -- mafia 
+					`COMPONENT_BLOODSGLOCK_CLIP_WHITE`, -- mafia 
+					`COMPONENT_BMGLOCK_CLIP_WHITE`, -- mafia 
+					`COMPONENT_FAMILIASGLOCK_CLIP_WHITE`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_100_blue'] = {
+			label = 'Blue 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_CRIPSGLOCK_CLIP_BLUE`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_100_green'] = {
+			label = 'GRN 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_FAMILIASGLOCK_CLIP_GREEN`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_black'] = {
+			label = 'BLK BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_BLACK`, -- mafia 
+					`COMPONENT_FAMILIASARP_CLIP_BLACK`, -- mafia 
+					`COMPONENT_CARTELARP_CLIP_BLACK`, -- mafia 
+					`COMPONENT_CRIPSARP_CLIP_BLACK`, -- mafia 
+					`COMPONENT_BLOODSARP_CLIP_BLACK`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_red'] = {
+			label = 'RED BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_RED`, -- mafia 
+					`COMPONENT_FAMILIASARP_CLIP_RED`, -- mafia 
+					`COMPONENT_CARTELARP_CLIP_RED`, -- mafia 
+					`COMPONENT_CRIPSARP_CLIP_RED`, -- mafia 
+					`COMPONENT_BLOODSARP_CLIP_RED`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_blue'] = {
+			label = 'BLUE BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_BLUE`, -- mafia 
+					`COMPONENT_FAMILIASARP_CLIP_BLUE`, -- mafia 
+					`COMPONENT_CARTELARP_CLIP_BLUE`, -- mafia 
+					`COMPONENT_CRIPSARP_CLIP_BLUE`, -- mafia 
+					`COMPONENT_BLOODSARP_CLIP_BLUE`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_green'] = {
+			label = 'GRN BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_GREEN`, -- mafia 
+					`COMPONENT_FAMILIASARP_CLIP_GREEN`, -- mafia 
+					`COMPONENT_CARTELARP_CLIP_GREEN`, -- mafia 
+					`COMPONENT_CRIPSARP_CLIP_GREEN`, -- mafia 
+					`COMPONENT_BLOODSARP_CLIP_GREEN`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_white'] = {
+			label = 'WT BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_WHITE`, -- mafia 
+					`COMPONENT_FAMILIASARP_CLIP_WHITE`, -- mafia 
+					`COMPONENT_CARTELARP_CLIP_WHITE`, -- mafia 
+					`COMPONENT_CRIPSARP_CLIP_WHITE`, -- mafia 
+					`COMPONENT_BLOODSARP_CLIP_WHITE`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+
+
+
+        ['at_clip_drum_pistol'] = {
+			label = '50 Round Drum',
+			type = 'magazine',
+			weight = 500,
+			client = {
+				component = {
+					`COMPONENT_GLOCK19X_CLIP_03`, -- v4
+					`COMPONENT_GLOCK19_CLIP_03`, -- v4
+					`COMPONENT_GLOCK40_CLIP_03`, -- v4
+					`COMPONENT_GLOCK40S_CLIP_03`, -- v4
+					`COMPONENT_GLOCK18C_CLIP_03`, -- v4
+					`COMPONENT_ILLGLOCK17_CLIP_03`, -- v5
+					`COMPONENT_BLUEGLOCKS_CLIP_03`, -- v5
+					`COMPONENT_GLOCKBEAMS_CLIP_03`, -- v5
+					`COMPONENT_MGGLOCK_CLIP_03`, -- v5
+					`COMPONENT_TGLOCK19_CLIP_03`, -- v5
+					`COMPONENT_MIDASGLOCK_CLIP_03`, -- v5
+					`COMPONENT_CARTELGLOCK_CLIP_DRUM`, -- mafia [A]
+					`COMPONENT_CRIPSGLOCK_CLIP_DRUM`, -- mafia [A]
+					`COMPONENT_BLOODSGLOCK_CLIP_DRUM`, -- mafia [A]
+					`COMPONENT_BMGLOCK_CLIP_DRUM`, -- mafia [A]
+					`COMPONENT_FAMILIASGLOCK_CLIP_DRUM`, -- mafia [A]
+					`COMPONENT_PLAYBOYGLOCK_CLIP_DRUM`, -- mafia [B]
+					`COMPONENT_MOBGLOCK_CLIP_DRUM`, -- mafia [B]
+					`COMPONENT_GRAPEGLOCK_CLIP_DRUM`, -- mafia [B]
+					`COMPONENT_HOOVERGLOCK_CLIP_DRUM`, -- mafia [B]
+					`COMPONENT_KINGZGLOCK_CLIP_DRUM`, -- mafia [B]
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_clip_100_yellow'] = {
+			label = 'YEL 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_KINGZGLOCK_CLIP_YELLOW`, -- mafia [B]
+					`COMPONENT_GRAPEGLOCK_CLIP_YELLOW`, -- mafia [B]
+					`COMPONENT_HOOVERGLOCK_CLIP_YELLOW`, -- mafia [B]
+					`COMPONENT_MOBGLOCK_CLIP_YELLOW`, -- mafia [B]
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_100_pink'] = {
+			label = 'PINK 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_PLAYBOYGLOCK_CLIP_PINK`, -- mafia [B]
+					`COMPONENT_GRAPEGLOCK_CLIP_PINK`, -- mafia [B]
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_100_brown'] = {
+			label = 'BRN 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_MOBGLOCK_CLIP_BROWN`, -- mafia [B]
+					`COMPONENT_KINGZGLOCK_CLIP_BROWN`, -- mafia [B]
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_100_orange'] = {
+			label = 'ORG 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_MOBGLOCK_CLIP_ORANGE`, -- mafia [B]
+					`COMPONENT_KINGZGLOCK_CLIP_ORANGE`, -- mafia [B]
+					`COMPONENT_HOOVERGLOCK_CLIP_ORANGE`, -- mafia [B]
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_100_purple'] = {
+			label = 'PUR 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_PLAYBOYGLOCK_CLIP_PURPLE`, -- mafia [B]
+					`COMPONENT_GRAPEGLOCK_CLIP_PURPLE`, -- mafia [B]
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_pink'] = {
+			label = 'PNK BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_PLAYBOYARP_CLIP_PINK`, -- mafia [B]
+					`COMPONENT_MOBARP_CLIP_PINK`, -- mafia [B]
+					`COMPONENT_GRAPEARP_CLIP_PINK`, -- mafia [B]
+					`COMPONENT_HOOVERARP_CLIP_PINK`, -- mafia [B]
+					`COMPONENT_LATINARP_CLIP_PINK`, -- mafia [B]
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_brown'] = {
+			label = 'BRN BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_PLAYBOYARP_CLIP_BROWN`, -- mafia [B]
+					`COMPONENT_MOBARP_CLIP_BROWN`, -- mafia [B]
+					`COMPONENT_GRAPEARP_CLIP_BROWN`, -- mafia [B]
+					`COMPONENT_HOOVERARP_CLIP_BROWN`, -- mafia [B]
+					`COMPONENT_LATINARP_CLIP_BROWN`, -- mafia [B]
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_orange'] = {
+			label = 'ORG BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_PLAYBOYARP_CLIP_ORANGE`, -- mafia [B]
+					`COMPONENT_MOBARP_CLIP_ORANGE`, -- mafia [B]
+					`COMPONENT_GRAPEARP_CLIP_ORANGE`, -- mafia [B]
+					`COMPONENT_HOOVERARP_CLIP_ORANGE`, -- mafia [B]
+					`COMPONENT_LATINARP_CLIP_ORANGE`, -- mafia [B]
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_yellow'] = {
+			label = 'YEL BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_PLAYBOYARP_CLIP_YELLOW`, -- mafia [B]
+					`COMPONENT_MOBARP_CLIP_YELLOW`, -- mafia [B]
+					`COMPONENT_GRAPEARP_CLIP_YELLOW`, -- mafia [B]
+					`COMPONENT_HOOVERARP_CLIP_YELLOW`, -- mafia [B]
+					`COMPONENT_LATINARP_CLIP_YELLOW`, -- mafia [B]
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_purple'] = {
+			label = 'PUR BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_PURPLE`, -- mafia [B]
+					`COMPONENT_MOBARP_CLIP_PURPLE`, -- mafia [B]
+					`COMPONENT_GRAPEARP_CLIP_PURPLE`, -- mafia [B]
+					`COMPONENT_HOOVERARP_CLIP_PURPLE`, -- mafia [B]
+					`COMPONENT_LATINARP_CLIP_PURPLE`, -- mafia [B]
+				},
+				usetime = 5500
+			}
+		},
+
+
+        -- Police kyro
+        ['at_flashlight'] = {
 			label = 'Tactical Flashlight',
 			weight = 120,
 			type = 'flashlight',
@@ -1346,15 +2524,17 @@ return {
 					`COMPONENT_AT_PI_FLSH`,
 					`COMPONENT_AT_PI_FLSH_02`,
 					`COMPONENT_AT_PI_FLSH_03`,
-					`COMPONENT_AT_AR_BARPFLSH`, -- v4
-					`COMPONENT_AT_PI_RUGER57FLSH`, -- v4
 				    `COMPONENT_AT_PI_PDG19G4_FLSH`, -- pd
 					`COMPONENT_AT_AR_PDHK417_FLSH`,	-- pd
 					`COMPONENT_AT_PI_PINKGLOCK19FLSH`, -- female
-					`COMPONENT_AT_AR_BAR15_FLSH`, -- v5
+                    `COMPONENT_AT_AR_HERAARMS_FLSH`, -- v2
+                    `COMPONENT_AT_PI_G2C_FLSH`, -- v3
+                    `COMPONENT_AT_PI_PMR_FLSH`, -- v3
+                    `COMPONENT_AT_PI_G19X_FLSH`, -- v3
+                    `COMPONENT_AT_PI_G26_FLSH`, -- v3
+                    `COMPONENT_AT_AR_BAR15_FLSH`, -- v5
 					`COMPONENT_AT_AR_DMK18_FLSH`, -- v5
 					`COMPONENT_AT_PI_GLOCKBEAMS_FLSH`, -- v5 check
-					`COMPONENT_AT_PI_FLSH`, -- v5 check
 				},
 				usetime = 2500
 			}
@@ -1373,128 +2553,15 @@ return {
 					`COMPONENT_AT_PI_PDG19G4_SUPP`, -- pd
 					`COMPONENT_AT_AR_PINKPM9SUPP_02`, -- feamle
 					`COMPONENT_AT_AR_PINKMK18_SUPP`, -- female
-					`COMPONENT_AT_AR_DMK18_SUPP`, -- v5
+                    `COMPONENT_AT_AR_HERAARMS_SUPP`, -- v2
+					`COMPONENT_AT_AR_MAXIM9_SUPP`, -- v2
+					`COMPONENT_AT_AR_HONEYBADGER_SUPP`, -- v2
+					`COMPONENT_AT_AR_MP9_SUPP`, -- v2
+					`COMPONENT_AT_PI_FN502V2_SUPP`, -- v2
+                    `COMPONENT_AT_AR_P416_SUPP`, -- v3
+					`COMPONENT_AT_SR_P90_SUPP`, -- v3
+                    `COMPONENT_AT_AR_DMK18_SUPP`, -- v5
 					`COMPONENT_AT_AR_REDM4A1_SUPP`, -- v5
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_suppressor_heavy'] = {
-			label = 'Tactical Suppressor',
-			weight = 280,
-			type = 'muzzle',
-			client = {
-				component = {
-					`COMPONENT_AT_AR_SUPP`,
-					`COMPONENT_AT_AR_SUPP_02`,
-					`COMPONENT_AT_SR_SUPP`,
-					`COMPONENT_AT_SR_SUPP_03`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_grip'] = {
-			label = 'Grip',
-			type = 'grip',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_AT_AR_AFGRIP`,
-					`COMPONENT_AT_AR_AFGRIP_02`,
-					`COMPONENT_AT_AR_LOKAFGRIP`, -- v4
-					`COMPONENT_AT_AR_PLRAFGRIP`, -- v4
-					`COMPONENT_AT_AR_PINKMK18_AFGRIP`, -- female
-					`COMPONENT_AT_AR_BAR15_AFGRIP`, -- v5
-					`COMPONENT_AT_AR_DMK18_AFGRIP`, -- v5
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_barrel'] = {
-			label = 'Heavy Barrel',
-			type = 'barrel',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_AT_AR_BARREL_02`,
-					`COMPONENT_AT_BP_BARREL_02`,
-					`COMPONENT_AT_CR_BARREL_02`,
-					`COMPONENT_AT_MG_BARREL_02`,
-					`COMPONENT_AT_MRFL_BARREL_02`,
-					`COMPONENT_AT_SB_BARREL_02`,
-					`COMPONENT_AT_SC_BARREL_02`,
-					`COMPONENT_AT_SR_BARREL_02`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_clip_extended_pistol'] = {
-			label = 'Extended Pistol Clip',
-			type = 'magazine',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_APPISTOL_CLIP_02`,
-					`COMPONENT_CERAMICPISTOL_CLIP_02`,
-					`COMPONENT_COMBATPISTOL_CLIP_02`,
-					`COMPONENT_HEAVYPISTOL_CLIP_02`,
-					`COMPONENT_PISTOL_CLIP_02`,
-					`COMPONENT_PISTOL_MK2_CLIP_02`,
-					`COMPONENT_PISTOL50_CLIP_02`,
-					`COMPONENT_SNSPISTOL_CLIP_02`,
-					`COMPONENT_SNSPISTOL_MK2_CLIP_02`,
-					`COMPONENT_VINTAGEPISTOL_CLIP_02`,
-                    `COMPONENT_TECPISTOL_CLIP_02`,
-					`COMPONENT_ARPISTOL_BOXMAG`, -- v4
-					`COMPONENT_GLOCK17_CLIP_02`, -- v4
-					`COMPONENT_GLOCK18C_CLIP_02`, -- v4
-					`COMPONENT_PDG19G4_CLIP_02`, -- pd
-  					`COMPONENT_PINKGLOCK19_CLIP_02`, -- female
-					`COMPONENT_PXDS9_CLIP_02`, -- female
-					`COMPONENT_BLUEGLOCKS_CLIP_02`, -- v5
-					`COMPONENT_GLOCK41_CLIP_02`, -- v5
-					`COMPONENT_GLOCKBEAMS_CLIP_02`, -- v5
-					`COMPONENT_ILLGLOCK17_CLIP_02`, -- v5
-					`COMPONENT_MGGLOCK_CLIP_02`, -- v5
-					`COMPONENT_MIDASGLOCK_CLIP_02`, -- v5
-					`COMPONENT_TGLOCK19_CLIP_02`, -- v5
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_clip_extended_smg'] = {
-			label = 'Extended SMG Clip',
-			type = 'magazine',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTSMG_CLIP_02`,
-					`COMPONENT_COMBATPDW_CLIP_02`,
-					`COMPONENT_MACHINEPISTOL_CLIP_02`,
-					`COMPONENT_MICROSMG_CLIP_02`,
-					`COMPONENT_MINISMG_CLIP_02`,
-					`COMPONENT_SMG_CLIP_02`,
-					`COMPONENT_SMG_MK2_CLIP_02`,
-					`COMPONENT_PINKMP9_CLIP_02`, -- female
-					`COMPONENT_TEC9S_CLIP_02`, -- v5
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_clip_extended_shotgun'] = {
-			label = 'Extended Shotgun Clip',
-			type = 'magazine',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTSHOTGUN_CLIP_02`,
-					`COMPONENT_HEAVYSHOTGUN_CLIP_02`,
 				},
 				usetime = 2500
 			}
@@ -1520,11 +2587,14 @@ return {
 					`COMPONENT_SPECIALCARBINE_MK2_CLIP_02`,
 					`COMPONENT_TACTICALRIFLE_CLIP_02`,
 					`COMPONENT_CARBINERIFLE_BOXMAG`,
-					`COMPONENT_BARP_CLIP_02`, -- v4
-					`COMPONENT_PLR_CLIP_02`, -- v4
 					`COMPONENT_PDHK417_CLIP_02`, -- pd
-					`COMPONENT_PINKSCAR_CLIP_02`, -- female    
-					`COMPONENT_BSCAR_CLIP_02`, -- v5
+					`COMPONENT_PINKSCAR_CLIP_02`, -- female
+                    `COMPONENT_HERAARMS_BOXMAG`, -- v2
+					`COMPONENT_G36K_CLIP_02`, -- v2
+                    `COMPONENT_DDM4V7_CLIP_02`, -- v3
+                    `COMPONENT_SCARV3_CLIP_02`, -- v3
+                    `COMPONENT_AUGA1_CLIP_02`, -- v3
+                    `COMPONENT_BSCAR_CLIP_02`, -- v5
 					`COMPONENT_LBTANARP_CLIP_02`, -- v5
 					`COMPONENT_RAM7_CLIP_02`, -- v5
 					`COMPONENT_REDARP_CLIP_02`, -- v5
@@ -1532,106 +2602,6 @@ return {
 					`COMPONENT_BLACKARP_CLIP_02`, -- v5
 					`COMPONENT_TANARP_CLIP_02`, -- v5
 					`COMPONENT_WOARP_CLIP_02`, -- v5
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_clip_extended_mg'] = {
-			label = 'Extended MG Clip',
-			type = 'magazine',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_GUSENBERG_CLIP_02`,
-					`COMPONENT_MG_CLIP_02`,
-					`COMPONENT_COMBATMG_CLIP_02`,
-					`COMPONENT_COMBATMG_MK2_CLIP_02`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_clip_extended_sniper'] = {
-			label = 'Extended Sniper Clip',
-			type = 'magazine',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_HEAVYSNIPER_MK2_CLIP_02`,
-					`COMPONENT_MARKSMANRIFLE_CLIP_02`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CLIP_02`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_clip_drum_smg'] = {
-			label = 'SMG Drum',
-			type = 'magazine',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_COMBATPDW_CLIP_03`,
-					`COMPONENT_MACHINEPISTOL_CLIP_03`,
-					`COMPONENT_SMG_CLIP_03`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_clip_drum_shotgun'] = {
-			label = 'Shotgun Drum',
-			type = 'magazine',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_HEAVYSHOTGUN_CLIP_03`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_clip_drum_rifle'] = {
-			label = 'Rifle Drum',
-			type = 'magazine',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_CLIP_03`,
-					`COMPONENT_COMPACTRIFLE_CLIP_03`,
-					`COMPONENT_CARBINERIFLE_CLIP_03`,
-					`COMPONENT_SPECIALCARBINE_CLIP_03`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_compensator'] = {
-			label = 'Compensator',
-			type = 'muzzle',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_AT_PI_COMP`,
-					`COMPONENT_AT_PI_COMP_02`,
-					`COMPONENT_AT_PI_COMP_03`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_scope_macro'] = {
-			label = 'Macro Scope',
-			type = 'sight',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_AT_SCOPE_MACRO`,
-					`COMPONENT_AT_SCOPE_MACRO_02`,
-					`COMPONENT_AT_SCOPE_MACRO_MK2`,
-					`COMPONENT_AT_SCOPE_MACRO_02_MK2`,
-					`COMPONENT_AT_SCOPE_MACRO_02_SMG_MK2`
 				},
 				usetime = 2500
 			}
@@ -1671,977 +2641,147 @@ return {
 			}
 		},
 
-		['at_scope_large'] = {
+        -- V1 kyros
+        ['at_flashlight'] = {
+			label = 'Tactical Flashlight',
+			weight = 120,
+			type = 'flashlight',
+			client = {
+				component = {
+					`COMPONENT_AT_AR_FLSH`,
+					`COMPONENT_AT_AR_FLSH_REH`,
+					`COMPONENT_AT_PI_FLSH`,
+					`COMPONENT_AT_PI_FLSH_02`,
+					`COMPONENT_AT_PI_FLSH_03`,
+                    `COMPONENT_AT_G18C_FLSH`, -- v1
+                    `COMPONENT_AT_AR_NSR_FLSH`, -- v1
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_suppressor_light'] = {
+			label = 'Suppressor',
+			weight = 280,
+			type = 'muzzle',
+			client = {
+				component = {
+					`COMPONENT_AT_PI_SUPP`,
+					`COMPONENT_AT_PI_SUPP_02`,
+					`COMPONENT_CERAMICPISTOL_SUPP`,
+					`COMPONENT_PISTOLXM3_SUPP`,
+					`COMPONENT_AT_AR_NSR_SUPP`, -- v1
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_clip_extended_pistol'] = {
+			label = 'Extended Pistol Clip',
+			type = 'magazine',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_APPISTOL_CLIP_02`,
+					`COMPONENT_CERAMICPISTOL_CLIP_02`,
+					`COMPONENT_COMBATPISTOL_CLIP_02`,
+					`COMPONENT_HEAVYPISTOL_CLIP_02`,
+					`COMPONENT_PISTOL_CLIP_02`,
+					`COMPONENT_PISTOL_MK2_CLIP_02`,
+					`COMPONENT_PISTOL50_CLIP_02`,
+					`COMPONENT_SNSPISTOL_CLIP_02`,
+					`COMPONENT_SNSPISTOL_MK2_CLIP_02`,
+					`COMPONENT_VINTAGEPISTOL_CLIP_02`,
+                    `COMPONENT_TECPISTOL_CLIP_02`,
+                    `COMPONENT_P226_CLIP_02`, -- v1
+                    `COMPONENT_G18C_CLIP_02`, -- v1
+                    `COMPONENT_G17_CLIP_02`, -- v1
+                    `COMPONENT_GARDONE_CLIP_02`, -- v1
+                    `COMPONENT_G2C_CLIP_02`, -- v3
+                    `COMPONENT_TGLOCK_CLIP_02`, -- v3
+                    `COMPONENT_G26_CLIP_02`, -- v3
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_clip_extended_smg'] = {
+			label = 'Extended SMG Clip',
+			type = 'magazine',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_ASSAULTSMG_CLIP_02`,
+					`COMPONENT_COMBATPDW_CLIP_02`,
+					`COMPONENT_MACHINEPISTOL_CLIP_02`,
+					`COMPONENT_MICROSMG_CLIP_02`,
+					`COMPONENT_MINISMG_CLIP_02`,
+					`COMPONENT_SMG_CLIP_02`,
+					`COMPONENT_SMG_MK2_CLIP_02`,
+					`COMPONENT_MAC_CLIP_02`, -- v1
+					`COMPONENT_TEC9_CLIP_02`, -- v1
+                    `CCOMPONENT_MAGPULPDR_CLIP_02`, -- v2
+					`COMPONENT_MP9_CLIP_02`, -- v2
+                    `COMPONENT_TUZI_CLIP_02`, -- v3
+                    `COMPONENT_PINKMP9_CLIP_02`, -- female
+					`COMPONENT_TEC9S_CLIP_02`, -- v5
+				},
+				usetime = 2500
+			}
+		},
+
+        ['at_scope_large'] = {
 			label = 'Large Scope',
 			type = 'sight',
 			weight = 280,
 			client = {
 				component = {
 					`COMPONENT_AT_SCOPE_LARGE_MK2`,
-					`COMPONENT_AT_SCOPE_LARGE`
+					`COMPONENT_AT_SCOPE_LARGE`,
+					`COMPONENT_AT_BARRETT50_SCOPE_MAX`, -- v1
+                    `COMPONENT_AT_AWP_SCOPE_LARGE`, -- v3
+					`COMPONENT_AT_M200_SCOPE_LARGE`, -- v3
+					`COMPONENT_AT_AS50_SCOPE_LARGE`, -- v3
 				},
 				usetime = 2500
 			}
 		},
 
-		['at_scope_advanced'] = {
-			label = 'Advanced Scope',
-			type = 'sight',
+        -- V2 Kyros
+        ['at_grip'] = {
+			label = 'Grip',
+			type = 'grip',
 			weight = 280,
 			client = {
 				component = {
-					`COMPONENT_AT_SCOPE_MAX`
+					`COMPONENT_AT_AR_AFGRIP`,
+					`COMPONENT_AT_AR_AFGRIP_02`,
+					`COMPONENT_AT_AR_HERAARMS_AFGRIP`, -- v2
+					`COMPONENT_AT_AR_LVOCA_AFGRIP`, -- v2
+                    `COMPONENT_AT_AR_PINKMK18_AFGRIP`, -- female
+					`COMPONENT_AT_AR_BAR15_AFGRIP`, -- v5
+					`COMPONENT_AT_AR_DMK18_AFGRIP`, -- v5
 				},
 				usetime = 2500
 			}
 		},
 
-		['at_scope_nv'] = {
-			label = 'NV Scope',
-			type = 'sight',
-			weight = 420,
-			client = {
-				component = {
-					`COMPONENT_AT_SCOPE_NV`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_scope_thermal'] = {
-			label = 'Thermal Scope',
-			type = 'sight',
-			weight = 420,
-			client = {
-				component = {
-					`COMPONENT_AT_SCOPE_THERMAL`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_scope_holo'] = {
-			label = 'Holographic Sight',
-			type = 'sight',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_AT_PI_RAIL`,
-					`COMPONENT_AT_PI_RAIL_02`,
-					`COMPONENT_AT_SIGHTS`,
-					`COMPONENT_AT_SIGHTS_SMG`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_muzzle_flat'] = {
-			label = 'Flat Muzzle',
-			type = 'muzzle',
-			weight = 80,
-			client = {
-				component = {
-					`COMPONENT_AT_MUZZLE_01`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_muzzle_tactical'] = {
-			label = 'Tactical Muzzle',
-			type = 'muzzle',
-			weight = 80,
-			client = {
-				component = {
-					`COMPONENT_AT_MUZZLE_02`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_muzzle_fat'] = {
-			label = 'Fat Muzzle',
-			type = 'muzzle',
-			weight = 80,
-			client = {
-				component = {
-					`COMPONENT_AT_MUZZLE_03`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_muzzle_precision'] = {
-			label = 'Precision Muzzle',
-			type = 'muzzle',
-			weight = 80,
-			client = {
-				component = {
-					`COMPONENT_AT_MUZZLE_04`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_muzzle_heavy'] = {
-			label = 'Heavy Muzzle',
-			type = 'muzzle',
-			weight = 80,
-			client = {
-				component = {
-					`COMPONENT_AT_MUZZLE_05`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_muzzle_slanted'] = {
-			label = 'Slanted Muzzle',
-			type = 'muzzle',
-			weight = 80,
-			client = {
-				component = {
-					`COMPONENT_AT_MUZZLE_06`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_muzzle_split'] = {
-			label = 'Split Muzzle',
-			type = 'muzzle',
-			weight = 80,
-			client = {
-				component = {
-					`COMPONENT_AT_MUZZLE_07`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_muzzle_squared'] = {
-			label = 'Squared Muzzle',
-			type = 'muzzle',
-			weight = 80,
-			client = {
-				component = {
-					`COMPONENT_AT_MUZZLE_08`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_muzzle_bell'] = {
-			label = 'Bell Muzzle',
-			type = 'muzzle',
-			weight = 80,
-			client = {
-				component = {
-					`COMPONENT_AT_MUZZLE_09`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_luxe'] = {
-			label = 'Luxury Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_VARMOD_LUXE`,
-					`COMPONENT_ASSAULTSMG_VARMOD_LOWRIDER`,
-					`COMPONENT_CARBINERIFLE_VARMOD_LUXE`,
-					`COMPONENT_COMBATPISTOL_VARMOD_LOWRIDER`,
-					`COMPONENT_MARKSMANRIFLE_VARMOD_LUXE`,
-					`COMPONENT_MG_VARMOD_LOWRIDER`,
-					`COMPONENT_MICROSMG_VARMOD_LUXE`,
-					`COMPONENT_PISTOL_VARMOD_LUXE`,
-					`COMPONENT_PUMPSHOTGUN_VARMOD_LOWRIDER`,
-					`COMPONENT_SMG_VARMOD_LUXE`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_wood'] = {
-			label = 'Wood Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_HEAVYPISTOL_VARMOD_LUXE`,
-					`COMPONENT_SNIPERRIFLE_VARMOD_LUXE`,
-					`COMPONENT_SNSPISTOL_VARMOD_LOWRIDER`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_metal'] = {
-			label = 'Metal Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ADVANCEDRIFLE_VARMOD_LUXE`,
-					`COMPONENT_APPISTOL_VARMOD_LUXE`,
-					`COMPONENT_BULLPUPRIFLE_VARMOD_LOW`,
-					`COMPONENT_SAWNOFFSHOTGUN_VARMOD_LUXE`,
-					`COMPONENT_SPECIALCARBINE_VARMOD_LOWRIDER`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_pearl'] = {
-			label = 'Pearl Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_PISTOL50_VARMOD_LUXE`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_ballas'] = {
-			label = 'Ballas Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_BALLAS`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_diamond'] = {
-			label = 'Diamond Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_DIAMOND`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_dollar'] = {
-			label = 'Dollar Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_DOLLAR`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_hate'] = {
-			label = 'Hate Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_HATE`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_king'] = {
-			label = 'King Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_KING`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_love'] = {
-			label = 'Love Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_LOVE`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_pimp'] = {
-			label = 'Pimp Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_PIMP`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_player'] = {
-			label = 'Player Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_PLAYER`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_vagos'] = {
-			label = 'Vagos Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_VAGOS`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_blagueurs'] = {
-			label = 'Blagueurs Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_splatter'] = {
-			label = 'Splatter Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_01`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_bulletholes'] = {
-			label = 'Bullet Holes Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_02`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_burgershot'] = {
-			label = 'Burger Shot Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_03`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_cluckinbell'] = {
-			label = 'Cluckin Bell Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_04`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_fatalincursion'] = {
-			label = 'Fatal Incursion Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_05`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_luchalibre'] = {
-			label = 'Lucha Libre Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_06`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_trippy'] = {
-			label = 'Trippy Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_07`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_tiedye'] = {
-			label = 'Tie-Dye Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_08`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_wall'] = {
-			label = 'Wall Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_09`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_vip'] = {
-			label = 'VIP Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_REVOLVER_VARMOD_BOSS`,
-					`COMPONENT_SWITCHBLADE_VARMOD_VAR1`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_bodyguard'] = {
-			label = 'Bodyguard Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_REVOLVER_VARMOD_GOON`,
-					`COMPONENT_SWITCHBLADE_VARMOD_VAR2`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_festive'] = {
-			label = 'Festive Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_RAYPISTOL_VARMOD_XMAS18`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_security'] = {
-			label = 'Security Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_APPISTOL_VARMOD_SECURITY`,
-					`COMPONENT_MICROSMG_VARMOD_SECURITY`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_camo'] = {
-			label = 'Camo Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO`,
-					`COMPONENT_COMBATMG_MK2_CAMO`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO`,
-					`COMPONENT_PISTOL_MK2_CAMO`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO`,
-					`COMPONENT_REVOLVER_MK2_CAMO`,
-					`COMPONENT_SMG_MK2_CAMO`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_brushstroke'] = {
-			label = 'Brushstroke Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_02`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_02`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_02`,
-					`COMPONENT_COMBATMG_MK2_CAMO_02`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_02`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_02`,
-					`COMPONENT_PISTOL_MK2_CAMO_02`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_02`,
-					`COMPONENT_REVOLVER_MK2_CAMO_02`,
-					`COMPONENT_SMG_MK2_CAMO_02`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_02`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_02`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_woodland'] = {
-			label = 'Woodland Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_03`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_03`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_03`,
-					`COMPONENT_COMBATMG_MK2_CAMO_03`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_03`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_03`,
-					`COMPONENT_PISTOL_MK2_CAMO_03`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_03`,
-					`COMPONENT_REVOLVER_MK2_CAMO_03`,
-					`COMPONENT_SMG_MK2_CAMO_03`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_03`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_03`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_skull'] = {
-			label = 'Skull Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_04`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_04`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_04`,
-					`COMPONENT_COMBATMG_MK2_CAMO_04`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_04`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_04`,
-					`COMPONENT_PISTOL_MK2_CAMO_04`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_04`,
-					`COMPONENT_REVOLVER_MK2_CAMO_04`,
-					`COMPONENT_SMG_MK2_CAMO_04`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_04`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_04`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_sessanta'] = {
-			label = 'Sessanta Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_05`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_05`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_05`,
-					`COMPONENT_COMBATMG_MK2_CAMO_05`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_05`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_05`,
-					`COMPONENT_PISTOL_MK2_CAMO_05`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_05`,
-					`COMPONENT_REVOLVER_MK2_CAMO_05`,
-					`COMPONENT_SMG_MK2_CAMO_05`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_05`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_05`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_perseus'] = {
-			label = 'Perseus Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_06`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_06`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_06`,
-					`COMPONENT_COMBATMG_MK2_CAMO_06`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_06`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_06`,
-					`COMPONENT_PISTOL_MK2_CAMO_06`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_06`,
-					`COMPONENT_REVOLVER_MK2_CAMO_06`,
-					`COMPONENT_SMG_MK2_CAMO_06`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_06`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_06`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_leopard'] = {
-			label = 'Leopard Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_07`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_07`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_07`,
-					`COMPONENT_COMBATMG_MK2_CAMO_07`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_07`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_07`,
-					`COMPONENT_PISTOL_MK2_CAMO_07`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_07`,
-					`COMPONENT_REVOLVER_MK2_CAMO_07`,
-					`COMPONENT_SMG_MK2_CAMO_07`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_07`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_07`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_zebra'] = {
-			label = 'Zebra Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_08`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_08`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_08`,
-					`COMPONENT_COMBATMG_MK2_CAMO_08`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_08`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_08`,
-					`COMPONENT_PISTOL_MK2_CAMO_08`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_08`,
-					`COMPONENT_REVOLVER_MK2_CAMO_08`,
-					`COMPONENT_SMG_MK2_CAMO_08`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_08`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_08`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_geometric'] = {
-			label = 'Geometric Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_09`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_09`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_09`,
-					`COMPONENT_COMBATMG_MK2_CAMO_09`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_09`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_09`,
-					`COMPONENT_PISTOL_MK2_CAMO_09`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_09`,
-					`COMPONENT_REVOLVER_MK2_CAMO_09`,
-					`COMPONENT_SMG_MK2_CAMO_09`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_09`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_09`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_boom'] = {
-			label = 'Boom Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_10`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_10`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_10`,
-					`COMPONENT_COMBATMG_MK2_CAMO_10`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_10`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_10`,
-					`COMPONENT_PISTOL_MK2_CAMO_10`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_10`,
-					`COMPONENT_REVOLVER_MK2_CAMO_10`,
-					`COMPONENT_SMG_MK2_CAMO_10`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_10`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_10`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_patriotic'] = {
-			label = 'Patriotic Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_IND_01`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_IND_01`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_IND_01`,
-					`COMPONENT_COMBATMG_MK2_CAMO_IND_01`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_IND_01`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_IND_01`,
-					`COMPONENT_PISTOL_MK2_CAMO_IND_01`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_IND_01`,
-					`COMPONENT_REVOLVER_MK2_CAMO_IND_01`,
-					`COMPONENT_SMG_MK2_CAMO_IND_01`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_IND_01`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_IND_01`,
-				},
-				usetime = 2500
-			}
-		},
-		-- Custom Attachment
-
-			-- Pistol
-
-		['pistol_extclip'] = {
-			label = 'Pistol Ext Clip',
-			type = 'Magazine',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_G18C_CLIP_02`,
-					`COMPONENT_G19X_CLIP_02`,
-					`COMPONENT_G17_CLIP_02`,
-					`COMPONENT_BR_CLIP_02`,
-					`COMPONENT_USP_CLIP_02`,
-					`COMPONENT_ACHILLIS_CLIP_02`,
-					`COMPONENT_FN502_CLIP_02`,
-
-				},
-				usetime = 2500
-			}
-		},
-		['pistol_suppressor'] = {
-			label = 'Pistol Suppressor',
-			type = 'Suppressor',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_G18C_PI_SUPP`,
-					`COMPONENT_G19X_PI_SUPP`,
-					`COMPONENT_G17_PI_SUPP`,
-					`COMPONENT_BR_PI_SUPP`,
-					`COMPONENT_USP_PI_SUPP`,
-					`COMPONENT_ACHILLIS_PI_SUPP`,
-					`COMPONENT_FN502_PI_SUPP`,
-
-				},
-				usetime = 2500
-			}
-		},
-
-			-- SMG
-
-		['smg_extclip'] = {
-			label = 'SMG Ext Clip',
-			type = 'Magazzine',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_MP9_CLIP_02`,
-					`COMPONENT_VEC_CLIP_02`,
-					`COMPONENT_UZI_CLIP_02`,
-					`COMPONENT_MP5_CLIP_02`,
-					`COMPONENT_MP5K_CLIP_02`,
-
-
-				},
-				usetime = 2500
-			}
-		},
-		['smg_suppressor'] = {
-			label = 'SMG Suppressor',
-			type = 'Suppressor',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_MP9_AR_SUPP_02`,
-					`COMPONENT_VEC_AR_SUPP`,
-					`COMPONENT_UZI_AR_SUPP_02`,
-					`COMPONENT_MP5_AR_SUPP`,
-					`COMPONENT_MP5K_AR_SUPP`,
-
-
-				},
-				usetime = 2500
-			}
-		},
-		['smg_scope'] = {
-			label = 'SMG Scope',
-			type = 'Scope',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_MP9_SCOPE_MACRO`,
-					`COMPONENT_VEC_SCOPE_MEDIUM`,
-
-				},
-				usetime = 2500
-			}
-		},
-
-			-- Rifle
-
-		['rifle_extclip'] = {
-			label = 'Rifle Ext Clip',
-			type = 'Magazzine',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_HK416_CLIP_02`,
-					`COMPONENT_SCARH_CLIP_02`,
-					`COMPONENT_AK_CLIP_02`,
-					`COMPONENT_AR15_CLIP_02`,
-					`COMPONENT_M762_CLIP_02`,
-					`COMPONENT_AUGA1V2_CLIP_02`,
-					`COMPONENT_G36A2_CLIP_02`,
-					`COMPONENT_SIGMCX_CLIP_01`,
-					`COMPONENT_MK18_CLIP_02`,
-					`COMPONENT_M4A1_CLIP_02`,
-				},
-				usetime = 2500
-			}
-		},
-		['rifle_suppressor'] = {
-			label = 'Rifle Suppressor',
-			type = 'Suppressor',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_HK_AR_SUPP`,
-					`COMPONENT_SC_AR_SUPP`,
-					`COMPONENT_AK_AR_SUPP`,
-					`COMPONENT_AR15_AR_SUPP`,
-					`COMPONENT_M7_AR_SUPP`,
-					`COMPONENT_AUG_AR_SUPP`,
-					`COMPONENT_G36A_AR_SUPP`,
-					`COMPONENT_SIGMCX_SUPP_03`,
-					`COMPONENT_MK18_AR_SUPP`,
-					`COMPONENT_M4A1_AR_SUPP`,
-				},
-				usetime = 2500
-			}
-		},
-		['rifle_scope'] = {
-			label = 'Rifle Scope',
-			type = 'Scope',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_HK_SCOPE_MEDIUM`,
-					`COMPONENT_AR15_SCOPE_MEDIUM`,
-					`COMPONENT_M7_SCOPE_MEDIUM`,
-					`COMPONENT_SIGMCX_SCOPE_03`,
-					`COMPONENT_MK18_SCOPE_MEDIUM`,
-					`COMPONENT_G36A_SCOPE_MEDIUM`,
-
-				},
-				usetime = 2500
-			}
-		},
-		['rifle_grip'] = {
-			label = 'Rifle Grip',
-			type = 'Grip',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_HK_AR_AFGRIP`,
-					`COMPONENT_AR15_AR_AFGRIP`,
-					`COMPONENT_M7_AR_AFGRIP`,
-					`COMPONENT_G36A_AR_AFGRIP`,
-					`COMPONENT_SIGMCX_GRIP_01`,
-					`COMPONENT_MK18_AR_AFGRIP`,
-					`COMPONENT_M4A1_AR_AFGRIP`,
-
-				},
-				usetime = 2500
-			}
-		},
-		['rifle_flash'] = {
-			label = 'Rifle Flash',
-			type = 'Falshlight',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_SC_AR_FLSH`,
-					`COMPONENT_M7_AR_FLSH`,
-
-
-				},
-				usetime = 2500
-			}
-		},
-		['at_clip_drum_pistol'] = {
-			label = '50 Round Drum',
+        ['at_clip_extended_shotgun'] = {
+			label = 'Extended Shotgun Clip',
 			type = 'magazine',
-			weight = 500,
+			weight = 280,
 			client = {
 				component = {
-					`COMPONENT_GLOCK19X_CLIP_03`, -- v4
-					`COMPONENT_GLOCK19_CLIP_03`, -- v4
-					`COMPONENT_GLOCK40_CLIP_03`, -- v4
-					`COMPONENT_GLOCK40S_CLIP_03`, -- v4
-					`COMPONENT_GLOCK18C_CLIP_03`, -- v4
-					`COMPONENT_ILLGLOCK17_CLIP_03`, -- v5
-					`COMPONENT_BLUEGLOCKS_CLIP_03`, -- v5
-					`COMPONENT_GLOCKBEAMS_CLIP_03`, -- v5
-					`COMPONENT_MGGLOCK_CLIP_03`, -- v5
-					`COMPONENT_TGLOCK19_CLIP_03`, -- v5
-					`COMPONENT_MIDASGLOCK_CLIP_03`, -- v5
+					`COMPONENT_ASSAULTSHOTGUN_CLIP_02`,
+					`COMPONENT_HEAVYSHOTGUN_CLIP_02`,
+					`COMPONENT_AA12_CLIP_02`, -- v2
 				},
 				usetime = 2500
 			}
 		},
 
-		['at_clip_100_pistol'] = {
+        -- kyros v4
+        ['at_clip_100_pistol'] = {
 			label = '100 Round Mag',
 			type = 'magazine',
 			weight = 800,
@@ -2660,62 +2800,369 @@ return {
 				usetime = 5500
 			}
 		},
-	},
-
-	Ammo = {
-		['ammo-smokegrenade'] = {
-			label = '40mm Smoke',
-			weight = 3,
-		},
-		['ammo-22'] = {
-			label = '.22 Long Rifle',
-			weight = 3,
-		},
-
-		['ammo_hunting'] = {
-			label = '.15 Hunting Ammo',
-			weight = 3,
-		},
 
 
-		['ammo-38'] = {
-			label = '.38 LC',
-			weight = 15,
-		},
 
-		['ammo-44'] = {
-			label = '.44 Magnum',
-			weight = 16,
-		},
 
-		['ammo-32'] = {
-			label = '.32 ACP',
-			weight = 15,
-		},
 
-		['ammo-45'] = {
-			label = '.45 ACP',
-			weight = 15,
-		},
 
-		['ammo-45-pd'] = {
-			label = 'PD .45 ACP',
-			weight = 15,
-		},
 
-		['ammo-50'] = {
-			label = '.50 AE',
-			weight = 45,
-		},
 
-		['ammo-9'] = {
-			label = '9mm',
-			weight = 7,
-		},
-		['ammo-9-pd'] = {
-			label = 'PD 9mm',
-			weight = 7,
-		},
+
+
+        ['at_suppressor_heavy'] = {
+            label = 'Tactical Suppressor',
+            weight = 280,
+            type = 'barrel',
+            client = {
+                component = {`COMPONENT_AT_AR_SUPP`, `COMPONENT_AT_AR_SUPP_02`, `COMPONENT_AT_SR_SUPP`, `COMPONENT_AT_SR_SUPP_03`},
+                usetime = 2500
+            }
+        },
+
+        ['at_grip'] = {
+            label = 'Grip Tape',
+            type = 'grip',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_AT_AR_AFGRIP`, `COMPONENT_AT_AR_AFGRIP_02`},
+                usetime = 2500
+            }
+        },
+
+        ['at_barrel'] = {
+            label = 'Heavy Barrel',
+            type = 'barrel',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_AT_SR_BARREL_01`,`COMPONENT_AT_MRFL_BARREL_02`,`COMPONENT_AT_MG_BARREL_02`,`COMPONENT_AT_SC_BARREL_02`, `COMPONENT_AT_CR_BARREL_02`, `COMPONENT_AT_BP_BARREL_02`},
+                usetime = 2500
+            }
+        },
+
+
+        ['at_clip_extended_smg'] = {
+            label = 'Extended SMG Clip',
+            type = 'magazine',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_SMG_CLIP_02`, `COMPONENT_SMG_MK2_CLIP_02`, `COMPONENT_ASSAULTSMG_CLIP_02`, `COMPONENT_MICROSMG_CLIP_02`, `COMPONENT_MINISMG_CLIP_02`, `COMPONENT_COMBATPDW_CLIP_02`, `COMPONENT_MACHINEPISTOL_CLIP_02`},
+                usetime = 2500
+            }
+        },
+
+        ['at_clip_extended_mg'] = {
+            label = 'Extended MG Clip',
+            type = 'magazine',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_MG_CLIP_02`, `COMPONENT_COMBATMG_CLIP_02`, `COMPONENT_GUSENBERG_CLIP_02`, `COMPONENT_COMBATMG_MK2_CLIP_02`},
+                usetime = 2500
+            }
+        },
+
+        ['at_clip_extended_sniper'] = {
+            label = 'Extended Sniper Clip',
+            type = 'magazine',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_MARKSMANRIFLE_CLIP_02`, `COMPONENT_HEAVYSNIPER_MK2_CLIP_02`, `COMPONENT_MARKSMANRIFLE_MK2_CLIP_02`},
+                usetime = 2500
+            }
+        },
+
+        ['at_clip_drum_smg'] = {
+            label = 'SMG Drum Clip',
+            type = 'magazine',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_MACHINEPISTOL_CLIP_03`, `COMPONENT_SMG_CLIP_03`, `COMPONENT_COMBATPDW_CLIP_03`},
+                usetime = 2500
+            }
+        },
+
+        ['at_clip_drum_shotgun'] = {
+            label = 'Shotgun Drum Clip',
+            type = 'magazine',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_HEAVYSHOTGUN_CLIP_03`},
+                usetime = 2500
+            }
+        },
+
+        ['at_clip_drum_rifle'] = {
+            label = 'Rifle Drum Clip',
+            type = 'magazine',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_COMPACTRIFLE_CLIP_03`, `COMPONENT_CARBINERIFLE_CLIP_03`, `COMPONENT_SPECIALCARBINE_CLIP_03`},
+                usetime = 2500
+            }
+        },
+
+        ['at_compensator'] = {
+            label = 'Compensator',
+            type = 'barrel',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_AT_PI_COMP_02`, `COMPONENT_AT_PI_COMP_03`, `COMPONENT_AT_PI_COMP`},
+                usetime = 2500
+            }
+        },
+
+        ['at_scope_advanced'] = {
+            label = 'Advanced Scope',
+            type = 'sight',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_AT_SCOPE_MAX`},
+                usetime = 2500
+            }
+        },
+
+        ['at_scope_zoom'] = {
+            label = 'Zoom Scope',
+            type = 'sight',
+            weight = 280,
+            client = {
+                component = {`COMPONENT_AT_SCOPE_LARGE_MK2`},
+                usetime = 2500
+            }
+        },
+
+        ['at_scope_nv'] = {
+            label = 'NV Scope',
+            type = 'sight',
+            weight = 420,
+            client = {
+                component = {`COMPONENT_AT_SCOPE_NV`},
+                usetime = 2500
+            }
+        },
+
+        ['at_scope_thermal'] = {
+            label = 'Thermal Scope',
+            type = 'sight',
+            weight = 420,
+            client = {
+                component = {`COMPONENT_AT_SCOPE_THERMAL`},
+                usetime = 2500
+            }
+        },
+
+        ['at_muzzle_squared'] = {
+            label = 'Squared Muzzle',
+            type = 'barrel',
+            weight = 80,
+            client = {
+                component = {`COMPONENT_AT_MUZZLE_08`},
+                usetime = 2500
+            }
+        },
+
+        ['at_muzzle_bell'] = {
+            label = 'Bell Muzzle',
+            type = 'barrel',
+            weight = 80,
+            client = {
+                component = {`COMPONENT_AT_MUZZLE_09`},
+                usetime = 2500
+            }
+        },
+
+        ['at_muzzle_flat'] = {
+            label = 'Flat Muzzle',
+            type = 'barrel',
+            weight = 80,
+            client = {
+                component = {`COMPONENT_AT_MUZZLE_01`},
+                usetime = 2500
+            }
+        },
+
+        ['at_muzzle_tactical'] = {
+            label = 'Tactical Muzzle',
+            type = 'barrel',
+            weight = 80,
+            client = {
+                component = {`COMPONENT_AT_MUZZLE_02`},
+                usetime = 2500
+            }
+        },
+
+        ['at_muzzle_fat'] = {
+            label = 'Fat Muzzle',
+            type = 'barrel',
+            weight = 80,
+            client = {
+                component = {`COMPONENT_AT_MUZZLE_03`},
+                usetime = 2500
+            }
+        },
+
+        ['at_muzzle_precision'] = {
+            label = 'Precision Muzzle',
+            type = 'barrel',
+            weight = 80,
+            client = {
+                component = {`COMPONENT_AT_MUZZLE_04`},
+                usetime = 2500
+            }
+        },
+
+        ['at_muzzle_heavy'] = {
+            label = 'Heavy Muzzle',
+            type = 'barrel',
+            weight = 80,
+            client = {
+                component = {`COMPONENT_AT_MUZZLE_05`},
+                usetime = 2500
+            }
+        },
+
+        ['at_muzzle_slanted'] = {
+            label = 'Slanted Muzzle',
+            type = 'barrel',
+            weight = 80,
+            client = {
+                component = {`COMPONENT_AT_MUZZLE_06`},
+                usetime = 2500
+            }
+        },
+
+        ['at_muzzle_split'] = {
+            label = 'Split Muzzle',
+            type = 'barrel',
+            weight = 80,
+            client = {
+                component = {`COMPONENT_AT_MUZZLE_07`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_gold'] = {
+            label = 'Luxury Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_MARKSMANRIFLE_VARMOD_LUXE`,`COMPONENT_MARKSMANRIFLE_VARMOD_LUXE`, `COMPONENT_SNIPERRIFLE_VARMOD_LUXE`,`COMPONENT_PUMPSHOTGUN_VARMOD_LOWRIDER`, `COMPONENT_SAWNOFFSHOTGUN_VARMOD_LUXE`,`COMPONENT_ASSAULTRIFLE_VARMOD_LUXE`, `COMPONENT_CARBINERIFLE_VARMOD_LUXE`, `COMPONENT_ADVANCEDRIFLE_VARMOD_LUXE`, `COMPONENT_SPECIALCARBINE_VARMOD_LOWRIDER`, `COMPONENT_BULLPUPRIFLE_VARMOD_LOW`, `COMPONENT_MG_VARMOD_LOWRIDER`,`COMPONENT_PISTOL_VARMOD_LUXE`, `COMPONENT_PISTOL50_VARMOD_LUXE`, `COMPONENT_APPISTOL_VARMOD_LUXE`, `COMPONENT_COMBATPISTOL_VARMOD_LOWRIDER`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_camo'] = {
+            label = 'Camo Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO`,`COMPONENT_COMBATMG_MK2_CAMO`,`COMPONENT_PUMPSHOTGUN_MK2_CAMO`,`COMPONENT_ASSAULTRIFLE_MK2_CAMO`, `COMPONENT_CARBINERIFLE_MK2_CAMO`, `COMPONENT_SPECIALCARBINE_MK2_CAMO`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO`, `COMPONENT_BULLPUPRIFLE_VARMOD_LOW`, `COMPONENT_MG_VARMOD_LOWRIDER`,`COMPONENT_SNSPISTOL_MK2_CAMO`, `COMPONENT_REVOLVER_MK2_CAMO`, `COMPONENT_PISTOL_MK2_CAMO`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_brushstroke'] = {
+            label = 'Brushstroke Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO_02`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO_02`,`COMPONENT_COMBATMG_MK2_CAMO_02`,`COMPONENT_PUMPSHOTGUN_MK2_CAMO_02`,`COMPONENT_ASSAULTRIFLE_MK2_CAMO_02`, `COMPONENT_CARBINERIFLE_MK2_CAMO_02`, `COMPONENT_SPECIALCARBINE_MK2_CAMO_02`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO_02`,`COMPONENT_PISTOL_MK2_CAMO_02`, `COMPONENT_REVOLVER_MK2_CAMO_02`, `COMPONENT_SNSPISTOL_MK2_CAMO_02`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_woodland'] = {
+            label = 'Woodland Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO_03`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO_03`,`COMPONENT_COMBATMG_MK2_CAMO_03`,`COMPONENT_PUMPSHOTGUN_MK2_CAMO_03`,`COMPONENT_ASSAULTRIFLE_MK2_CAMO_03`, `COMPONENT_CARBINERIFLE_MK2_CAMO_03`, `COMPONENT_SPECIALCARBINE_MK2_CAMO_03`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO_03`,`COMPONENT_PISTOL_MK2_CAMO_03`, `COMPONENT_REVOLVER_MK2_CAMO_03`, `COMPONENT_SNSPISTOL_MK2_CAMO_03`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_skull'] = {
+            label = 'Skull Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO_04`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO_04`, `COMPONENT_COMBATMG_MK2_CAMO_04`, `COMPONENT_PUMPSHOTGUN_MK2_CAMO_04`, `COMPONENT_ASSAULTRIFLE_MK2_CAMO_04`, `COMPONENT_CARBINERIFLE_MK2_CAMO_04`, `COMPONENT_SPECIALCARBINE_MK2_CAMO_04`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO_04`, `COMPONENT_PISTOL_MK2_CAMO_04`, `COMPONENT_REVOLVER_MK2_CAMO_04`, `COMPONENT_SNSPISTOL_MK2_CAMO_04`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_sessanta'] = {
+            label = 'Sessanta Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO_05`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO_05`, `COMPONENT_COMBATMG_MK2_CAMO_05`, `COMPONENT_PUMPSHOTGUN_MK2_CAMO_05`, `COMPONENT_ASSAULTRIFLE_MK2_CAMO_05`, `COMPONENT_CARBINERIFLE_MK2_CAMO_05`, `COMPONENT_SPECIALCARBINE_MK2_CAMO_05`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO_05`, `COMPONENT_PISTOL_MK2_CAMO_05`, `COMPONENT_REVOLVER_MK2_CAMO_05`, `COMPONENT_SNSPISTOL_MK2_CAMO_05`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_perseus'] = {
+            label = 'Perseus Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO_06`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO_06`, `COMPONENT_COMBATMG_MK2_CAMO_06`, `COMPONENT_PUMPSHOTGUN_MK2_CAMO_06`, `COMPONENT_ASSAULTRIFLE_MK2_CAMO_06`, `COMPONENT_CARBINERIFLE_MK2_CAMO_06`, `COMPONENT_SPECIALCARBINE_MK2_CAMO_06`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO_06`, `COMPONENT_PISTOL_MK2_CAMO_06`, `COMPONENT_REVOLVER_MK2_CAMO_06`, `COMPONENT_SNSPISTOL_MK2_CAMO_06`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_leopard'] = {
+            label = 'Leopard Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO_07`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO_07`, `COMPONENT_COMBATMG_MK2_CAMO_07`, `COMPONENT_PUMPSHOTGUN_MK2_CAMO_07`, `COMPONENT_ASSAULTRIFLE_MK2_CAMO_07`, `COMPONENT_CARBINERIFLE_MK2_CAMO_07`, `COMPONENT_SPECIALCARBINE_MK2_CAMO_07`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO_07`, `COMPONENT_PISTOL_MK2_CAMO_07`, `COMPONENT_REVOLVER_MK2_CAMO_07`, `COMPONENT_SNSPISTOL_MK2_CAMO_07`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_zebra'] = {
+            label = 'Zebra Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO_08`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO_08`,`COMPONENT_COMBATMG_MK2_CAMO_08`, `COMPONENT_PUMPSHOTGUN_MK2_CAMO_08`, `COMPONENT_ASSAULTRIFLE_MK2_CAMO_08`, `COMPONENT_CARBINERIFLE_MK2_CAMO_08`, `COMPONENT_SPECIALCARBINE_MK2_CAMO_08`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO_08`, `COMPONENT_PISTOL_MK2_CAMO_08`, `COMPONENT_REVOLVER_MK2_CAMO_08`, `COMPONENT_SNSPISTOL_MK2_CAMO_08`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_geometric'] = {
+            label = 'Geometric Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO_09`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO_09`, `COMPONENT_COMBATMG_MK2_CAMO_09`, `COMPONENT_PUMPSHOTGUN_MK2_CAMO_09`,`COMPONENT_ASSAULTRIFLE_MK2_CAMO_09`, `COMPONENT_CARBINERIFLE_MK2_CAMO_09`, `COMPONENT_SPECIALCARBINE_MK2_CAMO_09`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO_09`, `COMPONENT_PISTOL_MK2_CAMO_09`, `COMPONENT_REVOLVER_MK2_CAMO_09`, `COMPONENT_SNSPISTOL_MK2_CAMO_09`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_boom'] = {
+            label = 'Boom Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO_10`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO_10`, `COMPONENT_COMBATMG_MK2_CAMO_10`, `COMPONENT_PUMPSHOTGUN_MK2_CAMO_10`, `COMPONENT_ASSAULTRIFLE_MK2_CAMO_10`, `COMPONENT_CARBINERIFLE_MK2_CAMO_10`, `COMPONENT_SPECIALCARBINE_MK2_CAMO_10`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO_10`, `COMPONENT_PISTOL_MK2_CAMO_10`, `COMPONENT_REVOLVER_MK2_CAMO_10`, `COMPONENT_SNSPISTOL_MK2_CAMO_10`},
+                usetime = 2500
+            }
+        },
+
+        ['at_skin_patriotic'] = {
+            label = 'Patriotic Weapon Kit',
+            type = 'skin',
+            weight = 50,
+            client = {
+                component = {`COMPONENT_HEAVYSNIPER_MK2_CAMO_IND_01`, `COMPONENT_MARKSMANRIFLE_MK2_CAMO_IND_01`, `COMPONENT_COMBATMG_MK2_CAMO_IND_01`, `COMPONENT_PUMPSHOTGUN_MK2_CAMO_IND_01`, `COMPONENT_ASSAULTRIFLE_MK2_CAMO_IND_01`, `COMPONENT_CARBINERIFLE_MK2_CAMO_IND_01`, `COMPONENT_SPECIALCARBINE_MK2_CAMO_IND_01`, `COMPONENT_BULLPUPRIFLE_MK2_CAMO_IND_01`, `COMPONENT_SNSPISTOL_MK2_CAMO_IND_01_SLIDE`, `COMPONENT_REVOLVER_MK2_CAMO_IND_01`, `COMPONENT_PISTOL_MK2_CAMO_IND_01`},
+                usetime = 2500
+            }
+        },
+    },
+
+    Ammo = {
 
 		['ammo-firework'] = {
 			label = 'Firework',
@@ -2732,58 +3179,9 @@ return {
 			weight = 400,
 		},
 
-		['ammo-heavysniper'] = {
-			label = '.50 BMG',
-			weight = 51,
-		},
-
-		['ammo-laser'] = {
-			label = 'Laser charge',
-			weight = 1,
-		},
-
 		['ammo-musket'] = {
 			label = '.50 Ball',
 			weight = 38,
-		},
-
-		['ammo-railgun'] = {
-			label = 'Railgun charge',
-			weight = 150,
-		},
-
-		['ammo-rifle'] = {
-			label = '5.56x45',
-			weight = 4,
-		},
-		['ammo-rifle-pd'] = {
-			label = 'PD 5.56x45',
-			weight = 4,
-		},
-
-		['ammo-rifle2'] = {
-			label = '7.62x39',
-			weight = 8,
-		},
-		['ammo-rifle2-pd'] = {
-			label = 'PD 7.62x39',
-			weight = 8,
-		},
-		['ammo-rifle3'] = {
-			label = '7.62x51',
-			weight = 8,
-		},
-		['ammo-rifle3-pd'] = {
-			label = 'PD 7.62x51',
-			weight = 8,
-		},
-		['ammo-rifle4'] = {
-			label = '.30 carbine',
-			weight = 8,
-		},
-		['ammo-rifle5'] = {
-			label = '6.8 SPC',
-			weight = 8,
 		},
 
 		['ammo-rocket'] = {
@@ -2791,31 +3189,55 @@ return {
 			weight = 500,
 		},
 
-		['ammo-shotgun'] = {
-			label = '12 Gauge',
-			weight = 38,
-		},
-		['ammo-shotgun-pd'] = {
-			label = 'PD 12 Gauge',
-			weight = 38,
-		},
-
-		['ammo-sniper'] = {
-			label = '7.62x51 sniper',
-			weight = 9,
-		},
-		['ammo-sniper-pd'] = {
-			label = 'PD 7.62x51 Sniper',
-			weight = 9,
-		},
-
 		['ammo-emp'] = {
 			label = 'EMP round',
 			weight = 400,
 		},
-		['ammo-paintball'] = {
-			label = 'Ammo Paintball',
-			weight = 10,
+
+		['rifle_ammo'] = {
+			label = 'Rifle Ammo',
+			weight = 1,
 		},
+
+        ['ammo-22'] = {
+			label = 'Marksman Ammo',
+			weight = 1,
+		},
+
+		['pistol_ammo'] = {
+			label = 'Pistol Ammo',
+			weight = 1,
+		},
+
+		['smg_ammo'] = {
+			label = 'SMG Ammo',
+			weight = 1,
+		},
+
+		['shotgun_ammo'] = {
+			label = 'Shotgun Ammo',
+			weight = 1,
+		},
+
+		['sniper_ammo'] = {
+			label = 'Sniper Ammo',
+			weight = 5,
+		},
+
+		['hunting_ammo'] = {
+			label = 'Sniper Ammo',
+			weight = 2,
+		},
+
+        ['ammo_paintball'] = {
+			label = 'Paint Ball',
+			weight = 2,
+		},
+
+        ['ammo-smokegrenade'] = {
+			label = '40mm Smoke',
+			weight = 3,
+		},
+
 	}
 }
