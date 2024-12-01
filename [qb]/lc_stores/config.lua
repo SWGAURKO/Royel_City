@@ -508,15 +508,15 @@ Config.market_locations = {
 			['store'] = 'bank',
 		}
 	},
-	["ammunation_1"] = {
-		['buy_price'] = 20000000,
-		['sell_price'] = 10000000,
-		['coord'] = {14.470663070679,-1106.0792236328,29.797006607056},
+	-- Ammunation Stores
+	["ammunation_1"] = { -- Near PDM
+		['buy_price'] = 10000000,
+		['sell_price'] = 5000,
+		['coord'] = {18.53, -1100.34, 29.8},
 		['garage_coord'] = {27.71,-1113.25,29.3,329.89},
 		['truck_parking_location'] = {-13.8833,-1125.8661, 27.5543,157.6875},
-		['map_blip_coord'] = {14.470663070679,-1106.0792236328,29.797006607056},
+		['map_blip_coord'] = {20.91,-1110.49,29.79},
 		['sell_blip_coords'] = {
-			{20.910318374634,-1110.4947509766,29.797004699707},
 			{19.58235168457,-1109.9547119141,29.797004699707}
 		},
 		['deliveryman_coord'] = {18.89,-1116.02,29.79},
@@ -535,18 +535,17 @@ Config.market_locations = {
 			['store'] = 'bank',
 		}
 	},
-	["ammunation_2"] = {
-		['buy_price'] = 20000000,
-		['sell_price'] = 10000000,
-		['coord'] = {248.69, -47.07, 69.94},
-		['garage_coord'] = {231.85, -37.11, 69.71, 67.24},
-		['truck_parking_location'] = {231.85, -37.11, 69.71, 67.24},
-		['map_blip_coord'] = {248.69, -47.07, 69.94},
+	["ammunation_2"] = { -- Near Hayes
+		['buy_price'] = 10000000,
+		['sell_price'] = 5000,
+		['coord'] = {-1309.32, -395.33, 36.7},
+		['garage_coord'] = {-1334.83, -394.06, 36.58, 299.48},
+		['truck_parking_location'] = {-1334.83, -394.06, 36.58, 299.48},
+		['map_blip_coord'] = {-1309.32, -395.33, 36.7},
 		['sell_blip_coords'] = {
-			{246.77, -50.39, 69.94}
-			
+			{-1308.8, -392.62, 36.7},
 		},
-		['deliveryman_coord'] = {242.26, -48.04, 69.9},
+		['deliveryman_coord'] = {-1315.38, -387.94, 36.59},
 		['type'] = 'ammunation',
 		['account'] = {
 			['item'] = {
@@ -562,18 +561,173 @@ Config.market_locations = {
 			['store'] = 'bank',
 		}
 	},
-	["ammunation_3"] = {
-		['buy_price'] = 20000000,
-		['sell_price'] = 10000000,
-		['coord'] = {-322.9, 6079.69, 31.45},
-		['garage_coord'] = {-320.07, 6071.35, 31.34, 231.77},
-		['truck_parking_location'] = {-315.97, 6075.34, 31.36, 231.77},
-		['map_blip_coord'] = {-322.9, 6079.69, 31.45},
+	["ammunation_3"] = { -- 919 postal at paleto
+		['buy_price'] = 10000000,
+		['sell_price'] = 5000,
+		['coord'] = {-326.62, 6082.67, 31.45},
+		['garage_coord'] = {-323.19, 6098.78, 31.46, 221.92},
+		['truck_parking_location'] = {-323.19, 6098.78, 31.46, 221.92},
+		['map_blip_coord'] = {-328.62, 6080.38, 31.45},
 		['sell_blip_coords'] = {
-			{-326.09, 6079.87, 31.45}
-			
+			{-328.62, 6080.38, 31.45},
 		},
-		['deliveryman_coord'] = {-321.93, 6077.88, 31.25},
+		['deliveryman_coord'] = {-319.9, 6078.07, 31.25},
+		['type'] = 'ammunation',
+		['account'] = {
+			['item'] = {
+				[1] = {
+					['icon'] = 'img/credit_card.png',
+					['account'] = 'bank'
+				},
+				[2] = {
+					['icon'] = 'img/cash.png',
+					['account'] = 'cash'
+				}
+			},
+			['store'] = 'bank',
+		}
+	},
+	["ammunation_4"] = { -- 6001 cypress flats
+		['buy_price'] = 10000000,
+		['sell_price'] = 5000,
+		['coord'] = {816.76, -2162.45, 29.62}, -- Coordinate to open the menu (vector3)
+		['garage_coord'] = {821.92, -2136.98, 29.29, 357.14}, -- Garage coordinates, where the trucks will spawn (vector4)
+		['truck_parking_location'] = {821.92, -2136.98, 29.29, 357.14}, -- Location that the trucks from Trucker Logistics script will park when delivering cargo for this store (vector3)
+		['map_blip_coord'] = {814.69, -2153.26, 29.62},
+		['sell_blip_coords'] = { -- The coordinates where customes will buy things on this store (vector3)
+			{814.69, -2153.26, 29.62},
+		},
+		['deliveryman_coord'] = {815.04, -2147.14, 29.43},
+		['type'] = 'ammunation',
+		['account'] = {
+			['item'] = {
+				[1] = {
+					['icon'] = 'img/credit_card.png',
+					['account'] = 'bank'
+				},
+				[2] = {
+					['icon'] = 'img/cash.png',
+					['account'] = 'cash'
+				}
+			},
+			['store'] = 'bank',
+		}
+	},
+	["ammunation_5"] = { -- Vinewood
+		['buy_price'] = 10000000,
+		['sell_price'] = 5000,
+		['coord'] = {249.14, -52.81, 69.94}, -- Coordinate to open the menu (vector3)
+		['garage_coord'] = {234.7, -44.65, 69.62, 159.58}, -- Garage coordinates, where the trucks will spawn (vector4)
+		['truck_parking_location'] = {234.7, -44.65, 69.62, 159.58}, -- Location that the trucks from Trucker Logistics script will park when delivering cargo for this store (vector3)
+		['map_blip_coord'] = {248.87, -49.68, 69.94},
+		['sell_blip_coords'] = { -- The coordinates where customes will buy things on this store (vector3)
+			{248.87, -49.68, 69.94},
+		},
+		['deliveryman_coord'] = {244.11, -42.77, 69.9},
+		['type'] = 'ammunation',
+		['account'] = {
+			['item'] = {
+				[1] = {
+					['icon'] = 'img/credit_card.png',
+					['account'] = 'bank'
+				},
+				[2] = {
+					['icon'] = 'img/cash.png',
+					['account'] = 'cash'
+				}
+			},
+			['store'] = 'bank',
+		}
+	},
+	["ammunation_6"] = { -- Little Seoul
+		['buy_price'] = 10000000,
+		['sell_price'] = 5000,
+		['coord'] = {-658.49, -937.4, 21.83}, -- Coordinate to open the menu (vector3)
+		['garage_coord'] = {-695.95, -980.24, 20.39, 1.35}, -- Garage coordinates, where the trucks will spawn (vector4)
+		['truck_parking_location'] = {-664.18, -953.65, 21.33, 89.52}, -- Location that the trucks from Trucker Logistics script will park when delivering cargo for this store (vector3)
+		['map_blip_coord'] = {-658.86, -938.74, 21.83},
+		['sell_blip_coords'] = { -- The coordinates where customes will buy things on this store (vector3)
+			{-661.27, -938.54, 21.83},
+		},
+		['deliveryman_coord'] = {-661.02, -945.63, 21.8},
+		['type'] = 'ammunation',
+		['account'] = {
+			['item'] = {
+				[1] = {
+					['icon'] = 'img/credit_card.png',
+					['account'] = 'bank'
+				},
+				[2] = {
+					['icon'] = 'img/cash.png',
+					['account'] = 'cash'
+				}
+			},
+			['store'] = 'bank',
+		}
+	},
+	["ammunation_7"] = { -- Sandy Shores
+		['buy_price'] = 10000000,
+		['sell_price'] = 5000,
+		['coord'] = {1697.22, 3758.98, 34.7}, -- Coordinate to open the menu (vector3)
+		['garage_coord'] = {1682.28, 3741.01, 33.82, 218.89}, -- Garage coordinates, where the trucks will spawn (vector4)
+		['truck_parking_location'] = {1682.28, 3741.01, 33.82, 218.89}, -- Location that the trucks from Trucker Logistics script will park when delivering cargo for this store (vector3)
+		['map_blip_coord'] = {1695.19, 3756.64, 34.71},
+		['sell_blip_coords'] = { -- The coordinates where customes will buy things on this store (vector3)
+			{1695.19, 3756.64, 34.71},
+		},
+		['deliveryman_coord'] = {1697.76, 3749.6, 34.38},
+		['type'] = 'ammunation',
+		['account'] = {
+			['item'] = {
+				[1] = {
+					['icon'] = 'img/credit_card.png',
+					['account'] = 'bank'
+				},
+				[2] = {
+					['icon'] = 'img/cash.png',
+					['account'] = 'cash'
+				}
+			},
+			['store'] = 'bank',
+		}
+	},
+	["ammunation_8"] = { -- 6018
+		['buy_price'] = 10000000,
+		['sell_price'] = 5000,
+		['coord'] = {840.61, -1030.03, 28.19}, -- Coordinate to open the menu (vector3)
+		['garage_coord'] = {860.55, -1019.61, 29.86, 352.67}, -- Garage coordinates, where the trucks will spawn (vector4)
+		['truck_parking_location'] = {860.55, -1019.61, 29.86, 352.67}, -- Location that the trucks from Trucker Logistics script will park when delivering cargo for this store (vector3)
+		['map_blip_coord'] = {840.61, -1030.03, 28.19},
+		['sell_blip_coords'] = { -- The coordinates where customes will buy things on this store (vector3)
+			{843.31, -1029.62, 28.19},
+		},
+		['deliveryman_coord'] = {846.83, -1021.38, 27.54},
+		['type'] = 'ammunation',
+		['account'] = {
+			['item'] = {
+				[1] = {
+					['icon'] = 'img/credit_card.png',
+					['account'] = 'bank'
+				},
+				[2] = {
+					['icon'] = 'img/cash.png',
+					['account'] = 'cash'
+				}
+			},
+			['store'] = 'bank',
+		}
+	},
+	["ammunation_9"] = { -- 7069
+		['buy_price'] = 10000000,
+		['sell_price'] = 5000,
+		['coord'] = {-3168.22, 1088.32, 20.84}, -- Coordinate to open the menu (vector3)
+		['garage_coord'] = {-3148.5, 1092.63, 20.7, 276.45}, -- Garage coordinates, where the trucks will spawn (vector4)
+		['truck_parking_location'] = {-3148.5, 1092.63, 20.7, 276.45}, -- Location that the trucks from Trucker Logistics script will park when delivering cargo for this store (vector3)
+		['map_blip_coord'] = {-3168.22, 1088.32, 20.84},
+		['sell_blip_coords'] = { -- The coordinates where customes will buy things on this store (vector3)
+			{-3168.79, 1085.7, 20.84},
+		},
+		['deliveryman_coord'] = {-3161.67, 1085.22, 20.85},
 		['type'] = 'ammunation',
 		['account'] = {
 			['item'] = {
@@ -1314,8 +1468,8 @@ Config.market_categories = {
 		['category_buy_price'] = 35000,
 		['category_sell_price'] = 17500,
 		['items'] = {
-			['ammo-50'] = {
-				['name'] = ".50 AE",
+			['pistol_ammo'] = {
+				['name'] = "Pistol Ammo",
 				['price_to_customer'] = 20,
 				['price_to_customer_min'] = 125,
 				['price_to_customer_max'] = 500,
@@ -1326,7 +1480,7 @@ Config.market_categories = {
 				['requires_license'] = false,
 				['img'] = 'ammo-50.png',
 			},
-			['ammo-44'] = {
+			--[[ ['ammo-44'] = {
 				['name'] = ".44 Magnum",
 				['price_to_customer'] = 25,
 				['price_to_customer_min'] = 175,
@@ -1337,7 +1491,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 100,
 				['requires_license'] = false,
 				['img'] = 'ammo-44.png',
-			},
+			}, ]]
 			--[[ ['smg_ammo'] = {
 				['name'] = "SMG Ammo",
 				['price_to_customer'] = 300,
@@ -1398,7 +1552,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 5,
 				['img'] = 'parachute.png',
 			},
-			['armor'] = {
+			--[[ ['armor'] = {
 				['name'] = "Armor",
 				['price_to_customer'] = 550,
 				['price_to_customer_min'] = 275,
@@ -1408,7 +1562,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'armor.png',
-			},
+			}, ]]
 			['handcuffs'] = {
 				['name'] = "Handcuffs",
 				['price_to_customer'] = 1000,
