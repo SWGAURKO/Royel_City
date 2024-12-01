@@ -21,7 +21,7 @@ Rewards.Lockers = {
     ['fleeca'] = {
         items = {'goldbar1', }, -- Every time a player unlocks a locker, a random item from this array will be drawn, you can add more items
         amount = { minAmount = 1, maxAmount = 2 },
-        rareChance = 20,
+        rareChance = 50,
         rareItem = 'usb_blue',
     },
     ['maze'] = {

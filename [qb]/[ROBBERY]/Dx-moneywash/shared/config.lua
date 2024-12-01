@@ -15,7 +15,7 @@ Wash.QBDrawAlignment = 'top' -- / 'left', 'top', 'right' -- / For QB DrawText
 
 Wash.PerItemDuration = true -- if true, wash duration will be based on how many markedbills you're gonna wash. ex. 1 markedbills = 5 seconds / 2 markedbills = 10 seconds / 5 markedbills = 25 seconds
 Wash.Duration = 3 -- in seconds
-Wash.Item = 'markedbills'
+Wash.Item = 'black_money'
 
 Wash.Tax = 1 -- currently set at 10% set to 1 to disable tax
 
