@@ -12,6 +12,7 @@ Locales = {
         ['vehicle_toolarge'] = 'This vehicle is too large for this garage : ',
         ['car_city_impound'] = 'Car Impound (city)',
         ['car_sandy_impound'] = 'Car Impound (sandy)',
+        ['car_peleto_impound'] = 'Car Impound (peleto)',
         ['boat_impound'] = 'Boat Impound',
         ['air_impound'] = 'Air Impound',
         ['job_garage'] = 'Job Garage',

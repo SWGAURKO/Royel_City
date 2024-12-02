@@ -855,6 +855,17 @@ Config.ImpoundLocations = { --DO NOT CHANGE THE TABLE IDENTIFIERSs, for example 
             name = L('car_sandy_impound'),
         }
     },
+    ['car_3'] = { 
+        ImpoundID = 5,
+        coords = {x = -131.27, y = 6282.87, z = 31.35},
+        spawnpoint = {x = -131.27, y = 6282.87, z = 31.35, h = 220.89},
+        blip = {
+            sprite = 357,
+            scale = 0.6,
+            colour = 3,
+            name = L('car_peleto_impound'),
+        }
+    },
 
     ['boat_1'] = {
         ImpoundID = 3,

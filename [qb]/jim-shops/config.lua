@@ -36,7 +36,7 @@ Config = {
 		ApGov = false, -- Add support for AP-Goverment Tax
 
 		MaxSlots = 41, -- Set this to your player inventory slot count, this is default "41"
-		BlackMarket = true, -- enable to add blackmarket locations (defined at the bottom of this file)
+		BlackMarket = false, -- enable to add blackmarket locations (defined at the bottom of this file)
 		Measurement = "kg", -- Custom Weight measurement
 		Gabz247 = false,  -- Enable if using gabz 247 stores
 		GabzAmmu = false, -- Enable if using gabz Ammunation stores
