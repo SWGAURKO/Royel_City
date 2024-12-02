@@ -166,7 +166,7 @@ Config.CCTVCameras = { -- CCTV Cameras
     },
     destoryable = true, -- Can players destroy CCTV Cameras?
     blip = {
-        enabled = true,      -- Enable blips for CCTV Cameras?
+        enabled = false,      -- Enable blips for CCTV Cameras?
         label = 'CCTV Camera', -- Blip label
         sprite = 604,         -- Blip sprite
         color = 5,            -- Blip color
