@@ -40,8 +40,20 @@ Config = {
 				spawn = vector4(435.89, -976.31, 25.7, 89.26),
 				out = vector4(441.35, -974.77, 25.7, 189.43),
 				list = {
-					["17cheyenne2"] = {
-						CustomName = "CONSRABLE",
+					["rexon_dmp3"] = {
+						CustomName = "PD Crown Victoria",
+						livery = 1,
+						grade = 1,
+						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
+						performance = "max",
+						--[[ trunkItems = {
+							
+							{ name = "empty_evidence_bag", amount = 10, info = {}, type = "item", slot = 2, },
+							{ name = "police_stormram", amount = 1, info = {}, type = "item", slot = 3, },
+						}, ]]
+					},
+					["rexon_dmp5"] = {
+						CustomName = "PD Caracara",
 						livery = 1,
 						grade = 1,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
@@ -53,9 +65,9 @@ Config = {
 						}, ]]
 					},
 					["modelsleo"] = {
-						CustomName = "SP",
+						CustomName = "ASI",
 						livery = 2,
-						grade = 7,
+						grade = 3,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						--[[ trunkItems = {
@@ -65,9 +77,9 @@ Config = {
 						}, ]]
 					},
 					["nm_avent"] = {
-						CustomName = "ADIG / DIG",
+						CustomName = "DIG",
 						livery = 1,
-						grade = 8, 9,
+						grade = 11,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						--[[ trunkItems = {
@@ -77,10 +89,10 @@ Config = {
 						}, ]]
 					},
 					["pd_c8"] = {
-						CustomName = "SURGENT",
+						CustomName = "Sergeant",
 					--	colors = { 255, 255 },
 						livery = 1,
-                        grade = 3,
+                        grade = 4,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						--[[ trunkItems = {
@@ -90,10 +102,10 @@ Config = {
 						}, ]]
 					},
 					["polamggtr"] = {
-						CustomName = "AIGP",
+						CustomName = "AIG",
 						colors = { 255, 255 },
 						livery = 1,
-                        grade = 10,
+                        grade = 12,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						--[[ trunkItems = {
@@ -105,10 +117,10 @@ Config = {
 					
 					 
 					["r1200rtp"] = {
-						CustomName = "PD Bike",
+						CustomName = "ASI",
 						--colors = { 255, 255 },
 						livery = 1,
-                        grade = 5,
+                        grade = 3,
 						--bulletproof = true,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
@@ -118,10 +130,10 @@ Config = {
 							{ name = "police_stormram", amount = 1, info = {}, type = "item", slot = 3, },
 						}, ]]
 					},
-					--[[ ["rexon_dmp1"] = {
-						CustomName = "PD DMP1",
+					["rexon_dmp1"] = {
+						CustomName = "Inspector",
 						livery = 3,
-                        grade = 4, 5, 6, 7, 8, 9, 10,
+                        grade = 6,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						trunkItems = {
@@ -129,9 +141,9 @@ Config = {
 							{ name = "empty_evidence_bag", amount = 10, info = {}, type = "item", slot = 2, },
 							{ name = "police_stormram", amount = 1, info = {}, type = "item", slot = 3, },
 						},
-					}, ]]
+					},
 					["rexon_dmp2"] = {
-						CustomName = "ASI",
+						CustomName = "Nayek",
 						livery = 1,
                         grade = 2,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
@@ -142,21 +154,21 @@ Config = {
 							{ name = "police_stormram", amount = 1, info = {}, type = "item", slot = 3, },
 						}, ]]
 					},
-					["rexon_dmp3"] = {
-						CustomName = "INTERN",
-						grade = 0,
-						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
-						performance = "max",
-						--[[ trunkItems = {
+					-- [""] = {
+					-- 	CustomName = "INTERN",
+					-- 	grade = 0,
+					-- 	extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
+					-- 	performance = "max",
+					-- 	--[[ trunkItems = {
 							
-							{ name = "empty_evidence_bag", amount = 10, info = {}, type = "item", slot = 2, },
-							{ name = "police_stormram", amount = 1, info = {}, type = "item", slot = 3, },
-						}, ]]
-					},
+					-- 		{ name = "empty_evidence_bag", amount = 10, info = {}, type = "item", slot = 2, },
+					-- 		{ name = "police_stormram", amount = 1, info = {}, type = "item", slot = 3, },
+					-- 	}, ]]
+					-- },
 					["rexon_dmp4"] = {
-						CustomName = "SUB INSPECTOR",
+						CustomName = "ASP",
 						livery = 1,
-                        grade = 4,
+                        grade = 7,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						--[[ trunkItems = {
@@ -165,9 +177,10 @@ Config = {
 							{ name = "police_stormram", amount = 1, info = {}, type = "item", slot = 3, },
 						}, ]]
 					},
-					--[[ ["rexon_dmp5"] = {
-						CustomName = "PD DMP5",
+					["rexon_dmp5"] = {
+						CustomName = "Constable",
 						livery = 1,
+						grade = 1,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						trunkItems = {
@@ -175,9 +188,9 @@ Config = {
 							{ name = "empty_evidence_bag", amount = 10, info = {}, type = "item", slot = 2, },
 							{ name = "police_stormram", amount = 1, info = {}, type = "item", slot = 3, },
 						},
-					}, ]]
+					},
 					["rexon_dmp6"] = {
-						CustomName = "INSPECTOR",
+						CustomName = "SI",
 						livery = 1,
                         grade = 5,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
@@ -201,10 +214,10 @@ Config = {
 							{ name = "police_stormram", amount = 1, info = {}, type = "item", slot = 3, },
 						}, ]]
 					},
-					--[[ ["rexon_dmp8"] = {
-						CustomName = "PD DMP8",
+					["rexon_dmp8"] = {
+						CustomName = "SAP",
 						livery = 1,
-                                                grade = 3, 4, 5, 6, 7, 8, 9, 10,
+                        grade = 8,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						trunkItems = {
@@ -215,9 +228,9 @@ Config = {
 					},
 					
 					["rexon_dmp9"] = {
-						CustomName = "PD DMP9",
+						CustomName = "SP",
 						livery = 1,
-                                                grade = 8, 9, 10, 
+                        grade = 9, 
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						trunkItems = {
@@ -225,11 +238,11 @@ Config = {
 							{ name = "empty_evidence_bag", amount = 10, info = {}, type = "item", slot = 2, },
 							{ name = "police_stormram", amount = 1, info = {}, type = "item", slot = 3, },
 						},
-					}, ]]
+					},
 					["rmodgt63police"] = {
 						CustomName = "IGP",
 						livery = 1,
-                        grade = 11,
+                        grade = 13,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						--[[ trunkItems = {
@@ -250,9 +263,9 @@ Config = {
 						},
 					}, ]]
 					["yzfr6"] = {
-						CustomName = "SP",
+						CustomName = "SI",
 						livery = 1,
-                        grade = 7,
+                        grade = 5,
 						extras = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 },
 						performance = "max",
 						--[[ trunkItems = {
